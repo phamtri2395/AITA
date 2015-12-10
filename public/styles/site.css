@@ -5021,6 +5021,12 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.nav-search {
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+  background-color: whitesmoke;
+  border-radius: 0; }
+
 #header {
   margin-top: 30px; }
 
@@ -5031,7 +5037,7 @@ button.close {
   color: #777777; }
 
 .main {
-  padding-top: 60px; }
+  padding-top: 50px; }
 
 .gallery-image img {
   display: block;

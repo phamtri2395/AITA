@@ -1,0 +1,13 @@
+// Capheshift 2015
+// Author: Tw
+
+@import "../variables";
+
+$nav-bg: whitesmoke;
+
+.nav-search {
+	padding-top: 0.5*$gutter;
+	padding-bottom: 0.5*$gutter;
+	background-color: $nav-bg;
+	border-radius: 0;
+}

@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 						<span class="sr-only">Toggle navigation</span>
@@ -31,24 +31,27 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/new/house" title="Căn hộ / chung cư">Đăng tin</a></li>
-						<li><a href="/apart/list" title="Căn hộ / chung cư">Căn hộ / chung cư</a></li>
-						<li><a href="/room/list" title="Phòng cho thuê">Phòng cho thuê</a></li>
-						<li><a href="/house/list" title="Nhà riêng">Nhà riêng</a></li>
+						<li><a href="/new/house" title="Đăng tin">Đăng tin</a></li>
+						<li><a href="/" title="Căn hộ/chung cư">Căn hộ/chung cư</a></li>
+						{{!-- <li><a href="/" title="Phòng cho thuê">Phòng cho thuê</a></li>
+						<li><a href="/" title="Nhà riêng">Nhà riêng</a></li> --}}
 						<li><a href="/login" title="Đăng nhập">Đăng nhập</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
 		</nav>
 
-		<div class="main container">
+		<div class="main">
 			{{{body}}}
-		</div> <!-- /container -->
+		</div>
+		<!-- /container -->
+
 		<footer id="footer" class="footer">
 			<div class="container">
 				<p class="text-muted text-center">Apartment in the air &copy; 2015</p>
 			</div>
 		</footer>
+
 		<script src="/js/jquery/jquery-2.1.4.min.js"></script>
 		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
 		<script src="//maps.googleapis.com/maps/api/js"></script>
