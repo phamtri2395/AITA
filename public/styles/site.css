@@ -5845,26 +5845,31 @@ button.close {
 .main {
   padding-top: 50px; }
 
-.gallery-image img {
-  display: block;
-  max-width: 100%;
-  height: auto; }
+.tab-pane {
+  padding-top: 15px; }
+
+.nav-tabs > li > a {
+  padding-left: 60px;
+  padding-right: 60px;
+  border-radius: 0;
+  border-top-color: white; }
+
+.result-block {
+  position: fixed;
+  top: 100px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%; }
+
+.map-block {
+  padding: 0;
+  height: 600px;
+  min-height: 100%; }
 
 #google-map {
   width: 100%;
-  height: 500px; }
-
-.list-items {
-  height: 445px;
-  overflow-x: hidden;
-  overflow-y: auto; }
-
-.list-items .row:not(:last-child) {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 15px; }
-
-.text-muted {
-  margin: 20px 0; }
+  height: 100%; }
 
 .main-wrapper {
   margin: 50px auto; }

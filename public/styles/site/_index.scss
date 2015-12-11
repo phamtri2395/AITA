@@ -1,0 +1,38 @@
+// Capheshift 2015
+// Author: Tw
+
+@import "../variables";
+
+$fixed-top: 100px;
+
+.tab-pane {
+	padding-top: $gutter;
+}
+
+// custom tab button
+.nav-tabs > li > a {
+	padding-left: 4*$gutter;
+	padding-right: 4*$gutter;
+	border-radius: 0;
+	border-top-color: white;
+}
+
+.result-block {
+	position: fixed;
+	top: $fixed-top;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.map-block {
+	padding: 0;
+	height: 600px;
+	min-height: 100%;
+}
+
+#google-map {
+	width: 100%;
+	height: 100%;
+}
