@@ -41,10 +41,11 @@ exports = module.exports = function(app) {
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
 
-	app.get('/new/house', routes.views['house-new']);
 	app.get('/room/list', routes.views['room-list']);
 	app.get('/apart/list', routes.views['apart-list']);
 	app.get('/house/list', routes.views['house-list']);
+
+	app.get('/dang-tin', routes.views['dang-tin']);
 	app.get('/chi-tiet', routes.views['chi-tiet']);
 
 
