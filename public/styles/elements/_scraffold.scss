@@ -12,3 +12,17 @@ $nav-bg: whitesmoke;
 	border-radius: 0;
 	margin-bottom: 0;
 }
+
+.wrapper-cover-img {
+	position: relative;
+	width: 170px;
+	height: 120px;
+	display: block;
+
+	img {
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
