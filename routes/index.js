@@ -45,6 +45,7 @@ exports = module.exports = function(app) {
 	app.get('/room/list', routes.views['room-list']);
 	app.get('/apart/list', routes.views['apart-list']);
 	app.get('/house/list', routes.views['house-list']);
+	app.get('/chi-tiet', routes.views['chi-tiet']);
 
 
 	app.all('/contact', routes.views.contact);

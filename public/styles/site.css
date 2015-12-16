@@ -5893,6 +5893,9 @@ button.close {
   top: 0;
   bottom: 0; }
 
+.btn-group._index {
+  margin-right: 7.5px; }
+
 .main-wrapper {
   margin: 50px auto; }
 
