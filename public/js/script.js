@@ -1,3 +1,7 @@
+// capheshift 2015
+// author: Tw
+
+/* globals google, FB */
 var center = new google.maps.LatLng(10.81416666666667, 106.66694444444444);
 
 function initialize() {
@@ -46,3 +50,14 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+// facebook functions
+var fbShare = function() {
+	FB.ui({
+			method: 'send',
+			to: '100005774646691',
+			link: 'http://www.visla.vn/du-an/468/sunrise-city?aid=20686',
+			redirect_uri: 'https://www.google.com/?gws_rd=ssl'
+	});
+};
