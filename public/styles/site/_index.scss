@@ -10,9 +10,14 @@ $fixed-top: 100px;
 }
 
 // custom tab button
+.nav-tabs > li {
+	width: 50%;
+}
 .nav-tabs > li > a {
-	padding-left: 4*$gutter;
-	padding-right: 4*$gutter;
+	width: 100%;
+	text-align: center;
+	// padding-left: 4*$gutter;
+	// padding-right: 4*$gutter;
 	border-radius: 0;
 	border-top-color: white;
 }
@@ -28,6 +33,7 @@ $fixed-top: 100px;
 
 .main-block-left {
 	padding-right: 0;
+	padding-left: 0;
 }
 
 .result-block {
@@ -42,6 +48,7 @@ $fixed-top: 100px;
 		right: 0;
 		bottom: 0;
 		overflow-y: auto;
+		padding: 0 $gutter;
 	}
 }
 
