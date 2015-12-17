@@ -32,7 +32,7 @@ body {
 }
 
 .container {
-	margin-top: $gutter;
+	// margin-top: $gutter;
 }
 
 .content-wrapper {
@@ -40,6 +40,7 @@ body {
 	padding-bottom: $gutter;
 	border-bottom: 1px dotted whitesmoke;
 
+	&._no-bottom-border,
 	&:last-child {
 		border-bottom: 0;
 	}

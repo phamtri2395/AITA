@@ -5832,7 +5832,7 @@ button.close {
   position: relative;
   width: 170px;
   height: 120px;
-  display: block; }
+  display: inline-block; }
   .wrapper-cover-img img {
     position: absolute;
     width: 100%;
@@ -5866,14 +5866,11 @@ body {
 .__height-100pc {
   height: 100%; }
 
-.container {
-  margin-top: 15px; }
-
 .content-wrapper {
   margin-top: 15px;
   padding-bottom: 15px;
   border-bottom: 1px dotted whitesmoke; }
-  .content-wrapper:last-child {
+  .content-wrapper._no-bottom-border, .content-wrapper:last-child {
     border-bottom: 0; }
 
 .header-01 {
