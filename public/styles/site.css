@@ -6216,6 +6216,12 @@ a.forgot-pass:hover {
   padding: 8px;
   border-color: #1fa67a; }
 
+.google-map-detail {
+  height: 300px; }
+
+.clear-top {
+  padding-top: 300px; }
+
 .group-title {
   font-size: 1.5em;
   padding-top: 10px;
