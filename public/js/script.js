@@ -61,3 +61,10 @@ var fbSend = function() {
 		redirect_uri: 'https://www.google.com/?gws_rd=ssl'
 	});
 };
+
+$(document).ready(function() {
+	var fancyboxElm = $('.fancybox');
+	if (fancyboxElm.length) {
+		fancyboxElm.fancybox();
+	}
+});
