@@ -1,0 +1,49 @@
+// Capheshift 2015
+// Author: Tw
+
+@import "../variables";
+
+.group-title {
+	font-size: 1.5em;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+input[type="checkbox"] {
+	border: 1px solid #bbb;
+	background: #fff;
+	color: #555;
+	clear: none;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 0;
+	height: 14px !important;
+	margin: -4px 4px 0 0;
+	outline: 0;
+	padding: 0 !important;
+	text-align: center;
+	vertical-align: middle;
+	width: 14px !important;
+	-webkit-appearance: none;
+	-webkit-transition: .05s border-color ease-in-out;
+	transition: .05s border-color ease-in-out;
+	background: #fbfbfb;
+	position: relative;
+}
+
+.group-checkbox {
+	padding-top: 35px;
+}
+
+label {
+	font-weight: normal;
+}
+
+.form-group {
+	border-bottom: 1px dotted whitesmoke;
+	margin-bottom: 2*$gutter;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
