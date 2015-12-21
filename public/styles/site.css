@@ -5954,11 +5954,7 @@ body {
   margin-bottom: 20px; }
 
 .form-control {
-  height: 40px;
-  margin-bottom: 20px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px; }
+  margin-bottom: 20px; }
 
 .panel-login input:hover {
   -webkit-box-shadow: none;
@@ -5992,15 +5988,6 @@ a.forgot-pass:hover {
   padding-top: 10px;
   padding-bottom: 10px; }
 
-label {
-  margin-bottom: 5px;
-  max-width: 100%;
-  font-size: 16px;
-  font-weight: 300; }
-
-.form-control {
-  margin-bottom: 15px; }
-
 input[type="checkbox"] {
   border: 1px solid #bbb;
   background: #fff;
@@ -6024,3 +6011,12 @@ input[type="checkbox"] {
 
 .group-checkbox {
   padding-top: 35px; }
+
+label {
+  font-weight: normal; }
+
+.form-group {
+  border-bottom: 1px dotted whitesmoke;
+  margin-bottom: 30px; }
+  .form-group:last-child {
+    border-bottom: 0; }
