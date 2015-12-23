@@ -4,6 +4,7 @@
 @import "../variables";
 
 $fixed-top: 100px;
+$tab-h: 44px;
 
 .tab-pane {
 	padding-top: $gutter;
@@ -49,7 +50,7 @@ $fixed-top: 100px;
 .tab-content {
 	&._index-page {
 		position: absolute;
-		top: 40px;
+		top: $tab-h;
 		left: 0;
 		right: 0;
 		bottom: 0;
