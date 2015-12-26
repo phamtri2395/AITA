@@ -1,65 +1,40 @@
-<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-		<div class="panel panel-login">
-			<form id="login-form" action="#" method="post" role="form" style="display: block;">
-				<h3>Đăng nhập</h3>
-				<p>Chưa có tài khoản? <a href="#" id="register-form-link">Đăng ký nhanh</a></p>
-				<div class="form-group">
-					<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Tài khoản/Email/Số điện thoại" value="">
+<div class="container login-page">
+	<div class="col-sm-4 col-sm-offset-4">
+		<div class="panel-heading">
+			<div class="panel-title text-center">
+				<h3>Đăng nhập</h3> 
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<form class="form-horizontal" enctype="multipart/form-data" id="form" method="post" name="form">
+				<div class="input-group input-group--login">
+					<span class="input-group-addon glyphicon glyphicon-send"></span>
+					<input class="form-control" id="email" name="email" placeholder="your email" type="text" />
 				</div>
-				<div class="form-group">
-					<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mật khẩu">
+
+				<div class="input-group input-group--login">
+					<span class="input-group-addon glyphicon glyphicon-lock"></span>
+					<input class="form-control" id="password" name="password" placeholder="password" type="password" />
 				</div>
-				<div class="form-group">
-					<div class="checkbox">
-						<label>
-							<input type="checkbox">Ghi nhớ đăng nhập
-						</label>
-						<a class="forgot-pass pull-right" href="#">Quên mật khẩu?</a>
+
+				<div class="form-group form-group--clean">
+					<div class="col-sm-12 controls">
+						<button class="btn btn-success pull-right" type="submit">
+							Đăng nhập
+						</button>
+						<a href="#/register" class="btn btn-link pull-right">Đăng ký</a>
 					</div>
 				</div>
-				<div class="form-group">
-					<button class="btn btn-submit" type="submit">Đăng nhập</button>
-				</div>
-			</form>
 
-			<form id="register-form" action="#" method="post" role="form" style="display: none;">
-				<h3>Đăng ký tài khoản</h3>
-				<div class="form-group">
-					<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Tài khoản đăng nhập *" value="">
+				<div class="form-group form-group--facebook">
+					<div class="col-sm-12 controls">
+						<a href="/auth/facebook" class="btn btn-primary btn-block pull-right" type="submit">
+							Đăng nhập bằng Facebook
+						</a>
+					</div>
 				</div>
-				<div class="form-group">
-					<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Nhập mật khẩu *">
-				</div>
-				<div class="form-group">
-					<input type="email" name="email" id="email" tabindex="3" class="form-control" placeholder="Email *">
-				</div>
-				<div class="form-group">
-					<input type="text" name="phone" id="phone" tabindex="4" class="form-control" placeholder="Số điện thoại *">
-				</div>
-				<div class="form-group">
-					<button class="btn btn-submit" type="submit">Đăng ký</button>
-				</div>
-				<p>Đã có tài khoản? <a href="#" id="login-form-link">Đăng nhập</a></p>
 			</form>
 		</div>
 	</div>
-</div>
-
-<script>
-$('#login-form-link').click(function(e) {
-	$("#login-form").delay(100).fadeIn(100);
-	$("#register-form").fadeOut(100);
-	$('#register-form-link').removeClass('active');
-	$(this).addClass('active');
-	e.preventDefault();
-});
-
-$('#register-form-link').click(function(e) {
-	$("#register-form").delay(100).fadeIn(100);
-	$("#login-form").fadeOut(100);
-	$('#login-form-link').removeClass('active');
-	$(this).addClass('active');
-	e.preventDefault();
-});
-</script>
+	</div>

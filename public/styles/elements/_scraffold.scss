@@ -26,3 +26,29 @@ $nav-bg: whitesmoke;
 		transform: translateY(-50%);
 	}
 }
+
+.form-group {
+	margin: 0;
+	margin-bottom: $gutter;
+	border-bottom: 1px dotted whitesmoke;
+
+	&--clean,
+	&--facebook {
+		border-bottom: 0;
+		margin-bottom: $gutter;
+	}
+
+	&--facebook {
+		border-top: 1px solid whitesmoke;
+		margin-top: 3*$gutter;
+		padding-top: $gutter;
+	}
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.glyphicon {
+	top: 0;
+}
