@@ -74,7 +74,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
 		clientID: process.env.FACEBOOK_APP_ID,
 		clientSecret: process.env.FACEBOOK_APP_SECRET,
-		callbackURL: process.env.HOST+'/auth/facebook/callback',
+		callbackURL: process.env.HOST_URL + '/auth/facebook/callback',
 		profileFields: ['id', 'birthday', 'displayName', 'profileUrl', 'email', 'gender', 'picture.width(200).height(200)'],
 	},
 	function(accessToken, refreshToken, profile, done) {
