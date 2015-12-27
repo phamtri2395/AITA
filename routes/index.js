@@ -20,15 +20,28 @@
 
 var keystone = require('keystone');
 var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
 var logger = require('morgan');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
 
+var FacebookStrategy = require('passport-facebook').Strategy;
+// var MongoStore = require('connect-mongo/es5')(session);
+var MongoDBStore = require('connect-mongodb-session')(session);
+
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
+
+var store = new MongoDBStore({ 
+	uri: process.env.MONGO_URI,
+	collection: 'my_sessions'
+});
+
+// Catch errors 
+store.on('error', function(error) {
+	console.log('SESSION on error', error);
+});
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -67,7 +80,7 @@ passport.use(new FacebookStrategy({
 	function(accessToken, refreshToken, profile, done) {
 		// asynchronous verification, for effect...
 		process.nextTick(function () {
-			// console.log('profile', profile);
+			console.log('profile', profile);
 			// add user to database
 
 			// To keep the example simple, the user's Facebook profile is returned to
@@ -82,20 +95,31 @@ passport.use(new FacebookStrategy({
 // Setup Route Bindings
 exports = module.exports = function(app) {
 	var ensureAuthenticated = function(req, res, next) {
-	  if (req.isAuthenticated()) { return next(); }
-	  res.redirect('/login');
+		if (req.isAuthenticated()) { return next(); }
+		res.redirect('/login');
 	};
 
-
-	app.use(logger());
-	app.use(cookieParser());
+	app.use(logger('default'));
+	app.use(cookieParser({}));
 	app.use(bodyParser());
 	app.use(methodOverride());
-	app.use(session({ secret: process.env.SECRET }));
+	// app.use(session({ secret: process.env.SECRET }));
+	app.use(session({ 
+		secret: process.env.SECRET,
+		cookie: {
+			maxAge: 1000 * 60 * 60 * 24 * 365 // 365 days
+		},
+		store: store
+	}));
 	// Initialize Passport!  Also use passport.session() middleware, to support
 	// persistent login sessions (recommended).
 	app.use(passport.initialize());
 	app.use(passport.session());
+
+	app.use(function(req, res, next) {
+		console.log('SESSION', req.session);
+		next();
+	});
 
 	// facebook login
 	app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email']}));
@@ -111,12 +135,14 @@ exports = module.exports = function(app) {
 		res.redirect('/');
 	});
 	app.get('/account', ensureAuthenticated, function(req, res){
-	  res.json(req.user);
+		res.json(req.user);
 	});
 
 	// app routes
 	app.get('/', routes.views.index);
 	app.get('/login', routes.views.login);
+	app.get('/dang-nhap', routes.views.login);
+	app.get('/dang-ky', routes.views['dang-ky']);
 	app.get('/dang-tin', routes.views['dang-tin']);
 	app.get('/chi-tiet', routes.views['chi-tiet']);
 	
