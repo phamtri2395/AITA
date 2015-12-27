@@ -3,16 +3,24 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "0.3.14",
     "async": "^1.4.2",
-    "underscore": "^1.8.3",
-    "moment": "^2.10.6",
+    "body-parser": "^1.14.2",
     "cloudinary": "^1.2.4",
+    "connect-mongodb-session": "^1.1.0",
+    "cookie-parser": "^1.4.0",
+    "dotenv": "^1.1.0",
     "express-handlebars": "^1.1.0",
+    "express-session": "^1.12.1",
     "handlebars": "^2.0.0",
+    "keystone": "0.3.14",
+    "method-override": "^2.3.5",
+    "moment": "^2.10.6",
+    "morgan": "^1.6.1",
     "node-sass": "2.1.1",
     "node-sass-middleware": "0.9.7",
-    "dotenv": "^1.1.0"
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "gulp": "^3.7.0",
@@ -21,7 +29,6 @@
     "gulp-shell": "^0.4.3",
     "gulp-watch": "^0.6.5",
     "gulp-sass": "^2.0.4"
-    
   },
   "engines": {
     "node": ">=0.10.22",

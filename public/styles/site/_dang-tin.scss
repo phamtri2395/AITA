@@ -38,12 +38,3 @@ input[type="checkbox"] {
 label {
 	font-weight: normal;
 }
-
-.form-group {
-	border-bottom: 1px dotted whitesmoke;
-	margin-bottom: 2*$gutter;
-
-	&:last-child {
-		border-bottom: 0;
-	}
-}
