@@ -9,6 +9,64 @@ function initialize() {
 	var map = null;
 	var marker = {};
 	var infowindow = {};
+	var destinations = [
+		{
+			id: 1,
+			lat: 10.81416666666667,
+			lon: 106.66694444444444,
+			title: 'Title 1',
+			description: 'Description 1'
+		},
+		{
+			id: 2,
+			lat: 10.81516666666667,
+			lon: 106.66994444444444,
+			title: 'Title 2',
+			description: 'Description 2'
+		},
+		{
+			id: 3,
+			lat: '',
+			lon: '',
+			title: 'Title 3',
+			description: 'Description 3'
+		},
+		{
+			id: 4,
+			lat: '',
+			lon: '',
+			title: 'Title 4',
+			description: 'Description 4'
+		},
+		{
+			id: 5,
+			lat: '',
+			lon: '',
+			title: 'Title 5',
+			description: 'Description 5'
+		},
+		{
+			id: 6,
+			lat: '',
+			lon: '',
+			title: 'Title 6',
+			description: 'Description 6'
+		},
+		{
+			id: 7,
+			lat: '',
+			lon: '',
+			title: 'Title 7',
+			description: 'Description 7'
+		},
+		{
+			id: 8,
+			lat: '',
+			lon: '',
+			title: 'Title 8',
+			description: 'Description 8'
+		}
+	];
 
 	mapProperties = {
 		center: center,
@@ -64,7 +122,17 @@ var fbSend = function() {
 
 $(document).ready(function() {
 	var fancyboxElm = $('.fancybox');
+	var itemsList = $('[data-items-list]');
+
 	if (fancyboxElm.length) {
 		fancyboxElm.fancybox();
+	}
+
+	if (itemsList.length) {
+		itemsList.hover(function() {
+			console.log('over');
+		}, function() {
+			console.log('out');
+		});
 	}
 });
