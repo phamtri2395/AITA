@@ -147,6 +147,8 @@ exports = module.exports = function(app) {
 	app.get('/dang-tin', routes.views['dang-tin']);
 	app.get('/chi-tiet', routes.views['chi-tiet']);
 	
+	app.get('/fb', routes.views['fb']);
+	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };
