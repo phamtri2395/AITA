@@ -4,111 +4,120 @@
 /* globals google, FB */
 var center = new google.maps.LatLng(10.81416666666667, 106.66694444444444);
 
+var addClickEventListener = function(map, marker, infoWindow, content) {
+	google.maps.event.addListener(marker, 'click', function() {
+		infoWindow.setContent(content);
+		infoWindow.open(map, marker);
+	});
+};
+
+var addMouseEventListener = function(map, marker, infoWindow, content) {
+	google.maps.event.addListener(marker, 'mouseover', function() {
+		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue.png');
+		
+		infoWindow.setContent(content);
+		infoWindow.open(map, marker);
+	});
+
+	google.maps.event.addListener(marker, 'mouseout', function() {
+		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red.png');
+
+		infoWindow.close();
+	});
+};
+
+var marker = [];
 function initialize() {
-	var mapProperties = {};
+	var mapOptions = {};
 	var map = null;
-	var marker = {};
-	var infowindow = {};
+	var infoWindow = [];
+	var i = 0;
+	var len = 0;
 	var destinations = [
 		{
 			id: 1,
 			lat: 10.81416666666667,
-			lon: 106.66694444444444,
+			lon: 106.66794444444444,
 			title: 'Title 1',
 			description: 'Description 1'
 		},
 		{
 			id: 2,
 			lat: 10.81516666666667,
-			lon: 106.66994444444444,
+			lon: 106.66894444444444,
 			title: 'Title 2',
 			description: 'Description 2'
 		},
 		{
 			id: 3,
-			lat: '',
-			lon: '',
+			lat: 10.81316666666667,
+			lon: 106.66594444444444,
 			title: 'Title 3',
 			description: 'Description 3'
 		},
 		{
 			id: 4,
-			lat: '',
-			lon: '',
+			lat: 10.81216666666667,
+			lon: 106.66494444444444,
 			title: 'Title 4',
 			description: 'Description 4'
 		},
 		{
 			id: 5,
-			lat: '',
-			lon: '',
+			lat: 10.81716666666667,
+			lon: 106.66394444444444,
 			title: 'Title 5',
 			description: 'Description 5'
 		},
 		{
 			id: 6,
-			lat: '',
-			lon: '',
+			lat: 10.81816666666667,
+			lon: 106.66294444444444,
 			title: 'Title 6',
 			description: 'Description 6'
 		},
 		{
 			id: 7,
-			lat: '',
-			lon: '',
+			lat: 10.81116666666667,
+			lon: 106.66194444444444,
 			title: 'Title 7',
 			description: 'Description 7'
 		},
 		{
 			id: 8,
-			lat: '',
-			lon: '',
+			lat: 10.81016666666667,
+			lon: 106.66094444444444,
 			title: 'Title 8',
 			description: 'Description 8'
 		}
 	];
 
-	mapProperties = {
+	mapOptions = {
 		center: center,
 		zoom: 16,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
-	map = new google.maps.Map(document.getElementById('google-map'), mapProperties);
+	map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
-	marker[1] = new google.maps.Marker({position: center});
-	marker[1].setMap(map);
+	for (i = 0, len = destinations.length; i < len; i++) {
+		marker[i] = new google.maps.Marker({
+			position: new google.maps.LatLng(destinations[i].lat, destinations[i].lon),
+			title: destinations[i].title,
+			map: map,
+			icon: 'http://maps.google.com/mapfiles/ms/icons/red.png'
+		});
 
+		infoWindow[i] = new google.maps.InfoWindow({
+			content: ''
+		});
 
-	infowindow[1] = new google.maps.InfoWindow({
-		content: 'I was here!'
-	});
-	infowindow[1].open(map, marker[1]);
-
-	google.maps.event.addListener(marker[1], 'click', function() {
-		map.setZoom(18);
-		map.setCenter(marker[1].getPosition());
-	});
-
-
-	marker[2] = new google.maps.Marker({position: new google.maps.LatLng(10.81516666666667, 106.66994444444444)});
-	marker[2].setMap(map);
-
-
-	infowindow[2] = new google.maps.InfoWindow({
-		content: 'I was here!'
-	});
-	infowindow[2].open(map, marker[2]);
-
-	google.maps.event.addListener(marker[2], 'click', function() {
-		map.setZoom(18);
-		map.setCenter(marker[2].getPosition());
-	});
-
+		addClickEventListener(map, marker[i], infoWindow[i], destinations[i].description);
+		addMouseEventListener(map, marker[i], infoWindow[i], destinations[i].description);
+	}
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
 
 // facebook functions
 var fbSend = function() {
@@ -128,11 +137,13 @@ $(document).ready(function() {
 		fancyboxElm.fancybox();
 	}
 
-	if (itemsList.length) {
-		itemsList.hover(function() {
-			console.log('over');
-		}, function() {
-			console.log('out');
+	$('.list-result')
+		.off('mouseover.viewItem', '[data-items-list]').on('mouseover.viewItem', '[data-items-list]', function() {
+			var self = $(this);
+			google.maps.event.trigger(marker[self.closest('.media').index()], 'mouseover');
+		})
+		.off('mouseout.viewItem', '[data-items-list]').on('mouseout.viewItem', '[data-items-list]', function() {
+			var self = $(this);
+			google.maps.event.trigger(marker[self.closest('.media').index()], 'mouseout');
 		});
-	}
 });
