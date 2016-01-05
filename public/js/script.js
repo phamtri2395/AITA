@@ -26,10 +26,10 @@ var addMouseEventListener = function(map, marker, infoWindow, content) {
 	});
 };
 
+var marker = [];
 function initialize() {
 	var mapOptions = {};
 	var map = null;
-	var marker = [];
 	var infoWindow = [];
 	var i = 0;
 	var len = 0;
@@ -138,11 +138,13 @@ $(document).ready(function() {
 		fancyboxElm.fancybox();
 	}
 
-	if (itemsList.length) {
-		itemsList.hover(function() {
-			console.log('over');
-		}, function() {
-			console.log('out');
+	$('.list-result')
+		.off('mouseover.viewItem', '[data-items-list]').on('mouseover.viewItem', '[data-items-list]', function() {
+			var self = $(this);
+			google.maps.event.trigger(marker[self.closest('.media').index()], 'mouseover');
+		})
+		.off('mouseout.viewItem', '[data-items-list]').on('mouseout.viewItem', '[data-items-list]', function() {
+			var self = $(this);
+			google.maps.event.trigger(marker[self.closest('.media').index()], 'mouseout');
 		});
-	}
 });
