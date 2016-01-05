@@ -101,7 +101,6 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
 	for (i = 0, len = destinations.length; i < len; i++) {
-		console.log(destinations[i]);
 		marker[i] = new google.maps.Marker({
 			position: new google.maps.LatLng(destinations[i].lat, destinations[i].lon),
 			title: destinations[i].title,
