@@ -94,8 +94,6 @@ passport.use(new FacebookStrategy({
 				return (str.substring(str.search(' ') + 1, str.length));
 			}
 
-			console.log("THIS IS BLAH");
-			console.log(profile.name);
 			var user = keystone.list('User').model;
 			user.create({
 				"isAdmin" : false,
