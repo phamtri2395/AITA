@@ -27,7 +27,6 @@ var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
 
 var FacebookStrategy = require('passport-facebook').Strategy;
-// var MongoStore = require('connect-mongo/es5')(session);
 var MongoDBStore = require('connect-mongodb-session')(session);
 
 var middleware = require('./middleware');
