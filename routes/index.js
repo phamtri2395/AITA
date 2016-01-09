@@ -82,7 +82,32 @@ passport.use(new FacebookStrategy({
 		process.nextTick(function () {
 			console.log('profile', profile);
 			// add user to database
+			function gender() {
+				return ((profile.gender == "male") ? true : false);
+			}
+			function lastName() {
+				var str = profile.displayName;
+				return (str.substring(0, str.search(' ')));
+			}
+			function firstName() {
+				var str = profile.displayName;
+				return (str.substring(str.search(' ') + 1, str.length));
+			}
 
+			var user = keystone.list('User').model;
+			user.create({
+				"isAdmin" : false,
+				"password" : "",
+				"email" : profile.emails[0].value,
+				"name" : {
+						"last" : lastName(),
+						"first" : firstName()
+				},
+				"gender" : gender(),
+				"extId" : profile.id,
+				"provider" : profile.provider,
+				"avatar" : profile.photos[0].value
+			});
 			// To keep the example simple, the user's Facebook profile is returned to
 			// represent the logged-in user.  In a typical application, you would want
 			// to associate the Facebook account with a user record in your database,

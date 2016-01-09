@@ -131,18 +131,17 @@ var fbSend = function() {
 
 $(document).ready(function() {
 	var fancyboxElm = $('.fancybox');
-	var itemsList = $('[data-items-list]');
 
 	if (fancyboxElm.length) {
 		fancyboxElm.fancybox();
 	}
 
 	$('.list-result')
-		.off('mouseover.viewItem', '[data-items-list]').on('mouseover.viewItem', '[data-items-list]', function() {
+		.off('mouseover.view-item', '[data-items-list]').on('mouseover.view-item', '[data-items-list]', function() {
 			var self = $(this);
 			google.maps.event.trigger(marker[self.closest('.media').index()], 'mouseover');
 		})
-		.off('mouseout.viewItem', '[data-items-list]').on('mouseout.viewItem', '[data-items-list]', function() {
+		.off('mouseout.view-item', '[data-items-list]').on('mouseout.view-item', '[data-items-list]', function() {
 			var self = $(this);
 			google.maps.event.trigger(marker[self.closest('.media').index()], 'mouseout');
 		});
