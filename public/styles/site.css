@@ -33,6 +33,9 @@
 .glyphicon {
   top: 0; }
 
+.tel {
+  color: black; }
+
 .tab-item {
   padding-left: 60px;
   padding-right: 60px;
@@ -56,6 +59,11 @@
     transform: translateY(0);
     position: relative;
     z-index: 0; }
+
+.media {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid whitesmoke; }
 
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
 .fancybox-wrap,
