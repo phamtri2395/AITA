@@ -142,6 +142,7 @@ exports = module.exports = function(app) {
 
 	app.use(function(req, res, next) {
 		console.log('SESSION', req.session);
+		res.locals.client = req.session.passport ? req.session.passport.user : null;
 		next();
 	});
 
