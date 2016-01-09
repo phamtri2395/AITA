@@ -83,7 +83,7 @@ passport.use(new FacebookStrategy({
 			console.log('profile', profile);
 			// add user to database
 			function gender() {
-				return ((profile.gender == "male") ? true : false);
+				return ((profile.gender === 'male') ? true : false);
 			}
 			function lastName() {
 				var str = profile.displayName;
@@ -96,17 +96,17 @@ passport.use(new FacebookStrategy({
 
 			var user = keystone.list('User').model;
 			user.create({
-				"isAdmin" : false,
-				"password" : "",
-				"email" : profile.emails[0].value,
-				"name" : {
-						"last" : lastName(),
-						"first" : firstName()
+				'isAdmin' : false,
+				'password' : '',
+				'email' : profile.emails[0].value,
+				'name' : {
+					'last' : lastName(),
+					'first' : firstName()
 				},
-				"gender" : gender(),
-				"extId" : profile.id,
-				"provider" : profile.provider,
-				"avatar" : profile.photos[0].value
+				'gender' : gender(),
+				'extId' : profile.id,
+				'provider' : profile.provider,
+				'avatar' : profile.photos[0].value
 			});
 			// To keep the example simple, the user's Facebook profile is returned to
 			// represent the logged-in user.  In a typical application, you would want
