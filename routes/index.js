@@ -27,7 +27,6 @@ var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
 
 var FacebookStrategy = require('passport-facebook').Strategy;
-// var MongoStore = require('connect-mongo/es5')(session);
 var MongoDBStore = require('connect-mongodb-session')(session);
 
 var middleware = require('./middleware');
@@ -171,6 +170,8 @@ exports = module.exports = function(app) {
 	app.get('/dang-ky', routes.views['dang-ky']);
 	app.get('/dang-tin', routes.views['dang-tin']);
 	app.get('/chi-tiet', routes.views['chi-tiet']);
+	
+	app.get('/fb', routes.views['fb']);
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
