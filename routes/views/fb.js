@@ -1,18 +1,20 @@
 // capheshift 2016
 // author: tw
 
-var keystone = require('keystone');
+// var keystone = require('keystone');
 var FB = require('fb');
 FB.setAccessToken(process.env.FACEBOOK_TOKEN);
 
 exports = module.exports = function(req, res) {
 
-	FB.api('528623837288211/feed', 'post', { message: 'gọi từ api'}, function (result) {
+	FB.api('528623837288211/feed', 'post', { message: 'gọi từ api' + Date.now.toString()}, function (err, result) {
 		if(!result || result.error) {
 			console.log(!result ? 'error occurred' : result.error);
+			res.json(result);	
 			return;
 		}
-		console.log('post Id: ' + result.id);
+		console.log(err, result);
+		// console.log('post Id: ' + result.id);
 		res.json(result);
 	});
 
