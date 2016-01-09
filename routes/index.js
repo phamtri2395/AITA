@@ -97,15 +97,15 @@ passport.use(new FacebookStrategy({
 			user.create({
 				'isAdmin' : false,
 				'password' : '',
-				'email' : profile.emails[0].value,
+				'email' : ((profile.emails[0]) ? profile.emails[0].value : ' '),
 				'name' : {
 					'last' : lastName(),
 					'first' : firstName()
 				},
 				'gender' : gender(),
-				'extId' : profile.id,
+				'providerId' : profile.id,
 				'provider' : profile.provider,
-				'avatar' : profile.photos[0].value
+				'avatar' : ((profile.photos[0]) ? profile.photos[0].value : ' ')
 			});
 			// To keep the example simple, the user's Facebook profile is returned to
 			// represent the logged-in user.  In a typical application, you would want
