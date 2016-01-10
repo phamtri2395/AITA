@@ -80,7 +80,7 @@ passport.use(new FacebookStrategy({
 		// asynchronous verification, for effect...
 		process.nextTick(function () {
 			console.log('profile', profile);
-			// add user to database
+
 			function gender() {
 				return ((profile.gender === 'male') ? true : false);
 			}
@@ -94,18 +94,24 @@ passport.use(new FacebookStrategy({
 			}
 
 			var user = keystone.list('User').model;
-			user.create({
-				'isAdmin' : false,
-				'password' : '',
-				'email' : ((profile.emails[0]) ? profile.emails[0].value : ' '),
-				'name' : {
-					'last' : lastName(),
-					'first' : firstName()
-				},
-				'gender' : gender(),
-				'providerId' : profile.id,
-				'provider' : profile.provider,
-				'avatar' : ((profile.photos[0]) ? profile.photos[0].value : ' ')
+
+			// Find if this User is already in database
+			user.findOne({ 'providerId' : profile.id }, 'providerId', function (err, match) {
+				if (match) return console.log ('This user is already in database');
+				// add user to database
+				user.create({
+					'isAdmin' : false,
+					'password' : '',
+					'email' : ((profile.emails[0]) ? profile.emails[0].value : ' '),
+					'name' : {
+						'last' : lastName(),
+						'first' : firstName()
+					},
+					'gender' : gender(),
+					'providerId' : profile.id,
+					'provider' : profile.provider,
+					'avatar' : ((profile.photos[0]) ? profile.photos[0].value : ' ')
+				});
 			});
 			// To keep the example simple, the user's Facebook profile is returned to
 			// represent the logged-in user.  In a typical application, you would want
