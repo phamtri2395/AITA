@@ -51,4 +51,34 @@ $nav-bg: whitesmoke;
 
 .glyphicon {
 	top: 0;
+	// font-size: inherit;
+	font-size: 14px;
+}
+
+// tel elements
+.tel {
+	color: #000;
+	display: none;
+	margin-left: $gutter;
+	font-weight: lighter;
+}
+
+.tel-label {
+	margin-left: $gutter;
+	font-weight: lighter;
+	margin-bottom: 0;
+}
+
+input[type="checkbox"].tel-checkbox {
+	display: none;
+}
+
+.tel-checkbox:checked {
+	~.tel {
+		display: inline-block;
+	}
+
+	~.tel-label {
+		display: none;
+	}
 }
