@@ -56,3 +56,9 @@ body {
 
 .header-03 {
 }
+
+label {
+	&:hover {
+		cursor: pointer;
+	}
+}

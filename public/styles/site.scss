@@ -12,13 +12,13 @@
 // use in your site stylesheets.
 @import "variables";
 
+// Plugins
+@import "fancybox/jquery.fancybox";
+
 // Elements Styles
 @import "elements/scraffold";
 @import "elements/tab";
 @import "elements/media";
-
-// Plugins
-@import "fancybox/jquery.fancybox";
 
 // Site Styles
 @import "layout";

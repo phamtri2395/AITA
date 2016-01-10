@@ -1,70 +1,3 @@
-.nav-search {
-  padding-top: 7.5px;
-  padding-bottom: 7.5px;
-  background-color: whitesmoke;
-  border-radius: 0;
-  margin-bottom: 0; }
-
-.wrapper-cover-img {
-  position: relative;
-  width: 170px;
-  height: 120px;
-  display: inline-block; }
-  .wrapper-cover-img img {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%); }
-
-.form-group {
-  margin: 0;
-  margin-bottom: 15px;
-  border-bottom: 1px dotted whitesmoke; }
-  .form-group--clean, .form-group--facebook {
-    border-bottom: 0;
-    margin-bottom: 15px; }
-  .form-group--facebook {
-    border-top: 1px solid whitesmoke;
-    margin-top: 45px;
-    padding-top: 15px; }
-  .form-group:last-child {
-    border-bottom: 0; }
-
-.glyphicon {
-  top: 0; }
-
-.tel {
-  color: black; }
-
-.tab-item {
-  padding-left: 60px;
-  padding-right: 60px;
-  border-radius: 0; }
-
-.tab-content {
-  position: relative; }
-  .tab-content > .tab-pane {
-    position: absolute;
-    display: block;
-    opacity: 0;
-    transform: translateY(-100%);
-    width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1; }
-  .tab-content > .active {
-    opacity: 1;
-    transform: translateY(0);
-    position: relative;
-    z-index: 0; }
-
-.media {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid whitesmoke; }
-
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
 .fancybox-wrap,
 .fancybox-skin,
@@ -298,6 +231,91 @@
     background-size: 24px 24px;
     /*The size of the normal image, half the size of the hi-res image*/ } }
 
+.nav-search {
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+  background-color: whitesmoke;
+  border-radius: 0;
+  margin-bottom: 0; }
+
+.wrapper-cover-img {
+  position: relative;
+  width: 170px;
+  height: 120px;
+  display: inline-block; }
+  .wrapper-cover-img img {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%); }
+
+.form-group {
+  margin: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px dotted whitesmoke; }
+  .form-group--clean, .form-group--facebook {
+    border-bottom: 0;
+    margin-bottom: 15px; }
+  .form-group--facebook {
+    border-top: 1px solid whitesmoke;
+    margin-top: 45px;
+    padding-top: 15px; }
+  .form-group:last-child {
+    border-bottom: 0; }
+
+.glyphicon {
+  top: 0;
+  font-size: 14px; }
+
+.tel {
+  color: #000;
+  display: none;
+  margin-left: 15px;
+  font-weight: lighter; }
+
+.tel-label {
+  margin-left: 15px;
+  font-weight: lighter;
+  margin-bottom: 0; }
+
+input[type="checkbox"].tel-checkbox {
+  display: none; }
+
+.tel-checkbox:checked ~ .tel {
+  display: inline-block; }
+
+.tel-checkbox:checked ~ .tel-label {
+  display: none; }
+
+.tab-item {
+  padding-left: 60px;
+  padding-right: 60px;
+  border-radius: 0; }
+
+.tab-content {
+  position: relative; }
+  .tab-content > .tab-pane {
+    position: absolute;
+    display: block;
+    opacity: 0;
+    transform: translateY(-100%);
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1; }
+  .tab-content > .active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    z-index: 0; }
+
+.media {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid whitesmoke; }
+
 body {
   font-size: 16px; }
 
@@ -330,6 +348,9 @@ body {
 .header-01 {
   margin-top: 15px;
   margin-bottom: 15px; }
+
+label:hover {
+  cursor: pointer; }
 
 .tab-pane {
   padding-top: 15px; }
