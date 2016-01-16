@@ -1,0 +1,1121 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"trans",
+				"translateY"
+			],
+			[
+				"ab",
+				"absolute"
+			],
+			[
+				"rel",
+				"relative	(_navs.scss)"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"pro",
+				"profile"
+			],
+			[
+				"ref",
+				"refreshToken"
+			],
+			[
+				"acc",
+				"accessToken"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"set",
+				"setNewDate"
+			],
+			[
+				"curre",
+				"currentDateStr"
+			],
+			[
+				"ke",
+				"keyCode"
+			],
+			[
+				"date",
+				"dateStr"
+			],
+			[
+				"_onfind",
+				"_onFindTaskSuccess"
+			],
+			[
+				"for",
+				"format"
+			],
+			[
+				"getNew",
+				"getNewTask"
+			],
+			[
+				"curr",
+				"currentDate"
+			],
+			[
+				"pre",
+				"prevDate"
+			],
+			[
+				"tas",
+				"taskList"
+			],
+			[
+				"YYYY",
+				"YYYYMMDD"
+			],
+			[
+				"filter",
+				"filterTask"
+			],
+			[
+				"old",
+				"oldTaskList"
+			],
+			[
+				"is",
+				"isCurrent"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"tex",
+				"text-transform"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"mari",
+				"margin-top"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"pso",
+				"position"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"check",
+				"checkNewItem"
+			],
+			[
+				"projec",
+				"projectId"
+			],
+			[
+				"filte",
+				"filterProject"
+			],
+			[
+				"isc",
+				"isCurrent"
+			],
+			[
+				"curren",
+				"currentDate"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"a",
+				"apart"
+			],
+			[
+				"han",
+				"handleDayClick"
+			],
+			[
+				"me",
+				"members"
+			],
+			[
+				"tit",
+				"titleJob	(User.js)"
+			],
+			[
+				"na",
+				"name"
+			],
+			[
+				"user",
+				"user-api"
+			],
+			[
+				"new",
+				"newSession"
+			],
+			[
+				"redis",
+				"redisClient"
+			],
+			[
+				"sign",
+				"signin"
+			],
+			[
+				"bo",
+				"body"
+			],
+			[
+				"u",
+				"user"
+			],
+			[
+				"uti",
+				"utilities	(users.js)"
+			],
+			[
+				"isA",
+				"isActive"
+			],
+			[
+				"import",
+				"importRoutes"
+			],
+			[
+				"rest",
+				"restcore"
+			],
+			[
+				"lis",
+				"listUser"
+			],
+			[
+				"mem",
+				"memberList"
+			],
+			[
+				"member",
+				"memberList"
+			],
+			[
+				"dis",
+				"disabled"
+			],
+			[
+				"selec",
+				"selectedProject"
+			],
+			[
+				"sele",
+				"selectedProject"
+			],
+			[
+				"stat",
+				"static"
+			],
+			[
+				"cle",
+				"clear"
+			],
+			[
+				"getA",
+				"_getAll"
+			],
+			[
+				"User",
+				"UserProject"
+			],
+			[
+				"js",
+				"js-modal"
+			],
+			[
+				"btn",
+				"btn-success"
+			],
+			[
+				"magin",
+				"margin-bottom"
+			],
+			[
+				"cha",
+				"challenge	(on_config.js)"
+			],
+			[
+				"Home",
+				"HomeCtrl	(home.js)"
+			],
+			[
+				"Cha",
+				"ChallengeCtrl	(challenge.js)"
+			],
+			[
+				"Team",
+				"TeamCtrl	(team.js)"
+			],
+			[
+				"impo",
+				"important	(main.js)"
+			],
+			[
+				"submit",
+				"submitEnquiry"
+			],
+			[
+				"load",
+				"loadMore"
+			],
+			[
+				"bor",
+				"border-bottom"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
+				"total",
+				"totalTime"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"tot",
+				"totalTime"
+			],
+			[
+				"Task",
+				"TaskActions"
+			],
+			[
+				"pu",
+				"push"
+			],
+			[
+				"tota",
+				"totalOfCurrent"
+			],
+			[
+				"data",
+				"data2"
+			],
+			[
+				"userL",
+				"userListRender"
+			],
+			[
+				"amoun",
+				"amount"
+			],
+			[
+				"Noti",
+				"NotificationActions"
+			],
+			[
+				"_on",
+				"_onEndRequest"
+			],
+			[
+				"REQU",
+				"REQUEST_END"
+			],
+			[
+				"RE",
+				"REQUEST_START"
+			],
+			[
+				"REQ",
+				"REQUEST_END	(NotificationStore.js)"
+			],
+			[
+				"_ongetA",
+				"_onGetAllSuccess"
+			],
+			[
+				"render",
+				"renderUserTask"
+			],
+			[
+				"lo",
+				"lodash"
+			],
+			[
+				"_onget",
+				"_onGetAllUserSuccess"
+			],
+			[
+				"onCh",
+				"onCheckChanged"
+			],
+			[
+				"task",
+				"taskList"
+			],
+			[
+				"forM",
+				"format	(Daily.jsx)"
+			],
+			[
+				"_onFindTas",
+				"_onFindTaskSuccess"
+			],
+			[
+				"_",
+				"_id"
+			],
+			[
+				"FindT",
+				"FindTaskSuccess"
+			],
+			[
+				"_onew",
+				"_onNewTaskSuccess"
+			],
+			[
+				"_onFin",
+				"_onFindTaskFail"
+			],
+			[
+				"Tas",
+				"TaskActions"
+			],
+			[
+				"_onFind",
+				"_OnFindTaskFail"
+			],
+			[
+				"FindTas",
+				"FindTaskSuccess	(EventTypes.js)"
+			],
+			[
+				"newTask",
+				"newTaskOnClicked"
+			],
+			[
+				"_onNew",
+				"_onNewTaskFail"
+			],
+			[
+				"scr",
+				"_scrumMaster"
+			],
+			[
+				"New",
+				"NewTaskSuccess"
+			],
+			[
+				"TAS",
+				"TASK_UPDATE	(TaskActions.js)"
+			],
+			[
+				"full",
+				"fullname"
+			],
+			[
+				"loal",
+				"localStorage"
+			],
+			[
+				"log",
+				"logout"
+			],
+			[
+				"_onL",
+				"_onLogoutSuccess"
+			],
+			[
+				"Log",
+				"LogoutSuccess"
+			],
+			[
+				"righ",
+				"rightBlock"
+			],
+			[
+				"fu",
+				"fullName"
+			],
+			[
+				"sub",
+				"submitEnquiry"
+			],
+			[
+				"onC",
+				"onclick	Attr"
+			],
+			[
+				"En",
+				"EnquiryRest"
+			],
+			[
+				"res",
+				"response	(rest-core.js)"
+			],
+			[
+				"fin",
+				"findData"
+			],
+			[
+				"rea",
+				"realPath"
+			],
+			[
+				"Json",
+				"JSON"
+			],
+			[
+				"api",
+				"apiList"
+			],
+			[
+				"get",
+				"getPopulateFields"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "js",
+		"selected_items":
+		[
+			[
+				"js",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"babel",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"mar",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"http",
+				"HTMLPrettify"
+			],
+			[
+				"preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"jshi",
+				"Build With: jshint"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"expan",
+				"Emmet: Expand Abbreviation"
+			],
+			[
+				"inse",
+				"Insert Nums"
+			],
+			[
+				"inser",
+				"Insert Nums"
+			],
+			[
+				"insert",
+				"Insert Nums"
+			],
+			[
+				"conver",
+				"Convert Case: Lower Case"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"preivew",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"javascr",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"convert",
+				"Convert Case: Title Case"
+			],
+			[
+				"jsx",
+				"Set Syntax: JavaScript (JSX)"
+			],
+			[
+				"ter",
+				"Terminal: Open"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"package i",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"isnta",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Add Channel"
+			],
+			[
+				"instla",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/CodeLib/aita"
+	],
+	"file_history":
+	[
+		"/E/CodeLib/aita/business/facebook-api.js",
+		"/E/CodeLib/aita/routes/views/fb.js",
+		"/E/CodeLib/aita/routes/index.js",
+		"/E/CodeLib/aita/templates/views/layouts/home.hbs",
+		"/E/CodeLib/aita/.env",
+		"/E/CodeLib/daily-scrum-keystone/routes/services/projects.js",
+		"/E/CodeLib/aita/public/styles/elements/_tab.scss",
+		"/E/CodeLib/aita/keystone.js",
+		"/E/CodeLib/aita/node_modules/keystone/index.js",
+		"/E/CodeLib/aita/node_modules/keystone/lib/core/start.js",
+		"/E/CodeLib/aita/templates/views/chi-tiet.hbs",
+		"/E/CodeLib/aita/public/styles/bootstrap/bootstrap/_navs.scss",
+		"/E/CodeLib/keystone-universal/keystone/package.json",
+		"/E/CodeLib/keystone-universal/keystone/keystone.js",
+		"/E/CodeLib/aita/package.json",
+		"/E/CodeLib/keystone-universal/keystone/routes/index.js",
+		"/E/CodeLib/aita/.gitignore",
+		"/E/CodeLib/aita/routes/views/dang-tin.js",
+		"/E/CodeLib/aita/routes/views/dang-ky.js",
+		"/E/CodeLib/aita/routes/views/login.js",
+		"/E/CodeLib/aita/routes/views/chi-tiet.js",
+		"/E/CodeLib/aita/templates/views/_blog.hbs",
+		"/E/CodeLib/aita/routes/views/index.js",
+		"/E/CodeLib/aita/routes/views/_blog.js",
+		"/E/CodeLib/aita/templates/views/dang-ky.hbs",
+		"/E/CodeLib/aita/templates/views/login.hbs",
+		"/E/CodeLib/aita/models/User.js",
+		"/E/CodeLib/aita/public/styles/elements/_scraffold.scss",
+		"/E/CodeLib/aita/public/styles/site/_login.scss",
+		"/E/CodeLib/aita/public/styles/site.scss",
+		"/E/CodeLib/aita/public/styles/site/_dang-tin.scss",
+		"/E/CodeLib/aita/templates/views/dang-tin.hbs",
+		"/E/CodeLib/daily-scrum-keystone/routes/middleware.js",
+		"/E/CodeLib/aita/public/js/script.js",
+		"/E/CodeLib/redux/examples/todomvc/components/MainSection.js",
+		"/E/CodeLib/keystone-universal/server/server.js",
+		"/E/CodeLib/keystone-universal/common/actions/counter.js",
+		"/E/CodeLib/keystone-universal/common/components/Counter.js",
+		"/E/CodeLib/keystone-universal/common/containers/App.js",
+		"/E/CodeLib/keystone-universal/common/store/configureStore.js",
+		"/E/CodeLib/keystone-universal/common/reducers/index.js",
+		"/E/CodeLib/keystone-universal/common/reducers/counter.js",
+		"/E/CodeLib/keystone-universal/common/api/counter.js",
+		"/C/Users/tampham/AppData/Roaming/Skype/My Skype Received Files/Index.html",
+		"/E/CodeLib/aita/templates/views/index.hbs",
+		"/E/CodeLib/aita/public/styles/site/_index.scss",
+		"/E/CodeLib/daily-scrum-app/.gitignore",
+		"/E/CodeLib/daily-scrum-app/src/views/Report.jsx",
+		"/E/CodeLib/daily-scrum-app/src/views/Daily.jsx",
+		"/E/Dropbox/Documents/github-token.txt",
+		"/E/CodeLib/daily-scrum-app/src/views/_Daily.jsx",
+		"/E/CodeLib/daily-scrum-app/src/views/components/Link.jsx",
+		"/E/CodeLib/daily-scrum-app/src/views/Login.jsx",
+		"/E/CodeLib/aita/public/styles/_layout.scss",
+		"/E/CodeLib/aita/public/styles/site/_chi-tiet.scss",
+		"/E/CodeLib/websgco/templates/views/layouts/dash.hbs",
+		"/E/CodeLib/aita/templates/views/house-new.hbs",
+		"/E/CodeLib/react-redux-universal-hot-example/src/containers/Chat/Chat.scss",
+		"/E/CodeLib/react-redux-universal-hot-example/src/containers/Home/Home.scss",
+		"/E/CodeLib/react-redux-universal-hot-example/src/containers/Home/Home.js",
+		"/E/CodeLib/daily-scrum-app/src/index.html",
+		"/E/CodeLib/daily-scrum-app/src/views/components/Navbar.jsx",
+		"/E/CodeLib/daily-scrum-app/src/views/Project.jsx",
+		"/E/CodeLib/daily-scrum-app/src/views/Member.jsx",
+		"/E/CodeLib/daily-scrum-app/src/commons/service-api.js",
+		"/E/CodeLib/daily-scrum-keystone/models/User.js",
+		"/E/CodeLib/daily-scrum-app/src/views/Register.jsx",
+		"/E/CodeLib/daily-scrum-app/src/assets/styles.scss",
+		"/E/CodeLib/daily-scrum-app/src/app.js",
+		"/E/CodeLib/daily-scrum-keystone/routes/services/users.js",
+		"/E/CodeLib/daily-scrum-keystone/routes/index.js",
+		"/E/CodeLib/daily-scrum-app/package.json",
+		"/E/CodeLib/daily-scrum-app/src/assets/libs/_input-calendar.scss",
+		"/E/CodeLib/daily-scrum-app/src/assets/_layout.scss",
+		"/E/CodeLib/daily-scrum-app/src/assets/libs/input-calendar.scss",
+		"/E/CodeLib/redux/examples/universal/common/actions/counter.js",
+		"/E/CodeLib/aita/public/styles/_variables.scss",
+		"/E/CodeLib/aita/public/styles/site/_variables.scss",
+		"/E/CodeLib/aita/public/styles/site/_layout.scss",
+		"/E/CodeLib/aita/templates/views/layouts/default.hbs",
+		"/E/CodeLib/aita/templates/views/room-list.hbs",
+		"/E/CodeLib/aita/templates/views/apart-list.hbs",
+		"/E/CodeLib/aita/templates/views/house-list.hbs",
+		"/E/CodeLib/aita/routes/views/house-list.js",
+		"/E/CodeLib/aita/routes/views/apart-list.js",
+		"/E/CodeLib/aita/routes/views/room-list.js",
+		"/E/CodeLib/aita/routes/views/house-new.js",
+		"/E/CodeLib/daily-scrum-keystone/package.json",
+		"/E/CodeLib/daily-scrum-app/node_modules/react-input-calendar/dist/Calendar.js",
+		"/E/CodeLib/daily-scrum-app/src/config.js",
+		"/E/CodeLib/daily-scrum-app/src/stores/UserStore.js",
+		"/E/CodeLib/websgco/package.json",
+		"/E/CodeLib/daily-scrum-keystone/updates/0.0.1-admins.js",
+		"/E/CodeLib/daily-scrum-keystone/.env",
+		"/E/CodeLib/daily-scrum-keystone/keystone.js",
+		"/E/CodeLib/daily-scrum-keystone/models/Task.js",
+		"/E/CodeLib/daily-scrum-keystone/models/Project.js",
+		"/E/CodeLib/EpsilonMobile/proxy/app.js",
+		"/E/CodeLib/EpsilonMobile/proxy/.env",
+		"/C/Users/tampham/AppData/Roaming/Skype/My Skype Received Files/API.txt",
+		"/E/CodeLib/EpsilonMobile/server/routes/services/users.js",
+		"/E/CodeLib/EpsilonMobile/proxy/.gitignore",
+		"/E/CodeLib/EpsilonMobile/server/routes/index.js",
+		"/E/CodeLib/EpsilonMobile/proxy/Procfile",
+		"/E/CodeLib/EpsilonMobile/proxy/serve.js",
+		"/E/CodeLib/EpsilonMobile/server/.env",
+		"/E/CodeLib/EpsilonMobile/server02/serve.js",
+		"/E/CodeLib/EpsilonMobile/server/package.json",
+		"/E/CodeLib/EpsilonMobile/server02/.env",
+		"/E/CodeLib/Epsilon Mobile/server/keystone.js",
+		"/E/CodeLib/daily-scrum-api/routes/users.js",
+		"/E/CodeLib/daily-scrum-api/app.js",
+		"/E/CodeLib/daily-scrum-api/controllers/users.js",
+		"/E/CodeLib/daily-scrum-keystone/routes/views/signin.js",
+		"/E/CodeLib/daily-scrum-keystone/routes/emails.js",
+		"/E/CodeLib/daily-scrum-keystone/routes/services/tasks.js",
+		"/E/CodeLib/keystone/admin/client/stores/SessionStore.js",
+		"/E/CodeLib/keystone/.editorconfig",
+		"/E/CodeLib/daily-scrum-keystone/cores/restful.js",
+		"/E/CodeLib/daily-scrum-app/.flowconfig",
+		"/E/CodeLib/daily-scrum-keystone/cores/utilities.js",
+		"/E/CodeLib/daily-scrum-keystone/cores/middleware.js",
+		"/E/CodeLib/daily-scrum-keystone/cores/config.js",
+		"/E/CodeLib/daily-scrum-keystone/models/Post.js",
+		"/E/CodeLib/daily-scrum-keystone/models/PostCategory.js",
+		"/E/CodeLib/daily-scrum-keystone/models/Gallery.js",
+		"/E/CodeLib/daily-scrum-keystone/routes/views/gallery.js",
+		"/E/CodeLib/daily-scrum-keystone/models/UserProject.js"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"E:\\CodeLib\\aita\\public",
+			"E:\\CodeLib\\aita\\public\\styles\\site",
+			"E:\\CodeLib\\aita\\public\\styles",
+			"E:\\CodeLib\\aita\\public\\styles\\bootstrap\\bootstrap",
+			"E:\\CodeLib\\aita\\public\\styles\\site",
+			"E:\\CodeLib\\daily-scrum-keystone",
+			"E:\\CodeLib\\keystone",
+			"E:\\CodeLib\\daily-scrum-keystone",
+			"E:\\CodeLib\\websgco\\templates",
+			"E:\\CodeLib\\websgco\\public\\assets\\css",
+			"E:\\CodeLib\\websgco\\public\\assets",
+			"E:\\CodeLib\\websgco\\templates",
+			"E:\\CodeLib\\daily-scrum-app\\src",
+			"E:\\CodeLib\\daily-scrum-app\\src\\actions",
+			"E:\\CodeLib\\daily-scrum-app\\src",
+			"E:\\CodeLib\\xuro",
+			"E:\\CodeLib\\daily-scrum-app\\src\\assets",
+			"E:\\CodeLib\\TravelNotes\\src",
+			"E:\\CodeLib\\RReact-boilerplate\\src",
+			"E:\\CodeLib\\RReact-boilerplate",
+			"E:\\CodeLib\\nau-jukebox",
+			"E:\\CodeLib\\English3000\\src\\assets",
+			"E:\\CodeLib\\daily-scrum-app\\src\\assets",
+			"E:\\CodeLib\\tony-buoi-sang\\src",
+			"E:\\CodeLib\\auvene\\SampleCzarApi",
+			"E:\\CodeLib\\Capheshift",
+			"E:\\CodeLib\\cubbr\\client\\views",
+			"E:\\CodeLib\\auvene\\SampleCzarApi",
+			"E:\\CodeLib\\auvene\\SampleCzarApp\\app\\styles",
+			"E:\\CodeLib\\capheshift.github.io",
+			"E:\\CodeLib\\auvene\\SampleCzarApi",
+			"E:\\CodeLib\\cubbr",
+			"E:\\CodeLib\\auvene\\NSE_APP\\app\\js",
+			"E:\\CodeLib\\auvene\\NSE_APP",
+			"E:\\CodeLib\\auvene\\NSE_API",
+			"E:\\CodeLib\\cubbr\\models",
+			"E:\\CodeLib\\react-pick",
+			"E:\\CodeLib\\orientjs\\test\\db",
+			"E:\\CodeLib\\auvene\\hub-asset-web-portal\\client\\app\\styles",
+			"E:\\CodeLib\\orientjs"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"res",
+			"methodOverride",
+			"_generateQuery",
+			"store",
+			"Store",
+			"store",
+			"model",
+			".tab-content",
+			"tab-pane",
+			"express",
+			"button",
+			"input-group\"",
+			"input-group",
+			"className=",
+			"btn-lg",
+			"form-group",
+			"form-group\">",
+			"form-group",
+			".form-group",
+			"middleware",
+			"\"",
+			"process.env",
+			"ENV",
+			"\"",
+			", ",
+			"col-xs-12",
+			"2",
+			".form-control",
+			"								<input class=\"form-control\" type=\"text\" required=\"required\" placeholder=\"Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm\">\nform-control",
+			"form-control",
+			"form-group",
+			"group-title",
+			"isCurrent",
+			"onDateChanged",
+			"prevDate",
+			"e.stop",
+			"getTotalTime",
+			"_onFindTaskSuccess",
+			"onEstimateChanged",
+			"m.",
+			"getNewTask",
+			"_onFindTaskSuccess",
+			"newTaskOnClicked",
+			"renderDateList",
+			"_onFindTaskSuccess",
+			"addEmptyTask",
+			"_onFindTaskSuccess",
+			"class=",
+			"renderTaskList",
+			"renderDateList",
+			"_onFindTaskSuccess",
+			"small",
+			"- ",
+			"h4",
+			"<h4 class=\"media-heading\"><a href=\"/chi-tiet\">1.500.000 VNĐ</a></h4>",
+			"Perspiciatis eum animi ipsum commodi id similique nihil alias, dicta magnam nobis.",
+			"Media heading",
+			"<a href=\"#\">\n										<img class=\"media-object\" src=\"http://placehold.it/100x100\">\n									</a>",
+			"<div class=\"btn-group\">",
+			"<h4 class=\"media-heading\">Media heading</h4>",
+			"col-md-6",
+			"h1",
+			"renderTaskList",
+			"renderDateList",
+			"renderUserTask",
+			"onProjectChanged",
+			"Select",
+			"span",
+			"_onSelectedDateChanged",
+			"onDateChanged",
+			"col-sm-12 ",
+			"newTaskOnClicked",
+			"_onFindTaskSuccess",
+			"onDateChanged",
+			"onTaskChanged",
+			"onEstimateChanged",
+			"});\n",
+			"uccess\"",
+			"uccess\" ",
+			"currrentDate",
+			"className=\"glyphicon",
+			"default",
+			"class",
+			"react",
+			"browserSync",
+			"BrowserSync",
+			"browserSync",
+			"md",
+			"nav-tabs",
+			"href=\"#",
+			"$font-size-base",
+			"house-new",
+			"MonthCalendar",
+			"select",
+			"Select",
+			"onCreateProjectClicked",
+			"onSelectChangedMember",
+			"onCreateProjectClicked",
+			"getAllUserProjects",
+			"GetAllUserProjectS",
+			"getAllUserProjects",
+			"onSelectChangedMember",
+			"onCreateProjectClicked",
+			"data",
+			"name.fi",
+			"userOptionsType",
+			"passValueUser",
+			"userOptionsType",
+			"userOptions",
+			"passValueUser",
+			"userOptionsType",
+			"projectList",
+			"selectedProject",
+			"                  <",
+			"u.",
+			"_onGetAllSuccess",
+			"selectedProject",
+			"data.data",
+			"_onGetAllUserSuccess",
+			"onNewProjectClicked",
+			"_user",
+			"m.",
+			"onProjectClicked",
+			"_onGetAllUserProjectSuccess",
+			"getAllUserProjects",
+			"AAA",
+			"data",
+			"req.url"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "aita.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"report",
+				"daily-scrum-app\\src\\views\\Report.jsx"
+			],
+			[
+				"_index",
+				"aita\\public\\styles\\site\\_index.scss"
+			],
+			[
+				"member",
+				"daily-scrum-app\\src\\views\\Member.jsx"
+			],
+			[
+				"projec",
+				"daily-scrum-app\\src\\views\\Project.jsx"
+			],
+			[
+				"repo",
+				"daily-scrum-app\\src\\views\\Report.jsx"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 289.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

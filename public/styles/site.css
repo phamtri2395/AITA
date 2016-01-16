@@ -252,6 +252,7 @@
 .form-group {
   margin: 0;
   margin-bottom: 15px;
+  padding-bottom: 15px;
   border-bottom: 1px dotted whitesmoke; }
   .form-group--clean, .form-group--facebook {
     border-bottom: 0;
@@ -309,6 +310,9 @@ input[type="checkbox"].tel-checkbox {
     border-bottom: 0; }
   .suggest-item:hover {
     opacity: 1; }
+
+.group-control {
+  margin-top: 7.5px; }
 
 .tab-item {
   padding-left: 60px;

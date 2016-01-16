@@ -30,6 +30,7 @@ $nav-bg: whitesmoke;
 .form-group {
 	margin: 0;
 	margin-bottom: $gutter;
+	padding-bottom: $gutter;
 	border-bottom: 1px dotted whitesmoke;
 
 	&--clean,
@@ -116,4 +117,8 @@ input[type="checkbox"].tel-checkbox {
 	&:hover {
 		opacity: 1;
 	}
+}
+
+.group-control {
+	margin-top: 0.5*$gutter;
 }
