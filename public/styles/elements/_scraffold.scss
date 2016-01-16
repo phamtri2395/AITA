@@ -61,12 +61,20 @@ $nav-bg: whitesmoke;
 	display: none;
 	margin-left: $gutter;
 	font-weight: lighter;
+
+	&._no-left {
+		margin-left: 0;
+	}
 }
 
 .tel-label {
 	margin-left: $gutter;
 	font-weight: lighter;
 	margin-bottom: 0;
+
+	&._no-left {
+		margin-left: 0;
+	}
 }
 
 input[type="checkbox"].tel-checkbox {
@@ -81,4 +89,12 @@ input[type="checkbox"].tel-checkbox {
 	~.tel-label {
 		display: none;
 	}
+}
+
+.email {
+	font-weight: lighter;
+}
+
+.infor-block {
+	margin-right: $gutter;
 }
