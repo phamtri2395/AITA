@@ -49,6 +49,11 @@ $nav-bg: whitesmoke;
 	}
 }
 
+.main-right-panel {
+	padding-top: $gutter;
+	padding-left: 3*$gutter;
+}
+
 .glyphicon {
 	top: 0;
 	// font-size: inherit;
@@ -61,12 +66,20 @@ $nav-bg: whitesmoke;
 	display: none;
 	margin-left: $gutter;
 	font-weight: lighter;
+
+	&._no-left {
+		margin-left: 0;
+	}
 }
 
 .tel-label {
 	margin-left: $gutter;
 	font-weight: lighter;
 	margin-bottom: 0;
+
+	&._no-left {
+		margin-left: 0;
+	}
 }
 
 input[type="checkbox"].tel-checkbox {
@@ -80,5 +93,27 @@ input[type="checkbox"].tel-checkbox {
 
 	~.tel-label {
 		display: none;
+	}
+}
+
+.email {
+	font-weight: lighter;
+}
+
+.infor-block {
+	margin-right: $gutter;
+}
+
+.suggest-item {
+	margin-bottom: 2*$gutter;
+	border-bottom: 1px solid whitesmoke;
+	opacity: 0.2;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	&:hover {
+		opacity: 1;
 	}
 }

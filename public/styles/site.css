@@ -263,6 +263,10 @@
   .form-group:last-child {
     border-bottom: 0; }
 
+.main-right-panel {
+  padding-top: 15px;
+  padding-left: 45px; }
+
 .glyphicon {
   top: 0;
   font-size: 14px; }
@@ -272,11 +276,15 @@
   display: none;
   margin-left: 15px;
   font-weight: lighter; }
+  .tel._no-left {
+    margin-left: 0; }
 
 .tel-label {
   margin-left: 15px;
   font-weight: lighter;
   margin-bottom: 0; }
+  .tel-label._no-left {
+    margin-left: 0; }
 
 input[type="checkbox"].tel-checkbox {
   display: none; }
@@ -286,6 +294,21 @@ input[type="checkbox"].tel-checkbox {
 
 .tel-checkbox:checked ~ .tel-label {
   display: none; }
+
+.email {
+  font-weight: lighter; }
+
+.infor-block {
+  margin-right: 15px; }
+
+.suggest-item {
+  margin-bottom: 30px;
+  border-bottom: 1px solid whitesmoke;
+  opacity: 0.2; }
+  .suggest-item:last-child {
+    border-bottom: 0; }
+  .suggest-item:hover {
+    opacity: 1; }
 
 .tab-item {
   padding-left: 60px;
