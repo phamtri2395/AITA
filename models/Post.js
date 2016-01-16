@@ -20,14 +20,14 @@ Post.add({
 	district: {
 		type: Types.Relationship,
 		ref: 'District',
-		required: true,
+		//required: true,
 		default: true
 	},
 
 	ward: {
 		type: Types.Relationship,
 		ref: 'Ward',
-		required: true,
+		//required: true,
 		default: true
 	},
 
@@ -57,11 +57,9 @@ Post.add({
 	},
 
 	type: {
-		type: Types.Select,
+		type: Types.Relationship,
+		ref: 'EstateCategory',
 		required: false,
-		options: 'Phòng cho thuê, Căn hộ chung cư, Nhà riêng',
-		emptyOption: false,
-		default: 'Phòng cho thuê'
 	},
 
 	address: {
@@ -106,7 +104,7 @@ Post.add({
 	},
 
 	mobile: {
-		type: Number,
+		type: String,
 		required: false
 	},
 
