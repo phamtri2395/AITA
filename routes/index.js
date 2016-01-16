@@ -27,7 +27,6 @@ var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
 
 var FacebookStrategy = require('passport-facebook').Strategy;
-// var MongoStore = require('connect-mongo/es5')(session);
 var MongoDBStore = require('connect-mongodb-session')(session);
 
 var middleware = require('./middleware');
@@ -81,7 +80,7 @@ passport.use(new FacebookStrategy({
 		// asynchronous verification, for effect...
 		process.nextTick(function () {
 			console.log('profile', profile);
-			// add user to database
+
 			function gender() {
 				return ((profile.gender === 'male') ? true : false);
 			}
@@ -95,18 +94,24 @@ passport.use(new FacebookStrategy({
 			}
 
 			var user = keystone.list('User').model;
-			user.create({
-				'isAdmin' : false,
-				'password' : '',
-				'email' : profile.emails[0].value,
-				'name' : {
-					'last' : lastName(),
-					'first' : firstName()
-				},
-				'gender' : gender(),
-				'extId' : profile.id,
-				'provider' : profile.provider,
-				'avatar' : profile.photos[0].value
+
+			// Find if this User is already in database
+			user.findOne({ 'providerId' : profile.id }, 'providerId', function (err, match) {
+				if (match) return console.log ('This user is already in database');
+				// add user to database
+				user.create({
+					'isAdmin' : false,
+					'password' : '',
+					'email' : ((profile.emails[0]) ? profile.emails[0].value : ' '),
+					'name' : {
+						'last' : lastName(),
+						'first' : firstName()
+					},
+					'gender' : gender(),
+					'providerId' : profile.id,
+					'provider' : profile.provider,
+					'avatar' : ((profile.photos[0]) ? profile.photos[0].value : ' ')
+				});
 			});
 			// To keep the example simple, the user's Facebook profile is returned to
 			// represent the logged-in user.  In a typical application, you would want
@@ -143,6 +148,7 @@ exports = module.exports = function(app) {
 
 	app.use(function(req, res, next) {
 		console.log('SESSION', req.session);
+		res.locals.client = req.session.passport ? req.session.passport.user : null;
 		next();
 	});
 
@@ -171,6 +177,8 @@ exports = module.exports = function(app) {
 	app.get('/dang-ky', routes.views['dang-ky']);
 	app.get('/dang-tin', routes.views['dang-tin']);
 	app.get('/chi-tiet', routes.views['chi-tiet']);
+	
+	app.get('/fb', routes.views['fb']);
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

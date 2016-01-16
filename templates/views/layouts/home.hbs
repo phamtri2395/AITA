@@ -67,15 +67,15 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="active"><a href="/" title="Căn hộ/chung cư">Căn hộ/chung cư</a></li>
+						<li class=""><a href="/" title="Căn hộ/chung cư">Căn hộ/chung cư</a></li>
 						<li><a href="/" title="Phòng cho thuê">Phòng cho thuê</a></li>
 						<li><a href="/" title="Nhà riêng">Nhà riêng</a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
-						{{#if user}}
+						{{#if client}}
 						<li><a href="/dang-tin" title="Đăng tin">Đăng tin</a></li>
-						<li><a href="/logout">{{user.displayName}}</a></li>
+						<li><a href="/logout">{{client.displayName}}</a></li>
 						{{else}}
 						<li><a href="/dang-nhap" title="Đăng nhập">Đăng nhập</a></li>
 						<li><a href="/dang-ky" title="Đăng nhập">Đăng ký</a></li>
@@ -92,7 +92,18 @@
 
 		<footer id="footer" class="footer">
 			<div class="container">
-				<p class="text-muted text-center company-title">Apartments in the Air &copy; 2015</p>
+				<div class="col-md-8">
+					<p class="text-muted company-title">Apartments in the Air &copy; 2015</p>
+				</div>
+				<div class="col-md-4">
+					<div class="fb-page" 
+						data-href="https://www.facebook.com/Aitavn-528623837288211/" 
+						data-width="100%" 
+						data-small-header="false" 
+						data-adapt-container-width="false" 
+						data-hide-cover="false" 
+						data-show-facepile="true"></div>
+				</div>
 			</div>
 		</footer>
 
@@ -104,8 +115,8 @@
 		<script src="//maps.googleapis.com/maps/api/js"></script>
 		<script src="/js/script.js"></script>
 
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 		(function(d,s,id){var z=d.createElement(s);z.type="text/javascript";z.id=id;z.async=true;z.src="//static.zotabox.com/f/c/fc9c72038d852eb8b556239bcc0af7d5/widgets.js";var sz=d.getElementsByTagName(s)[0];sz.parentNode.insertBefore(z,sz)}(document,"script","zb-embed-code"));
-		</script>
+		</script>-->
 	</body>
 </html>
