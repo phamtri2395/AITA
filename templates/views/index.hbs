@@ -9,25 +9,21 @@
 				Thuê <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li><a href="#">Action</a></li>
-				<li><a href="#">Another action</a></li>
-				<li><a href="#">Something else here</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#">Separated link</a></li>
+				{{# each data.categories}}
+				<li><a href="#">{{name}}</a></li>
+				{{/each}}
 			</ul>
 		</div>
 
 		<!-- Single button -->
 		<div class="btn-group _index">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Hồ Chí Minh <span class="caret"></span>
+				Quận 1 <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li><a href="#">Action</a></li>
-				<li><a href="#">Another action</a></li>
-				<li><a href="#">Something else here</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#">Separated link</a></li>
+			{{# each data.districts}}
+			<li><a href="#">{{name}}</a></li>
+			{{/each}}
 			</ul>
 		</div>
 
@@ -95,326 +91,49 @@
 				<div class="tab-content _index-page">
 					<div role="tabpanel" class="tab-pane active" id="home">
 						<div class="list-result">
-							<div class="media">
-								<div class="media-left hidden-xs">
-									<a href="#">
-										<img src="http://placehold.it/60x60">
-									</a>
-								</div>
-
-								<div class="media-body">
-									<h4 class="media-heading">
-										<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
-										<input type="checkbox" id="checkbox-01" class="tel-checkbox" />
-										<label for="checkbox-01" class="tel-label">
-											<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-										</label>
-										<a href="tel:01643652922" class="tel">
-											<i class="glyphicon glyphicon-earphone"></i> 01643-652-922
+							{{# each data.posts}}
+								<div class="media">
+									<div class="media-left hidden-xs">
+										<a href="#">
+											<img src="http://placehold.it/60x60">
 										</a>
-									</h4>
-									<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-										<li>4,820 m2</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng ngủ</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng tắm</li>
-										<li style="list-style: none">|</li>
-										<li><b>12tr VND/Tháng</b></li>
-									</ul>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia natus, ex assumenda iste odio repellendus esse tenetur. <a href="/chi-tiet">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>
-									<div role="tabpanel" class="tab-pane active" id="home">
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+									</div>
+
+									<div class="media-body">
+										<h4 class="media-heading">
+											<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">{{name}}</a>
+											<input type="checkbox" id="checkbox-{{@index}}" class="tel-checkbox" />
+											<label for="checkbox-{{@index}}" class="tel-label">
+												<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
+											</label>
+											<a href="tel:{{mobile}}" class="tel">
+												<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
 											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-											</a>
-										</span>
+										</h4>
+										<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+											<li>{{area}} m2</li>
+											<li style="list-style: none">|</li>
+											<li>{{bedroom}} phòng ngủ</li>
+											<li style="list-style: none">|</li>
+											<li>{{bathroom}} phòng tắm</li>
+											<li style="list-style: none">|</li>
+											<li><b>{{price}} VND</b></li>
+										</ul>
+										{{{description}}}
+										<a href="/chi-tiet">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>
+										<div role="tabpanel" class="tab-pane active" id="home">
+											<span class="wrapper-cover-img">
+												<a class="fancybox" rel="gallery" href={{image.secure_url}}>
+													<img class="media-object" src={{image.secure_url}}>
+												</a>
+											</span>
+										</div>
 									</div>
 								</div>
-							</div>
-
-							<div class="media">
-								<div class="media-left hidden-xs">
-									<a href="#">
-										<img src="http://placehold.it/60x60">
-									</a>
-								</div>
-
-								<div class="media-body">
-									<h4 class="media-heading">
-										<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
-										<input type="checkbox" id="checkbox-02" class="tel-checkbox" />
-										<label for="checkbox-02" class="tel-label">
-											<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-										</label>
-										<a href="tel:01643652922" class="tel">
-											<i class="glyphicon glyphicon-earphone"></i> 01643-652-922
-										</a>
-									</h4>
-									<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-										<li>4,820 m2</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng ngủ</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng tắm</li>
-										<li style="list-style: none">|</li>
-										<li><b>12tr VND/Tháng</b></li>
-									</ul>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia natus, ex assumenda iste odio repellendus esse tenetur. <a href="/chi-tiet">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>
-									<div role="tabpanel" class="tab-pane active" id="home">
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-											</a>
-										</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="media">
-								<div class="media-left hidden-xs">
-									<a href="#">
-										<img src="http://placehold.it/60x60">
-									</a>
-								</div>
-
-								<div class="media-body">
-									<h4 class="media-heading">
-										<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
-										<input type="checkbox" id="checkbox-03" class="tel-checkbox" />
-										<label for="checkbox-03" class="tel-label">
-											<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-										</label>
-										<a href="tel:01643652922" class="tel">
-											<i class="glyphicon glyphicon-earphone"></i> 01643-652-922
-										</a>
-									</h4>
-									<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-										<li>4,820 m2</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng ngủ</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng tắm</li>
-										<li style="list-style: none">|</li>
-										<li><b>12tr VND/Tháng</b></li>
-									</ul>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia natus, ex assumenda iste odio repellendus esse tenetur. <a href="/chi-tiet">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>
-									<div role="tabpanel" class="tab-pane active" id="home">
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-											</a>
-										</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="media">
-								<div class="media-left hidden-xs">
-									<a href="#">
-										<img src="http://placehold.it/60x60">
-									</a>
-								</div>
-
-								<div class="media-body">
-									<h4 class="media-heading">
-										<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
-										<input type="checkbox" id="checkbox-04" class="tel-checkbox" />
-										<label for="checkbox-04" class="tel-label">
-											<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-										</label>
-										<a href="tel:01643652922" class="tel">
-											<i class="glyphicon glyphicon-earphone"></i> 01643-652-922
-										</a>
-									</h4>
-									<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-										<li>4,820 m2</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng ngủ</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng tắm</li>
-										<li style="list-style: none">|</li>
-										<li><b>12tr VND/Tháng</b></li>
-									</ul>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia natus, ex assumenda iste odio repellendus esse tenetur. <a href="/chi-tiet">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>
-									<div role="tabpanel" class="tab-pane active" id="home">
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-											</a>
-										</span>
-									</div>
-								</div>
-							</div>
+							{{/each}}
 
 							<div class="text-center">
 								<button class="btn-success btn-lg">Xem thêm</button>
-							</div>
-						</div>
-					</div>
-					<div role="tabpanel" class="tab-pane" id="profile">
-						<div class="list-result">
-							<div class="media">
-								<div class="media-left hidden-xs">
-									<a href="#">
-										<img src="http://placehold.it/60x60">
-									</a>
-								</div>
-
-								<div class="media-body">
-									<h4 class="media-heading">
-										<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
-										<input type="checkbox" id="checkbox-05" class="tel-checkbox" />
-										<label for="checkbox-05" class="tel-label">
-											<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-										</label>
-										<a href="tel:01643652922" class="tel">
-											<i class="glyphicon glyphicon-earphone"></i> 01643-652-922
-										</a>
-									</h4>
-									<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-										<li>4,820 m2</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng ngủ</li>
-										<li style="list-style: none">|</li>
-										<li>5 phòng tắm</li>
-										<li style="list-style: none">|</li>
-										<li><b>12tr VND/Tháng</b></li>
-									</ul>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia natus, ex assumenda iste odio repellendus esse tenetur. <a href="/chi-tiet">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>
-									<div role="tabpanel" class="tab-pane active" id="home">
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-											</a>
-										</span>
-										<span class="wrapper-cover-img">
-											<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-												<img class="media-object" src="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-											</a>
-										</span>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
