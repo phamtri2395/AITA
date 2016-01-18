@@ -1,14 +1,5 @@
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
-.fancybox-wrap,
-.fancybox-skin,
-.fancybox-outer,
-.fancybox-inner,
-.fancybox-image,
-.fancybox-wrap iframe,
-.fancybox-wrap object,
-.fancybox-nav,
-.fancybox-nav span,
-.fancybox-tmp {
+.fancybox-wrap, .fancybox-skin, .fancybox-outer, .fancybox-inner, .fancybox-image, .fancybox-wrap iframe, .fancybox-wrap object, .fancybox-nav, .fancybox-nav span, .fancybox-tmp {
   padding: 0;
   margin: 0;
   border: 0;
@@ -49,7 +40,7 @@
 
 .fancybox-error {
   color: #444;
-  font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font: 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 15px;
   white-space: nowrap; }
@@ -64,7 +55,7 @@
   max-height: 100%; }
 
 #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-  background-image: url("fancybox_sprite.png"); }
+  background-image: url('fancybox_sprite.png'); }
 
 #fancybox-loading {
   position: fixed;
@@ -80,7 +71,7 @@
 #fancybox-loading div {
   width: 44px;
   height: 44px;
-  background: url("fancybox_loading.gif") center center no-repeat; }
+  background: url('fancybox_loading.gif') center center no-repeat; }
 
 .fancybox-close {
   position: absolute;
@@ -98,7 +89,7 @@
   height: 100%;
   cursor: pointer;
   text-decoration: none;
-  background: transparent url("blank.gif");
+  background: transparent url('blank.gif');
   /* helps IE */
   -webkit-tap-highlight-color: transparent;
   z-index: 8040; }
@@ -157,7 +148,7 @@
   overflow: hidden;
   display: none;
   z-index: 8010;
-  background: url("fancybox_overlay.png"); }
+  background: url('fancybox_overlay.png'); }
 
 .fancybox-overlay-fixed {
   position: fixed;
@@ -171,7 +162,7 @@
 /* Title helper */
 .fancybox-title {
   visibility: hidden;
-  font: normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
   text-shadow: none;
   z-index: 8050; }
@@ -223,11 +214,11 @@
 /*Retina graphics!*/
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-    background-image: url("fancybox_sprite@2x.png");
+    background-image: url('fancybox_sprite@2x.png');
     background-size: 44px 152px;
     /*The size of the normal image, half the size of the hi-res image*/ }
   #fancybox-loading div {
-    background-image: url("fancybox_loading@2x.gif");
+    background-image: url('fancybox_loading@2x.gif');
     background-size: 24px 24px;
     /*The size of the normal image, half the size of the hi-res image*/ } }
 
@@ -292,7 +283,6 @@ input[type="checkbox"].tel-checkbox {
 
 .tel-checkbox:checked ~ .tel {
   display: inline-block; }
-
 .tel-checkbox:checked ~ .tel-label {
   display: none; }
 
