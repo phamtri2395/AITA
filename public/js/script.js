@@ -1,7 +1,8 @@
 // capheshift 2015
 // author: Tw
 
-/* globals google, FB */
+/* globals google, FB, $ */
+
 var center = new google.maps.LatLng(10.81416666666667, 106.66694444444444);
 
 var addClickEventListener = function(map, marker, infoWindow, content) {
@@ -117,7 +118,11 @@ function initialize() {
 	}
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+
+// dont apply this function on dang-tin page
+if (!$('.container').hasClass('jspage-dang-tin')) {
+	google.maps.event.addDomListener(window, 'load', initialize);
+}
 
 // facebook functions
 var fbSend = function() {

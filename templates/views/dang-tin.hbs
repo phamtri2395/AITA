@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container jspage-dang-tin">
 	<div class="col-md-8">
 		<h1>Đăng tin nhà đất</h1>
 
@@ -119,9 +119,22 @@
 								</label>
 							</div>
 						</div>
-
 					</div>
 				</div>
+				{{!-- end: thông tin bắt buộc --}}
+
+				<div class="form-group">
+					<div class="group-title">Vị trí trên bản đồ</div>
+					<div class="col-md-12">
+						<div id="google-map" class="google-map-block google-map-detail"></div>
+					</div>
+					<div class="clear-top"></div>
+					<i><small>(*) Nhấp để chọn vị trí trên bản đồ</small></i>
+					<input type="text" name="google-lat">
+					<input type="text" name="google-lng">
+				</div>
+				{{!-- end: vị trí trên bản đồ --}}
+
 				<div class="form-group">
 					<div class="group-title">Hình ảnh</div>
 					<div role="tabpanel" class="tab-pane active" id="home">
@@ -145,6 +158,8 @@
 						</span>
 					</div>
 				</div>
+				{{!-- end: mục hình ảnh --}}
+
 				<div class="form-group">
 					<div class="group-title">Thông tin mô tả</div>
 					<div class="group-container row">
@@ -155,6 +170,8 @@
 						</div>
 					</div>
 				</div>
+				{{!-- end: thông tin mô tả --}}
+
 				<div class="form-group">
 					<div class="group-title">Thông tin thêm</div>
 					<div class="group-container row">
@@ -202,6 +219,8 @@
 						</div>
 					</div>
 				</div>
+				{{!-- end: thông tin thêm --}}
+
 				<div class="form-group">
 					<div class="group-title">Thông tin liên hệ</div>
 					<div class="group-container row">
@@ -232,6 +251,8 @@
 						</div>
 					</div>
 				</div>
+				{{!-- end: thông tin liên hệ --}}
+
 				<div class="form-group">
 					<div class="group-container row">
 						<div class="col-md-12">
