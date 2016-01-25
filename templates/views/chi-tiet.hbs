@@ -2,10 +2,11 @@
 {{!-- Author: Tw --}}
 
 <div class="container js-trang-chi-tiet">
+{{# each data}}
 	<div class="col-md-7">
 		<div class="content-wrapper _no-bottom-border">
 			<small>
-				Hồ Chí Minh / Quận 7
+				Hồ Chí Minh / {{districtName district}}
 				<div class="pull-right">
 					{{!-- <div class="fb-send" data-href="https://aitavn.herokuapp.com/chi-tiet"></div> --}}
 					<div class="fb-share-button" 
@@ -23,7 +24,7 @@
 
 				<div class="media-body">
 					<h4 class="media-heading">
-						<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
+						<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
 					</h4>
 
 					<span class="infor-block">
@@ -32,7 +33,7 @@
 							<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
 						</label>
 						<a href="tel:01643652922" class="tel _no-left">
-							<i class="glyphicon glyphicon-earphone"></i> 01643-652-922
+							<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
 						</a>
 					</span>
 
@@ -47,59 +48,46 @@
 				</div>
 			</div>
 
-			<h2 class="header-01">Cho thuê nhà 76m2, 2 phòng ngủ, 1 phòng tắm - 18 triệu/tháng</h2>
-			<h4>23-27 Nguyễn Hữu Thọ, Hồ Chí Minh, Việt Nam</h4>
+			<h2 class="header-01">{{title}}</h2>
+			<h4>{{address}}</h4>
 		</div>
 
 		<div class="content-wrapper">
 			<h4>Thông tin chi tiết</h4>
 			<div class="row">
 				<div class="col-md-4">
-					<b>Ngày đăng: </b><span>100m2</span>
+					<b>Ngày đăng: </b><span>{{publishedDate}}</span>
 				</div>
 				<div class="col-md-4">
-					<b>Hình thức: </b><span>100m2</span>
+					<b>Hình thức: </b><span>{{typeName type}}</span>
 				</div>
 				<div class="col-md-4">
-					<b>Giá: </b><span>100m2</span>
+					<b>Giá: </b><span>{{toCurrency price}}</span>
 				</div>
 				<div class="col-md-4">
-					<b>Diện tích: </b><span>100m2</span>
+					<b>Diện tích: </b><span>{{area}} m2</span>
 				</div>
 				<div class="col-md-4">
-					<b>Phòng ngủ: </b><span>100m2</span>
+					<b>Phòng ngủ: </b><span>{{bedroom}}</span>
 				</div>
 				<div class="col-md-4">
-					<b>Phòng tắm: </b><span>100m2</span>
+					<b>Phòng tắm: </b><span>{{bathroom}}</span>
 				</div>
 				<div class="col-md-4">
-					<b>Hướng: </b><span>100m2</span>
+					<b>Hướng: </b><span>{{quarter}}</span>
 				</div>
 				<div class="col-md-4">
-					<b>Số tầng: </b><span>100m2</span>
+					<b>Số tầng: </b><span>{{floors}}</span>
 				</div>
 				<div class="col-md-4">
-					<b>Môi giới: </b><span>Tiếp</span>
+					<b>Môi giới: </b><span>{{isMedium medium}}</span>
 				</div>
 			</div>
 		</div>
 
 		<div class="content-wrapper">
 			<h4>Mô tả chung</h4>
-			<p>Chúng tôi cần Bán và cho Thuê căn hộ cao cấp Sun Rise City tại quận 7, nằm tại trục đường Nguyễn Hữu Thọ liên kết với các quận 1, 4, 5, 8. Mặt tiền đường Nguyễn Hữu Thọ, đối diện siêu thị Lotte Quận 7. </p>
-			
-			{{!-- <br/>
-			<p> - Cách Phú Mỹ Hưng 1 phút. </p>
-			<p> - Cách trung tâm Quận 1,5 chỉ 5 phút. </p>
-			<p> - Gần trường đại học Tôn Đức Thắng, đại học Cảnh Sát Nhân Dân, đại học RMIT, siêu thị Lotte </p>Mart, …. 
-			Tận hưởng ngay những tiện ích nội khu cao cấp của căn hộ: 
-			<p> - 5 tầng trung tâm thương mại, mua sắm. </p>
-			<p> - Hồ bơi tràn phong cách Singapore. </p>
-			<p> - Tiệc nướng BBQ ngoài trời. </p>
-			<p> - Công viên, cây xanh, Khu vui chơi trẻ em, nhà trẻ,..</p>
-			<br/>
-			<p>Hiện tại chúng tôi cung cấp từ 1 - 4 Phòng ngủ, giá tốt và đa dạng tuỳ theo nhu cầu của quý khách.</p>
-			<p>Liên hệ để được tư vấn và xem nhà : Đại 0948.221.411</p> --}}
+			<p>{{{description}}}</p>
 		</div>
 
 		<div class="content-wrapper">
@@ -116,36 +104,11 @@
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane active" id="home">
-					<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-						</a>
-					</span>
-					<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-						</a>
-					</span>
-					<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-						</a>
-					</span>
-					<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-						</a>
-					</span>
-					<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-						</a>
-					</span>
-					<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-						</a>
-					</span>
+						<span class="wrapper-cover-img">
+							<a class="fancybox" rel="gallery" href={{image.secure_url}}>
+								<img class="media-object" src={{image.secure_url}}>
+							</a>
+						</span>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="profile">
 					<div class="col-md-12">
@@ -158,7 +121,7 @@
 
 		<div class="content-wrapper _no-bottom-border">
 			<small>
-				Hồ Chí Minh / Quận 7
+				Hồ Chí Minh / {{districtName district}}
 				<div class="pull-right">
 					{{!-- <div class="fb-send" data-href="https://aitavn.herokuapp.com/chi-tiet"></div> --}}
 					<div class="fb-share-button" 
@@ -174,6 +137,7 @@
 				data-numposts="12"></div>
 		</div>
 	</div>
+{{/each}}
 
 	<div class="main-right-panel col-md-5">
 		<div class="suggest-item">
