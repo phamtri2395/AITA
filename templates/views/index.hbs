@@ -101,7 +101,7 @@
 
 									<div class="media-body">
 										<h4 class="media-heading">
-											<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">{{name}}</a>
+											<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
 											<input type="checkbox" id="checkbox-{{@index}}" class="tel-checkbox" />
 											<label for="checkbox-{{@index}}" class="tel-label">
 												<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
@@ -117,7 +117,7 @@
 											<li style="list-style: none">|</li>
 											<li>{{bathroom}} phòng tắm</li>
 											<li style="list-style: none">|</li>
-											<li><b>{{price}} VND</b></li>
+											<li><b>{{toCurrency price}} VND</b></li>
 										</ul>
 										{{{description}}}
 										<a href="/chi-tiet">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>

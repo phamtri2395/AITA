@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var Handlebars = require('handlebars');
 var async = require('async');
 
 exports = module.exports = function(req, res) {
@@ -74,8 +75,8 @@ exports = module.exports = function(req, res) {
 
 	// Load all posts
 	view.on('init', function(next) {
-		
-		keystone.list('Post').model.find().sort('publishedDate').exec(function(err, results) {
+
+		keystone.list('Post').model.find().populate('author').sort('publishedDate').exec(function(err, results) {
 			
 			if (err || !results.length) {
 				return next(err);
@@ -97,6 +98,15 @@ exports = module.exports = function(req, res) {
 						
 		});
 		
+	});
+
+	// Register toCurrency function, which changes price to decimal format
+	Handlebars.registerHelper('toCurrency', function(number) {
+  		return number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+	});
+	// Register toAuthorName function, which gives full name of author
+	Handlebars.registerHelper('toAuthorName', function(author) {
+  		return (author) ? (author.name.first + ' ' + author.name.last) : 'null';
 	});
 
 	// Render the view
