@@ -17,6 +17,11 @@ Post.add({
 		required: true
 	},
 
+	front: {
+		type: Boolean,
+		required: false
+	},
+
 	district: {
 		type: Types.Relationship,
 		ref: 'District',
@@ -95,6 +100,11 @@ Post.add({
 
 	quarter: {
 		type: String,
+		required: false
+	},
+
+	isProject: {
+		type: Boolean,
 		required: false
 	},
 

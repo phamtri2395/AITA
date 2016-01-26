@@ -48,7 +48,8 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views')
+	views: importRoutes('./views'),
+	services: importRoutes('./services')
 };
 
 // Passport session setup.
@@ -147,7 +148,7 @@ exports = module.exports = function(app) {
 	app.use(passport.session());
 
 	app.use(function(req, res, next) {
-		console.log('SESSION', req.session);
+		// console.log('SESSION', req.session);
 		res.locals.client = req.session.passport ? req.session.passport.user : null;
 		next();
 	});
@@ -176,6 +177,7 @@ exports = module.exports = function(app) {
 	app.get('/dang-nhap', routes.views.login);
 	app.get('/dang-ky', routes.views['dang-ky']);
 	app.get('/dang-tin', routes.views['dang-tin']);
+	app.post('/dang-tin', routes.services.posts.add);
 	app.get('/chi-tiet', routes.views['chi-tiet']);
 	
 	app.get('/fb', routes.views['fb']);
