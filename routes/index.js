@@ -176,7 +176,7 @@ exports = module.exports = function(app) {
 	app.get('/dang-nhap', routes.views.login);
 	app.get('/dang-ky', routes.views['dang-ky']);
 	app.get('/dang-tin', routes.views['dang-tin']);
-	app.get('/chi-tiet', routes.views['chi-tiet']);
+	app.get('/chi-tiet/:_id', routes.views['chi-tiet']);
 	
 	app.get('/fb', routes.views['fb']);
 	

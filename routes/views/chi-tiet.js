@@ -2,6 +2,7 @@ var keystone = require('keystone');
 var Handlebars = require('handlebars');
 
 exports = module.exports = function(req, res) {
+	console.log('params', req.params._id);
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
@@ -13,13 +14,18 @@ exports = module.exports = function(req, res) {
 	};
 
 	// Get Id from index
-	var url = req.url.toString();
-	var id = url.slice(url.indexOf('?id=') + 4);
+	var id = req.params._id;
+	// if (!id) {
+	// 	return;
+	// }
 	
 	// Load post with Id
 	view.on('init', function(next) {
 
 		keystone.list('Post').model.findOne({ '_id' : id }).populate('author district type ward').exec(function(err, results) {
+			if (!results) {
+				return;
+			}
 
 			locals.data.post = results;
 				
@@ -28,35 +34,35 @@ exports = module.exports = function(req, res) {
 				next(err);
 			});
 										
-			console.log('THIS IS DATA: ', locals.data.post);
+			// console.log('THIS IS DATA: ', locals.data.post);
 		});
 		
 	});	
 
 	// Register toCurrency function, which changes price to decimal format
 	Handlebars.registerHelper('toCurrency', function(number) {
-  		return (number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,') + ' VND');
+		return (number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,') + ' VND');
 	});
 	// Register toAuthorName function, which gives full name of author
 	Handlebars.registerHelper('toAuthorName', function(author) {
-  		return (author) ? (author.name.first + ' ' + author.name.last) : 'null';
+		return (author) ? (author.name.first + ' ' + author.name.last) : 'null';
 	});
 	// Register districtName function, which return name of District
 	Handlebars.registerHelper('districtName', function(district) {
-  		return (district) ? (district.name) : 'null';
+		return (district) ? (district.name) : 'null';
 	});
 	// Register typeName function, which return name of Type
 	Handlebars.registerHelper('typeName', function(type) {
-  		return (type) ? (type.name) : 'null';
+		return (type) ? (type.name) : 'null';
 	});
 	// Register isMedium function
 	Handlebars.registerHelper('isMedium', function(medium) {
-  		return (medium) ? 'Tiếp' : 'Không Tiếp';
+		return (medium) ? 'Tiếp' : 'Không Tiếp';
 	});
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'home';
+	// locals.section = 'home';
 
 	// Render the view
 	view.render('chi-tiet');
