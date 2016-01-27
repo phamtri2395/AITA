@@ -23,5 +23,6 @@ Ward.add({
 	}
 });
 
+Ward.defaultColumns = 'name, district';
 Ward.relationship({ ref: 'Post', path: 'wards' });
 Ward.register();
