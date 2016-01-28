@@ -124,11 +124,13 @@
 											chi tiết <i class="glyphicon glyphicon-menu-right"></i>
 										</a>
 										<div role="tabpanel" class="tab-pane active" id="home">
+											{{#each images}}
 											<span class="wrapper-cover-img">
-												<a class="fancybox" rel="gallery" href={{image.secure_url}}>
-													<img class="media-object" src={{image.secure_url}}>
+												<a class="fancybox" rel="gallery" href={{secure_url}}>
+													<img class="media-object" src={{secure_url}}>
 												</a>
 											</span>
+											{{/each}}
 										</div>
 									</div>
 								</div>
