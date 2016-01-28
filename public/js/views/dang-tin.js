@@ -66,5 +66,7 @@ $(document).on('ready', function() {
 	// only apply for dang-tin page
 	if ($('.container').hasClass('jspage-dang-tin')) {
 		initDangTin();
+
+		
 	}
 });
