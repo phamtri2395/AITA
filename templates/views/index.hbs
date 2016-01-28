@@ -92,7 +92,9 @@
 					<div role="tabpanel" class="tab-pane active" id="home">
 						<div class="list-result">
 							{{# each data.posts}}
-								<div class="media">
+								<div class="media js-post-content" 
+									data-latitude={{latitude}} data-longitude={{longitude}}
+									data-is-loaded="false" >
 									<div class="media-left hidden-xs">
 										<a href="#">
 											<img src="http://placehold.it/60x60">
@@ -140,6 +142,9 @@
 								<button class="btn-success btn-lg">Xem thêm</button>
 							</div>
 						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane active" id="profile">
+						<i>Bạn chưa có yêu thích nào!</i>
 					</div>
 				</div>
 			</div>
