@@ -11,13 +11,15 @@
 						<div class="col-xs-12 col-sm-8 col-md-9">
 							<div class="group-control">
 								<label>Tiêu đề</label>
-								<input class="form-control" type="text" required="required" placeholder="Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm">
+								<input class="form-control" type="text" name="title" required="required" placeholder="Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm">
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-3">
 							<div class="group-control group-checkbox">
-								<input type="checkbox" id="checkbox-mat-tien" /> 
-								<label class="checkbox-lable" for="checkbox-mat-tien">Mặt tiền</label>
+								<label class="checkbox-lable" for="checkbox-mat-tien">
+									<input type="checkbox" name="front" id="checkbox-mat-tien" /> 
+									Mặt tiền
+								</label>
 							</div>
 						</div>
 						
@@ -32,28 +34,33 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Quận/Huyện (Tp. HCM)</label>
-								<select class="form-control" required="required">
-									<option value="01">Bình Thạnh</option>
-									<option value="02">Quận 2</option>
+								<select class="form-control" name="district" required="required">
+								{{# each data.districts}}
+									<option value={{_id}}>{{name}}</option>
+								{{/each}}
 								</select>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Phường/Xã</label>
-								<input class="form-control" type="text" required="required">
+								<select class="form-control" name="ward" required="required">
+								{{# each data.wards}}
+									<option value={{_id}}>{{name}}</option>
+								{{/each}}
+								</select>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Đường</label>
-								<input class="form-control" type="text" required="required">
+								<input class="form-control" type="text" name="street" required="required">
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Giá (VNĐ)</label>
-								<input class="form-control" type="text" required="required">
+								<input class="form-control" type="text" name="price" required="required">
 							</div>
 						</div>
 						{{!-- <div class="col-xs-12 col-sm-6 col-md-4">
@@ -65,13 +72,13 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Diện tích (m²)</label>
-								<input class="form-control" type="text" required="required">
+								<input class="form-control" type="text" name="area" required="required">
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Phòng ngủ</label>
-								<select class="form-control" required="required">
+								<select class="form-control" name="bedroom" required="required">
 									<option value="01">1</option>
 									<option value="02">2</option>
 									<option value="03">3</option>
@@ -85,7 +92,7 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Phòng tắm</label>
-								<select class="form-control" required="required">
+								<select class="form-control" name="bathroom" required="required">
 									<option value="01">1</option>
 									<option value="02">2</option>
 									<option value="03">3</option>
@@ -99,7 +106,7 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Loại hình</label>
-								<select class="form-control" required="required">
+								<select class="form-control" name="type" required="required">
 									<option value="01">Cho thuê</option>
 									<option value="02">Bán</option>
 								</select>
@@ -109,13 +116,13 @@
 						<div class="col-xs-12 col-sm-8 col-md-9">
 							<div class="group-control">
 								<label>Địa chỉ đầy đủ</label>
-								<input class="form-control" type="text" required="required" placeholder="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM">
+								<input class="form-control" type="text" name="address" required="required" placeholder="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM">
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-3">
 							<div class="group-control group-checkbox">
 								<label class="checkbox-lable">
-									<input type="checkbox" value=1> Ẩn vị trí
+									<input type="checkbox" name="hidePosition" value="1"> Ẩn vị trí
 								</label>
 							</div>
 						</div>
@@ -165,7 +172,7 @@
 					<div class="group-container row">
 						<div class="col-xs-12">
 							<div class="group-control">
-								<textarea row="4" class="form-control" style="width: 100%; height: 150px;"></textarea>
+								<textarea row="4" class="form-control" name="description" style="width: 100%; height: 150px;"></textarea>
 							</div>
 						</div>
 					</div>
@@ -178,13 +185,13 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Chọn nếu nhà thuộc dự án</label>
-								<input class="form-control" type="text" required="required">
+								<input class="form-control" type="text" name="isProject" required="required">
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Hướng</label>
-								<select class="form-control" required="required">
+								<select class="form-control" name="quarter" required="required">
 									<option value="02">Đông</option>
 									<option value="02">Đông Nam</option>
 									<option value="02">Nam</option>
@@ -199,7 +206,7 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Số tầng</label>
-								<select class="form-control" required="required">
+								<select class="form-control" name="floors" required="required">
 									<option value="01">OptionA</option>
 									<option value="02">OptionB</option>
 								</select>
@@ -207,14 +214,16 @@
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
-								<label>Lộ giới (m)</label>
-								<input class="form-control" required="required">
+								<label for="highway">
+									Lộ giới (m)
+									<input id="highway" class="form-control" name="highway" required="required">
+								</label>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Năm xây dựng</label>
-								<input class="form-control" required="required">
+								<input class="form-control" name="yearBuild" required="required">
 							</div>
 						</div>
 					</div>
@@ -227,7 +236,7 @@
 						<div class="col-md-4">
 							<div class="group-control">
 								<label>Tên *</label>
-								<input class="form-control" type="text" required="required">
+								<input class="form-control" type="text" name="name" required="required">
 							</div>
 						</div>
 						{{!-- <div class="col-md-4">
@@ -239,13 +248,13 @@
 						<div class="col-md-4">
 							<div class="group-control">
 								<label>Số điện thoại *</label>
-								<input class="form-control" type="text" required="required">
+								<input class="form-control" type="text" name="mobile" required="required">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="group-control group-checkbox">
 								<label class="checkbox-lable">
-									<input type="checkbox"> Tiếp môi giới
+									<input type="checkbox" name="medium"> Tiếp môi giới
 								</label>
 							</div>
 						</div>
