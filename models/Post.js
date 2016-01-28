@@ -1,10 +1,8 @@
+// @aita 2016
+// @author: tw
+
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
-
-/**
- * Post Model
- * ==========
- */
 
 var Post = new keystone.List('Post', {
 	map: { name: 'title' },
@@ -13,117 +11,166 @@ var Post = new keystone.List('Post', {
 
 Post.add({
 	title: {
+		label: 'Tiêu đề',
 		type: String,
 		required: true
 	},
 
-	front: {
-		type: Boolean,
+	type: {
+		label: 'Hình thức (cho thuê/bán)',
+		type: Types.Relationship,
+		ref: 'EstateCategory',
 		required: false
 	},
 
 	district: {
+		label: 'Quận',
 		type: Types.Relationship,
 		ref: 'District',
-		//required: true,
 		default: true
 	},
 
 	ward: {
+		label: 'Phường',
 		type: Types.Relationship,
 		ref: 'Ward',
-		//required: true,
 		default: true
 	},
 
 	street: {
+		label: 'Đường',
 		type: String,
 		required: false
 	},
 
+	address: {
+		label: 'Địa chỉ',
+		type: String,
+		required: false
+	},
+
+	isFront: {
+		label: 'Là mặt tiền',
+		type: Boolean,
+		required: false
+	},
+
+	hidePosition: {
+		label: 'Ẩn vị trí',
+		type: Boolean,
+		required: false
+	},
+
+	latitude: {
+		label: 'Vĩ độ',
+		type: Number,
+		required: false,
+		default: 0
+	},	
+
+	longitude: {
+		label: 'Kinh độ',
+		type: Number,
+		required: false,
+		default: 0
+	},	
+
 	price: {
+		label: 'Giá (VNĐ)',
 		type: Number,
 		required: false
 	},
 
 	area: {
+		label: 'Diện tích (m2)',
 		type: Number,
-		required: false
+		required: true,
+		default: 25
 	},
 
 	bedroom: {
-		type: String,
-		required: false
+		label: 'Số phòng ngủ',
+		type: Number,
+		required: true,
+		default: 2
 	},
 
 	bathroom: {
-		type: String,
-		required: false
-	},
-
-	type: {
-		type: Types.Relationship,
-		ref: 'EstateCategory',
-		required: false,
-	},
-
-	address: {
-		type: String,
-		required: false
-	},
-
-	hidePosition: {
-		type: Boolean,
-		required: false
-	},
-
-	description: {
-		type: Types.Html,
-		wysiwyg: true,
-		height: 400
+		label: 'Số phòng tắm',
+		type: Number,
+		required: true,
+		default: 1
 	},
 
 	floors: {
+		label: 'Tầng',
 		type: Number,
 		required: false
 	},
 
 	highway: {
-		type: String,
-		required: false
-	},
-
-	yearBuild: {
+		label: 'Mặt đường (m)',
 		type: Number,
 		required: false
 	},
 
-	quarter: {
-		type: String,
+	yearBuild: {
+		label: 'Năm xây dựng',
+		type: Number,
 		required: false
 	},
 
+	description: {
+		label: 'Mô tả',
+		type: Types.Textarea,
+		wysiwyg: false,
+		height: 200
+	},
+
 	isProject: {
+		label: 'Nằm trong dự án',
 		type: Boolean,
 		required: false
 	},
 
+	project: {
+		label: 'Tên dự án',
+		type: String,
+		required: false
+	},
+
+	projectLink: {
+		label: 'Link mô tả dự án',
+		type: Types.Url,
+		required: false
+	},
+
 	name: {
+		label: 'Tên người đăng',
 		type: String,
 		required: false
 	},
 
 	mobile: {
+		label: 'Số điện thoại',
 		type: String,
 		required: false
 	},
 
-	medium: {
+	// medium: {
+	// 	label: 'Trung bình',
+	// 	type: Boolean,
+	// 	required: false
+	// },
+
+	pushAds: {
+		label: 'Chạy quảng cáo',
 		type: Boolean,
-		required: false
+		default: false
 	},
 
 	state: {
+		label: 'Trạng thái',
 		type: Types.Select,
 		options: 'draft, published, archived',
 		default: 'draft',
@@ -131,12 +178,14 @@ Post.add({
 	},
 
 	author: {
+		label: 'Người đăng',
 		type: Types.Relationship,
 		ref: 'User',
 		index: true
 	},
 
 	publishedDate: {
+		label: 'Ngày đăng',
 		type: Types.Date,
 		index: true,
 		dependsOn: {
@@ -144,11 +193,14 @@ Post.add({
 		}
 	},
 
-	image: {
-		type: Types.CloudinaryImage
+	images :{ 
+		label: 'Hình ảnh',
+		type: Types.CloudinaryImages, 
+		folder: '/upload/images' 
 	},
 
 	categories: {
+		label: 'Phân loại',
 		type: Types.Relationship,
 		ref: 'PostCategory',
 		many: true

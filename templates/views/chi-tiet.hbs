@@ -56,7 +56,8 @@
 			<h4>Thông tin chi tiết</h4>
 			<div class="row">
 				<div class="col-md-4">
-					<b>Ngày đăng: </b><span>{{publishedDate}}</span>
+					{{!-- <b>Ngày đăng: </b><span>{{publishedDate}}</span> --}}
+					<b>Ngày đăng: </b><span>04/12/3016</span>
 				</div>
 				<div class="col-md-4">
 					<b>Hình thức: </b><span>{{typeName type}}</span>
@@ -104,11 +105,13 @@
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane active" id="home">
+						{{#each images}}
 						<span class="wrapper-cover-img">
-							<a class="fancybox" rel="gallery" href={{image.secure_url}}>
-								<img class="media-object" src={{image.secure_url}}>
+							<a class="fancybox" rel="gallery" href={{secure_url}}>
+								<img class="media-object" src={{secure_url}}>
 							</a>
 						</span>
+						{{/each}}
 				</div>
 				<div role="tabpanel" class="tab-pane" id="profile">
 					<div class="col-md-12">
