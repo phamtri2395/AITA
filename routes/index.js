@@ -178,7 +178,7 @@ exports = module.exports = function(app) {
 	app.get('/dang-ky', routes.views['dang-ky']);
 	app.get('/dang-tin', routes.views['dang-tin']);
 	app.post('/add-new-post', routes.services.posts.add);
-	app.get('/chi-tiet', routes.views['chi-tiet']);
+	app.get('/chi-tiet/:_id', routes.views['chi-tiet']);
 	
 	app.get('/fb', routes.views['fb']);
 	
