@@ -45,8 +45,8 @@ $(document).on('ready', function() {
 	};
 
 	var updateToInput = function(latLng) {
-		var $inputLat = $('[name="google-lat"]');
-		var $inputLng = $('[name="google-lng"]');
+		var $inputLat = $('[name="latitude"]');
+		var $inputLng = $('[name="longitude"]');
 
 		$inputLat.val(latLng.lat());
 		$inputLng.val(latLng.lng());
@@ -66,5 +66,7 @@ $(document).on('ready', function() {
 	// only apply for dang-tin page
 	if ($('.container').hasClass('jspage-dang-tin')) {
 		initDangTin();
+
+		
 	}
 });

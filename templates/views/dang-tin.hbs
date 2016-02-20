@@ -3,7 +3,7 @@
 	<div class="col-md-8">
 		<h1>Đăng tin nhà đất</h1>
 
-		<form class="form-home" action="#" method="post" accept-charset="utf-8">
+		<form class="form-home" action="/add-new-post" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 			<div class="">
 				<div class="form-group">
 					<div class="group-title">Thông tin bắt buộc</div>
@@ -11,15 +11,15 @@
 						<div class="col-xs-12 col-sm-8 col-md-9">
 							<div class="group-control">
 								<label>Tiêu đề</label>
-								<input class="form-control" type="text" name="title" required="required" placeholder="Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm">
+								<input class="form-control" type="text" name="title" required="required" placeholder="Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm" value="Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm" />
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-3">
 							<div class="group-control group-checkbox">
 								<label class="checkbox-lable" for="checkbox-mat-tien">
-									<input type="checkbox" name="front" id="checkbox-mat-tien" /> 
 									Mặt tiền
 								</label>
+								<input type="checkbox" name="front" id="checkbox-mat-tien" checked="checked" /> 
 							</div>
 						</div>
 						
@@ -54,13 +54,13 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Đường</label>
-								<input class="form-control" type="text" name="street" required="required">
+								<input class="form-control" type="text" name="street" required="required" value="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" value="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" />
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Giá (VNĐ)</label>
-								<input class="form-control" type="text" name="price" required="required">
+								<input class="form-control" type="text" name="price" required="required" value="1000" />
 							</div>
 						</div>
 						{{!-- <div class="col-xs-12 col-sm-6 col-md-4">
@@ -72,7 +72,7 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Diện tích (m²)</label>
-								<input class="form-control" type="text" name="area" required="required">
+								<input class="form-control" type="text" name="area" required="required" value="40" />
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
@@ -107,8 +107,9 @@
 							<div class="group-control">
 								<label>Loại hình</label>
 								<select class="form-control" name="type" required="required">
-									<option value="01">Cho thuê</option>
-									<option value="02">Bán</option>
+									{{# each data.estateCategories}}
+									<option value="{{_id}}">{{name}}</option>
+									{{/each}}
 								</select>
 							</div>
 						</div>
@@ -116,7 +117,7 @@
 						<div class="col-xs-12 col-sm-8 col-md-9">
 							<div class="group-control">
 								<label>Địa chỉ đầy đủ</label>
-								<input class="form-control" type="text" name="address" required="required" placeholder="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM">
+								<input class="form-control" type="text" name="address" required="required" placeholder="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" value="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" />
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-3">
@@ -137,14 +138,15 @@
 					</div>
 					<div class="clear-top"></div>
 					<i><small>(*) Nhấp để chọn vị trí trên bản đồ</small></i>
-					<input type="text" name="google-lat">
-					<input type="text" name="google-lng">
+					<input type="text" name="latitude">
+					<input type="text" name="longitude">
 				</div>
 				{{!-- end: vị trí trên bản đồ --}}
 
 				<div class="form-group">
 					<div class="group-title">Hình ảnh</div>
 					<div role="tabpanel" class="tab-pane active" id="home">
+						<input type="file" name="images-upload" multiple />
 						<span class="wrapper-cover-img">
 							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
 						</span>
@@ -172,7 +174,7 @@
 					<div class="group-container row">
 						<div class="col-xs-12">
 							<div class="group-control">
-								<textarea row="4" class="form-control" name="description" style="width: 100%; height: 150px;"></textarea>
+								<textarea row="4" class="form-control" name="description" style="width: 100%; height: 150px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
 							</div>
 						</div>
 					</div>
@@ -185,7 +187,7 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Chọn nếu nhà thuộc dự án</label>
-								<input class="form-control" type="text" name="isProject" required="required">
+								<input class="form-control" type="checkbox" name="isProject" required="required" checked="checked" />
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
@@ -207,8 +209,8 @@
 							<div class="group-control">
 								<label>Số tầng</label>
 								<select class="form-control" name="floors" required="required">
-									<option value="01">OptionA</option>
-									<option value="02">OptionB</option>
+									<option value="01">1</option>
+									<option value="02">2</option>
 								</select>
 							</div>
 						</div>
@@ -216,14 +218,14 @@
 							<div class="group-control">
 								<label for="highway">
 									Lộ giới (m)
-									<input id="highway" class="form-control" name="highway" required="required">
+									<input id="highway" class="form-control" name="highway" required="required" value="25" />
 								</label>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="group-control">
 								<label>Năm xây dựng</label>
-								<input class="form-control" name="yearBuild" required="required">
+								<input class="form-control" name="yearBuild" required="required" value="2015" />
 							</div>
 						</div>
 					</div>
@@ -236,7 +238,7 @@
 						<div class="col-md-4">
 							<div class="group-control">
 								<label>Tên *</label>
-								<input class="form-control" type="text" name="name" required="required">
+								<input class="form-control" type="text" name="name" required="required" value="Nguyễn Duy Tân - Liên hệ" />
 							</div>
 						</div>
 						{{!-- <div class="col-md-4">
@@ -248,7 +250,7 @@
 						<div class="col-md-4">
 							<div class="group-control">
 								<label>Số điện thoại *</label>
-								<input class="form-control" type="text" name="mobile" required="required">
+								<input class="form-control" type="text" name="mobile" required="required" value="01642000011" />
 							</div>
 						</div>
 						<div class="col-md-4">

@@ -12,7 +12,6 @@ exports.create = {
 		{ 'name.first': 'Admin', 'name.last': 'User', email: 'admin@aita.vn', password: 'qwert12345', isAdmin: true }
 	]
 };
-
 /*
 
 // This is the long-hand version of the functionality above:
