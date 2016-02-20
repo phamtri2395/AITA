@@ -45,9 +45,7 @@
 							<div class="group-control">
 								<label>Phường/Xã</label>
 								<select class="form-control" name="ward" required="required">
-								{{# each data.wards}}
-									<option value={{_id}}>{{name}}</option>
-								{{/each}}
+									{{getWards}}
 								</select>
 							</div>
 						</div>
@@ -275,6 +273,7 @@
 						<div class="col-md-12">
 							<p><i><small>(*)Tin đăng của bạn sẽ được kiểm duyệt trong vòng 1 giờ trước khi được đăng.</small></i>
 							</p>
+							<input type="hidden" name="ward-filters" value="{{json data.filters}}" />
 							<input type="hidden" name="publishedDate" value="{{currentDate}}" />
 							<button class="btn btn-lg btn-default" type="submit">Hủy</button>
 							<button class="btn btn-lg btn-success" type="submit">Hoàn tất</button>

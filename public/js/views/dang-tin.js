@@ -63,10 +63,20 @@ $(document).on('ready', function() {
 		});
 	};
 
+	$('select[name="district"]').off('change').on('change', function(e) {
+		var wardFilters = JSON.parse($('[name="ward-filters"]').val());
+		var wardElm = $('[name="ward"]');
+		var wardOpts = [];
+
+		wardElm.empty();
+		$.each(wardFilters[$(this).val()], function(ind, val) {
+			wardOpts.push(['<option value="', val._id, '">', val.name, '</option>'].join(''));
+		});
+		wardElm.append(wardOpts);
+	});
+
 	// only apply for dang-tin page
 	if ($('.container').hasClass('jspage-dang-tin')) {
-		initDangTin();
-
-		
+		initDangTin();		
 	}
 });
