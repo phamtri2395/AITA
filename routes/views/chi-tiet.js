@@ -8,6 +8,10 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 	locals.user = req.user;
 
+	// locals.section is used to set the currently selected
+	// item in the header navigation.
+	locals.section = 'chi-tiet';
+
 	// Init locals's data
 	locals.data = {
 		post: {},
@@ -59,10 +63,6 @@ exports = module.exports = function(req, res) {
 	Handlebars.registerHelper('isMedium', function(medium) {
 		return (medium) ? 'Tiếp' : 'Không Tiếp';
 	});
-
-	// locals.section is used to set the currently selected
-	// item in the header navigation.
-	// locals.section = 'home';
 
 	// Render the view
 	view.render('chi-tiet');

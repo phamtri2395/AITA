@@ -8,7 +8,7 @@ exports = module.exports = function(req, res) {
 	
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'login';
+	locals.section = 'dang-nhap';
 	
 	// Render the view
 	view.render('login');
