@@ -12,17 +12,19 @@ var Ward = new keystone.List('Ward', {
 
 Ward.add({
 	name: {
+		label: 'Phường',
 		type: String,
 		required: true,
 	},
 
 	district: {
+		label: 'Quận',
 		type: Types.Relationship,
 		ref: 'District',
 		many: true
 	}
 });
 
-Ward.defaultColumns = 'name, district';
+Ward.defaultColumns = 'name|20%, district';
 Ward.relationship({ ref: 'Post', path: 'wards' });
 Ward.register();
