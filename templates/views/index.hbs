@@ -23,10 +23,8 @@
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Quận 1 <span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu">
-			{{# each data.districts}}
-			<li><a href="#">{{name}}</a></li>
-			{{/each}}
+			<ul class="dropdown-menu dropdown-menu__three-cols">
+			{{# each data.districts}}<li><a href="#">{{name}}</a></li>{{/each}}
 			</ul>
 		</div>
 

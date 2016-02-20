@@ -343,6 +343,22 @@ input[type="checkbox"].tel-checkbox {
   padding-bottom: 15px;
   border-bottom: 1px solid whitesmoke; }
 
+.dropdown-menu__two-cols {
+  width: 360px; }
+  .dropdown-menu__two-cols li {
+    display: inline-block;
+    width: 50%; }
+
+.dropdown-menu__three-cols {
+  width: 520px; }
+  .dropdown-menu__three-cols li {
+    display: inline-block;
+    width: 33.3%; }
+
+.dropdown-menu li a {
+  padding-top: 7.5px;
+  padding-bottom: 7.5px; }
+
 body {
   font-size: 16px; }
 
