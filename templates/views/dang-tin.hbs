@@ -243,8 +243,8 @@
 						<div class="col-md-4">
 							<div class="group-control">
 								<label>Tên *</label>
-								<input type="hidden" name="author" value="{{json client}}" />
-								<input class="form-control" type="text" name="authorName" required="required" value="{{json user}}" />
+								<input type="hidden" name="author" value="{{user._id}}" />
+								<input class="form-control" type="text" name="authorName" required="required" value="{{getFullname user}}" />
 							</div>
 						</div>
 						{{!-- <div class="col-md-4">
@@ -275,6 +275,7 @@
 						<div class="col-md-12">
 							<p><i><small>(*)Tin đăng của bạn sẽ được kiểm duyệt trong vòng 1 giờ trước khi được đăng.</small></i>
 							</p>
+							<input type="hidden" name="publishedDate" value="{{currentDate}}" />
 							<button class="btn btn-lg btn-default" type="submit">Hủy</button>
 							<button class="btn btn-lg btn-success" type="submit">Hoàn tất</button>
 						</div>

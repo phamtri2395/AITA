@@ -1,11 +1,14 @@
 var keystone = require('keystone');
 var async = require('async');
+var Handlebars = require('handlebars');
+var moment = require('moment');
 
 exports = module.exports = function(req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
-	locals.user = req.user;
+	// locals.user = req.user;
+	locals.user = req.session.passport.user;
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
@@ -50,6 +53,14 @@ exports = module.exports = function(req, res) {
 			locals.data.estateCategories = results;
 			next();
 		});
+	});
+
+	Handlebars.registerHelper('getFullname', function(user) {
+		return [user.name.first, user.name.last].join(' ');
+	});
+
+	Handlebars.registerHelper('currentDate', function() {
+		return moment().format('YYYY-MM-DD');
 	});
 
 	// Render the view
