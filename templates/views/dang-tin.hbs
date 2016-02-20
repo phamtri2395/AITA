@@ -127,6 +127,12 @@
 								</label>
 							</div>
 						</div>
+						<div class="col-xs-12 col-sm-8 col-md-9">
+							<div class="group-control">
+								<label for="push-ads">Chạy quảng cáo</label>
+								<input type="checkbox" name="pushAds" id="push-ads" class="form-control" checked="checked" />
+							</div>
+						</div>
 					</div>
 				</div>
 				{{!-- end: thông tin bắt buộc --}}
@@ -146,7 +152,6 @@
 				<div class="form-group">
 					<div class="group-title">Hình ảnh</div>
 					<div role="tabpanel" class="tab-pane active" id="home">
-						<input type="file" name="images-upload" multiple />
 						<span class="wrapper-cover-img">
 							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
 						</span>
@@ -238,7 +243,8 @@
 						<div class="col-md-4">
 							<div class="group-control">
 								<label>Tên *</label>
-								<input class="form-control" type="text" name="name" required="required" value="Nguyễn Duy Tân - Liên hệ" />
+								<input type="hidden" name="author" value="{{json client}}" />
+								<input class="form-control" type="text" name="authorName" required="required" value="{{json user}}" />
 							</div>
 						</div>
 						{{!-- <div class="col-md-4">
