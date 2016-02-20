@@ -7,10 +7,15 @@ exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	locals.user = req.user;
-	
+
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'home';
+	var section = req.url.substr(1, req.url.length);
+	if (section.length === 0) {
+		section = 'nha-rieng';
+	}
+	locals.section = section;
+	console.log('req', locals.section);
 	
 	// Init locals's data
 	locals.data = {

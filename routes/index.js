@@ -180,6 +180,10 @@ exports = module.exports = function(app) {
 
 	// app routes
 	app.get('/', routes.views.index);
+	app.get('/nha-rieng', routes.views.index);
+	app.get('/can-ho', routes.views.index);
+	app.get('/phong', routes.views.index);
+
 	app.get('/login', routes.views.login);
 	app.get('/dang-nhap', routes.views.login);
 	app.get('/dang-ky', routes.views['dang-ky']);
@@ -187,7 +191,7 @@ exports = module.exports = function(app) {
 	app.post('/add-new-post', routes.services.posts.add);
 	app.get('/chi-tiet', routes.views['chi-tiet']);
 	
-	app.get('/fb', routes.views['fb']);
+	app.get('/fb', routes.views.fb);
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
