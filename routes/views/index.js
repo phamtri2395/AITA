@@ -21,29 +21,22 @@ exports = module.exports = function(req, res) {
 
 	// Load all categories
 	view.on('init', function(next) {
-		
 		keystone.list('Category').model.find().sort('name').exec(function(err, results) {
-			
 			if (err || !results.length) {
 				return next(err);
 			}
-			
 			locals.data.categories = results;
 
 			// Load the counts for each category
 			async.each(locals.data.categories, function(category, next) {
-				
 				keystone.list('Category').model.count().exec(function(err, count) {
 					category.postCount = count;
 					next(err);
 				});
-				
 			}, function(err) {
 				next(err);
 			});
-						
 		});
-		
 	});
 
 	// Load all districts
