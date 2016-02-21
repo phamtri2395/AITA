@@ -190,6 +190,7 @@ exports = module.exports = function(app) {
 	app.get('/dang-tin', routes.views['dang-tin']);
 	app.post('/add-new-post', routes.services.posts.add);
 	app.get('/chi-tiet/:_id', routes.views['chi-tiet']);
+	app.get('/user', routes.views.user);
 	
 	app.get('/fb', routes.views.fb);
 	
