@@ -97,28 +97,35 @@ passport.use(new FacebookStrategy({
 			var user = keystone.list('User').model;
 
 			// Find if this User is already in database
-			user.findOne({ 'providerId' : profile.id }, 'providerId', function (err, match) {
-				if (match) return console.log ('This user is already in database');
-				// add user to database
-				user.create({
-					'isAdmin' : false,
-					'password' : '',
-					'email' : ((profile.emails[0]) ? profile.emails[0].value : ' '),
-					'name' : {
-						'last' : lastName(),
-						'first' : firstName()
-					},
-					'gender' : gender(),
-					'providerId' : profile.id,
-					'provider' : profile.provider,
-					'avatar' : ((profile.photos[0]) ? profile.photos[0].value : ' ')
-				});
+			user.findOne({ 'providerId' : profile.id }, function (err, result) {
+				if (result) {
+					console.log ('This user is already in database', result);
+					return done(null, result);
+				} else {
+					// add user to database
+					user.create({
+						'isAdmin' : false,
+						'password' : '',
+						'email' : ((profile.emails[0]) ? profile.emails[0].value : ' '),
+						'name' : {
+							'last' : lastName(),
+							'first' : firstName()
+						},
+						'gender' : gender(),
+						'providerId' : profile.id,
+						'provider' : profile.provider,
+						'avatar' : ((profile.photos[0]) ? profile.photos[0].value : ' ')
+					}, function(user) {
+						console.log('user', user);
+						return done(null, user);
+					});
+				}
 			});
 			// To keep the example simple, the user's Facebook profile is returned to
 			// represent the logged-in user.  In a typical application, you would want
 			// to associate the Facebook account with a user record in your database,
 			// and return that user instead.
-			return done(null, profile);
+			// return done(null, profile);
 		});
 	}
 ));
@@ -148,7 +155,7 @@ exports = module.exports = function(app) {
 	app.use(passport.session());
 
 	app.use(function(req, res, next) {
-		// console.log('SESSION', req.session);
+		console.log('SESSION', req.session.passport ? req.session.passport.user : null);
 		res.locals.client = req.session.passport ? req.session.passport.user : null;
 		next();
 	});
@@ -173,6 +180,10 @@ exports = module.exports = function(app) {
 
 	// app routes
 	app.get('/', routes.views.index);
+	app.get('/nha-rieng', routes.views.index);
+	app.get('/can-ho', routes.views.index);
+	app.get('/phong', routes.views.index);
+
 	app.get('/login', routes.views.login);
 	app.get('/dang-nhap', routes.views.login);
 	app.get('/dang-ky', routes.views['dang-ky']);
@@ -181,7 +192,7 @@ exports = module.exports = function(app) {
 	app.get('/chi-tiet/:_id', routes.views['chi-tiet']);
 	app.get('/user', routes.views.user);
 	
-	app.get('/fb', routes.views['fb']);
+	app.get('/fb', routes.views.fb);
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

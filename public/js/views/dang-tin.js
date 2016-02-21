@@ -45,8 +45,8 @@ $(document).on('ready', function() {
 	};
 
 	var updateToInput = function(latLng) {
-		var $inputLat = $('[name="google-lat"]');
-		var $inputLng = $('[name="google-lng"]');
+		var $inputLat = $('[name="latitude"]');
+		var $inputLng = $('[name="longitude"]');
 
 		$inputLat.val(latLng.lat());
 		$inputLng.val(latLng.lng());
@@ -63,8 +63,20 @@ $(document).on('ready', function() {
 		});
 	};
 
+	$('select[name="district"]').off('change').on('change', function(e) {
+		var wardFilters = JSON.parse($('[name="ward-filters"]').val());
+		var wardElm = $('[name="ward"]');
+		var wardOpts = [];
+
+		wardElm.empty();
+		$.each(wardFilters[$(this).val()], function(ind, val) {
+			wardOpts.push(['<option value="', val._id, '">', val.name, '</option>'].join(''));
+		});
+		wardElm.append(wardOpts);
+	});
+
 	// only apply for dang-tin page
 	if ($('.container').hasClass('jspage-dang-tin')) {
-		initDangTin();
+		initDangTin();		
 	}
 });

@@ -9,9 +9,12 @@
 				Thuê <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				{{# each data.categories}}
+				<li><a href="#">Mua</a></li>
+				<li><a href="#">Bán</a></li>
+
+				<!-- {{# each data.categories}}
 				<li><a href="#">{{name}}</a></li>
-				{{/each}}
+				{{/each}} -->
 			</ul>
 		</div>
 
@@ -20,10 +23,8 @@
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Quận 1 <span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu">
-			{{# each data.districts}}
-			<li><a href="#">{{name}}</a></li>
-			{{/each}}
+			<ul class="dropdown-menu dropdown-menu__three-cols">
+			{{# each data.districts}}<li><a href="#">{{name}}</a></li>{{/each}}
 			</ul>
 		</div>
 
@@ -33,11 +34,14 @@
 				Giá tiền <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li><a href="#">Action</a></li>
-				<li><a href="#">Another action</a></li>
-				<li><a href="#">Something else here</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#">Separated link</a></li>
+				<li><a href="#">Dưới 1tr/tháng</a></li>
+				<li><a href="#">1 - 2tr/tháng</a></li>
+				<li><a href="#">2 - 3tr/tháng</a></li>
+				<li><a href="#">3 - 4tr/tháng</a></li>
+				<li><a href="#">4 - 6tr/tháng</a></li>
+				<li><a href="#">6 - 10tr/tháng</a></li>
+				<li><a href="#">10 - 15tr/tháng</a></li>
+				<li><a href="#">Trên 15tr/tháng</a></li>
 			</ul>
 		</div>
 
@@ -47,16 +51,19 @@
 				Diện tích <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li><a href="#">Action</a></li>
-				<li><a href="#">Another action</a></li>
-				<li><a href="#">Something else here</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#">Separated link</a></li>
+				<li><a href="#">Dưới 10m2</a></li>
+				<li><a href="#">10m2 - 20m2</a></li>
+				<li><a href="#">20m2 - 30m2</a></li>
+				<li><a href="#">30m2 - 40m2</a></li>
+				<li><a href="#">40m2 - 50m2</a></li>
+				<li><a href="#">50m2 - 60m2</a></li>
+				<li><a href="#">60m2 - 80m2</a></li>
+				<li><a href="#">Trên 80m2</a></li>
 			</ul>
 		</div>
 
 		<!-- Single button -->
-		<div class="btn-group _index">
+		{{!-- <div class="btn-group _index">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Tìm nâng cao <span class="caret"></span>
 			</button>
@@ -67,7 +74,7 @@
 				<li role="separator" class="divider"></li>
 				<li><a href="#">Separated link</a></li>
 			</ul>
-		</div>
+		</div> --}}
 
 		<button type="button" class="btn btn-success">Tìm kiếm</button>
 	</div>

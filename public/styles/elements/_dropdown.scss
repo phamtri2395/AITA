@@ -1,0 +1,30 @@
+// Aita 2016
+// Author: Tw
+
+.dropdown-menu {
+
+	&__two-cols {
+		width: 360px;
+
+		li {
+			display: inline-block;
+			width: 50%;
+		}
+	}
+
+	&__three-cols {
+		width: 520px;
+
+		li {
+			display: inline-block;
+			width: 33.3%;
+		}
+	}
+
+	li {
+		a {
+			padding-top: 7.5px;
+			padding-bottom: 7.5px;
+		}
+	}
+}

@@ -7,10 +7,15 @@ exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	locals.user = req.user;
-	
+
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'home';
+	var section = req.url.substr(1, req.url.length);
+	if (section.length === 0) {
+		section = 'nha-rieng';
+	}
+	locals.section = section;
+	console.log('req', locals.section);
 	
 	// Init locals's data
 	locals.data = {
@@ -21,29 +26,22 @@ exports = module.exports = function(req, res) {
 
 	// Load all categories
 	view.on('init', function(next) {
-		
 		keystone.list('Category').model.find().sort('name').exec(function(err, results) {
-			
 			if (err || !results.length) {
 				return next(err);
 			}
-			
 			locals.data.categories = results;
 
 			// Load the counts for each category
 			async.each(locals.data.categories, function(category, next) {
-				
 				keystone.list('Category').model.count().exec(function(err, count) {
 					category.postCount = count;
 					next(err);
 				});
-				
 			}, function(err) {
 				next(err);
 			});
-						
 		});
-		
 	});
 
 	// Load all districts

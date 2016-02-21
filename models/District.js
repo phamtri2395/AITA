@@ -10,7 +10,7 @@ var District = new keystone.List('District', {
 });
 
 District.add({
-	name: { type: String, required: true }
+	name: { label: 'Quận', type: String, required: true }
 });
 
 District.relationship({ ref: 'Post', path: 'districts' });
