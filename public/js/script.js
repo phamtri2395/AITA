@@ -22,7 +22,6 @@ var addMouseEventListener = function(map, marker, infoWindow, content) {
 
 	google.maps.event.addListener(marker, 'mouseout', function() {
 		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red.png');
-
 		infoWindow.close();
 	});
 };
@@ -118,9 +117,8 @@ function initialize() {
 	}
 }
 
-
-// dont apply this function on dang-tin page
-if (!$('.container').hasClass('jspage-dang-tin')) {
+// apply these map function only at index page
+if ($('.main-block').hasClass('jspage-index')) {
 	google.maps.event.addDomListener(window, 'load', initialize);
 }
 

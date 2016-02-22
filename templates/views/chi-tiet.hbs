@@ -1,9 +1,10 @@
 {{!-- Capheshift 2015 --}}
 {{!-- Author: Tw --}}
 
-<div class="container js-trang-chi-tiet">
-{{# each data}}
+<div class="container jspage-chi-tiet">
 	<div class="col-md-7">
+	{{# each data}}
+		<div class="u-hidden jsdata-detail" data-lat="{{latitude}}" data-lng="{{longitude}}"></div>
 		<div class="content-wrapper _no-bottom-border">
 			<small>
 				Hồ Chí Minh / {{districtName district}}
@@ -138,8 +139,8 @@
 				data-href="https://aitavn.herokuapp.com/chi-tiet" 
 				data-numposts="12"></div>
 		</div>
+	{{/each}}
 	</div>
-{{/each}}
 
 	<div class="main-right-panel col-md-5">
 		<div class="suggest-item">

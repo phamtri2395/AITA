@@ -395,6 +395,9 @@ body {
 label:hover {
   cursor: pointer; }
 
+.u-hidden {
+  display: none; }
+
 .tab-pane {
   padding-top: 15px; }
 
