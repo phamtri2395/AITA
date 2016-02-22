@@ -97,9 +97,11 @@
 				<!-- Tab panes -->
 				<div class="tab-content _index-page">
 					<div role="tabpanel" class="tab-pane active" id="home">
-						<div class="list-result">
+						<div class="list-result" data-marker="">
 							{{# each data.posts}}
-								<div class="media js-post-content" 
+								<div class="media js-post-content"
+									data-price={{price}} data-area={{area}}
+									data-bedroom={{bedroom}} data-bathroom={{bathroom}}
 									data-latitude={{latitude}} data-longitude={{longitude}}
 									data-is-loaded="false" >
 									<div class="media-left hidden-xs">
