@@ -1,0 +1,46 @@
+{{!-- Capheshift 2015 --}}
+{{!-- Author: skullopus --}}
+
+<div class="container">
+	<div class="row">
+		<div class="main-left-panel col-md-7">
+			{{# each data.posts}}
+				<div class="result-block" style="margin-top:25px">
+					<div class="media-body">
+						<h4 class="media-heading">
+							<a href="/chi-tiet/{{id}}" data-items-list="" data-latitude="" data-longitude="">{{title}}</a>
+							<input type="checkbox" id="checkbox-{{@index}}" class="tel-checkbox" />
+							<label for="checkbox-{{@index}}" class="tel-label">
+								<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
+							</label>
+							<a href="tel:{{mobile}}" class="tel">
+								<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
+							</a>
+						</h4>
+						<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+							<li>{{area}} m2</li>
+							<li style="list-style: none">|</li>
+							<li>{{bedroom}} phòng ngủ</li>
+							<li style="list-style: none">|</li>
+							<li><b>{{toCurrency price}} VND</b></li>
+						</ul>
+						{{{description}}}
+						<a href="/chi-tiet/{{id}}">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>
+					</div>
+
+					<div>
+					{{# each images}}
+							<span class="wrapper-cover-img">
+								<a class="fancybox" rel="gallery" href="{{url}}">
+									<img class="media-object" src="{{url}}">
+								</a>
+							</span>
+					{{/each}}
+					</div>
+
+					<small><a href="#">Hồ Chí Minh / {{districtName district}}</a></small>
+				</div>
+			{{/each}}
+		</div>
+	</div>
+</div
