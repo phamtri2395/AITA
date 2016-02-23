@@ -83,7 +83,17 @@
 						<li {{#ifeq ../section 'dang-tin'}}class="active"{{else}}{{/ifeq}}>
 							<a href="/dang-tin" title="Đăng tin">Đăng tin</a>
 						</li>
-						<li><a href="/logout">{{client.name.first}} {{client.name.last}}</a></li>
+						
+						<ul class="nav navbar-nav">
+						  <li class="dropdown">
+        				<a class="dropdown-toggle" data-toggle="dropdown" href="#">{{client.name.first}} {{client.name.last}}<span class="caret"></span></a>
+
+        				<ul class="dropdown-menu">
+									<li><a href="/user">Manage</a></li>
+									<li><a href="/logout">Logout</a></li>
+        				</ul>
+     	 				</li>
+						</ul>
 						{{else}}
 						<li {{#ifeq ../section 'dang-nhap'}}class="active"{{else}}{{/ifeq}}>
 							<a href="/dang-nhap" title="Đăng nhập">Đăng nhập</a>

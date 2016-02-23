@@ -17,12 +17,12 @@ $(document).on('ready', function() {
 	};
 
 	var getLatLon = function() {
-		// var $detailData = $('.jsdata-detail');
+		var $detailData = $('.jsdata-detail');
 		return {
-			// lat: $detailData.attr('data-lat'),
-			// lng: $detailData.attr('data-lng')
-			lat: 10.81416666666667, 
-			lng: 106.66694444444444
+			lat: $detailData.attr('data-lat'),
+			lng: $detailData.attr('data-lng')
+			// lat: 10.81416666666667, 
+			// lng: 106.66694444444444
 		};
 	};
 
@@ -43,6 +43,7 @@ $(document).on('ready', function() {
 
 		gPosition = new google.maps.LatLng(position.lat, position.lng);
 		map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+		map.setCenter(gPosition);
 		setCurrentMarker(gPosition);
 	};
 
