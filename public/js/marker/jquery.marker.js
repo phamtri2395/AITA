@@ -32,7 +32,7 @@
 			data.area, ' m2<br />',
 			data.bedroom, ' phỏng ngủ<br />',
 			data.bathroom, ' phỏng tắm<br />',
-			data.price,
+			data.price, ' VNĐ',
 			'</p>'
 		].join('');
 	};
