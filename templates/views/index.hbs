@@ -100,6 +100,7 @@
 						<div class="list-result" data-marker="">
 							{{# each data.posts}}
 								<div class="media js-post-content"
+									data-item=""
 									data-price={{price}} data-area={{area}}
 									data-bedroom={{bedroom}} data-bathroom={{bathroom}}
 									data-latitude={{latitude}} data-longitude={{longitude}}
@@ -112,7 +113,7 @@
 
 									<div class="media-body">
 										<h4 class="media-heading">
-											<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
+											<a href="/chi-tiet" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
 											<input type="checkbox" id="checkbox-{{@index}}" class="tel-checkbox" />
 											<label for="checkbox-{{@index}}" class="tel-label">
 												<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem

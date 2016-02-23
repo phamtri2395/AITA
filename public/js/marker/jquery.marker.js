@@ -88,13 +88,13 @@
 			});
 
 			that.element
-				.off('mouseover.view-item', '[data-items-list]').on('mouseover.view-item', '[data-items-list]', function() {
-					var self = $(this);
-					google.maps.event.trigger(that.vars.markersList[self.closest('.media').index()], 'mouseover');
+				.off('mouseover.view-item', that.options.dataItem)
+				.on('mouseover.view-item', that.options.dataItem, function() {
+					google.maps.event.trigger(that.vars.markersList[$(this).index()], 'mouseover');
 				})
-				.off('mouseout.view-item', '[data-items-list]').on('mouseout.view-item', '[data-items-list]', function() {
-					var self = $(this);
-					google.maps.event.trigger(that.vars.markersList[self.closest('.media').index()], 'mouseout');
+				.off('mouseout.view-item', that.options.dataItem)
+				.on('mouseout.view-item', that.options.dataItem, function() {
+					google.maps.event.trigger(that.vars.markersList[$(this).index()], 'mouseout');
 				});
 		},
 		destroy: function(){
@@ -117,7 +117,8 @@
 	};
 
 	$.fn[pluginName].defaults = {
-		mapId: 'google-map'
+		mapId: 'google-map',
+		dataItem: '[data-item]'
 	};
 
 	$(function() {
