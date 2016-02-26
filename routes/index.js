@@ -133,6 +133,7 @@ passport.use(new FacebookStrategy({
 // Setup Route Bindings
 exports = module.exports = function(app) {
 	var ensureAuthenticated = function(req, res, next) {
+		console.log(req.isAuthenticated());
 		if (req.isAuthenticated()) { return next(); }
 		res.redirect('/login');
 	};
@@ -187,7 +188,8 @@ exports = module.exports = function(app) {
 	app.get('/login', routes.views.login);
 	app.get('/dang-nhap', routes.views.login);
 	app.get('/dang-ky', routes.views['dang-ky']);
-	app.get('/dang-tin', routes.views['dang-tin']);
+	app.get('/dang-tin', ensureAuthenticated, routes.views['dang-tin']);
+
 	app.post('/add-new-post', routes.services.posts.add);
 	app.get('/chi-tiet/:_id', routes.views['chi-tiet']);
 	app.get('/user', routes.views.user);
