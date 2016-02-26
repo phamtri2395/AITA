@@ -21,8 +21,6 @@ $(document).on('ready', function() {
 		return {
 			lat: $detailData.attr('data-lat'),
 			lng: $detailData.attr('data-lng')
-			// lat: 10.81416666666667, 
-			// lng: 106.66694444444444
 		};
 	};
 
