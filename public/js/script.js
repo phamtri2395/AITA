@@ -1,7 +1,24 @@
-// // capheshift 2015
-// // author: Tw
+/**
+ * capheshift 2015
+ * author: tw
+ */
 
-// /* globals google, FB, $ */
+/* globals google, FB, $ */
+
+/**
+ * facebook functions
+ */
+var fbSend = function(e) {
+	var $element = $(e);
+	var facebookId = $element.attr('data-facebook-id');
+	
+	FB.ui({
+		'method': 'send',
+		'to': facebookId,
+		'link': 'http://www.visla.vn/du-an/468/sunrise-city?aid=20686',
+		'redirect_uri': 'https://www.google.com/?gws_rd=ssl'
+	});
+};
 
 // var center = new google.maps.LatLng(10.81416666666667, 106.66694444444444);
 
@@ -123,16 +140,6 @@
 // if (!$('.container').hasClass('jspage-dang-tin')) {
 // 	google.maps.event.addDomListener(window, 'load', initialize);
 // }
-
-// facebook functions
-var fbSend = function() {
-	FB.ui({
-		method: 'send',
-		to: '100005774646691',
-		link: 'http://www.visla.vn/du-an/468/sunrise-city?aid=20686',
-		redirect_uri: 'https://www.google.com/?gws_rd=ssl'
-	});
-};
 
 // $(document).ready(function() {
 // 	var fancyboxElm = $('.fancybox');
