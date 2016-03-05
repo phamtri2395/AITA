@@ -121,6 +121,20 @@
 											<a href="tel:{{mobile}}" class="tel">
 												<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
 											</a>
+											
+											{{#if ../user}}											
+												{{#if (isBookmarked _id)}}
+													<div class="btn btn-bookmark bookmarked">
+												{{else}}
+													<div class="btn btn-bookmark">
+												{{/if}}
+
+													<form class="form-bookmark" value="{{_id}}">
+														<i class="glyphicon glyphicon-star"></i>
+													</form>
+												</div>
+											{{/if}}
+
 										</h4>
 										<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
 											<li>{{area}} m2</li>
@@ -153,8 +167,61 @@
 							</div>
 						</div>
 					</div>
+
 					<div role="tabpanel" class="tab-pane active" id="profile">
-						<i>Bạn chưa có yêu thích nào!</i>
+						{{#if user}}
+							{{# each data.posts}}
+								{{#if (isBookmarked _id)}}
+									<div class="media js-post-content"
+										data-item=""
+										data-price={{price}} data-area={{area}}
+										data-bedroom={{bedroom}} data-bathroom={{bathroom}}
+										data-latitude={{latitude}} data-longitude={{longitude}}
+										data-is-loaded="false" >
+										<div class="media-left hidden-xs">
+											<a href="#">
+												<img src="http://placehold.it/60x60">
+											</a>
+										</div>
+
+										<div class="media-body">
+											<h4 class="media-heading">
+												<a href="/chi-tiet" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
+												<input type="checkbox" id="checkbox-{{@index}}" class="tel-checkbox" />
+												<label for="checkbox-{{@index}}" class="tel-label">
+													<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
+												</label>
+												<a href="tel:{{mobile}}" class="tel">
+													<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
+												</a>
+											</h4>
+											<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+												<li>{{area}} m2</li>
+												<li style="list-style: none">|</li>
+												<li>{{bedroom}} phòng ngủ</li>
+												<li style="list-style: none">|</li>
+												<li>{{bathroom}} phòng tắm</li>
+												<li style="list-style: none">|</li>
+												<li><b>{{toCurrency price}} VND</b></li>
+											</ul>
+											{{{description}}}
+											<a href="/chi-tiet/{{id}}">
+												chi tiết <i class="glyphicon glyphicon-menu-right"></i>
+											</a>
+											<div role="tabpanel" class="tab-pane active" id="home">
+												{{#each images}}
+												<span class="wrapper-cover-img">
+													<a class="fancybox" rel="gallery" href={{secure_url}}>
+														<img class="media-object" src={{secure_url}}>
+													</a>
+												</span>
+												{{/each}}
+											</div>
+										</div>
+									</div>
+								{{/if}}
+							{{/each}}
+						{{/if}}
 					</div>
 				</div>
 			</div>

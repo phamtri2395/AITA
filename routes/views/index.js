@@ -22,6 +22,7 @@ exports = module.exports = function(req, res) {
 		districts: [],
 		posts: [],
 		categories: [],
+		bookmarks: []
 	};
 
 	// Load all categories
@@ -98,6 +99,28 @@ exports = module.exports = function(req, res) {
 		
 	});
 
+	// Load all Bookmarks
+	if (locals.user) {
+		view.on('init', function(next) {
+			keystone.list('Bookmark').model.find({ user: locals.user._id }).exec(function(err, results) {
+				if (err || !results.length) {
+					return next(err);
+				}
+				locals.data.bookmarks = results;
+
+				// Load the counts for each bookmark
+				async.each(locals.data.bookmarks, function(bookmark, next) {
+					keystone.list('Bookmark').model.count().exec(function(err, count) {
+						bookmark.postCount = count;
+						next(err);
+					});
+				}, function(err) {
+					next(err);
+				});
+			});
+		});
+	}
+
 	// Register toCurrency function, which changes price to decimal format
 	Handlebars.registerHelper('toCurrency', function(number) {
   		return number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
@@ -105,6 +128,19 @@ exports = module.exports = function(req, res) {
 	// Register toAuthorName function, which gives full name of author
 	Handlebars.registerHelper('toAuthorName', function(author) {
   		return (author) ? (author.name.first + ' ' + author.name.last) : 'null';
+	});
+	// Check if Bookmarked
+	Handlebars.registerHelper('isBookmarked', function(id) {
+			var flag = false;
+
+  		for (var i = 0; i < locals.data.bookmarks.length; i++) {
+  			if (id.toString() == locals.data.bookmarks[i].post.toString()) {
+  				flag = true;
+  				break;
+  			}
+  		}
+
+  		return flag;
 	});
 
 	// Render the view

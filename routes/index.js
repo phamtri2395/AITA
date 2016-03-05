@@ -195,6 +195,7 @@ exports = module.exports = function(app) {
 	app.get('/user', routes.views.user);
 	
 	app.get('/fb', routes.views.fb);
+	app.post('/bookmark/:_postId', routes.services.bookmarks.add);
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
