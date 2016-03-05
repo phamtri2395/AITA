@@ -458,6 +458,13 @@ label:hover {
 .btn-group._index {
   margin-right: 7.5px; }
 
+.btn-bookmark {
+  background: none;
+  color: #aaa; }
+
+.bookmarked {
+  color: red; }
+
 .login-page {
   margin-top: 50px; }
 
