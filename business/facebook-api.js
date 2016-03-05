@@ -5,13 +5,19 @@ var FB = require('fb');
 FB.setAccessToken(process.env.FACEBOOK_TOKEN);
 
 exports = module.exports = {
-	post: function() {
-		FB.api('528623837288211/feed', 'post', { message: 'gọi từ api'}, function (res) {
+	post: function(message, callback) {
+		FB.api('528623837288211/feed', 'post', message, function (res) {
 			if(!res || res.error) {
-				console.log(!res ? 'error occurred' : res.error);
-				return;
+				if (callback) {
+					callback(!res ? 'error occurred' : res.error);
+					return;
+				}
 			}
-			console.log('post Id: ' + res.id);
+
+			// all successed
+			if (callback) {
+				callback(null, res);
+			}
 		});
 	}
 };
