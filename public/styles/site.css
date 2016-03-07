@@ -465,6 +465,14 @@ label:hover {
 .bookmarked {
   color: red; }
 
+.avatar-wrapper {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  overflow: hidden; }
+  .avatar-wrapper img {
+    width: 100%; }
+
 .login-page {
   margin-top: 50px; }
 

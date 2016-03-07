@@ -19,7 +19,9 @@
 			<div class="media">
 				<div class="media-left hidden-xs">
 					<a href="#">
-						<img src="http://placehold.it/60x60">
+						<span class="avatar-wrapper">
+							<img src={{author.avatar}}>
+						</span>
 					</a>
 				</div>
 
@@ -38,7 +40,10 @@
 						</a>
 					</span>
 					
-					<button class="btn btn-link" data-facebook-id="{{author.providerId}}" onclick="fbSend(this)">
+					<button class="btn btn-link" 
+						data-facebook-id="{{author.providerId}}" 
+						data-link="http://www.visla.vn/du-an/468/sunrise-city?aid=20686"
+						onclick="fbSend(this)">
 						<i class="glyphicon glyphicon-flash"></i> Nhắn qua Facebook
 					</button>
 

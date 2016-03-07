@@ -94,3 +94,14 @@ $tab-h: 44px;
 .bookmarked {
 	color: red;
 }
+
+.avatar-wrapper {
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+	}
+}

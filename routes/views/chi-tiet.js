@@ -1,3 +1,8 @@
+/**
+ * Aita 2016
+ * Author: Tri
+ */
+
 var keystone = require('keystone');
 var Handlebars = require('handlebars');
 
@@ -19,9 +24,6 @@ exports = module.exports = function(req, res) {
 
 	// Get Id from index
 	var id = req.params._id;
-	// if (!id) {
-	// 	return;
-	// }
 	
 	// Load post with Id
 	view.on('init', function(next) {
@@ -37,8 +39,7 @@ exports = module.exports = function(req, res) {
 				locals.data.post.postCount = count;
 				next(err);
 			});
-										
-			// console.log('THIS IS DATA: ', locals.data.post);
+
 		});
 		
 	});	

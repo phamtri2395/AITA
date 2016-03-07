@@ -11,11 +11,12 @@
 var fbSend = function(e) {
 	var $element = $(e);
 	var facebookId = $element.attr('data-facebook-id');
+	var link = $element.attr('data-link');
 	
 	FB.ui({
 		'method': 'send',
 		'to': facebookId,
-		'link': 'http://www.visla.vn/du-an/468/sunrise-city?aid=20686',
+		'link': link,
 		'redirect_uri': 'https://www.google.com/?gws_rd=ssl'
 	});
 };
