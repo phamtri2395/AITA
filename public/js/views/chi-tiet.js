@@ -13,6 +13,7 @@ $(document).on('ready', function() {
 	mapOptions = {
 		center: center,
 		zoom: 16,
+		scrollwheel: false,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
