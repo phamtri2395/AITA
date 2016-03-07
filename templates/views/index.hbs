@@ -87,16 +87,16 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs _full" role="tablist">
 					<li role="presentation" class="active">
-						<a class="tab-item" href="#home" aria-controls="home" role="tab" data-toggle="tab">Kết quả</a>
+						<a class="tab-item" href="#filter" aria-controls="filter" role="tab" data-toggle="tab">Bộ lọc</a>
 					</li>
 					<li role="presentation">
-						<a class="tab-item" href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Đã lưu</a>
+						<a class="tab-item" href="#favorite" aria-controls="favorite" role="tab" data-toggle="tab">Đã lưu</a>
 					</li>
 				</ul>
 
 				<!-- Tab panes -->
 				<div class="tab-content _index-page">
-					<div role="tabpanel" class="tab-pane active" id="home">
+					<div role="tabpanel" class="tab-pane active" id="filter">
 						<div class="list-result" data-marker="">
 							{{# each data.posts}}
 								<div class="media js-post-content"
@@ -170,7 +170,7 @@
 						</div>
 					</div>
 
-					<div role="tabpanel" class="tab-pane active" id="profile">
+					<div role="tabpanel" class="tab-pane" id="favorite">
 						{{#if user}}
 							{{# each data.posts}}
 								{{#if (isBookmarked _id)}}
