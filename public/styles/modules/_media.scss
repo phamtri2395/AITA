@@ -1,0 +1,128 @@
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+
+.media {
+	width: 100%;
+	border-bottom: 1px solid whitesmoke;
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.media-left,
+.media-body {
+	display: table-cell;
+	vertical-align: top;
+	padding: $gutter;
+}
+
+.media-left {
+}
+
+.media-body {
+	padding-left: 0;
+}
+
+.media-heading {
+	font-size: 2rem;
+	margin-bottom: 0.5*$gutter;
+
+	a {
+		text-decoration: none;
+	}
+
+	* {
+		display: inline-block;
+	}
+
+	.btn-bookmark {
+		display: none;
+	}
+}
+
+
+/**	
+ * tel group, 
+ */
+.tel-group {
+
+	&--label {
+		font-weight: normal;
+		color: black;
+		display: inline;
+		margin: 0;
+	}
+
+	&--checkbox {
+		visibility: hidden;
+		display: inline;
+		margin: 0;
+	}
+
+	&--phone-number {
+		display: none;
+		font-weight: normal;
+		color: black;
+		margin: 0;
+	}
+}
+
+.tel-group--checkbox:checked {
+	~.tel-group {
+		&--label {
+			display: none;
+		}
+
+		&--phone-number {
+			display: inline;
+		}
+	}
+}
+
+
+/**
+ * post info
+ */
+.post-info {
+	&--list {
+		list-style-type: none;
+		margin-bottom: 0.5*$gutter;
+	}
+
+	&--item {
+		display: inline;
+		padding: 0 0.5*$gutter;
+	}
+
+	&--div {}
+}
+
+/**
+ * image wrapper 
+ */
+.wrapper-cover-img {
+	width: 200px;
+	height: 125px;
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+
+	img {
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+
+/**
+ * 
+ */
+.sumary-b {
+	display: inline-block;
+	margin-bottom: 0.5*$gutter;
+}

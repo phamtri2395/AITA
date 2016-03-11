@@ -1,29 +1,43 @@
-// Bootstrap
-// =========
-
-// Bootstrap can be removed entirely by deleting this line.
-// @import "bootstrap/bootstrap";
-
-// The easiest way to customise Bootstrap variables while
-// being able to easily override the source files with new
-// versions is to override the ones you want in another file.
-//
-// You can also add your own custom variables to this file for
-// use in your site stylesheets.
-@import "variables";
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
 
 // Plugins
 @import "fancybox/jquery.fancybox";
 
+/* skeleton. */
+@import "base/normalize";
+@import "base/variables";
+@import "base/functions";
+@import "base/base-styles";
+@import "base/utils";
+@import "base/typography";
+
+/* Modules */
+@import "modules/grid";
+@import "modules/buttons";
+@import "modules/forms";
+@import "modules/lists";
+@import "modules/code";
+@import "modules/tables";
+@import "modules/spacing";
+@import "modules/media-queries";
+@import "modules/navbar";
+@import "modules/nav-tabs";
+@import "modules/footer";
+@import "modules/blocks";
+@import "modules/media";
+
 // Elements Styles
-@import "elements/scraffold";
-@import "elements/tab";
-@import "elements/media";
-@import "elements/dropdown";
+// @import "elements/scraffold";
+// @import "elements/tab";
+// @import "elements/media";
+// @import "elements/dropdown";
 
 // Site Styles
-@import "layout";
-@import "site/index";
-@import "site/login";
-@import "site/chi-tiet";
-@import "site/dang-tin";
+// @import "site/layout";
+// @import "site/index";
+// @import "site/login";
+// @import "site/chi-tiet";
+// @import "site/dang-tin";
