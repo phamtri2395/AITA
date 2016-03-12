@@ -103,6 +103,10 @@
 	&--item {
 		display: inline;
 		padding: 0 0.5*$gutter;
+
+		&:first-child {
+			padding-left: 0;
+		}
 	}
 
 	&--div {}

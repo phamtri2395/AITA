@@ -1004,6 +1004,17 @@ ul._pure {
 .sub-detail-info {
   margin-top: 30px; }
 
+.suggest-post {
+  margin-left: 30px;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid whitesmoke;
+  opacity: 0.4; }
+  .suggest-post:hover {
+    opacity: 1; }
+  .suggest-post:last-child {
+    border-bottom: none; }
+
 /**
  * Capheshift 2016
  * Author: Tw
@@ -1073,6 +1084,8 @@ ul._pure {
 .post-info--item {
   display: inline;
   padding: 0 7.5px; }
+  .post-info--item:first-child {
+    padding-left: 0; }
 
 /**
  * image wrapper 

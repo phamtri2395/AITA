@@ -88,3 +88,19 @@ body,
 .sub-detail-info {
 	margin-top: 2*$gutter;
 }
+
+.suggest-post {
+	margin-left: 2*$gutter;
+	margin-top: $gutter;
+	padding-bottom: $gutter;
+	border-bottom: 1px solid whitesmoke;
+	opacity: 0.4;
+
+	&:hover {
+		opacity: 1
+	}
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
