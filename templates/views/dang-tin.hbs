@@ -1,286 +1,296 @@
 
-<div class="container jspage-dang-tin">
-	<div class="col-md-8">
-		<h1>Đăng tin nhà đất</h1>
+<div class="main-content">
+	<div class="container jspage-dang-tin">
+		<div class="columns nine">
+			<h3 class="page-title">Đăng tin nhà đất</h3>
 
-		<form class="form-home" action="/add-new-post" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-			<div class="">
-				<div class="form-group">
-					<div class="group-title">Thông tin bắt buộc</div>
-					<div class="group-container row">
-						<div class="col-xs-12 col-sm-8 col-md-9">
-							<div class="group-control">
-								<label>Tiêu đề</label>
-								<input class="form-control" type="text" name="title" required="required" placeholder="Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm" value="Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm" />
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-4 col-md-3">
-							<div class="group-control group-checkbox">
-								<label class="checkbox-lable" for="checkbox-mat-tien">
-									Mặt tiền
-								</label>
-								<input type="checkbox" name="front" id="checkbox-mat-tien"> 
-							</div>
-						</div>
-						
-						{{!-- <div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Tỉnh/Thành phố</label>
-								<select class="form-control" required="required">
-									<option value="01">Hồ Chí Minh</option>
-								</select>
-							</div>
-						</div> --}}
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Quận/Huyện (Tp. HCM)</label>
-								<select class="form-control" name="district" required="required">
-								{{# each data.districts}}
-									<option value={{_id}}>{{name}}</option>
-								{{/each}}
-								</select>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Phường/Xã</label>
-								<select class="form-control" name="ward" required="required">
-									{{getWards}}
-								</select>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Đường</label>
-								<input class="form-control" type="text" name="street" required="required" value="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" value="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" />
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Giá (VNĐ)</label>
-								<input class="form-control" type="text" name="price" required="required" value="1000" />
-							</div>
-						</div>
-						{{!-- <div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Đơn vị</label>
-								<input class="form-control" type="text" required="required">
-							</div>
-						</div> --}}
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Diện tích (m²)</label>
-								<input class="form-control" type="text" name="area" required="required" value="40" />
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Phòng ngủ</label>
-								<select class="form-control" name="bedroom" required="required">
-									<option value="01">1</option>
-									<option value="02">2</option>
-									<option value="03">3</option>
-									<option value="04">4</option>
-									<option value="05">5</option>
-									<option value="06">6</option>
-									<option value="07">6+</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Phòng tắm</label>
-								<select class="form-control" name="bathroom" required="required">
-									<option value="01">1</option>
-									<option value="02">2</option>
-									<option value="03">3</option>
-									<option value="04">4</option>
-									<option value="05">5</option>
-									<option value="06">6</option>
-									<option value="07">6+</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Loại hình</label>
-								<select class="form-control" name="type" required="required">
-									{{# each data.estateCategories}}
-									<option value="{{_id}}">{{name}}</option>
-									{{/each}}
-								</select>
-							</div>
-						</div>
+			<form class="form-home" action="/add-new-post" method="post" 
+				accept-charset="utf-8" enctype="multipart/form-data">
 
-						<div class="col-xs-12 col-sm-8 col-md-9">
-							<div class="group-control">
-								<label>Địa chỉ đầy đủ</label>
-								<input class="form-control" type="text" name="address" required="required" placeholder="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" value="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" />
-							</div>
+				<p class="form-title">Thông tin bắt buộc</p>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Tiêu đề</label>
+					</div>
+					<div class="columns nine">
+						<input class="u-full-width" type="text" name="title" required="required" 
+							placeholder="Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm" value="Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">&nbsp</div>
+					<div class="columns nine">
+						<label class="checkbox-lable" for="checkbox-mat-tien">
+							<input type="checkbox" name="front" id="checkbox-mat-tien"> 
+							Mặt tiền
+						</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Loại hình</label>
+					</div>
+					<div class="columns nine">
+						<select class="form-control" name="type" required="required">
+							{{# each data.estateCategories}}
+							<option value="{{_id}}">{{name}}</option>
+							{{/each}}
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Quận/Huyện (Tp. HCM)</label>
+					</div>
+					<div class="columns nine">
+						<select class="form-control" name="district" required="required">
+						{{# each data.districts}}
+							<option value={{_id}}>{{name}}</option>
+						{{/each}}
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Phường/Xã</label>
+					</div>
+					<div class="columns nine">
+						<select class="form-control" name="ward" required="required">
+							{{getWards}}
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Đường</label>
+					</div>
+					<div class="columns nine">
+						<input class="u-full-width" type="text" name="street" required="required" 
+							value="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" value="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Địa chỉ đầy đủ</label>
+					</div>
+					<div class="columns nine">
+						<input class="u-full-width" type="text" name="address" required="required" 
+							placeholder="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" value="43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label class="group-title">Vị trí trên bản đồ</label>
+					</div>
+					<div class="columns nine">
+						<div class="input-map">
+							<div id="google-map" class="google-map-block google-map-detail"></div>
 						</div>
-						<div class="col-xs-12 col-sm-4 col-md-3">
-							<div class="group-control group-checkbox">
-								<label class="checkbox-lable">
-									<input type="checkbox" name="hidePosition" value="1"> Ẩn vị trí
-								</label>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-8 col-md-9">
-							<div class="group-control">
-								<label for="push-ads">Chạy quảng cáo</label>
-								<input type="checkbox" name="pushAds" id="push-ads" class="form-control" checked="checked" />
-							</div>
+						<div class="clear-top"></div>
+						<p><small>(*) Nhấp để chọn vị trí trên bản đồ</small></p>
+						<input type="hidden" name="latitude">
+						<input type="hidden" name="longitude">
+					</div>
+				</div>
+
+				{{!-- <div class="row">
+					<div class="columns three">&nbsp</div>
+					<div class="columns nine">
+						<label class="checkbox-lable">
+							<input type="checkbox" name="hidePosition" value="1"> Ẩn vị trí
+						</label>
+					</div>
+				</div> --}}
+
+				<div class="row">
+					<div class="columns three">
+						<label>Giá (VNĐ)</label>
+					</div>
+					<div class="columns nine">
+						<input class="form-control" type="text" name="price" required="required" value="1000" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Diện tích (m²)</label>
+					</div>
+					<div class="columns nine">
+						<input class="form-control" type="text" name="area" required="required" value="40" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Số phòng ngủ</label>
+					</div>
+					<div class="columns nine">
+						<input class="form-control" type="text" name="bedroom" required="required" value="2" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Số phòng tắm</label>
+					</div>
+					<div class="columns nine">
+						<input class="form-control" type="text" name="bathroom" required="required" value="2" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label class="group-title">Hình ảnh</label>
+					</div>
+					<div class="columns nine">
+						<div role="tabpanel" class="tab-pane active" id="home">
+							<span class="wrapper-cover-img">
+								<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+							</span>
+							<span class="wrapper-cover-img">
+								<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
+							</span>
 						</div>
 					</div>
 				</div>
-				{{!-- end: thông tin bắt buộc --}}
 
-				<div class="form-group">
-					<div class="group-title">Vị trí trên bản đồ</div>
-					<div class="col-md-12">
-						<div id="google-map" class="google-map-block google-map-detail"></div>
+				<div class="row">
+					<div class="columns three">
+						<label class="group-title">Thông tin mô tả</label>
 					</div>
-					<div class="clear-top"></div>
-					<i><small>(*) Nhấp để chọn vị trí trên bản đồ</small></i>
-					<input type="text" name="latitude">
-					<input type="text" name="longitude">
-				</div>
-				{{!-- end: vị trí trên bản đồ --}}
-
-				<div class="form-group">
-					<div class="group-title">Hình ảnh</div>
-					<div role="tabpanel" class="tab-pane active" id="home">
-						<span class="wrapper-cover-img">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-						</span>
-						<span class="wrapper-cover-img">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-						</span>
-						<span class="wrapper-cover-img">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg">
-						</span>
-						<span class="wrapper-cover-img">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg">
-						</span>
-						<span class="wrapper-cover-img">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg">
-						</span>
-						<span class="wrapper-cover-img">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/uLp58OH37CTPHxXcgJXYw8zT2u3xg_2XIbFndB6J0WTSAStGBaEV6YsdAseSZTKAdthm0OzG-Ca_EIkoXIEBxw.jpg">
-						</span>
+					<div class="columns nine">
+						<textarea row="4" class="form-control" name="description" 
+							style="width: 100%; height: 150px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
 					</div>
 				</div>
-				{{!-- end: mục hình ảnh --}}
 
-				<div class="form-group">
-					<div class="group-title">Thông tin mô tả</div>
-					<div class="group-container row">
-						<div class="col-xs-12">
-							<div class="group-control">
-								<textarea row="4" class="form-control" name="description" style="width: 100%; height: 150px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
-							</div>
-						</div>
+				<div class="row">
+					<div class="columns three">&nbsp</div>
+					<div class="columns nine">
+						<label for="push-ads">
+							<input type="checkbox" name="pushAds" id="push-ads" class="form-control">
+							Chạy quảng cáo
+						</label>
 					</div>
 				</div>
-				{{!-- end: thông tin mô tả --}}
 
-				<div class="form-group">
-					<div class="group-title">Thông tin thêm</div>
-					<div class="group-container row">
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Chọn nếu nhà thuộc dự án</label>
-								<input class="form-control" type="checkbox" name="isProject" required="required" checked="checked" />
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Hướng</label>
-								<select class="form-control" name="quarter" required="required">
-									<option value="02">Đông</option>
-									<option value="02">Đông Nam</option>
-									<option value="02">Nam</option>
-									<option value="02">Tây Nam</option>
-									<option value="02">Tây</option>
-									<option value="02">Tây Bắc</option>
-									<option value="01">Bắc</option>
-									<option value="01">Đông Bắc</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Số tầng</label>
-								<select class="form-control" name="floors" required="required">
-									<option value="01">1</option>
-									<option value="02">2</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label for="highway">
-									Lộ giới (m)
-									<input id="highway" class="form-control" name="highway" required="required" value="25" />
-								</label>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4">
-							<div class="group-control">
-								<label>Năm xây dựng</label>
-								<input class="form-control" name="yearBuild" required="required" value="2015" />
-							</div>
-						</div>
+				<p class="form-title">Thông tin thêm</p>
+
+				<div class="row">
+					<div class="columns three">&nbsp</div>
+					<div class="columns nine">
+						<label>
+							<input class="form-control" type="checkbox" name="isProject" required="required" checked="checked" />
+							Chọn nếu nhà thuộc dự án
+						</label>
 					</div>
 				</div>
-				{{!-- end: thông tin thêm --}}
 
-				<div class="form-group">
-					<div class="group-title">Thông tin liên hệ</div>
-					<div class="group-container row">
-						<div class="col-md-4">
-							<div class="group-control">
-								<label>Tên *</label>
-								<input type="hidden" name="author" value="{{user._id}}" />
-								<input class="form-control" type="text" name="authorName" required="required" value="{{getFullname user}}" />
-							</div>
-						</div>
-						{{!-- <div class="col-md-4">
-							<div class="group-control">
-								<label>Email *</label>
-								<input class="form-control" type="text" required="required">
-							</div>
-						</div> --}}
-						<div class="col-md-4">
-							<div class="group-control">
-								<label>Số điện thoại *</label>
-								<input class="form-control" type="text" name="mobile" required="required" value="01642000011" />
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="group-control group-checkbox">
-								<label class="checkbox-lable">
-									<input type="checkbox" name="medium"> Tiếp môi giới
-								</label>
-							</div>
-						</div>
+				<div class="row">
+					<div class="columns three">
+						<label for="">Tên dự án</label>
+					</div>
+					<div class="columns nine">
+						<input type="text" id="project-name" name="project-name" required="required" />
 					</div>
 				</div>
-				{{!-- end: thông tin liên hệ --}}
 
-				<div class="form-group">
-					<div class="group-container row">
-						<div class="col-md-12">
-							<p><i><small>(*)Tin đăng của bạn sẽ được kiểm duyệt trong vòng 1 giờ trước khi được đăng.</small></i>
-							</p>
-							<input type="hidden" name="ward-filters" value="{{json data.filters}}" />
-							<input type="hidden" name="publishedDate" value="{{currentDate}}" />
-							<button class="btn btn-lg btn-default" type="submit">Hủy</button>
-							<button class="btn btn-lg btn-success" type="submit">Hoàn tất</button>
-						</div>
+				<div class="row">
+					<div class="columns three">
+						<label>Hướng</label>
+					</div>
+					<div class="columns nine">
+						<select class="form-control" name="quarter" required="required">
+							<option value="02">Đông</option>
+							<option value="02">Đông Nam</option>
+							<option value="02">Nam</option>
+							<option value="02">Tây Nam</option>
+							<option value="02">Tây</option>
+							<option value="02">Tây Bắc</option>
+							<option value="01">Bắc</option>
+							<option value="01">Đông Bắc</option>
+						</select>
 					</div>
 				</div>
-			</div>
-		</form>
+
+				<div class="row">
+					<div class="columns three">
+						<label>Số tầng</label>
+					</div>
+					<div class="columns nine">
+						<select class="form-control" name="floors" required="required">
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="4+">4+</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label for="">Lộ giới (m)</label>
+					</div>
+					<div class="columns nine">
+						<input type="text" id="highway" class="form-control" name="highway" required="required" value="25" />
+					</div>
+				</div>
+
+				<p class="form-title">Thông tin liên lạc</p>
+
+				<div class="row">
+					{{!-- <label for="">Thông tin liên hệ</label> --}}
+					<div class="columns three">
+						<label for="">Tên (*)</label>
+					</div>
+					<div class="columns nine">
+						<input type="hidden" name="author" value="{{user._id}}" />
+						<input class="form-control" type="text" name="authorName" required="required" value="{{getFullname user}}" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">
+						<label for="">Số điện thoại (*)</label>
+					</div>
+					<div class="columns nine">
+						<input class="form-control" type="text" name="mobile" required="required" 
+						value="01642000011" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="columns three">&nbsp</div>
+					<div class="columns nine">
+						<label class="checkbox-lable">
+							<input type="checkbox" name="medium"> Tiếp môi giới
+						</label>
+					</div>
+				</div>
+
+				<p class="form-title">Hoàn tất</p>
+				<div class="row">
+					<div class="columns three">&nbsp</div>
+					<div class="columns nine">
+						<p>
+							<small>(*)Tin đăng của bạn sẽ được kiểm duyệt trong vòng 1 giờ trước khi được đăng.</small>
+						</p>
+						<input type="hidden" name="ward-filters" value="{{json data.filters}}" />
+						<input type="hidden" name="publishedDate" value="{{currentDate}}" />
+						<button class="" type="submit">Hủy</button>
+						<button class="button-primary" type="submit">Đăng tin</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>

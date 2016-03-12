@@ -455,27 +455,6 @@ hr {
   border-width: 0;
   border-top: 1px solid #e1e1e1; }
 
-/**
- * Utilities
- */
-.u-full-width {
-  width: 100%;
-  box-sizing: border-box; }
-
-.u-max-full-width {
-  max-width: 100%;
-  box-sizing: border-box; }
-
-.u-pull-right {
-  float: right; }
-
-.u-pull-left {
-  float: left; }
-
-.u-content-center {
-  text-align: center;
-  margin: 15px 0; }
-
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 2rem;
@@ -531,6 +510,19 @@ p {
 
 .header-01 {
   margin-bottom: 0; }
+
+.page-title {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-transform: uppercase; }
+
+.form-title {
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid whitesmoke;
+  padding-bottom: 7.5px;
+  margin-bottom: 15px;
+  margin-top: 15px; }
 
 /* Modules */
 /*
@@ -768,10 +760,14 @@ select {
   box-shadow: none;
   box-sizing: border-box; }
 
+select {
+  width: 200px; }
+
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"] {
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none; }
+  appearance: none;
+  width: 200px; }
 
 textarea {
   -webkit-appearance: none;
@@ -794,7 +790,8 @@ label,
 legend {
   display: block;
   margin-bottom: .5rem;
-  font-weight: 600; }
+  font-weight: 400;
+  line-height: 38px; }
 
 fieldset {
   padding: 0;
@@ -874,6 +871,9 @@ ul,
 ol,
 form {
   margin-bottom: 1.5rem; }
+
+small {
+  margin-bottom: 7.5px; }
 
 /**
  * Capheshift 2016
@@ -1015,6 +1015,9 @@ ul._pure {
   .suggest-post:last-child {
     border-bottom: none; }
 
+.input-map {
+  height: 200px; }
+
 /**
  * Capheshift 2016
  * Author: Tw
@@ -1108,3 +1111,27 @@ ul._pure {
 .sumary-b {
   display: inline-block;
   margin-bottom: 7.5px; }
+
+/* User source order to overide property above */
+/**
+ * Utilities
+ */
+.u-full-width,
+input.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+
+.u-max-full-width,
+input.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+
+.u-pull-right {
+  float: right; }
+
+.u-pull-left {
+  float: left; }
+
+.u-content-center {
+  text-align: center;
+  margin: 15px 0; }

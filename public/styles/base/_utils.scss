@@ -2,12 +2,14 @@
  * Utilities
  */
 
-.u-full-width {
+.u-full-width,
+input.u-full-width {
   width: 100%;
   box-sizing: border-box;
 }
 
-.u-max-full-width {
+.u-max-full-width,
+input.u-max-full-width {
   max-width: 100%;
   box-sizing: border-box;
 }

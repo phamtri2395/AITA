@@ -29,11 +29,25 @@ p {
   margin-bottom: $gutter;
 }
 
-
 .header-01 {
 	margin-bottom: 0;
 }
 
 .header-02 {
 	// margin-bottom: 0;
+}
+
+.page-title {
+	margin-top: $gutter;
+	margin-bottom: $gutter;
+	text-transform: uppercase;
+}
+
+.form-title {
+	text-transform: uppercase;
+	font-weight: 600;
+	border-bottom: 1px solid whitesmoke;
+	padding-bottom: 0.5*$gutter;
+	margin-bottom: $gutter;
+	margin-top: $gutter;
 }
