@@ -62,11 +62,12 @@
 		color: black;
 		display: inline;
 		margin: 0;
+		line-height: 23px;
 	}
 
 	&--checkbox {
 		visibility: hidden;
-		display: inline;
+		display: none !important;
 		margin: 0;
 	}
 
@@ -75,6 +76,7 @@
 		font-weight: normal;
 		color: black;
 		margin: 0;
+		text-decoration: none;
 	}
 }
 
