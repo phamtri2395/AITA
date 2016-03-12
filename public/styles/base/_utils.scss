@@ -1,5 +1,6 @@
-// Utilities
-//––––––––––––––––––––––––––––––––––––––––––––––––––
+/**
+ * Utilities
+ */
 
 .u-full-width {
   width: 100%;
@@ -17,4 +18,9 @@
 
 .u-pull-left {
   float: left;
+}
+
+.u-content-center {
+	text-align: center;
+	margin: $gutter 0;
 }

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="./favicon.ico">
+
+		<title>Aita.vn</title>
+		{{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> --}}
+
+		{{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> --}}
+
+		<link href="/styles/site.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- for Facebook -->
+		<meta property="og:url" content="https://aitavn.herokuapp.com/" />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="When Great Minds Don’t Think Alike" />
+		<meta property="og:description" content="How much does culture influence creative thinking?" />
+		<meta property="og:image" content="http://media.visla.vn/cache/300x200/2015/03/25/80364355855122ea9cc074.jpg" />
+
+		<!-- for Google -->
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="author" content="" />
+		<meta name="copyright" content="" />
+		<meta name="application-name" content="" />
+
+		<!-- for Twitter -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:description" content="" />
+		<meta name="twitter:image" content="" />
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<script>
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '209715572476105',
+					xfbml      : true,
+					version    : 'v2.5'
+				});
+			};
+			(function(d, s, id){
+				 var js, fjs = d.getElementsByTagName(s)[0];
+				 if (d.getElementById(id)) {return;}
+				 js = d.createElement(s); js.id = id;
+				 js.src = "//connect.facebook.net/en_US/sdk.js";
+				 fjs.parentNode.insertBefore(js, fjs);
+			 }(document, 'script', 'facebook-jssdk'));
+		</script>
+
+		<nav class="navbar">
+			<ul class="navbar--list">
+				<li class="navbar--item">
+					<a href="javascript:;">Aita.vn</a>
+				</li>
+				{{!-- <li class="navbar--item " {{#ifeq section 'nha-rieng'}}"active"{{else}}{{/ifeq}}> --}}
+				<li class="navbar--item">
+					<a href="/nha-rieng" title="Nhà riêng">Nhà riêng</a>
+				</li>
+				{{!-- <li class="navbar--item " {{#ifeq section 'can-ho'}}"active"{{else}}{{/ifeq}}> --}}
+				<li class="navbar--item">
+					<a href="/can-ho" title="Căn hộ/chung cư">Căn hộ</a>
+				</li>
+				{{!-- <li class="navbar--item " {{#ifeq section 'phong'}}"active"{{else}}{{/ifeq}}> --}}
+				<li class="navbar--item">
+					<a href="/phong" title="Phòng cho thuê">Phòng cho thuê</a>
+				</li>
+			</ul>
+
+			<ul class="navbar--list-control">
+				<li class="navbar--item">
+					<a href="/dang-tin" title="Phòng cho thuê">Đăng tin</a>
+				</li>
+				<li class="navbar--item">
+					<a href="/dang-nhap" title="Phòng cho thuê">Đăng nhập</a>
+				</li>
+			</ul>
+		</nav>
+
+		{{!-- <nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">
+						Aita.vn
+					</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-left">
+						<li {{#ifeq section 'nha-rieng'}}class="active"{{else}}{{/ifeq}}>
+							<a href="/nha-rieng" title="Nhà riêng">Nhà riêng</a>
+						</li>
+						<li {{#ifeq section 'can-ho'}}class="active"{{else}}{{/ifeq}}>
+							<a href="/can-ho" title="Căn hộ/chung cư">Căn hộ</a>
+						</li>
+						<li {{#ifeq section 'phong'}}class="active"{{else}}{{/ifeq}}>
+							<a href="/phong" title="Phòng cho thuê">Phòng cho thuê</a>
+						</li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						{{#if client}}
+						<li {{#ifeq ../section 'dang-tin'}}class="active"{{else}}{{/ifeq}}>
+							<a href="/dang-tin" title="Đăng tin">Đăng tin</a>
+						</li>
+
+						<ul class="nav navbar-nav">
+						  <li class="dropdown">
+        				<a class="dropdown-toggle" data-toggle="dropdown" href="#">{{client.name.first}} {{client.name.last}}<span class="caret"></span></a>
+
+        				<ul class="dropdown-menu">
+									<li><a href="/user">Quản lý bài viết</a></li>
+									<li><a href="/logout">Đăng xuất</a></li>
+        				</ul>
+     	 				</li>
+						</ul>
+						{{else}}
+						<li {{#ifeq ../section 'dang-nhap'}}class="active"{{else}}{{/ifeq}}>
+							<a href="/dang-nhap" title="Đăng nhập">Đăng nhập</a>
+						</li>
+						<li {{#ifeq ../section 'dang-ky'}}class="active"{{else}}{{/ifeq}}>
+							<a href="/dang-ky" title="Đăng nhập">Đăng ký</a>
+						</li>
+						{{/if}}
+					</ul>
+				</div>
+			</div>
+		</nav> --}}
+
+		<div class="main">
+			{{{body}}}
+		</div>
+
+		<script src="/js/jquery/jquery-2.1.4.min.js"></script>
+		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+		<script src="/js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+		<script src="/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+		<script src="//maps.googleapis.com/maps/api/js"></script>
+		<script src="/js/marker/jquery.marker.js"></script>
+		<script src="/js/script.js"></script>
+
+		{{!-- js for specific pages --}}
+		<script src="/js/views/index.js"></script>
+		<script src="/js/views/dang-tin.js"></script>
+		<script src="/js/views/chi-tiet.js"></script>
+
+		<!--<script type="text/javascript">
+		(function(d,s,id){var z=d.createElement(s);z.type="text/javascript";z.id=id;z.async=true;z.src="//static.zotabox.com/f/c/fc9c72038d852eb8b556239bcc0af7d5/widgets.js";var sz=d.getElementsByTagName(s)[0];sz.parentNode.insertBefore(z,sz)}(document,"script","zb-embed-code"));
+		</script>-->
+	</body>
+</html>
