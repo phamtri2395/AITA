@@ -1,7 +1,37 @@
 
 <div class="main-content">
-	<div class="container login-page">
-		<div class="col-sm-4 col-sm-offset-4">
+	<div class="container">
+		<div class="row">
+			<div class="columns four offset-by-four">
+				<h3 class="page-title u-content-center">Đăng ký</h3>
+			</div>
+
+			<div class="columns four offset-by-four">
+				<label for="">Email</label>
+				<input class="u-full-width" id="email" name="email" placeholder="địa chỉ email" type="text" />
+			</div>	
+			<div class="columns four offset-by-four">
+				<label for="">Mật khẩu</label>
+				<input class="u-full-width" id="password" name="password" placeholder="mật khẩu" type="password" />
+			</div>
+			<div class="columns four offset-by-four">
+				<div class="u-pull-right">
+					<a href="/dang-nhap" class="button">Đăng nhập</a>
+					<button class="button-primary" type="submit">Đăng ký</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="columns four offset-by-four">
+				<p class="form-title">&nbsp</p>
+				<a href="/auth/facebook" class="button button-secondary u-full-width" type="submit">
+					Đăng nhập bằng Facebook
+				</a>
+			</div>
+		</div>
+
+		{{!-- <div class="col-sm-4 col-sm-offset-4">
 			<div class="panel-heading">
 				<div class="panel-title text-center">
 					<h3>Đăng ký</h3>
@@ -43,6 +73,6 @@
 					</div>
 				</form>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 </div>

@@ -11,6 +11,6 @@ exports = module.exports = function(req, res) {
 	locals.section = 'dang-nhap';
 	
 	// Render the view
-	view.render('login');
+	view.render('dang-nhap');
 	
 };

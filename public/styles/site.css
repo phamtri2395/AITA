@@ -714,6 +714,12 @@ button.button-primary {
   background-color: #33c3f0;
   border-color: #33c3f0; }
 
+.button.button-secondary,
+button.button-secondary {
+  color: #fff;
+  background-color: #2C5D63;
+  border-color: #2C5D63; }
+
 input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary {
   color: #fff;
   background-color: #33c3f0;

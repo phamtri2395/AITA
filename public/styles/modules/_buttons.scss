@@ -91,6 +91,13 @@ button.button-primary {
   border-color: $primary-color;
 }
 
+.button.button-secondary,
+button.button-secondary {
+  color: #fff;
+  background-color: $pri-color-02;
+  border-color: $pri-color-02;
+}
+
 input {
   &[type="submit"].button-primary,
   &[type="reset"].button-primary,
