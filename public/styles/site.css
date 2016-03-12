@@ -438,8 +438,8 @@ html {
   font-size: 62.5%; }
 
 body {
-  font-size: 1.8em;
-  line-height: 1.8;
+  font-size: 1.6em;
+  line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222; }
@@ -526,7 +526,11 @@ h6 {
     font-size: 1.5rem; } }
 
 p {
-  margin-top: 0; }
+  margin-top: 0;
+  margin-bottom: 15px; }
+
+.header-01 {
+  margin-bottom: 0; }
 
 /* Modules */
 /*
@@ -541,7 +545,7 @@ p {
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1170px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box; }
@@ -667,6 +671,9 @@ button {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box; }
+  .button.button__link,
+  button.button__link {
+    border: 0; }
 
 input[type="submit"], input[type="reset"], input[type="button"] {
   display: inline-block;
@@ -851,10 +858,6 @@ th:last-child,
 td:last-child {
   padding-right: 0; }
 
-button,
-.button {
-  margin-bottom: 1rem; }
-
 input,
 textarea,
 select,
@@ -870,7 +873,7 @@ p,
 ul,
 ol,
 form {
-  margin-bottom: 2.5rem; }
+  margin-bottom: 1.5rem; }
 
 /**
  * Capheshift 2016
@@ -934,10 +937,19 @@ ul._pure {
  * Capheshift 2016
  * Author: Tw
  */
+.footer {
+  padding-bottom: 30px; }
+
 /**
  * Capheshift 2016
  * Author: Tw
  */
+.main-content {
+  padding-top: 54px;
+  padding-bottom: 54px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid whitesmoke; }
+
 .full-height-wrapper {
   height: 100%;
   height: 100vh;
@@ -976,24 +988,44 @@ ul._pure {
   .avatar-wrapper img {
     width: 100%; }
 
+.content-wrapper {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid whitesmoke; }
+  .content-wrapper:first-child {
+    margin-top: 0; }
+  .content-wrapper:last-child {
+    border-bottom: none; }
+
+.infomation-b {
+  font-size: 1.6rem; }
+
+.sub-detail-info {
+  margin-top: 30px; }
+
 /**
  * Capheshift 2016
  * Author: Tw
  */
-.media {
-  width: 100%;
+.media-wrapper {
+  padding: 15px;
   border-bottom: 1px solid whitesmoke; }
-  .media:last-child {
+  .media-wrapper:last-child {
     border-bottom: none; }
+  .media-wrapper__no-padding {
+    padding: 0; }
+
+.media {
+  width: 100%; }
 
 .media-left,
 .media-body {
   display: table-cell;
-  vertical-align: top;
-  padding: 15px; }
+  vertical-align: top; }
 
 .media-body {
-  padding-left: 0; }
+  padding-left: 15px; }
 
 .media-heading {
   font-size: 2rem;

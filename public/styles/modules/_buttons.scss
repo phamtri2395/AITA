@@ -20,6 +20,10 @@ button {
   border: 1px solid $border-color;
   cursor: pointer;
   box-sizing: border-box;
+
+  &.button__link {
+  	border: 0;
+  }
 }
 
 input {

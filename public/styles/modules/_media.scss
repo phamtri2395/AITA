@@ -3,27 +3,33 @@
  * Author: Tw
  */
 
-.media {
-	width: 100%;
+.media-wrapper {
+	padding: $gutter;
 	border-bottom: 1px solid whitesmoke;
 
 	&:last-child {
 		border-bottom: none;
 	}
+
+	&__no-padding {
+		padding: 0;
+	}
+}
+
+.media {
+	width: 100%;
 }
 
 .media-left,
 .media-body {
 	display: table-cell;
 	vertical-align: top;
-	padding: $gutter;
 }
 
-.media-left {
-}
+.media-left {}
 
 .media-body {
-	padding-left: 0;
+	padding-left: $gutter;
 }
 
 .media-heading {
@@ -47,8 +53,10 @@
 /**	
  * tel group, 
  */
-.tel-group {
+.tel-group-wrapper {
+}
 
+.tel-group {
 	&--label {
 		font-weight: normal;
 		color: black;

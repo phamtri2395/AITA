@@ -19,85 +19,7 @@
 					<div role="tabpanel" class="tab-pane active" id="filter">
 						<div class="list-result" data-marker="">
 							{{# each data.posts}}
-								<div class="media js-post-content"
-									data-item=""
-									data-price={{price}} data-area={{area}}
-									data-bedroom={{bedroom}} data-bathroom={{bathroom}}
-									data-latitude={{latitude}} data-longitude={{longitude}}
-									data-is-loaded="false" >
-									<div class="media-left hidden-xs">
-										<a href="#">
-											<span class="avatar-wrapper">
-												<img src={{author.avatar}} alt={{author.name}}>
-											</span>
-										</a>
-									</div>
-
-									<div class="media-body">
-										<h4 class="media-heading">
-											<a href="/chi-tiet" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
-
-											<input type="checkbox" id="checkbox-{{@index}}" class="tel-group--checkbox" />
-											<label for="checkbox-{{@index}}" class="tel-group--label">
-												<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-											</label>
-											<a href="tel:{{mobile}}" class="tel-group--phone-number">
-												<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
-											</a>
-											
-											{{#if ../user}}											
-												{{#if (isBookmarked _id)}}
-													<div class="btn btn-bookmark bookmarked">
-												{{else}}
-													<div class="btn btn-bookmark">
-												{{/if}}
-
-													<form class="form-bookmark" value="{{_id}}">
-														<i class="glyphicon glyphicon-star"></i>
-													</form>
-												</div>
-											{{/if}}
-										</h4>
-
-										<ul class="post-info--list">
-											<li class="post-info--item">{{area}} m2</li>
-											<li class="post-info--item">|</li>
-											<li class="post-info--item">{{bedroom}} phòng ngủ</li>
-											<li class="post-info--item">|</li>
-											<li class="post-info--item">{{bathroom}} phòng tắm</li>
-											<li class="post-info--item">|</li>
-											<li class="post-info--item"><b>{{toCurrency price}} VND</b></li>
-										</ul>
-										<div class="sumary-b">
-											{{{description}}}
-											<a href="/chi-tiet/{{id}}">
-												chi tiết <i class="glyphicon glyphicon-menu-right"></i>
-											</a>
-										</div>
-
-										<div>
-											{{#each images}}
-											<span class="wrapper-cover-img">
-												<a class="fancybox" rel="gallery" href={{secure_url}}>
-													<img class="media-object" src={{secure_url}}>
-												</a>
-											</span>
-											{{/each}}
-										</div>
-									</div>
-								</div>
-							{{/each}}
-
-							<div class="u-full-width u-content-center">
-								<button class="btn-success btn-lg">Xem thêm</button>
-							</div>
-						</div>
-					</div>
-
-					<div role="tabpanel" class="tab-pane" id="favorite">
-						{{#if user}}
-							{{# each data.posts}}
-								{{#if (isBookmarked _id)}}
+								<div class="media-wrapper">
 									<div class="media js-post-content"
 										data-item=""
 										data-price={{price}} data-area={{area}}
@@ -123,6 +45,19 @@
 												<a href="tel:{{mobile}}" class="tel-group--phone-number">
 													<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
 												</a>
+												
+												{{#if ../user}}											
+													{{#if (isBookmarked _id)}}
+														<div class="btn btn-bookmark bookmarked">
+													{{else}}
+														<div class="btn btn-bookmark">
+													{{/if}}
+
+														<form class="form-bookmark" value="{{_id}}">
+															<i class="glyphicon glyphicon-star"></i>
+														</form>
+													</div>
+												{{/if}}
 											</h4>
 
 											<ul class="post-info--list">
@@ -134,7 +69,6 @@
 												<li class="post-info--item">|</li>
 												<li class="post-info--item"><b>{{toCurrency price}} VND</b></li>
 											</ul>
-											
 											<div class="sumary-b">
 												{{{description}}}
 												<a href="/chi-tiet/{{id}}">
@@ -150,6 +84,76 @@
 													</a>
 												</span>
 												{{/each}}
+											</div>
+										</div>
+									</div>
+								</div>
+							{{/each}}
+
+							<div class="u-full-width u-content-center">
+								<button class="btn-success btn-lg">Xem thêm</button>
+							</div>
+						</div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="favorite">
+						{{#if user}}
+							{{# each data.posts}}
+								{{#if (isBookmarked _id)}}
+									<div class="media-wrapper">
+										<div class="media js-post-content"
+											data-item=""
+											data-price={{price}} data-area={{area}}
+											data-bedroom={{bedroom}} data-bathroom={{bathroom}}
+											data-latitude={{latitude}} data-longitude={{longitude}}
+											data-is-loaded="false" >
+											<div class="media-left hidden-xs">
+												<a href="#">
+													<span class="avatar-wrapper">
+														<img src={{author.avatar}} alt={{author.name}}>
+													</span>
+												</a>
+											</div>
+
+											<div class="media-body">
+												<h4 class="media-heading">
+													<a href="/chi-tiet" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
+
+													<input type="checkbox" id="checkbox-{{@index}}" class="tel-group--checkbox" />
+													<label for="checkbox-{{@index}}" class="tel-group--label">
+														<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
+													</label>
+													<a href="tel:{{mobile}}" class="tel-group--phone-number">
+														<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
+													</a>
+												</h4>
+
+												<ul class="post-info--list">
+													<li class="post-info--item">{{area}} m2</li>
+													<li class="post-info--item">|</li>
+													<li class="post-info--item">{{bedroom}} phòng ngủ</li>
+													<li class="post-info--item">|</li>
+													<li class="post-info--item">{{bathroom}} phòng tắm</li>
+													<li class="post-info--item">|</li>
+													<li class="post-info--item"><b>{{toCurrency price}} VND</b></li>
+												</ul>
+												
+												<div class="sumary-b">
+													{{{description}}}
+													<a href="/chi-tiet/{{id}}">
+														chi tiết <i class="glyphicon glyphicon-menu-right"></i>
+													</a>
+												</div>
+
+												<div>
+													{{#each images}}
+													<span class="wrapper-cover-img">
+														<a class="fancybox" rel="gallery" href={{secure_url}}>
+															<img class="media-object" src={{secure_url}}>
+														</a>
+													</span>
+													{{/each}}
+												</div>
 											</div>
 										</div>
 									</div>
