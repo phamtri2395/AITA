@@ -936,11 +936,19 @@ ul._pure {
       padding: 7.5px 0;
       width: 100%;
       border-bottom: 1px solid whitesmoke;
+      border-top: 4px solid transparent;
       color: #A9C52F; }
       .nav-tabs--item a:hover {
         background-color: #F7EEBB; }
       .nav-tabs--item a:active, .nav-tabs--item a.active {
         background-color: #A9C52F; }
+    .nav-tabs--item.active a {
+      border-top-color: #A9C52F; }
+
+.tab-content--pane {
+  display: none; }
+  .tab-content--pane.active {
+    display: block; }
 
 /**
  * Capheshift 2016
