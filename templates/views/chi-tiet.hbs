@@ -1,247 +1,237 @@
 {{!-- Capheshift 2015 --}}
 {{!-- Author: Tw --}}
 
-<div class="container jspage-chi-tiet">
-	<div class="col-md-7">
-	{{# each data}}
-		<div class="u-hidden jsdata-detail" data-lat="{{latitude}}" data-lng="{{longitude}}"></div>
-		<div class="content-wrapper _no-bottom-border">
-			<small>
-				Hồ Chí Minh / {{districtName district}}
-				<div class="pull-right">
-					{{!-- <div class="fb-send" data-href="https://aitavn.herokuapp.com/chi-tiet"></div> --}}
-					<div class="fb-share-button" 
-						data-href="https://aitavn.herokuapp.com/chi-tiet" 
-						data-layout="button"></div>
-				</div>
-			</small>
+<div class="main-content">
+	<div class="container jspage-chi-tiet">
+		<div class="columns seven">
+		{{# each data}}
+			<div class="u-hidden jsdata-detail" data-lat="{{latitude}}" data-lng="{{longitude}}"></div>
 
-			<div class="media">
-				<div class="media-left hidden-xs">
-					<a href="#">
-						<span class="avatar-wrapper">
-							<img src={{author.avatar}}>
-						</span>
-					</a>
+			<div class="content-wrapper">
+				<div class="media-wrapper media-wrapper__no-padding">
+					<div class="media">
+						<div class="media-left hidden-xs">
+							<a href="#">
+								<span class="avatar-wrapper">
+									<img src={{author.avatar}}>
+								</span>
+							</a>
+						</div>
+
+						<div class="media-body">
+							<h4 class="media-heading">
+								<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">
+									{{toAuthorName author}}
+								</a>
+							</h4>
+
+							<span class="tel-group-wrapper">
+								<input type="checkbox" id="checkbox-{{@index}}" class="tel-group--checkbox" />
+								<label for="checkbox-{{@index}}" class="tel-group--label"><i class="icon-phone"></i> Nhấn để xem</label>
+								<a href="tel:{{mobile}}" class="tel-group--phone-number"><i class="icon-phone"></i> {{mobile}}</a>
+							</span>
+							
+							<button class="button__link" 
+								data-facebook-id="{{author.providerId}}" 
+								data-link="http://www.visla.vn/du-an/468/sunrise-city?aid=20686"
+								onclick="fbSend(this)">
+								<i class="glyphicon glyphicon-flash"></i> Nhắn qua Facebook
+							</button>
+
+							<!-- <a href="mailto:{{post.author.email}}" class="btn btn-link">
+								<i class="glyphicon glyphicon-envelope"></i> {{post.author.email}}
+							</a> -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content-wrapper">
+				<h3 class="header-01">{{title}}</h3>
+				<h5 class="header-02">{{address}}</h5>
+
+				<h5>Thông tin chi tiết</h5>
+				<div class="row infomation-b">
+					<div class="columns four">
+						<b>Ngày đăng: </b><span>04/12/3016</span>
+					</div>
+					<div class="columns four">
+						<b>Hình thức: </b><span>{{typeName type}}</span>
+					</div>
+					<div class="columns four">
+						<b>Giá: </b><span>{{toCurrency price}}</span>
+					</div>
+				</div>
+				<div class="row infomation-b">
+					<div class="columns four">
+						<b>Diện tích: </b><span>{{area}} m2</span>
+					</div>
+					<div class="columns four">
+						<b>Phòng ngủ: </b><span>{{bedroom}}</span>
+					</div>
+					<div class="columns four">
+						<b>Phòng tắm: </b><span>{{bathroom}}</span>
+					</div>
+				</div>
+				<div class="row infomation-b">
+					<div class="columns four">
+						<b>Hướng: </b><span>{{quarter}}</span>
+					</div>
+					<div class="columns four">
+						<b>Số tầng: </b><span>{{floors}}</span>
+					</div>
+					<div class="columns four">
+						<b>Môi giới: </b><span>{{isMedium medium}}</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="content-wrapper">
+				<h5>Mô tả chung</h5>
+				<p>{{{description}}}</p>
+
+				<!-- Nav tabs -->
+				<ul class="nav-tabs _pure" role="tablist">
+					<li role="presentation" class="nav-tabs--item nav-tabs--item__two active">
+						<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Hình ảnh</a>
+					</li>
+					<li role="presentation" class="nav-tabs--item nav-tabs--item__two">
+						<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Bản đồ</a>
+					</li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">
+							{{#each images}}
+							<span class="wrapper-cover-img">
+								<a class="fancybox" rel="gallery" href={{secure_url}}>
+									<img class="media-object" src={{secure_url}}>
+								</a>
+							</span>
+							{{/each}}
+					</div>
+					<div role="tabpanel" class="tab-pane" id="profile">
+						<div class="col-md-12">
+							<div id="google-map" class="google-map-block google-map-detail"></div>
+						</div>
+						<div class="clear-top"></div>
+					</div>
 				</div>
 
-				<div class="media-body">
+				<div class="sub-detail-info">
+					Hồ Chí Minh / {{districtName district}}
+					<div class="u-pull-right">
+						{{!-- <div class="fb-send" data-href="https://aitavn.herokuapp.com/chi-tiet"></div> --}}
+						<div class="fb-share-button" 
+							data-href="https://aitavn.herokuapp.com/chi-tiet" 
+							data-layout="button"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content-wrapper">
+				<div class="fb-comments" 
+					data-href="https://aita.vn/chi-tiet/{{id}}" 
+					data-numposts="12"></div>
+			</div>
+		{{/each}}
+		</div>
+
+		<div class="columns five main-right-panel">
+			<div class="suggest-post">
+				<div class="suggest-post--header">
 					<h4 class="media-heading">
-						<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
+						<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
+						<span class="tel-group-wrapper">
+							<input type="checkbox" id="checkbox-02" class="tel-group--checkbox" />
+							<label for="checkbox-02" class="tel-group--label"><i class="icon-phone"></i> Nhấn để xem</label>
+							<a href="tel:01643652922" class="tel-group--phone-number"><i class="icon-phone"></i> 01643652922</a>
+						</span>
 					</h4>
 
-					<span class="infor-block">
-						<input type="checkbox" id="checkbox-01" class="tel-checkbox" />
-						<label for="checkbox-01" class="tel-label _no-left">
-							<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-						</label>
-						<a href="tel:{{mobile}}" class="tel _no-left">
-							<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
-						</a>
-					</span>
-					
-					<button class="btn btn-link" 
-						data-facebook-id="{{author.providerId}}" 
-						data-link="http://www.visla.vn/du-an/468/sunrise-city?aid=20686"
-						onclick="fbSend(this)">
-						<i class="glyphicon glyphicon-flash"></i> Nhắn qua Facebook
-					</button>
-
-					<!-- <a href="mailto:{{post.author.email}}" class="btn btn-link">
-						<i class="glyphicon glyphicon-envelope"></i> {{post.author.email}}
-					</a> -->
+					<ul class="post-info--list">
+						<li class="post-info--item">4,820 m2</li>
+						<li class="post-info--item">|</li>
+						<li class="post-info--item">5 phòng ngủ</li>
+						<li class="post-info--item">|</li>
+						<li class="post-info--item"><b>12tr VND/Tháng</b></li>
+					</ul>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia natus, ex assumenda iste odio repellendus esse tenetur. 
+					<a href="/chi-tiet">chi tiết <i class="icon-right-open"></i></a>
 				</div>
-			</div>
-
-			<h2 class="header-01">{{title}}</h2>
-			<h4>{{address}}</h4>
-		</div>
-
-		<div class="content-wrapper">
-			<h4>Thông tin chi tiết</h4>
-			<div class="row">
-				<div class="col-md-4">
-					{{!-- <b>Ngày đăng: </b><span>{{publishedDate}}</span> --}}
-					<b>Ngày đăng: </b><span>04/12/3016</span>
-				</div>
-				<div class="col-md-4">
-					<b>Hình thức: </b><span>{{typeName type}}</span>
-				</div>
-				<div class="col-md-4">
-					<b>Giá: </b><span>{{toCurrency price}}</span>
-				</div>
-				<div class="col-md-4">
-					<b>Diện tích: </b><span>{{area}} m2</span>
-				</div>
-				<div class="col-md-4">
-					<b>Phòng ngủ: </b><span>{{bedroom}}</span>
-				</div>
-				<div class="col-md-4">
-					<b>Phòng tắm: </b><span>{{bathroom}}</span>
-				</div>
-				<div class="col-md-4">
-					<b>Hướng: </b><span>{{quarter}}</span>
-				</div>
-				<div class="col-md-4">
-					<b>Số tầng: </b><span>{{floors}}</span>
-				</div>
-				<div class="col-md-4">
-					<b>Môi giới: </b><span>{{isMedium medium}}</span>
-				</div>
-			</div>
-		</div>
-
-		<div class="content-wrapper">
-			<h4>Mô tả chung</h4>
-			<p>{{{description}}}</p>
-		</div>
-
-		<div class="content-wrapper">
-			<!-- Nav tabs -->
-			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active">
-					<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Hình ảnh</a>
-				</li>
-				<li role="presentation">
-					<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Bản đồ</a>
-				</li>
-			</ul>
-
-			<!-- Tab panes -->
-			<div class="tab-content">
-				<div role="tabpanel" class="tab-pane active" id="home">
-						{{#each images}}
-						<span class="wrapper-cover-img">
-							<a class="fancybox" rel="gallery" href={{secure_url}}>
-								<img class="media-object" src={{secure_url}}>
+				<div>
+					<span class="wrapper-cover-img">
+							<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+								<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
 							</a>
 						</span>
-						{{/each}}
+						<span class="wrapper-cover-img">
+							<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
+								<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
+							</a>
+						</span>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="profile">
-					<div class="col-md-12">
-						<div id="google-map" class="google-map-block google-map-detail"></div>
-					</div>
-					<div class="clear-top"></div>
-				</div>
+				<small><a href="#">Hồ Chí Minh / Quận 7</a></small>
 			</div>
-		</div>
+			<div class="suggest-post">
+				<div class="suggest-post--header">
+					<h4 class="media-heading">
+						<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
+						<span class="tel-group-wrapper">
+							<input type="checkbox" id="checkbox-02" class="tel-group--checkbox" />
+							<label for="checkbox-02" class="tel-group--label"><i class="icon-phone"></i> Nhấn để xem</label>
+							<a href="tel:01643652922" class="tel-group--phone-number"><i class="icon-phone"></i>01643652922</a>
+						</span>
+					</h4>
 
-		<div class="content-wrapper _no-bottom-border">
-			<small>
-				Hồ Chí Minh / {{districtName district}}
-				<div class="pull-right">
-					{{!-- <div class="fb-send" data-href="https://aitavn.herokuapp.com/chi-tiet"></div> --}}
-					<div class="fb-share-button" 
-						data-href="https://aitavn.herokuapp.com/chi-tiet" 
-						data-layout="button"></div>
+					<ul class="post-info--list">
+						<li class="post-info--item">4,820 m2</li>
+						<li class="post-info--item">|</li>
+						<li class="post-info--item">5 phòng ngủ</li>
+						<li class="post-info--item">|</li>
+						<li class="post-info--item"><b>12tr VND/Tháng</b></li>
+					</ul>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia natus, ex assumenda iste odio repellendus esse tenetur. 
+					<a href="/chi-tiet">chi tiết <i class="icon-right-open"></i></a>
 				</div>
-			</small>
-		</div>
-
-		<div class="content-wrapper">
-			<div class="fb-comments" 
-				data-href="https://aita.vn/chi-tiet/{{id}}" 
-				data-numposts="12"></div>
-		</div>
-	{{/each}}
-	</div>
-
-	<div class="main-right-panel col-md-5">
-		<div class="suggest-item">
-			<div class="media-body">
-				<h4 class="media-heading">
-					<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
-					<input type="checkbox" id="checkbox-02" class="tel-checkbox" />
-					<label for="checkbox-02" class="tel-label">
-						<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-					</label>
-					<a href="tel:01643652922" class="tel">
-						<i class="glyphicon glyphicon-earphone"></i> 01643-652-922
-					</a>
-				</h4>
-				<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-					<li>4,820 m2</li>
-					<li style="list-style: none">|</li>
-					<li>5 phòng ngủ</li>
-					<li style="list-style: none">|</li>
-					<li><b>12tr VND/Tháng</b></li>
-				</ul>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia natus, ex assumenda iste odio repellendus esse tenetur. 
-				<a href="/chi-tiet">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>
-			</div>
-			<div>
-				<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-						</a>
-					</span>
+				<div>
 					<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-						</a>
-					</span>
+							<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+								<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+							</a>
+						</span>
+						<span class="wrapper-cover-img">
+							<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
+								<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
+							</a>
+						</span>
+				</div>
+				<small><a href="#">Hồ Chí Minh / Quận 7</a></small>
 			</div>
-			<small><a href="#">Hồ Chí Minh / Quận 7</a></small>
 		</div>
-		<div class="suggest-item">
-			<div class="media-body">
-				<h4 class="media-heading">
-					<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">Tam Pham</a>
-					<input type="checkbox" id="checkbox-09" class="tel-checkbox" />
-					<label for="checkbox-09" class="tel-label">
-						<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-					</label>
-					<a href="tel:01643652922" class="tel">
-						<i class="glyphicon glyphicon-earphone"></i> 01643-652-922
-					</a>
-				</h4>
-				<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-					<li>4,820 m2</li>
-					<li style="list-style: none">|</li>
-					<li>5 phòng ngủ</li>
-					<li style="list-style: none">|</li>
-					<li><b>12tr VND/Tháng</b></li>
-				</ul>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia natus, ex assumenda iste odio repellendus esse tenetur. 
-				<a href="/chi-tiet">chi tiết <i class="glyphicon glyphicon-menu-right"></i></a>
-			</div>
-			<div>
-				<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
-						</a>
-					</span>
-					<span class="wrapper-cover-img">
-						<a class="fancybox" rel="gallery" href="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-							<img class="media-object" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg">
-						</a>
-					</span>
-			</div>
-			<small><a href="#">Hồ Chí Minh / Quận 7</a></small>
-		</div>
-	</div>
 
-	{{!-- <div class="col-md-5">
-		<h3>Phạm Minh Tâm</h3>
-		<p>
-			<i class="glyphicon glyphicon-envelope"></i>
-			<span>106 Đường D2, P24, Bình Thạnh, Sài Gòn</span>
-			<br />
-			<i class="glyphicon glyphicon-envelope"></i>
-			<span>email@example.com</span>
-			<br />
-			<i class="glyphicon glyphicon-envelope"></i>
-			<span>01643-652-922</span>
-			<br />
-			<i class="glyphicon glyphicon-envelope"></i>
-			<a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-			<br />
-			<i class="glyphicon glyphicon-envelope"></i>
-			<span>June 02, 1988</span>
-			<br />
-			<br />
-			<button class="btn btn-sm btn-success" onclick="fbSend()">Gởi tin nhắn Facebook</button>
-		</p>
-	</div> --}}
+		{{!-- <div class="col-md-5">
+			<h3>Phạm Minh Tâm</h3>
+			<p>
+				<i class="glyphicon glyphicon-envelope"></i>
+				<span>106 Đường D2, P24, Bình Thạnh, Sài Gòn</span>
+				<br />
+				<i class="glyphicon glyphicon-envelope"></i>
+				<span>email@example.com</span>
+				<br />
+				<i class="glyphicon glyphicon-envelope"></i>
+				<span>01643-652-922</span>
+				<br />
+				<i class="glyphicon glyphicon-envelope"></i>
+				<a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+				<br />
+				<i class="glyphicon glyphicon-envelope"></i>
+				<span>June 02, 1988</span>
+				<br />
+				<br />
+				<button class="btn btn-sm btn-success" onclick="fbSend()">Gởi tin nhắn Facebook</button>
+			</p>
+		</div> --}}
+	</div>
 </div>

@@ -1,0 +1,42 @@
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+
+.navbar {
+	background-color: $pri-color-01;
+	position: fixed;
+	width: 100%;
+	z-index: $index-header;
+	font-size: 1.5rem;
+	line-height: 1.6;
+
+	&--list,
+	&--list-control {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+	}
+
+	&--list-control {
+		float: right;
+	}
+
+	&--item {
+		display: inline;
+		margin: 0;
+		padding: 0;
+
+		a {
+			display: inline-block;
+			padding: $gutter;
+			text-decoration: none;
+			color: white;
+
+			&:hover {
+				background-color: $pri-color-02;
+			}
+		}
+	}
+}

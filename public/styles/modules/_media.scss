@@ -1,0 +1,142 @@
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+
+.media-wrapper {
+	padding: $gutter;
+	border-bottom: 1px solid whitesmoke;
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	&__no-padding {
+		padding: 0;
+	}
+}
+
+.media {
+	width: 100%;
+}
+
+.media-left,
+.media-body {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.media-left {}
+
+.media-body {
+	padding-left: $gutter;
+}
+
+.media-heading {
+	font-size: 2rem;
+	margin-bottom: 0.5*$gutter;
+
+	a {
+		text-decoration: none;
+	}
+
+	* {
+		display: inline-block;
+	}
+
+	.btn-bookmark {
+		display: none;
+	}
+}
+
+
+/**	
+ * tel group, 
+ */
+.tel-group-wrapper {
+}
+
+.tel-group {
+	&--label {
+		font-weight: normal;
+		color: black;
+		display: inline;
+		margin: 0;
+		line-height: 23px;
+	}
+
+	&--checkbox {
+		visibility: hidden;
+		display: none !important;
+		margin: 0;
+	}
+
+	&--phone-number {
+		display: none;
+		font-weight: normal;
+		color: black;
+		margin: 0;
+		text-decoration: none;
+	}
+}
+
+.tel-group--checkbox:checked {
+	~.tel-group {
+		&--label {
+			display: none;
+		}
+
+		&--phone-number {
+			display: inline;
+		}
+	}
+}
+
+
+/**
+ * post info
+ */
+.post-info {
+	&--list {
+		list-style-type: none;
+		margin-bottom: 0.5*$gutter;
+	}
+
+	&--item {
+		display: inline;
+		padding: 0 0.5*$gutter;
+
+		&:first-child {
+			padding-left: 0;
+		}
+	}
+
+	&--div {}
+}
+
+/**
+ * image wrapper 
+ */
+.wrapper-cover-img {
+	width: 200px;
+	height: 125px;
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+
+	img {
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+
+/**
+ * 
+ */
+.sumary-b {
+	display: inline-block;
+	margin-bottom: 0.5*$gutter;
+}

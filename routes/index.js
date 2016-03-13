@@ -185,8 +185,7 @@ exports = module.exports = function(app) {
 	app.get('/can-ho', routes.views.index);
 	app.get('/phong', routes.views.index);
 
-	app.get('/login', routes.views.login);
-	app.get('/dang-nhap', routes.views.login);
+	app.get('/dang-nhap', routes.views['dang-nhap']);
 	app.get('/dang-ky', routes.views['dang-ky']);
 	app.get('/dang-tin', ensureAuthenticated, routes.views['dang-tin']);
 
