@@ -5,18 +5,18 @@
 		<div class="index-block--left columns">
 			<div class="result-block">
 				<!-- Nav tabs -->
-				<ul class="nav-tabs _pure" role="tablist">
-					<li role="presentation" class="nav-tabs--item nav-tabs--item__two active">
-						<a href="#filter" aria-controls="filter" role="tab" data-toggle="tab">Bộ lọc</a>
+				<ul class="nav-tabs _pure">
+					<li role="presentation" class="nav-tabs--item nav-tabs--item__two active" data-href="#filter">
+						<a href="#filter" data-toggle="tab">Bộ lọc</a>
 					</li>
-					<li role="presentation" class="nav-tabs--item nav-tabs--item__two">
-						<a href="#favorite" aria-controls="favorite" role="tab" data-toggle="tab">Đã lưu</a>
+					<li role="presentation" class="nav-tabs--item nav-tabs--item__two" data-href="#favorite">
+						<a href="#favorite" data-toggle="tab">Đã lưu</a>
 					</li>
 				</ul>
 
 				<!-- Tab panes -->
-				<div class="tab-content _index-page">
-					<div role="tabpanel" class="tab-pane active" id="filter">
+				<div class="tab-content">
+					<div class="tab-content--pane active" id="filter">
 						<div class="list-result" data-marker="">
 							{{# each data.posts}}
 								<div class="media-wrapper">
@@ -94,7 +94,7 @@
 						</div>
 					</div>
 
-					<div role="tabpanel" class="tab-pane" id="favorite">
+					<div class="tab-content--pane" id="favorite">
 						{{#if user}}
 							{{# each data.posts}}
 								{{#if (isBookmarked _id)}}

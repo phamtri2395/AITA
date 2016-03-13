@@ -38,5 +38,11 @@
 				background-color: $pri-color-02;
 			}
 		}
+
+		&.active {
+			a {
+				background-color: $pri-color-02;
+			}
+		}
 	}
 }

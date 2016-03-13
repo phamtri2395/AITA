@@ -26,6 +26,7 @@ ul._pure {
 			padding: 0.5*$gutter 0;
 			width: 100%;
 			border-bottom: 1px solid whitesmoke;
+			border-top: 4px solid transparent;
 			color: $pri-color-03;
 
 			&:hover {
@@ -36,6 +37,24 @@ ul._pure {
 			&.active {
 				background-color: $pri-color-03;
 			}
+		}
+
+		&.active {
+			a {
+				// background-color: $pri-color-04;
+				border-top-color: $pri-color-03;
+			}
+		}
+	}
+}
+
+.tab-content {
+
+	&--pane {
+		display: none;
+
+		&.active {
+			display: block;
 		}
 	}
 }
