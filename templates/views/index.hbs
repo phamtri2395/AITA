@@ -182,18 +182,16 @@
 										data-is-loaded="false" >
 										<div class="media-left hidden-xs">
 											<a href="#">
-												<img src="http://placehold.it/60x60">
+												<span class="avatar-wrapper">
+													<img src={{author.avatar}}>
+												</span>
 											</a>
 										</div>
 
 										<div class="media-body">
 											<h4 class="media-heading">
 												<a href="/chi-tiet" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
-												<input type="checkbox" id="checkbox-{{@index}}" class="tel-checkbox" />
-												<label for="checkbox-{{@index}}" class="tel-label">
-													<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-												</label>
-												<a href="tel:{{mobile}}" class="tel">
+												<a href="tel:{{mobile}}" style="margin-left:15px; color:black;">
 													<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
 												</a>
 											</h4>
