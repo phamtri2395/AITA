@@ -22,7 +22,7 @@ $(document).on('submit','.form-bookmark',function(e){
   var postId = $(this).attr("value");
 	$.ajax({
 	type: "POST",
-	url: "/bookmark/" + postId,
+	url: "/user/bookmark/" + postId,
 	});
 
 });
