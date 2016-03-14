@@ -1,6 +1,8 @@
 var keystone = require('keystone');
 var Handlebars = require('handlebars');
 
+const EXPIRE_PERIOD = 21;
+
 exports = module.exports = function(req, res) {
 	
 	var view = new keystone.View(req, res);
@@ -53,6 +55,17 @@ exports = module.exports = function(req, res) {
 	// Register districtName function, which return name of District
 	Handlebars.registerHelper('districtName', function(district) {
 		return (district) ? (district.name) : 'null';
+	});
+	// Register isActive function, which determine which post is activing
+	Handlebars.registerHelper('isActive', function(activeDate) {
+		if (activeDate) {
+			var minus = new Date(Date.now());
+			minus.setDate(minus.getDate() - EXPIRE_PERIOD);
+			return ((activeDate >= minus) && (activeDate <= Date.now()));
+		}
+		else {
+			return false;
+		}
 	});
 
 	// Render the view
