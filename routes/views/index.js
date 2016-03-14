@@ -79,8 +79,8 @@ exports = module.exports = function(req, res) {
 
 		keystone.list('Post').model.find({
 			activeDate: {
-					$gt:minusDays(Date.now(), EXPIRE_PERIOD),
-					$lt:Date.now()
+					$gte:minusDays(Date.now(), EXPIRE_PERIOD),
+					$lte:Date.now()
 			}}).
 			populate('author').sort('publishedDate').exec(function(err, results) {
 			
