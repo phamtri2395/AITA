@@ -197,7 +197,7 @@ Post.add({
 		label:'Ngày kích hoạt',
 		type: Types.Datetime,
 		index: true,
-		hidden: true,
+		//hidden: true,
 		watch: true,
 		value: Date.now
 	},
