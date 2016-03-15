@@ -63,10 +63,13 @@ ul._pure {
 		position: absolute;
 		z-index: -1;
 		transform: translateY(-100%);
-		left: 0;
-		top: 0;
-		bottom: 0;
-		right: 0;
+
+		&__map {
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+		}
 
 		&.active {
 			position: relative;
