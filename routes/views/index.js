@@ -2,6 +2,8 @@ var keystone = require('keystone');
 var Handlebars = require('handlebars');
 var async = require('async');
 
+const EXPIRE_PERIOD = 21;
+
 exports = module.exports = function(req, res) {
 	
 	var view = new keystone.View(req, res);
@@ -75,9 +77,15 @@ exports = module.exports = function(req, res) {
 	// Load all posts
 	view.on('init', function(next) {
 
-		keystone.list('Post').model.find().populate('author').sort('publishedDate').exec(function(err, results) {
+		keystone.list('Post').model.find({
+			activeDate: {
+					$gte:minusDays(Date.now(), EXPIRE_PERIOD),
+					$lte:Date.now()
+			}}).
+			populate('author').sort('publishedDate').exec(function(err, results) {
 			
 			if (err || !results.length) {
+				console.log('NO RESULT');
 				return next(err);
 			}
 			
@@ -85,7 +93,6 @@ exports = module.exports = function(req, res) {
 
 			// Load the counts for each post
 			async.each(locals.data.posts, function(post, next) {
-				
 				keystone.list('Post').model.count().exec(function(err, count) {
 					post.postCount = count;
 					next(err);
@@ -142,6 +149,12 @@ exports = module.exports = function(req, res) {
 
   		return flag;
 	});
+	// Add Days
+	function minusDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() - days);
+    return result;
+	}
 
 	// Render the view
 	view.render('index', { layout: 'index' });

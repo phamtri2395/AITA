@@ -193,6 +193,15 @@ Post.add({
 		}
 	},
 
+	activeDate: {
+		label:'Ngày kích hoạt',
+		type: Types.Datetime,
+		index: true,
+		//hidden: true,
+		watch: true,
+		value: Date.now
+	},
+
 	images :{ 
 		label: 'Hình ảnh',
 		type: Types.CloudinaryImages, 
