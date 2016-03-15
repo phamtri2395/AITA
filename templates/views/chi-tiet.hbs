@@ -92,17 +92,17 @@
 
 				<!-- Nav tabs -->
 				<ul class="nav-tabs _pure" role="tablist">
-					<li role="presentation" class="nav-tabs--item nav-tabs--item__two active">
-						<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Hình ảnh</a>
+					<li class="nav-tabs--item nav-tabs--item__two active" data-href="#image-pane">
+						<a href="javascript:;" data-toggle="tab">Hình ảnh</a>
 					</li>
-					<li role="presentation" class="nav-tabs--item nav-tabs--item__two">
-						<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Bản đồ</a>
+					<li class="nav-tabs--item nav-tabs--item__two" data-href="#map-pane">
+						<a href="javascript:;" data-toggle="tab">Bản đồ</a>
 					</li>
 				</ul>
 
 				<!-- Tab panes -->
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane active" id="home">
+					<div class="tab-content--pane active" id="image-pane">
 							{{#each images}}
 							<span class="wrapper-cover-img">
 								<a class="fancybox" rel="gallery" href={{secure_url}}>
@@ -111,8 +111,8 @@
 							</span>
 							{{/each}}
 					</div>
-					<div role="tabpanel" class="tab-pane" id="profile">
-						<div class="col-md-12">
+					<div class="tab-content--pane" id="map-pane">
+						<div class="input-map">
 							<div id="google-map" class="google-map-block google-map-detail"></div>
 						</div>
 						<div class="clear-top"></div>

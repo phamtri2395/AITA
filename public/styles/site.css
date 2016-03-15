@@ -541,7 +541,8 @@ p {
   max-width: 1170px;
   margin: 0 auto;
   padding: 0 20px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: white; }
 
 .column,
 .columns {
@@ -923,7 +924,12 @@ ul._pure {
   margin: 0; }
 
 .nav-tabs {
-  width: 100%; }
+  width: 100%;
+  background-color: white; }
+  .nav-tabs:after {
+    content: '';
+    display: block;
+    clear: both; }
   .nav-tabs--item {
     display: inline-block;
     float: left; }
@@ -945,10 +951,21 @@ ul._pure {
     .nav-tabs--item.active a {
       border-top-color: #A9C52F; }
 
-.tab-content--pane {
-  display: none; }
-  .tab-content--pane.active {
-    display: block; }
+.tab-content {
+  position: relative; }
+  .tab-content--pane {
+    background-color: white;
+    position: absolute;
+    z-index: -1;
+    transform: translateY(-100%);
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0; }
+    .tab-content--pane.active {
+      position: relative;
+      transform: translateY(0);
+      z-index: 0; }
 
 /**
  * Capheshift 2016
@@ -984,15 +1001,18 @@ ul._pure {
   bottom: 0;
   left: 0;
   right: 0; }
+  .index-block:after {
+    clear: both; }
   .index-block--left, .index-block--right {
-    height: 100%;
-    display: inline; }
+    height: 100%; }
   .index-block--left {
     overflow-x: hidden;
     overflow-y: scroll;
+    float: left;
     width: 60%; }
   .index-block--right {
-    width: 40%; }
+    width: 40%;
+    float: right; }
 
 .google-map-block {
   height: 100%; }
@@ -1034,6 +1054,10 @@ ul._pure {
 
 .input-map {
   height: 200px; }
+
+.google-map-block {
+  min-height: 300px;
+  min-width: 300px; }
 
 /**
  * Capheshift 2016

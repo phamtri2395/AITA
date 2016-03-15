@@ -33,20 +33,25 @@ body,
 	left: 0;
 	right: 0;
 
+	&:after {
+		clear: both;
+	}
+
 	&--left,
 	&--right {
 		height: 100%;
-		display: inline;
 	}
 
 	&--left {
 		overflow-x: hidden;
 		overflow-y: scroll;
+		float: left;
 		width: 60%;
 	}
 
 	&--right {
 		width: 40%;
+		float: right;
 	}
 }
 
@@ -107,4 +112,9 @@ body,
 
 .input-map {
 	height: 200px;
+}
+
+.google-map-block {
+	min-height: 300px;
+	min-width: 300px;
 }

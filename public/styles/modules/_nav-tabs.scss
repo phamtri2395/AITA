@@ -10,6 +10,13 @@ ul._pure {
 
 .nav-tabs {
 	width: 100%;
+	background-color: white;
+
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
 
 	&--item {
 		display: inline-block;
@@ -49,12 +56,22 @@ ul._pure {
 }
 
 .tab-content {
+	position: relative;
 
 	&--pane {
-		display: none;
+		background-color: white;
+		position: absolute;
+		z-index: -1;
+		transform: translateY(-100%);
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
 
 		&.active {
-			display: block;
+			position: relative;
+			transform: translateY(0);
+			z-index: 0;
 		}
 	}
 }
