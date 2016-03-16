@@ -55,9 +55,9 @@
 
 			google && google.maps.event.addDomListener(window, 'load', function() {
 				var content = '';
-				var childrensList = that.element.children();
+				var childrensList = that.element.find(that.options.media);
 				var firstChild = childrensList.first();
-
+				
 				that.vars.mapOptions = {
 					center: new google.maps.LatLng(firstChild.data('latitude'), firstChild.data('longitude')),
 					zoom: 16,
@@ -69,9 +69,9 @@
 				childrensList.each(function(ind, val) {
 					var self = $(this);
 					var data = self.data();
-
+					
 					content = contents(data);
-
+					
 					that.vars.markersList[ind] = new google.maps.Marker({
 						position: new google.maps.LatLng(data.latitude, data.longitude),
 						map: that.vars.map,
@@ -90,11 +90,11 @@
 			that.element
 				.off('mouseover.view-item', that.options.dataItem)
 				.on('mouseover.view-item', that.options.dataItem, function() {
-					google.maps.event.trigger(that.vars.markersList[$(this).index()], 'mouseover');
+					google.maps.event.trigger(that.vars.markersList[$(this).closest(that.options.mediaWrapper).index()], 'mouseover');
 				})
 				.off('mouseout.view-item', that.options.dataItem)
 				.on('mouseout.view-item', that.options.dataItem, function() {
-					google.maps.event.trigger(that.vars.markersList[$(this).index()], 'mouseout');
+					google.maps.event.trigger(that.vars.markersList[$(this).closest(that.options.mediaWrapper).index()], 'mouseout');
 				});
 		},
 		destroy: function(){
@@ -118,6 +118,8 @@
 
 	$.fn[pluginName].defaults = {
 		mapId: 'google-map',
+		mediaWrapper: '.media-wrapper',
+		media: '.media',
 		dataItem: '[data-item]'
 	};
 
