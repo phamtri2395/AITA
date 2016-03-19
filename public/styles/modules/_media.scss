@@ -14,6 +14,11 @@
 	&__no-padding {
 		padding: 0;
 	}
+
+	&.active {
+		background-color: $color-06;
+		transition: all 0.3s;
+	}
 }
 
 .media {
