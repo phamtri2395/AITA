@@ -114,6 +114,32 @@ body,
 	height: 200px;
 }
 
-.search-box-container {
-	padding: 0 $gutter;
+.search-box-container {}
+
+
+.searchbox {
+	
+	&--wrapper {
+		padding: $gutter;
+		padding-top: 0;
+		border-bottom: 1px solid whitesmoke;
+	}
+
+	&--control {}
+
+	&--left,
+	&--right {}
+
+	&--left {
+		label {
+			text-align: right;
+		}
+	}
+
+	&--right {
+		button {
+			float: right;
+		}
+	}
 }
+
