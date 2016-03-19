@@ -90,11 +90,15 @@
 			that.element
 				.off('mouseover.view-item', that.options.dataItem)
 				.on('mouseover.view-item', that.options.dataItem, function() {
-					google.maps.event.trigger(that.vars.markersList[$(this).closest(that.options.mediaWrapper).index()], 'mouseover');
+					var parent = $(this).closest(that.options.mediaWrapper);
+					parent.addClass('active');
+					google.maps.event.trigger(that.vars.markersList[parent.index()], 'mouseover');
 				})
 				.off('mouseout.view-item', that.options.dataItem)
 				.on('mouseout.view-item', that.options.dataItem, function() {
-					google.maps.event.trigger(that.vars.markersList[$(this).closest(that.options.mediaWrapper).index()], 'mouseout');
+					var parent = $(this).closest(that.options.mediaWrapper);
+					parent.removeClass('active');
+					google.maps.event.trigger(that.vars.markersList[parent.index()], 'mouseout');
 				});
 		},
 		destroy: function(){
