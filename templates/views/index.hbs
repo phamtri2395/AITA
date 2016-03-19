@@ -1,7 +1,7 @@
 {{!< default}}
 
 <div class="full-height-wrapper">
-	<div class="index-block jspage-index">
+	<div class="index-block js-container js-page-index">
 		<div class="index-block--left columns">
 			<div class="result-block">
 				<!-- Nav tabs -->
@@ -17,6 +17,7 @@
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div class="tab-content--pane active" id="filter">
+						<div id="search-box-holder" class="search-box-container"></div>
 						<div class="list-result" data-marker="">
 							{{# each data.posts}}
 								<div class="media-wrapper">

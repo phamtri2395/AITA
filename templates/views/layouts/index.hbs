@@ -14,6 +14,7 @@
 		{{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> --}}
 
 		<link href="/styles/site.css" rel="stylesheet">
+		<link href="/styles/libs/react-select/react-select.css" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -83,13 +84,24 @@
 			{{{body}}}
 		</div>
 
+		{{!-- <script src="/js/libs/react/react.js"></script>
+		<script src="/js/libs/react/react-dom.js"></script>
+		<script src="/js/libs/react-select/react-select.js"></script> --}}
+
+		<script src="//npmcdn.com/react@0.14.2/dist/react.min.js"></script>
+		<script src="//npmcdn.com/react-dom@0.14.2/dist/react-dom.min.js"></script>
+		<script src="//npmcdn.com/three.js@0.73.0/build/three.min.js"></script>
+		<script src="//npmcdn.com/classnames@2.0.0/index.js"></script>
+		<script src="//npmcdn.com/react-input-autosize@0.6.3/dist/react-input-autosize.min.js"></script>
+		<script src="/js/libs/react-select/react-select-stand.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
 		<script src="/js/jquery/jquery-2.1.4.min.js"></script>
-		{{!-- <script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script> --}}
 		<script src="/js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
 		<script src="/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 		<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyD_yXbTRgAl5Vsku8zPVgp5qALfXQxNUk4"></script>
-		<script src="/js/marker/jquery.marker.js"></script>
-		<script src="/js/script.js"></script>
+		<script src="/js/modules/jquery.marker.js"></script>
+		<script src="/js/views/script.js"></script>
 
 		{{!-- plugins --}}
 		<script src="/js/modules/nav-tabs.js"></script>
@@ -98,6 +110,9 @@
 		<script src="/js/views/index.js"></script>
 		<script src="/js/views/dang-tin.js"></script>
 		<script src="/js/views/chi-tiet.js"></script>
+
+		{{!-- react comps --}}
+		<script src="/js/react-comp/search-box.js" type="text/babel"></script>
 
 		<!--<script type="text/javascript">
 		(function(d,s,id){var z=d.createElement(s);z.type="text/javascript";z.id=id;z.async=true;z.src="//static.zotabox.com/f/c/fc9c72038d852eb8b556239bcc0af7d5/widgets.js";var sz=d.getElementsByTagName(s)[0];sz.parentNode.insertBefore(z,sz)}(document,"script","zb-embed-code"));

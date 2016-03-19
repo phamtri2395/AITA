@@ -114,7 +114,32 @@ body,
 	height: 200px;
 }
 
-.google-map-block {
-	// min-height: 300px;
-	// min-width: 300px;
+.search-box-container {}
+
+
+.searchbox {
+	
+	&--wrapper {
+		padding: $gutter;
+		padding-top: 0;
+		border-bottom: 1px solid whitesmoke;
+	}
+
+	&--control {}
+
+	&--left,
+	&--right {}
+
+	&--left {
+		label {
+			text-align: right;
+		}
+	}
+
+	&--right {
+		button {
+			float: right;
+		}
+	}
 }
+
