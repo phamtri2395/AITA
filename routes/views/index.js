@@ -1,8 +1,12 @@
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+
 var keystone = require('keystone');
 var Handlebars = require('handlebars');
 var async = require('async');
-
-const EXPIRE_PERIOD = 21;
+var EXPIRE_PERIOD = 21;
 
 exports = module.exports = function(req, res) {
 	
