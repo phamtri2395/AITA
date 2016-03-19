@@ -218,6 +218,15 @@ exports = module.exports = function(app) {
 		res.send('ok');
 	});
 
+	// Post MODEL: function for set of collection
+	app.get('/api/post/all', routes.services.post._all);
+	app.get('/api/post/find', routes.services.post._find);
+	app.get('/api/post/:_id/detail', routes.services.post._get);
+	// functions for special collection
+	app.post('/api/post/', routes.services.post._post);
+	app.put('/api/post/:_id', routes.services.post._put);
+	app.delete('/api/post/:_id', routes.services.post._delete);
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };

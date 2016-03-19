@@ -3,15 +3,38 @@
 
 	var redIcon = 'http://maps.google.com/mapfiles/ms/icons/red.png';
 	var blueIcon = 'http://maps.google.com/mapfiles/ms/icons/blue.png'
+	var duration = 500;
+	var markersList = [];
+	var infoWindowsList = [];
+	var lastInfoWindow = null;
+	var lastMarker = null;
+	var navbarHeight = $('.navbar').height();
 
-	var addClickEventListener = function(map, marker, infoWindow, content) {
+	var addClickEventListener = function(map, marker, infoWindow, content, elm) {
 		google.maps.event.addListener(marker, 'click', function() {
+			if (lastMarker) {
+				lastMarker.setIcon(redIcon);
+			}
+
+			if (lastInfoWindow) {
+				lastInfoWindow.close();
+			}
+
+			elm.addClass('active').siblings().removeClass('active');
+			$('.index-block--left').animate({
+				scrollTop: elm.position().top + navbarHeight
+			}, duration);
+
+			marker.setIcon(blueIcon);
 			infoWindow.setContent(content);
 			infoWindow.open(map, marker);
+
+			lastMarker = marker;
+			lastInfoWindow = infoWindow;
 		});
 	};
 
-	var addMouseEventListener = function(map, marker, infoWindow, content) {
+	var addMouseEventListener = function(map, marker, infoWindow, content, elm) {
 		google.maps.event.addListener(marker, 'mouseover', function() {
 			marker.setIcon(blueIcon);
 
@@ -20,9 +43,11 @@
 		});
 
 		google.maps.event.addListener(marker, 'mouseout', function() {
-			marker.setIcon(redIcon);
+			if (!elm.hasClass('active')) {
+				marker.setIcon(redIcon);
 
-			infoWindow.close();
+				infoWindow.close();
+			}
 		});
 	};
 
@@ -48,8 +73,6 @@
 			var that = this;
 			that.vars = {
 				map: null,
-				markersList: [],
-				infoWindowsList: [],
 				mapOptions: {}
 			};
 
@@ -69,38 +92,44 @@
 				childrensList.each(function(ind, val) {
 					var self = $(this);
 					var data = self.data();
+					var wrapper = self.closest(that.options.mediaWrapper);
 					
 					content = contents(data);
 					
-					that.vars.markersList[ind] = new google.maps.Marker({
+					markersList[ind] = new google.maps.Marker({
 						position: new google.maps.LatLng(data.latitude, data.longitude),
 						map: that.vars.map,
 						icon: redIcon
 					});
 
-					that.vars.infoWindowsList[ind] = new google.maps.InfoWindow({
+					infoWindowsList[ind] = new google.maps.InfoWindow({
 						content: content
 					});
 
-					addClickEventListener(that.vars.map, that.vars.markersList[ind], that.vars.infoWindowsList[ind], content);
-					addMouseEventListener(that.vars.map, that.vars.markersList[ind], that.vars.infoWindowsList[ind], content);
+					addClickEventListener(that.vars.map, markersList[ind], infoWindowsList[ind], content, wrapper);
+					addMouseEventListener(that.vars.map, markersList[ind], infoWindowsList[ind], content, wrapper);
 				});
 			});
 
 			that.element
 				.off('mouseover.view-item', that.options.dataItem)
 				.on('mouseover.view-item', that.options.dataItem, function() {
-					var parent = $(this).closest(that.options.mediaWrapper);
-					var prev = parent.siblings('.media-wrapper').filter('.active');
+					var parent      = $(this).closest(that.options.mediaWrapper);
+					var parentIndex = parent.index();
+					var prev        = parent.siblings('.media-wrapper').filter('.active');
 
 					parent.addClass('active');
 
 					if (prev.length) {
 						prev.removeClass('active');
-						google.maps.event.trigger(that.vars.markersList[prev.index()], 'mouseout');
+						google.maps.event.trigger(markersList[prev.index()], 'mouseout');
 					}
 
-					google.maps.event.trigger(that.vars.markersList[parent.index()], 'mouseover');
+					lastMarker = markersList[parentIndex];
+					lastInfoWindow = infoWindowsList[parentIndex];
+
+					console.log(lastMarker, lastInfoWindow);
+					google.maps.event.trigger(markersList[parentIndex], 'mouseover');
 				})
 				.off('mouseout.view-item', that.options.dataItem)
 				.on('mouseout.view-item', that.options.dataItem, function() {
