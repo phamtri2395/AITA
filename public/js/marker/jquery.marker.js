@@ -91,14 +91,19 @@
 				.off('mouseover.view-item', that.options.dataItem)
 				.on('mouseover.view-item', that.options.dataItem, function() {
 					var parent = $(this).closest(that.options.mediaWrapper);
+					var prev = parent.siblings('.media-wrapper').filter('.active');
+
 					parent.addClass('active');
+
+					if (prev.length) {
+						prev.removeClass('active');
+						google.maps.event.trigger(that.vars.markersList[prev.index()], 'mouseout');
+					}
+
 					google.maps.event.trigger(that.vars.markersList[parent.index()], 'mouseover');
 				})
 				.off('mouseout.view-item', that.options.dataItem)
 				.on('mouseout.view-item', that.options.dataItem, function() {
-					var parent = $(this).closest(that.options.mediaWrapper);
-					parent.removeClass('active');
-					google.maps.event.trigger(that.vars.markersList[parent.index()], 'mouseout');
 				});
 		},
 		destroy: function(){
