@@ -25,6 +25,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
+var multer = require('multer');
 
 var FacebookStrategy = require('passport-facebook').Strategy;
 var MongoDBStore = require('connect-mongodb-session')(session);
@@ -36,6 +37,18 @@ var store = new MongoDBStore({
 	uri: process.env.MONGO_URI,
 	collection: 'my_sessions'
 });
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now());
+  }
+});
+
+// var fileUploadHandle = multer({ dest: 'uploads/' });
+var fileUploadHandle = multer({ storage: storage });
 
 // Catch errors 
 store.on('error', function(error) {
@@ -138,18 +151,18 @@ exports = module.exports = function(app) {
 		res.redirect('/login');
 	};
 
-	app.use(logger('default'));
 	app.use(cookieParser({}));
-	app.use(bodyParser());
-	app.use(methodOverride());
+	// app.use(logger('default'));
+	// app.use(methodOverride());
+	// app.use(bodyParser());
 	// app.use(session({ secret: process.env.SECRET }));
-	app.use(session({ 
-		secret: process.env.SECRET,
-		cookie: {
-			maxAge: 1000 * 60 * 60 * 24 * 365 // 365 days
-		},
-		store: store
-	}));
+	// app.use(session({ 
+	// 	secret: process.env.SECRET,
+	// 	cookie: {
+	// 		maxAge: 1000 * 60 * 60 * 24 * 365 // 365 days
+	// 	},
+	// 	store: store
+	// }));
 	// Initialize Passport!  Also use passport.session() middleware, to support
 	// persistent login sessions (recommended).
 	app.use(passport.initialize());
@@ -196,6 +209,23 @@ exports = module.exports = function(app) {
 	app.get('/fb', routes.views.fb);
 	app.post('/user/bookmark/:_postId', routes.services.users.bookmark);
 	app.post('/user/reactivate/:_postId', routes.services.users.reactivate);
+
+	app.get('/upload', routes.views.upload.get);
+	app.post('/upload', fileUploadHandle.single('image'), function(req, res, next) {
+		console.log('upload file', req.file);
+		console.log('upload files', req.files);
+		console.log('upload body', req.body);
+		res.send('ok');
+	});
+
+	// Post MODEL: function for set of collection
+	app.get('/api/post/all', routes.services.post._all);
+	app.get('/api/post/find', routes.services.post._find);
+	app.get('/api/post/:_id/detail', routes.services.post._get);
+	// functions for special collection
+	app.post('/api/post/', routes.services.post._post);
+	app.put('/api/post/:_id', routes.services.post._put);
+	app.delete('/api/post/:_id', routes.services.post._delete);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

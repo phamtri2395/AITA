@@ -171,8 +171,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>&nbsp;</div>
 						<div className='columns nine'>
 							<label className='checkbox-lable' htmlFor='checkbox-mat-tien'>
-								<input onChange={this.handleChange} type='checkbox' name='front' id='checkbox-mat-tien' /> 
-								Mặt tiền
+								<input onChange={this.handleChange} type='checkbox' name='front' id='checkbox-mat-tien' /> Mặt tiền
 							</label>
 						</div>
 					</div>
@@ -299,8 +298,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>&nbsp;</div>
 						<div className='columns nine'>
 							<label htmlhtmlFor='push-ads'>
-								<input onChange={this.handleChange} type='checkbox' name='pushAds' id='push-ads' className='form-control' />
-								Chạy quảng cáo
+								<input onChange={this.handleChange} type='checkbox' name='pushAds' id='push-ads' className='form-control' /> Chạy quảng cáo
 							</label>
 						</div>
 					</div>
@@ -310,8 +308,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>&nbsp;</div>
 						<div className='columns nine'>
 							<label>
-								<input onChange={this.handleChange} className='form-control' type='checkbox' name='isProject' required='required' checked='checked' />
-								Chọn nếu nhà thuộc dự án
+								<input onChange={this.handleChange} className='form-control' type='checkbox' name='isProject' required='required' checked='checked' /> Chọn nếu nhà thuộc dự án
 							</label>
 						</div>
 					</div>
@@ -385,8 +382,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 							</p>
 							<input onChange={this.handleChange} type='hidden' name='ward-filters' defaultValue='json data.filters' />
 							<input onChange={this.handleChange} type='hidden' name='publishedDate' defaultValue='currentDate' />
-							<button className='' type='submit'>Hủy</button>
-							<button className='button-primary' type='submit'>Đăng tin</button>
+							<button className='' type='submit'>Hủy</button> <button className='button-primary' type='submit'>Đăng tin</button>
 						</div>
 					</div>
 				</form>
