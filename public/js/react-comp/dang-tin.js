@@ -7,6 +7,12 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 					{label: 'Mua', value: 'mua'},
 					{label: 'Bán', value: 'ban'}
 				],
+				realEstateVal: '',
+				realEstateOptions: [
+					{label: 'Nhà', value: 'nha'},
+					{label: 'Căn hộ', value: 'can-ho'},
+					{label: 'Phòng cho thuê', value: 'phong'}
+				],
 				districtVal: 'Quận 1',
 				districtOptions: [
 					{label: 'Quận 1', value: 1},
@@ -133,6 +139,9 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 		handleChangeType: function(val) {
 			this.setState({typeVal: val});
 		},
+		handleChangeRealEstate: function(val) {
+			this.setState({realEstateVal: val});
+		},
 		handleChangeDistrict: function(val) {
 			this.setState({districtVal: val});
 		},
@@ -173,6 +182,14 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						</div>
 						<div className='columns nine'>
 							<Select value={this.state.typeVal} options={this.state.typeOptions} onChange={this.handleChangeType} />
+						</div>
+					</div>
+					<div className='row'>
+						<div className='columns three'>
+							<label>Nhà / Căn Hộ / Phòng</label>
+						</div>
+						<div className='columns nine'>
+							<Select value={this.state.realEstateVal} options={this.state.realEstateOptions} onChange={this.handleChangeRealEstate} />
 						</div>
 					</div>
 					<div className='row'>

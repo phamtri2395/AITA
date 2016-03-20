@@ -23,6 +23,13 @@ Post.add({
 		required: false
 	},
 
+	realEstate: {
+		label: 'Nhà / Căn Hộ / Phòng',
+		type: Types.Relationship,
+		ref: 'EstateCategory',
+		required: false
+	},
+
 	district: {
 		label: 'Quận',
 		type: Types.Relationship,
