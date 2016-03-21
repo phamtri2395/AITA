@@ -1,3 +1,7 @@
+/**
+ * Aita 2016
+ */
+
 if ($('.js-container').hasClass('jspage-dang-tin')) {
 	var AddNewPostForm = React.createClass({
 		getInitialState: function() {
@@ -65,6 +69,9 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 		},
 		componentDidMount: function() {
 			var map, mapOptions, center, currentMarker;
+			// var myDropzone = new Dropzone('#js-dropzone-component', { url: '/uploadHandler' });
+			// var myDropzone = $('div#js-dropzone-component').dropzone({ url: '/uploadHandler' });
+
 			center = new google.maps.LatLng(10.81416666666667, 106.66694444444444);
 			mapOptions = {
 				center: center,
@@ -157,7 +164,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 		render: function() {
 			return (
 				<form className='form-home' action='/add-new-post' method='post' acceptCharset='utf-8' encType='multipart/form-data'>
-					<p className='form-title'>Thông tin bắt buộc</p>
+					
 					<div className='row'>
 						<div className='columns three'>
 							<label>Tiêu đề</label>
@@ -171,7 +178,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>&nbsp;</div>
 						<div className='columns nine'>
 							<label className='checkbox-lable' htmlFor='checkbox-mat-tien'>
-								<input onChange={this.handleChange} type='checkbox' name='front' id='checkbox-mat-tien' /> Mặt tiền
+								<input onChange={this.handleChange} type='checkbox' name='front' id='checkbox-mat-tien' /> Nhà mặt tiền
 							</label>
 						</div>
 					</div>
@@ -179,7 +186,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>
 							<label>Loại hình</label>
 						</div>
-						<div className='columns nine'>
+						<div className='columns four'>
 							<Select value={this.state.typeVal} options={this.state.typeOptions} onChange={this.handleChangeType} />
 						</div>
 					</div>
@@ -187,7 +194,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>
 							<label>Nhà / Căn Hộ / Phòng</label>
 						</div>
-						<div className='columns nine'>
+						<div className='columns four'>
 							<Select value={this.state.realEstateVal} options={this.state.realEstateOptions} onChange={this.handleChangeRealEstate} />
 						</div>
 					</div>
@@ -195,7 +202,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>
 							<label>Quận/Huyện (Tp. HCM)</label>
 						</div>
-						<div className='columns nine'>
+						<div className='columns four'>
 							<Select value={this.state.districtVal} options={this.state.districtOptions} onChange={this.handleChangeDistrict} />
 						</div>
 					</div>
@@ -203,7 +210,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>
 							<label>Phường/Xã</label>
 						</div>
-						<div className='columns nine'>
+						<div className='columns four'>
 							<Select value={this.state.wardVal} options={this.state.wardOptions} onChange={this.handleChangeWard} />
 						</div>
 					</div>
@@ -221,7 +228,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 							<label>Địa chỉ đầy đủ</label>
 						</div>
 						<div className='columns nine'>
-							<input onChange={this.handleChange} className='u-full-width' type='text' name='address' required='required' 
+							<input onChange={this.handleChange} disabled className='u-full-width' type='text' name='address' required='required' 
 								placeholder='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' defaultValue='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' />
 						</div>
 					</div>
@@ -273,21 +280,6 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 					</div>
 					<div className='row'>
 						<div className='columns three'>
-							<label className='group-title'>Hình ảnh</label>
-						</div>
-						<div className='columns nine'>
-							<div role='tabpanel' className='tab-pane active' id='home'>
-								<span className='wrapper-cover-img'>
-									<img className='media-object' src='http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg' />
-								</span>
-								<span className='wrapper-cover-img'>
-									<img className='media-object' src='http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg' />
-								</span>
-							</div>
-						</div>
-					</div>
-					<div className='row'>
-						<div className='columns three'>
 							<label className='group-title'>Thông tin mô tả</label>
 						</div>
 						<div className='columns nine control'>
@@ -324,7 +316,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>
 							<label>Hướng</label>
 						</div>
-						<div className='columns nine'>
+						<div className='columns four'>
 							<Select value={this.state.directVal} options={this.state.directOptions} onChange={this.handleChangeDirect} />
 						</div>
 					</div>
@@ -332,7 +324,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 						<div className='columns three'>
 							<label>Số tầng</label>
 						</div>
-						<div className='columns nine'>
+						<div className='columns four'>
 							<Select value={this.state.floorVal} options={this.state.floorOptions} onChange={this.handleChangeFloor} />
 						</div>
 					</div>

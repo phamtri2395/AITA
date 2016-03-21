@@ -38,17 +38,29 @@ var store = new MongoDBStore({
 	collection: 'my_sessions'
 });
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now());
-  }
-});
+// var storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, './uploads/');
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.fieldname + '-' + Date.now());
+//   }
+// });
 
 // var fileUploadHandle = multer({ dest: 'uploads/' });
-var fileUploadHandle = multer({ storage: storage });
+// var fileUploadHandle = multer({ storage: storage });
+var multer = multer({
+	dest: './uploads/',
+	rename: function (fieldname, filename) {
+		return filename + Date.now();
+	},
+	onFileUploadStart: function (file) {
+		console.log(file.originalname + ' is starting ...');
+	},
+	onFileUploadComplete: function (file) {
+		console.log(file.fieldname + ' uploaded to  ' + file.path);
+	}
+});
 
 // Catch errors 
 store.on('error', function(error) {
@@ -210,8 +222,10 @@ exports = module.exports = function(app) {
 	app.post('/user/bookmark/:_postId', routes.services.users.bookmark);
 	app.post('/user/reactivate/:_postId', routes.services.users.reactivate);
 
+
+	
 	app.get('/upload', routes.views.upload.get);
-	app.post('/upload', fileUploadHandle.single('image'), function(req, res, next) {
+	app.post('/upload', function(req, res, next) {
 		console.log('upload file', req.file);
 		console.log('upload files', req.files);
 		console.log('upload body', req.body);
