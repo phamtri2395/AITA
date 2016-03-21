@@ -5,6 +5,8 @@
 
 var keystone = require('keystone');
 var Handlebars = require('handlebars');
+var async = require('async');
+var EXPIRE_PERIOD = 21;
 
 exports = module.exports = function(req, res) {
 	console.log('params', req.params._id);
@@ -20,21 +22,25 @@ exports = module.exports = function(req, res) {
 	// Init locals's data
 	locals.data = {
 		post: {},
+		relatedPosts: []
 	};
 
 	// Get Id from index
 	var id = req.params._id;
+	// Store type & category of post
+	var type;
 	
 	// Load post with Id
 	view.on('init', function(next) {
 
-		keystone.list('Post').model.findOne({ '_id' : id }).populate('author district type ward').exec(function(err, results) {
-			if (!results) {
+		keystone.list('Post').model.findOne({ '_id' : id }).populate('author district type ward').exec(function(err, result) {
+			if (!result) {
 				return;
 			}
 
-			locals.data.post = results;
-				
+			locals.data.post = result;
+			type = result.type;
+
 			keystone.list('Post').model.count().exec(function(err, count) {
 				locals.data.post.postCount = count;
 				next(err);
@@ -42,11 +48,37 @@ exports = module.exports = function(req, res) {
 
 		});
 		
-	});	
+	});
+
+	// Load related posts
+	view.on('init', function(next) {
+
+		keystone.list('Post').model.find({ 'type': type,
+			'activeDate': {
+				$gte:minusDays(Date.now(), EXPIRE_PERIOD),
+				$lte:Date.now()
+			}}).
+			where('_id').ne(locals.data.post._id).
+				populate('author district type ward').
+					limit(3).
+						sort({'publishedDate': -1}).
+							exec(function(err, results) {
+			
+			if (!results) {
+				return;
+			}
+
+			locals.data.relatedPosts = results;
+
+			return next(err);
+		});
+	
+	});
 
 	// Register toCurrency function, which changes price to decimal format
 	Handlebars.registerHelper('toCurrency', function(number) {
-		return (number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,') + ' VND');
+		if (number != null)
+			return number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
 	});
 	// Register toAuthorName function, which gives full name of author
 	Handlebars.registerHelper('toAuthorName', function(author) {
@@ -64,6 +96,13 @@ exports = module.exports = function(req, res) {
 	Handlebars.registerHelper('isMedium', function(medium) {
 		return (medium) ? 'Tiếp' : 'Không Tiếp';
 	});
+
+	// Add Days
+	function minusDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() - days);
+    return result;
+	}
 
 	// Render the view
 	view.render('chi-tiet');
