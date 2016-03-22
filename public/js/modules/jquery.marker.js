@@ -128,7 +128,6 @@
 					lastMarker = markersList[parentIndex];
 					lastInfoWindow = infoWindowsList[parentIndex];
 
-					console.log(lastMarker, lastInfoWindow);
 					google.maps.event.trigger(markersList[parentIndex], 'mouseover');
 				})
 				.off('mouseout.view-item', that.options.dataItem)

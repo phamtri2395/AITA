@@ -14,6 +14,23 @@ $(document).on('ready', function() {
 		}
 
 	});
+
+	$('.result-block').off('click.gallery', '.fancybox-thumb').on('click.gallery', '.fancybox-thumb', function(e) {
+		e.preventDefault();
+		$.fancybox.open($(this).closest('.gallery').find('.fancybox-thumb'), {
+			helpers: {
+				prevEffect: 'none',
+				nextEffect: 'none',
+				title: {
+					type: 'outside'
+				},
+				thumbs: {
+					width: 50,
+					height: 50
+				}
+			}
+		});
+	});
 });
 
 $(document).on('submit','.form-bookmark',function(e){
