@@ -102,10 +102,10 @@
 
 				<!-- Tab panes -->
 				<div class="tab-content">
-					<div class="tab-content--pane active" id="image-pane">
+					<div class="tab-content--pane active gallery" id="image-pane">
 							{{#each images}}
 							<span class="wrapper-cover-img">
-								<a class="fancybox" rel="gallery" href={{secure_url}}>
+								<a class="fancybox-thumb" rel="fancybox-thumb" href={{secure_url}}>
 									<img class="media-object" src={{secure_url}}>
 								</a>
 							</span>
@@ -161,10 +161,10 @@
 						{{{description}}}
 						<a href="/chi-tiet/{{id}}">chi tiết <i class="icon-right-open"></i></a>
 					</div>
-					<div>
+					<div class="gallery">
 						{{#each images}}
 							<span class="wrapper-cover-img">
-									<a class="fancybox" rel="gallery" href={{secure_url}}>
+									<a class="fancybox-thumb" rel="fancybox-thumb" href={{secure_url}}>
 										<img class="media-object" src={{secure_url}}>
 									</a>
 							</span>

@@ -49,5 +49,23 @@ $(document).on('ready', function() {
 	// only apply for dang-tin page
 	if ($('.container').hasClass('jspage-chi-tiet')) {
 		initChiTiet();
+
+		$('.main-content').off('click.gallery', '.fancybox-thumb').on('click.gallery', '.fancybox-thumb', function(e) {
+			e.preventDefault();
+
+			$.fancybox.open($(this).closest('.gallery').find('.fancybox-thumb'), {
+				helpers: {
+					prevEffect: 'none',
+					nextEffect: 'none',
+					title: {
+						type: 'outside'
+					},
+					thumbs: {
+						width: 50,
+						height: 50
+					}
+				}
+			});
+		});
 	}
 });
