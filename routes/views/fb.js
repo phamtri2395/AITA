@@ -5,28 +5,26 @@
 var FB = require('fb');
 FB.setAccessToken(process.env.FACEBOOK_TOKEN);
 
-exports = module.exports = function(req, res) {
-	//ref from https://developers.facebook.com/docs/graph-api/reference/post#publishing
-	var message = {
-		message: 'Chúng tôi cần Bán và cho Thuê căn hộ cao cấp Sun Rise City tại quận 7, nằm tại trục đường Nguyễn Hữu Thọ liên kết với các quận 1, 4, 5, 8. \nMặt tiền đường Nguyễn Hữu Thọ, đối diện siêu thị Lotte Quận 7.',
+var facebookService = require('../../business/facebook-api');
 
-		// name of the link
-		name: 'Aita.vn',
-		link: 'http://aitavn.herokuapp.com/chi-tiet/',
-		picture: 'http://file4.batdongsan.com.vn/resize/745x510/2015/06/04/20150604150037-9e21.jpg',
-		description: 'Nếu biết tình như thế, chẳng lớn lên làm gì',
-		caption: 'aita.vn',
+exports = module.exports = function(req, res) {	
+	var albumsContext, imageList;
 
-		// place: 'Sai gon',
-		story: 'Chuyện tình dưới mưa, tần khánh',
-		type: 'photo'
+	albumsContext = {
+		name: 'Publish by Api',
+		location: 'Bình Thạnh',
+		message: '40 m2 | 5 phòng ngủ | 8 phòng tắm | 7000,000VND/tháng \n #aitabinhthanh #hosttel \n It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
 	};
 
-	FB.api('528623837288211/feed', 'post', message, function (result) {
-		if(result.error) {
-			res.json({err: result.error});	
-		} else {
-			res.json(result);
-		}
+	imageList = [
+		{ url: 'http://3.bp.blogspot.com/-IO3PTvRqs_g/Vfi_LLR3H5I/AAAAAAAAAGY/oY842Xnq_bg/s1600/OnePiece.png' },
+		{ url: 'https://upload.wikimedia.org/wikipedia/en/6/62/Main_characters_of_One_Piece.png' },
+		{ url: 'http://vignette4.wikia.nocookie.net/onepiece/images/c/c7/One_Piece_The_Movie.png/revision/latest?cb=20130116155817' },
+		{ url: 'https://s-media-cache-ak0.pinimg.com/736x/f1/7b/d7/f17bd71c0d17d4dbfdd8af0e0f8c23de.jpg' },
+		{ url: 'http://www.playonepiece.me/uploads/article/images/one_piece_luffy_by_cheing.jpg' },
+	];
+
+	facebookService.publishAlbums(albumsContext, imageList, function(data) {
+		res.json(data);
 	});
 };

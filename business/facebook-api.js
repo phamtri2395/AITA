@@ -19,5 +19,35 @@ exports = module.exports = {
 				callback(null, res);
 			}
 		});
+	},
+
+	publishAlbums: function(albumsContext, imageList, callback) {
+		var facebookPageId = process.env.FACEBOOK_PAGE_ID;
+
+		FB.api(facebookPageId + '/albums', 'post', albumsContext, function (albumData) {
+			if (!albumData || albumData.error) {
+				if (callback) {
+					callback(!albumData ? 'error occurred' : albumData.error);
+					return;
+				}
+			}
+
+			console.log(albumData);
+			var albumId = albumData.id;
+			callback(albumData);
+
+			imageList.forEach(function(item) {
+				FB.api(albumId + '/photos', 'post', {url: item.url}, function(imageData) {
+					if (!imageData || imageData.error) {
+						callback(!imageData ? 'error occurred' : imageData.error);
+						return;
+					}
+
+					if (callback) {
+						console.log(imageData);
+					}
+				});
+			});
+		});
 	}
 };
