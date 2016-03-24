@@ -6,6 +6,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 	var AddNewPostForm = React.createClass({
 		getInitialState: function() {
 			return {
+				currentDate: this.getCurrentDate(),
 				typeVal: 'Bán',
 				typeOptions: [
 					{label: 'Mua', value: 'mua'},
@@ -66,6 +67,14 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 					{label: '5', value: '5'},
 				]
 			};
+		},
+		getCurrentDate: function() {
+			var currentDate = new Date();
+			return [
+				currentDate.getFullYear(),
+				currentDate.getMonth() + 1,
+				currentDate.getDate()
+			].join('-');
 		},
 		componentDidMount: function() {
 			var map, mapOptions, center, currentMarker;
@@ -343,7 +352,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 							<label htmlFor=''>Tên (*)</label>
 						</div>
 						<div className='columns nine'>
-							<input onChange={this.handleChange} type='hidden' name='author' defaultValue='user._id' />
+							<input onChange={this.handleChange} type='hidden' name='author' defaultValue='56a773fa8d04cb7804827e07' />
 							<input onChange={this.handleChange} className='form-control' type='text' name='authorName' required='required' defaultValue='getFullname user' />
 						</div>
 					</div>
@@ -373,7 +382,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 								<small>(*)Tin đăng của bạn sẽ được kiểm duyệt trong vòng 1 giờ trước khi được đăng.</small>
 							</p>
 							<input onChange={this.handleChange} type='hidden' name='ward-filters' defaultValue='json data.filters' />
-							<input onChange={this.handleChange} type='hidden' name='publishedDate' defaultValue='currentDate' />
+							<input onChange={this.handleChange} type='hidden' name='publishedDate' defaultValue={this.state.currentDate} />
 							<button className='' type='submit'>Hủy</button> <button className='button-primary' type='submit'>Đăng tin</button>
 						</div>
 					</div>
