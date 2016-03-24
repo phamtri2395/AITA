@@ -16,17 +16,38 @@ Post.add({
 		required: true
 	},
 
+	state: {
+		label: 'Trạng thái',
+		type: Types.Select,
+		options: [
+			{ value: 'draft', label: 'Bản nháp' },
+			{ value: 'published', label: 'Đăng bài' },
+			{ value: 'archived', label: 'Lưu trữ' },
+		],
+		default: 'published',
+		index: true
+	},
+
 	type: {
-		label: 'Hình thức (cho thuê/bán)',
-		type: Types.Relationship,
-		ref: 'EstateCategory',
+		label: 'Cho thuê / Bán',
+		type: Types.Select,
+		options: [
+			{ value: 'thue', label: 'Cho thuê' },
+			{ value: 'ban', label: 'Bán' },
+		],
+		default: 'thue',
 		required: false
 	},
 
 	realEstate: {
 		label: 'Nhà / Căn Hộ / Phòng',
-		type: Types.Relationship,
-		ref: 'EstateCategory',
+		type: Types.Select,
+		options: [
+			{ value: 'nha', label: 'Nhà' },
+			{ value: 'can-ho', label: 'Căn hộ' },
+			{ value: 'phong', label: 'Phòng' },
+		],
+		default: 'phong',
 		required: false
 	},
 
@@ -164,24 +185,10 @@ Post.add({
 		required: false
 	},
 
-	// medium: {
-	// 	label: 'Trung bình',
-	// 	type: Boolean,
-	// 	required: false
-	// },
-
 	pushAds: {
 		label: 'Chạy quảng cáo',
 		type: Boolean,
 		default: false
-	},
-
-	state: {
-		label: 'Trạng thái',
-		type: Types.Select,
-		options: 'draft, published, archived',
-		default: 'published',
-		index: true
 	},
 
 	author: {
@@ -204,23 +211,22 @@ Post.add({
 		label:'Ngày kích hoạt',
 		type: Types.Datetime,
 		index: true,
-		//hidden: true,
 		watch: true,
 		value: Date.now
 	},
 
-	images :{ 
-		label: 'Hình ảnh',
-		type: Types.CloudinaryImages, 
-		folder: '/upload/images' 
-	},
+	// images :{ 
+	// 	label: 'Hình ảnh',
+	// 	type: Types.CloudinaryImages, 
+	// 	folder: '/upload/images' 
+	// },
 
-	categories: {
-		label: 'Phân loại',
-		type: Types.Relationship,
-		ref: 'PostCategory',
-		many: true
-	}
+	// categories: {
+	// 	label: 'Phân loại',
+	// 	type: Types.Relationship,
+	// 	ref: 'PostCategory',
+	// 	many: true
+	// }
 });
 
 Post.schema.virtual('content.full').get(function() {
