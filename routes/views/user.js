@@ -1,7 +1,6 @@
 var keystone = require('keystone');
-var Handlebars = require('handlebars');
-
-const EXPIRE_PERIOD = 21;
+var handlebars = require('handlebars');
+var helpFunction = require('../helpers/helpFunctions.js');
 
 exports = module.exports = function(req, res) {
 	
@@ -44,23 +43,11 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'user';
 	
-	// Register toCurrency function, which changes price to decimal format
-	Handlebars.registerHelper('toCurrency', function(number) {
-  		return number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-	});
-	// Register toAuthorName function, which gives full name of author
-	Handlebars.registerHelper('toAuthorName', function(author) {
-  		return (author) ? (author.name.first + ' ' + author.name.last) : 'null';
-	});
-	// Register districtName function, which return name of District
-	Handlebars.registerHelper('districtName', function(district) {
-		return (district) ? (district.name) : 'null';
-	});
 	// Register isActive function, which determine which post is activing
-	Handlebars.registerHelper('isActive', function(activeDate) {
+	handlebars.registerHelper('isActive', function(activeDate) {
 		if (activeDate) {
 			var minus = new Date(Date.now());
-			minus.setDate(minus.getDate() - EXPIRE_PERIOD);
+			minus.setDate(minus.getDate() - helpFunction.EXPIRE_PERIOD);
 			return ((activeDate >= minus) && (activeDate <= Date.now()));
 		}
 		else {

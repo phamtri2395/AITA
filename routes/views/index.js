@@ -4,9 +4,8 @@
  */
 
 var keystone = require('keystone');
-var Handlebars = require('handlebars');
 var async = require('async');
-var EXPIRE_PERIOD = 21;
+var helpFunction = require('../helpers/helpFunctions.js');
 
 exports = module.exports = function(req, res) {
 	
@@ -83,7 +82,7 @@ exports = module.exports = function(req, res) {
 
 		keystone.list('Post').model.find({
 			activeDate: {
-					$gte:minusDays(Date.now(), EXPIRE_PERIOD),
+					$gte:helpFunction.minusDays(Date.now(), helpFunction.EXPIRE_PERIOD),
 					$lte:Date.now()
 			}}).
 			populate('author').sort('publishedDate').exec(function(err, results) {
@@ -130,34 +129,6 @@ exports = module.exports = function(req, res) {
 				});
 			});
 		});
-	}
-
-	// Register toCurrency function, which changes price to decimal format
-	Handlebars.registerHelper('toCurrency', function(number) {
-  		return number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-	});
-	// Register toAuthorName function, which gives full name of author
-	Handlebars.registerHelper('toAuthorName', function(author) {
-  		return (author) ? (author.name.first + ' ' + author.name.last) : 'null';
-	});
-	// Check if Bookmarked
-	Handlebars.registerHelper('isBookmarked', function(id) {
-			var flag = false;
-
-  		for (var i = 0; i < locals.data.bookmarks.length; i++) {
-  			if (id.toString() == locals.data.bookmarks[i].post.toString()) {
-  				flag = true;
-  				break;
-  			}
-  		}
-
-  		return flag;
-	});
-	// Add Days
-	function minusDays(date, days) {
-    var result = new Date(date);
-    result.setDate(result.getDate() - days);
-    return result;
 	}
 
 	// Render the view

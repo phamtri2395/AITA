@@ -347,7 +347,65 @@ module.exports = function() {
 	
 	_helpers.underscoreFormat = function (obj, underscoreMethod) {
 		return obj._[underscoreMethod].format();
-	}
+	};
+
+	//Register toCurrency function, which changes price to decimal format
+	_helpers.toCurrency = function(number) {
+		if (number != null) {
+			var tag = '';
+			var currency = number;
+
+			if (Math.floor(number/1000000000) > 0) {
+				currency /= 1000000000;
+				tag = ' tỷ';
+			}
+			else if (Math.floor(number/1000000) > 0) {
+				currency /= 1000000;
+				tag = ' triệu';
+			}
+
+			return (currency.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,') + tag);
+		}
+	};
+
+	// Register toAuthorName function, which gives full name of author
+	_helpers.toAuthorName = function(author) {
+		return (author) ? (author.name.first + ' ' + author.name.last) : 'null';
+	};
 	
+	// Register districtName function, which return name of District
+	_helpers.districtName = function(district) {
+		return (district) ? (district.name) : 'null';
+	};
+
+	// Register typeName function, which return name of Type
+	_helpers.typeName = function(type) {
+		return (type) ? (type.name) : 'null';
+	};
+
+	// Register isMedium function, which return if is mediumed or not
+	_helpers.isMedium = function(medium) {
+		return (medium) ? 'Tiếp' : 'Không Tiếp';
+	};
+
+	// Check if posts bookmarked
+	_helpers.isBookmarked = function(id, locals) {
+		var flag = false;
+
+		for (var i = 0; i < locals.data.bookmarks.length; i++) {
+			if (id.toString() === locals.data.bookmarks[i].post.toString()) {
+				flag = true;
+				break;
+			}
+		}
+
+		return flag;
+	};
+
+	// Check if is for rent or for sell
+	_helpers.isRent = function(type) {
+		return (type === 'thue')?true:false;
+	};
+
 	return _helpers;
 };

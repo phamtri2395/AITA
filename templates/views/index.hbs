@@ -68,7 +68,9 @@
 												<li class="post-info--item">|</li>
 												<li class="post-info--item">{{bathroom}} phòng tắm</li>
 												<li class="post-info--item">|</li>
-												<li class="post-info--item"><b>{{toCurrency price}} VND</b></li>
+												<li class="post-info--item"><b>
+													{{toCurrency price}} VND{{#if (isRent type)}}/tháng{{/if}}
+												</b></li>
 											</ul>
 											<div class="sumary-b">
 												{{{description}}}
