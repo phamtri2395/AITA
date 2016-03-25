@@ -351,8 +351,21 @@ module.exports = function() {
 
 	//Register toCurrency function, which changes price to decimal format
 	_helpers.toCurrency = function(number) {
-		if (number != null)
-			return number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+		if (number != null) {
+			var tag = '';
+			var currency = number;
+
+			if (Math.floor(number/1000000000) > 0) {
+				currency /= 1000000000;
+				tag = ' tỷ';
+			}
+			else if (Math.floor(number/1000000) > 0) {
+				currency /= 1000000;
+				tag = ' triệu';
+			}
+
+			return (currency.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,') + tag);
+		}
 	};
 
 	// Register toAuthorName function, which gives full name of author
