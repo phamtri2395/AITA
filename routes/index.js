@@ -223,15 +223,6 @@ exports = module.exports = function(app) {
 	app.post('/user/reactivate/:_postId', routes.services.users.reactivate);
 
 
-	
-	app.get('/upload', routes.views.upload.get);
-	app.post('/upload', function(req, res, next) {
-		console.log('upload file', req.file);
-		console.log('upload files', req.files);
-		console.log('upload body', req.body);
-		res.send('ok');
-	});
-
 	// Post MODEL: function for set of collection
 	app.get('/api/post/all', routes.services.post._all);
 	app.get('/api/post/find', routes.services.post._find);
