@@ -347,7 +347,47 @@ module.exports = function() {
 	
 	_helpers.underscoreFormat = function (obj, underscoreMethod) {
 		return obj._[underscoreMethod].format();
-	}
+	};
+
+	//Register toCurrency function, which changes price to decimal format
+	_helpers.toCurrency = function(number) {
+		if (number != null)
+			return number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+	};
+
+	// Register toAuthorName function, which gives full name of author
+	_helpers.toAuthorName = function(author) {
+		return (author) ? (author.name.first + ' ' + author.name.last) : 'null';
+	};
 	
+	// Register districtName function, which return name of District
+	_helpers.districtName = function(district) {
+		return (district) ? (district.name) : 'null';
+	};
+
+	// Register typeName function, which return name of Type
+	_helpers.typeName = function(type) {
+		return (type) ? (type.name) : 'null';
+	};
+
+	// Register isMedium function, which return if is mediumed or not
+	_helpers.isMedium = function(medium) {
+		return (medium) ? 'Tiếp' : 'Không Tiếp';
+	};
+
+	// Check if posts bookmarked
+	_helpers.isBookmarked = function(id, locals) {
+		var flag = false;
+
+		for (var i = 0; i < locals.data.bookmarks.length; i++) {
+			if (id.toString() === locals.data.bookmarks[i].post.toString()) {
+				flag = true;
+				break;
+			}
+		}
+
+		return flag;
+	};
+
 	return _helpers;
 };
