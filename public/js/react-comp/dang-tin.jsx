@@ -4,6 +4,8 @@
 
 if ($('.js-container').hasClass('jspage-dang-tin')) {
 	var AddNewPostForm = React.createClass({
+		uploadFiles: [],
+
 		getInitialState: function() {
 			return {
 				currentDate: this.getCurrentDate(),
@@ -68,6 +70,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 				]
 			};
 		},
+
 		getCurrentDate: function() {
 			var currentDate = new Date();
 			return [
@@ -76,6 +79,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 				currentDate.getDate()
 			].join('-');
 		},
+
 		componentDidMount: function() {
 			var map, mapOptions, center, currentMarker;
 			// var myDropzone = new Dropzone('#js-dropzone-component', { url: '/uploadHandler' });
@@ -149,27 +153,46 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 			});
 
 			initDangTin();
+
+			// listen event from dropzone
+			var $dropzone = $('#my-awesome-dropzone');
+			// after added a file
+			$dropzone.on('dropzone-success', function(a, b) {
+				this.uploadFiles.push(b);
+				console.log('dropzone-success', b, this.uploadFiles);
+			}.bind(this));
+			// after removed file, still not handle :v
+			$dropzone.on('dropzone-removed', function(a, b) {
+			}.bind(this));
 		},
+
 		handleChange: function() {
 		},
+
 		handleChangeType: function(val) {
 			this.setState({typeVal: val});
 		},
+
 		handleChangeRealEstate: function(val) {
 			this.setState({realEstateVal: val});
 		},
+
 		handleChangeDistrict: function(val) {
 			this.setState({districtVal: val});
 		},
+
 		handleChangeWard: function(val) {
 			this.setState({wardVal: val});
 		},
+
 		handleChangeDirect: function(val) {
 			this.setState({directVal: val});
 		},
+
 		handleChangeFloor: function(val) {
 			this.setState({floorVal: val});
 		},
+
 		render: function() {
 			return (
 				<form className='form-home' action='/add-new-post' method='post' acceptCharset='utf-8' encType='multipart/form-data'>
