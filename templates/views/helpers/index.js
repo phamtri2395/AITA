@@ -389,5 +389,10 @@ module.exports = function() {
 		return flag;
 	};
 
+	// Check if is for rent or for sell
+	_helpers.isRent = function(type) {
+		return (type === 'thue')?true:false;
+	};
+
 	return _helpers;
 };
