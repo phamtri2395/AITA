@@ -415,5 +415,11 @@ module.exports = function() {
 		return m;
 	};
 
+	// limit an array to a maximum of elements (from the start)
+	_helpers.limit = function(arr, limit) {
+		if (!_.isArray(arr)) { return []; } // remove this line if you don't want the lodash/underscore dependency
+  	return arr.slice(0, limit);
+	};
+
 	return _helpers;
 };
