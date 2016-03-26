@@ -407,5 +407,13 @@ module.exports = function() {
 		return (type === 'thue')?true:false;
 	};
 
+	_helpers.truncate = function(message, length) {
+		var m = message.substr(0, length);
+		if (message.length > length) {
+			m = m + '...';
+		}
+		return m;
+	};
+
 	return _helpers;
 };
