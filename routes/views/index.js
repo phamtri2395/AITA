@@ -6,21 +6,27 @@
 var keystone = require('keystone');
 var async = require('async');
 var helpFunction = require('../helpers/helpFunctions.js');
+var debug = require('debug')('index');
 
 exports = module.exports = function(req, res) {
 	
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
+	var section = req.url.substr(1, req.url.length);
+	var categoryMapper = {
+		'nha-rieng': 'nha',
+		'can-ho': 'can-ho',
+		'phong': 'phong'
+	};
+	
 	locals.user = req.user;
-
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	var section = req.url.substr(1, req.url.length);
 	if (section.length === 0) {
 		section = 'nha-rieng';
 	}
 	locals.section = section;
-	console.log('req', locals.section);
+	debug('req', locals.section);
 	
 	// Init locals's data
 	locals.data = {
@@ -29,6 +35,8 @@ exports = module.exports = function(req, res) {
 		categories: [],
 		bookmarks: []
 	};
+
+
 
 	// Load all categories
 	view.on('init', function(next) {
@@ -81,9 +89,10 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 
 		keystone.list('Post').model.find({
+			realEstate: categoryMapper[section],
 			activeDate: {
-					$gte:helpFunction.minusDays(Date.now(), helpFunction.EXPIRE_PERIOD),
-					$lte:Date.now()
+				$gte:helpFunction.minusDays(Date.now(), helpFunction.EXPIRE_PERIOD),
+				$lte:Date.now()
 			}}).
 			populate('author').sort('publishedDate').exec(function(err, results) {
 			
