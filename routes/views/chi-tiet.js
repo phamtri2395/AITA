@@ -4,8 +4,9 @@
  */
 
 var keystone = require('keystone');
-var async = require('async');
 var helpFunction = require('../helpers/helpFunctions.js');
+var debug = require('debug')('chi-tiet');
+// var async = require('async');
 
 exports = module.exports = function(req, res) {
 	console.log('params', req.params._id);
@@ -26,43 +27,50 @@ exports = module.exports = function(req, res) {
 
 	// Get Id from index
 	var id = req.params._id;
+	debug('id', id);
 	// Store type & category of post
 	var type;
 	
 	// Load post with Id
 	view.on('init', function(next) {
 
-		keystone.list('Post').model.findOne({ '_id' : id }).populate('author district type ward').exec(function(err, result) {
+		keystone.list('Post').model.findOne({ '_id' : id }).populate('author district ward').exec(function(err, result) {
 			if (!result) {
 				return;
 			}
 
 			locals.data.post = result;
 			type = result.type;
+			debug('data', result);
+			debug('type', type);
 
 			keystone.list('Post').model.count().exec(function(err, count) {
 				locals.data.post.postCount = count;
+				debug('count', count);
 				next(err);
 			});
-
 		});
 		
 	});
 
 	// Load related posts
 	view.on('init', function(next) {
+		debug('mid2 type', type);
 
-		keystone.list('Post').model.find({ 'type': type,
+		keystone.list('Post').model
+		.find({ 
+			'type': type,
 			'activeDate': {
 				$gte:helpFunction.minusDays(Date.now(), helpFunction.EXPIRE_PERIOD),
 				$lte:Date.now()
-			}}).
-			where('_id').ne(locals.data.post._id).
-				populate('author district type ward').
-					limit(3).
-						sort({'publishedDate': -1}).
-							exec(function(err, results) {
-			
+			}
+		})
+		.where('_id').ne(locals.data.post._id)
+		.populate('author district ward')
+		.limit(3)
+		.sort({'publishedDate': -1})
+		.exec(function(err, results) {
+
 			if (!results) {
 				return;
 			}
@@ -71,7 +79,6 @@ exports = module.exports = function(req, res) {
 
 			return next(err);
 		});
-	
 	});
 
 	// Render the view
