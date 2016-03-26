@@ -215,18 +215,18 @@ Post.add({
 		value: Date.now
 	},
 
-	// images :{ 
-	// 	label: 'Hình ảnh',
-	// 	type: Types.CloudinaryImages, 
-	// 	folder: '/upload/images' 
-	// },
+	images :{ 
+		label: 'Hình ảnh',
+		type: Types.CloudinaryImages, 
+		folder: '/upload/images' 
+	},
 
-	// categories: {
-	// 	label: 'Phân loại',
-	// 	type: Types.Relationship,
-	// 	ref: 'PostCategory',
-	// 	many: true
-	// }
+	categories: {
+		label: 'Phân loại',
+		type: Types.Relationship,
+		ref: 'PostCategory',
+		many: true
+	}
 });
 
 Post.schema.virtual('content.full').get(function() {
