@@ -12,7 +12,7 @@
 				"followSymlinks": false
 			},
 			"env": {
-				"NODE_ENV": "dev",
+				"NODE_ENV": "development",
 				"LOG": 1,
 				"PORT": 7000,
 				"COOKIE_SECRET": "107235039b5217019968a66e4e71711fb57a15e6f094d54399fa4a63352e9a9c9256502176effa52d896329d0dcfab7d1d7f5df6cc31cf5b0658c0c6c01c1a49",
@@ -25,8 +25,8 @@
 				"FACEBOOK_TOKEN": "",
 				"MONGO_URI": "mongodb://localhost:27017/aita-dev"
 			},
-			"env": {
-				"NODE_ENV": "prod",
+			"env_production": {
+				"NODE_ENV": "production",
 				"LOG": 1,
 				"PORT": 8700,
 				"COOKIE_SECRET": "107235039b5217019968a66e4e71711fb57a15e6f094d54399fa4a63352e9a9c9256502176effa52d896329d0dcfab7d1d7f5df6cc31cf5b0658c0c6c01c1a49",
