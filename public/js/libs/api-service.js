@@ -7,6 +7,7 @@
 var apiList = [
 	{ nspace: 'PostModel', name: 'get', path: '/api/post/all', method: 'GET' },
 	{ nspace: 'PostModel', name: 'all', path: '/api/post/all', method: 'GET' },
+	{ nspace: 'PostModel', name: 'getOwnPost', path: '/api/post/getownpost', method: 'GET' },
 	{ nspace: 'PostModel', name: 'find', path: '/api/post/find?query=${query}', method: 'GET' },
 	{ nspace: 'PostModel', name: 'detail', path: '/api/post/${_id}/detail', method: 'GET' },
 	{ nspace: 'PostModel', name: 'post', path: '/api/post/post', method: 'POST' },

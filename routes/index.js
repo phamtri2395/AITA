@@ -225,6 +225,7 @@ exports = module.exports = function(app) {
 
 
 	// Post MODEL: function for set of collection
+	app.get('/api/post/getownpost', routes.services.post.getOwnPost);
 	app.get('/api/post/all', routes.services.post._all);
 	app.get('/api/post/find', routes.services.post._find);
 	app.get('/api/post/:_id/detail', routes.services.post._get);
