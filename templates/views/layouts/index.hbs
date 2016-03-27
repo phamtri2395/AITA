@@ -72,7 +72,7 @@
 			<ul class="navbar--list-control">
 				{{#if client}}
 				<li class="navbar--item {{#ifeq ../section 'dang-tin'}}active{{else}}{{/ifeq}}"><a href="/dang-tin" title="Phòng cho thuê">Đăng tin</a></li>{{!-- 
-				--}}<li class="navbar--item"><a href="/logout">{{client.name.first}} {{client.name.last}}</a></li>
+				--}}<li class="navbar--item"><a href="/profile">{{client.name.first}} {{client.name.last}}</a></li>
 				{{else}}
 				<li class="navbar--item {{#ifeq ../section 'dang-nhap'}}active{{else}}{{/ifeq}}"><a href="/auth/facebook" title="Phòng cho thuê">Đăng nhập bằng facebook</a></li>{{!-- 
 				--}}{{!-- <li class="navbar--item {{#ifeq ../section 'dang-ky'}}active{{else}}{{/ifeq}}"><a href="/dang-ky" title="Phòng cho thuê">Đăng ký</a></li> --}}

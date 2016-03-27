@@ -212,6 +212,7 @@ exports = module.exports = function(app) {
 
 	app.get('/dang-nhap', routes.views['dang-nhap']);
 	app.get('/dang-ky', routes.views['dang-ky']);
+	app.get('/profile', routes.views['profile']);
 	app.get('/dang-tin', ensureAuthenticated, routes.views['dang-tin']);
 
 	app.post('/add-new-post', routes.services.posts.add);

@@ -52,6 +52,14 @@ if ($('.js-container').hasClass('js-page-index')) {
 			this.setState({ price: value });
 		},
 
+		onSubmit: function() {
+			ApiService.PostModel.all().then(function(data) {
+				console.log('data', data);
+			}, function(err) {
+				console.log('err', err);
+			});
+		},
+
 		render: function() {
 			return (
 				<div className="searchbox--wrapper">
@@ -100,7 +108,7 @@ if ($('.js-container').hasClass('js-page-index')) {
 							<label></label>
 						</div>
 						<div className="columns six searchbox--right">
-							<button className="button-primary">Tìm kiếm</button>
+							<button className="button-primary" onClick={this.onSubmit}>Tìm kiếm</button>
 						</div>
 					</div>
 				</div>

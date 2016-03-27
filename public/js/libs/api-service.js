@@ -30,6 +30,12 @@ var ApiService = (function() {
 		 */
 		_api[item.nspace][item.name] = function(data, params) {
 			return new Promise(function(resolve, reject) {
+				if (!data) {
+					data = {};
+				}
+				if (!params) {
+					params = {};
+				}
 
 				var realPath = '';
 				var token = window.localStorage.getItem('token');
