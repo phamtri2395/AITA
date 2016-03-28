@@ -318,14 +318,14 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 							<textarea row='4' className='form-control control--textarea' name='description' defaultValue='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'></textarea>
 						</div>
 					</div>
-					<div className='row'>
+					{/*<div className='row'>
 						<div className='columns three'>&nbsp;</div>
 						<div className='columns nine'>
 							<label htmlhtmlFor='push-ads'>
 								<input onChange={this.handleChange} type='checkbox' name='pushAds' id='push-ads' className='form-control' /> Chạy quảng cáo
 							</label>
 						</div>
-					</div>
+					</div>*/}
 
 					<p className='form-title'>Thông tin thêm</p>
 					<div className='row'>
@@ -341,7 +341,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 							<label htmlFor=''>Tên dự án</label>
 						</div>
 						<div className='columns nine'>
-							<input onChange={this.handleChange} type='text' id='project-name' name='project-name' required='required' />
+							<input onChange={this.handleChange} type='text' id='project-name' name='project-name' />
 						</div>
 					</div>
 					<div className='row'>
@@ -375,8 +375,8 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 							<label htmlFor=''>Tên (*)</label>
 						</div>
 						<div className='columns nine'>
-							<input onChange={this.handleChange} type='hidden' name='author' defaultValue='56a773fa8d04cb7804827e07' />
-							<input onChange={this.handleChange} className='form-control' type='text' name='authorName' required='required' defaultValue='getFullname user' />
+							<input onChange={this.handleChange} type='hidden' name='author' />
+							<input onChange={this.handleChange} className='form-control' type='text' name='authorName' required='required' defaultValue='Tam Pham' />
 						</div>
 					</div>
 					<div className='row'>
@@ -384,8 +384,7 @@ if ($('.js-container').hasClass('jspage-dang-tin')) {
 							<label htmlFor=''>Số điện thoại (*)</label>
 						</div>
 						<div className='columns nine'>
-							<input onChange={this.handleChange} className='form-control' type='text' name='mobile' required='required' 
-							value='01642000011' />
+							<input onChange={this.handleChange} className='form-control' type='text' name='mobile' required='required' value='01643652922' />
 						</div>
 					</div>
 					<div className='row'>

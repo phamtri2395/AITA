@@ -54,7 +54,7 @@ var ApiService = (function() {
 				realPath = _.template(item.path)(params);
 
 				$.ajax({
-					url: 'http://localhost:3000' + realPath,
+					url: realPath,
 					type: item.method,
 					method: item.method,
 					data: JSON.stringify(data),

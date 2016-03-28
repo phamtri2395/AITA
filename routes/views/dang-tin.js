@@ -10,6 +10,7 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 	// locals.user = req.user;
 	locals.user = req.session.passport ? req.session.passport.user : req.user;
+	locals.STORAGE_URL = process.env.STORAGE_URL;
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
