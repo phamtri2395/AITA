@@ -15,7 +15,8 @@ User.add({
 	gender: { type: Boolean, required: false },
 	providerId: { type: String, required: false, index: true },
 	provider: { type: String, required: false },
-	avatar: { type: Types.Url, required: false }
+	avatar: { type: Types.Url, required: false },
+	phone: { type: String, required: false }
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true }
 });
