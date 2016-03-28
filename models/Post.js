@@ -233,6 +233,12 @@ Post.schema.virtual('content.full').get(function() {
 	return this.content.extended || this.content.brief;
 });
 
+Post.schema.statics = {
+	getPopulateFields: function() {
+		return 'author';
+	}
+};
+
 /**
  * Relationships
  */
