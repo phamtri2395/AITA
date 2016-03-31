@@ -234,6 +234,11 @@ exports = module.exports = function(app) {
 	app.put('/api/post/:_id', routes.services.post._put);
 	app.delete('/api/post/:_id', routes.services.post._delete);
 
+
+	// User MODEL
+	app.get('/api/user', routes.services.user._get);
+	app.put('/api/user/', routes.services.user._put);
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };
