@@ -61,13 +61,27 @@ if ($('.js-container').hasClass('jspage-profile')) {
 			return (
 				<form id="updateProfile">
 					<div className="row">
-						<input type="text" id="last" className="six columns" placeholder="Họ" value={this.state.lastName} onChange={this.handleChangeLastName} />
-						<input type="text" id="first" className="six columns" placeholder="Tên" value={this.state.firstName} onChange={this.handleChangeFirstName} />
+						<div  className="one column">
+							<label className="u-pull-left">Họ</label>
+						</div>
+						<input type="text" id="last" className="five columns" placeholder="Họ" value={this.state.lastName} onChange={this.handleChangeLastName} />
+
+						<div  className="one column">
+							<label className="u-pull-left">Tên</label>
+						</div>
+						<input type="text" id="first" className="five columns" placeholder="Tên" value={this.state.firstName} onChange={this.handleChangeFirstName} />
 					</div>
 
 					<div className="row">
-						<input type="email" id="email" className="six columns" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail} />
-						<input type="text" id="phone" className="six columns" placeholder="Số điện thoại" value={this.state.phone} onChange={this.handleChangePhone} />
+						<div  className="one column">
+							<label className="u-pull-left">Email</label>
+						</div>
+						<input type="email" id="email" className="five columns" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail} />
+
+						<div  className="one column">
+							<label className="u-pull-left">SĐT</label>
+						</div>
+						<input type="text" id="phone" className="five columns" placeholder="Số điện thoại" value={this.state.phone} onChange={this.handleChangePhone} />
 					</div>
 
 					<div className="row">
