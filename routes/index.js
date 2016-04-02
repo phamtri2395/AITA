@@ -239,6 +239,9 @@ exports = module.exports = function(app) {
 	app.get('/api/user', routes.services.user._get);
 	app.put('/api/user/', routes.services.user._put);
 
+	// Districts MODEL
+	app.get('/api/district/all', routes.services.districts._all);
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };

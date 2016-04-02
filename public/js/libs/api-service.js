@@ -15,7 +15,10 @@ var apiList = [
 	{ nspace: 'PostModel', name: 'delete', path: '/api/post/delete', method: 'DELETE' },
 	{ nspace: 'UserModel', name: 'get', path: '/api/user', method: 'GET' },
 	{ nspace: 'UserModel', name: 'put', path: '/api/user', method: 'PUT' },
+
+	{ nspace: 'DistrictModel', name: 'all', path: '/api/district/all', method: 'GET' },
 ];
+
 
 var ApiService = (function() {
 	var _api = {};
