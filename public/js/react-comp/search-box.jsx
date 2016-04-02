@@ -7,9 +7,26 @@
 
 var SearchBoxComp = React.createClass({
 	getInitialState: function() {
+		var path = window.location.pathname;
+		var selectedValue = {
+			type: 'thue'
+		};
+		switch (path) {
+			case '/nha-rieng':
+				selectedValue = JSON.parse(localStorage.getItem('selected-' + path)) || selectedValue;
+				break;
+			case '/can-ho':				
+				selectedValue = JSON.parse(localStorage.getItem('selected-' + path)) || selectedValue;
+				break;
+			case '/phong':				
+				selectedValue = JSON.parse(localStorage.getItem('selected-' + path)) || selectedValue;
+				break;
+			default:
+		}
+
 		var typeOptions = [
+			{ label: 'Thuê', value: 'thue' },
 			{ label: 'Mua', value: 'mua' },
-			{ label: 'Bán', value: 'ban' },
 		];
 		var wardOptions = [
 			{ label: 'Quận Bình Thạnh', value: 1 },
@@ -17,6 +34,7 @@ var SearchBoxComp = React.createClass({
 			{ label: 'Quận 2', value: 3 },
 			{ label: 'Quận Tân Phú', value: 4 },
 			{ label: 'Quận Tân Bình', value: 5 },
+			{ label: 'Quận 9', value: 6 },
 		];
 		var priceOptions = [
 			{ label: 'Dưới 1tr', value: '0' },
@@ -28,9 +46,8 @@ var SearchBoxComp = React.createClass({
 		];
 
 		return { 
-			ward: 1,
-			type: 'mua',
-			price: '0',
+			path: path,
+			selectedValue: selectedValue,
 			wardOptions: wardOptions,
 			typeOptions: typeOptions,
 			priceOptions: priceOptions,
@@ -38,15 +55,33 @@ var SearchBoxComp = React.createClass({
 	},
 
 	typeUpdateValue: function(value) {
-		this.setState({ type: value });
+		var selectedValue = this.state.selectedValue;
+		selectedValue.type = value;
+
+		localStorage.setItem('selected-' + this.state.path, JSON.stringify(selectedValue));
+		this.setState({ 
+			selectedValue: selectedValue
+		});
 	},
 
 	wardUpdateValue: function(value) {
-		this.setState({ ward: value });
+		var selectedValue = this.state.selectedValue;
+		selectedValue.ward = value;
+
+		localStorage.setItem('selected-' + this.state.path, JSON.stringify(selectedValue));
+		this.setState({ 
+			selectedValue: selectedValue
+		});
 	},
 
 	priceUpdateValue: function(value) {
-		this.setState({ price: value });
+		var selectedValue = this.state.selectedValue;
+		selectedValue.price = value;
+
+		localStorage.setItem('selected-' + this.state.path, JSON.stringify(selectedValue));
+		this.setState({ 
+			selectedValue: selectedValue
+		});
 	},
 
 	onSubmit: function() {
@@ -68,7 +103,7 @@ var SearchBoxComp = React.createClass({
 						<Select
 							multi={false}
 							clearable={false}
-							value={this.state.type}
+							value={this.state.selectedValue.type}
 							options={this.state.typeOptions}
 							onChange={this.typeUpdateValue} />
 					</div>
@@ -82,7 +117,7 @@ var SearchBoxComp = React.createClass({
 							multi={true}
 							searchable={true}
 							clearable={true}
-							value={this.state.ward}
+							value={this.state.selectedValue.ward}
 							options={this.state.wardOptions}
 							onChange={this.wardUpdateValue} />
 					</div>
@@ -95,7 +130,7 @@ var SearchBoxComp = React.createClass({
 						<Select
 							multi={false}
 							clearable={false}
-							value={this.state.price}
+							value={this.state.selectedValue.price}
 							options={this.state.priceOptions}
 							onChange={this.priceUpdateValue} />
 					</div>
