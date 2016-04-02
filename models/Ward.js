@@ -6,9 +6,7 @@ var Types = keystone.Field.Types;
  * ==========
  */
 
-var Ward = new keystone.List('Ward', {
-	autokey: { from: 'name', path: 'key', unique: true }
-});
+var Ward = new keystone.List('Ward');
 
 Ward.add({
 	name: {
@@ -20,8 +18,7 @@ Ward.add({
 	district: {
 		label: 'Quận',
 		type: Types.Relationship,
-		ref: 'District',
-		many: true
+		ref: 'District'
 	}
 });
 
