@@ -36,7 +36,7 @@ module.exports = function(bll) {
 	 * params --
 	 */
 	var _all = function(req, res, next) {
-		debug('_all');
+		debug('_all', populateStr);
 
 		bll.find({}).populate(populateStr).exec().then(
 		function(data) {

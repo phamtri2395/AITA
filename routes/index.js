@@ -25,47 +25,11 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
-var multer = require('multer');
+var debug = require('debug')('middleware');
 
 var FacebookStrategy = require('passport-facebook').Strategy;
-var MongoDBStore = require('connect-mongodb-session')(session);
-
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
-
-var store = new MongoDBStore({ 
-	uri: process.env.MONGO_URI,
-	collection: 'my_sessions'
-});
-
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './uploads/');
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + '-' + Date.now());
-//   }
-// });
-
-// var fileUploadHandle = multer({ dest: 'uploads/' });
-// var fileUploadHandle = multer({ storage: storage });
-var multer = multer({
-	dest: './uploads/',
-	rename: function (fieldname, filename) {
-		return filename + Date.now();
-	},
-	onFileUploadStart: function (file) {
-		console.log(file.originalname + ' is starting ...');
-	},
-	onFileUploadComplete: function (file) {
-		console.log(file.fieldname + ' uploaded to  ' + file.path);
-	}
-});
-
-// Catch errors 
-store.on('error', function(error) {
-	console.log('SESSION on error', error);
-});
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -158,7 +122,7 @@ passport.use(new FacebookStrategy({
 // Setup Route Bindings
 exports = module.exports = function(app) {
 	var ensureAuthenticated = function(req, res, next) {
-		console.log(req.isAuthenticated());
+		debug(req.isAuthenticated());
 		if (req.isAuthenticated()) { return next(); }
 		res.redirect('/login');
 	};
@@ -181,7 +145,7 @@ exports = module.exports = function(app) {
 	app.use(passport.session());
 
 	app.use(function(req, res, next) {
-		console.log('SESSION', req.session.passport ? req.session.passport.user : null);
+		debug('SESSION', req.session.passport ? req.session.passport.user : null);
 		res.locals.client = req.session.passport ? req.session.passport.user : null;
 		next();
 	});
