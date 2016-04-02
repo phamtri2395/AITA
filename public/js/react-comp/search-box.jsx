@@ -7,36 +7,20 @@
 
 var SearchBoxComp = React.createClass({
 	getInitialState: function() {
-		var path = window.location.pathname;
-		var selectedValue = {
+		var path = window.location.pathname || null;
+		var selectedValue, typeOptions, priceOptions, districtOptions;
+
+		path = path.substr(1, path.length);
+		selectedValue = {
 			type: 'thue'
 		};
-		switch (path) {
-			case '/nha-rieng':
-				selectedValue = JSON.parse(localStorage.getItem('selected-' + path)) || selectedValue;
-				break;
-			case '/can-ho':				
-				selectedValue = JSON.parse(localStorage.getItem('selected-' + path)) || selectedValue;
-				break;
-			case '/phong':				
-				selectedValue = JSON.parse(localStorage.getItem('selected-' + path)) || selectedValue;
-				break;
-			default:
-		}
 
-		var typeOptions = [
+		districtOptions = [];
+		typeOptions = [
 			{ label: 'Thuê', value: 'thue' },
 			{ label: 'Mua', value: 'ban' },
 		];
-		var wardOptions = [
-			{ label: 'Quận Bình Thạnh', value: 1 },
-			{ label: 'Quận 1', value: 2 },
-			{ label: 'Quận 2', value: 3 },
-			{ label: 'Quận Tân Phú', value: 4 },
-			{ label: 'Quận Tân Bình', value: 5 },
-			{ label: 'Quận 9', value: 6 },
-		];
-		var priceOptions = [
+		priceOptions = [
 			{ label: 'Dưới 1tr', value: '0' },
 			{ label: '1tr - 2tr', value: '1' },
 			{ label: '2tr - 3tr', value: '2' },
@@ -45,13 +29,45 @@ var SearchBoxComp = React.createClass({
 			{ label: 'Trên 5tr', value: '5' },
 		];
 
+		switch (path) {
+			case 'nha':
+				selectedValue = JSON.parse(localStorage.getItem('selected-' + path)) || selectedValue;
+				break;
+			case 'can-ho':				
+				selectedValue = JSON.parse(localStorage.getItem('selected-' + path)) || selectedValue;
+				break;
+			case 'phong':				
+				selectedValue = JSON.parse(localStorage.getItem('selected-' + path)) || selectedValue;
+				break;
+			default:
+		}
+
 		return { 
 			path: path,
 			selectedValue: selectedValue,
-			wardOptions: wardOptions,
+			districtOptions: districtOptions,
 			typeOptions: typeOptions,
 			priceOptions: priceOptions,
 		};
+	},
+
+	componentDidMount: function() {
+		ApiService.DistrictModel.all().then(function(res) {
+
+			var disList = res.data;
+			disList =  disList.map(function(item) {
+				return {
+					label: item.name,
+					value: item.key
+				};
+			});
+
+			this.setState({
+				districtOptions: disList
+			});
+		}.bind(this), function(err) {
+
+		});
 	},
 
 	typeUpdateValue: function(value) {
@@ -88,11 +104,13 @@ var SearchBoxComp = React.createClass({
 		var $window = $(window);
 		var query = {
 			type: this.state.selectedValue.type.value,
+			realEstate: { '$regex': (this.state.path || '(.*?)'), '$options': 'i' }
 		};
 
 		ApiService.PostModel.find({}, {
 			query: query
 		}).then(function(res) {
+			console.log('res', res);
 			$window.trigger('fecth-data', res);
 		}, function(err) {
 			console.log('err', err);
@@ -125,7 +143,7 @@ var SearchBoxComp = React.createClass({
 							searchable={true}
 							clearable={true}
 							value={this.state.selectedValue.ward}
-							options={this.state.wardOptions}
+							options={this.state.districtOptions}
 							onChange={this.wardUpdateValue} />
 					</div>
 				</div>
