@@ -14,7 +14,6 @@ var scriptTemplate = _.template('<script src="<%= src %>"></script>');
 var cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
 var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
 
-
 module.exports = function() {
 	
 	var _helpers = {};
@@ -419,6 +418,11 @@ module.exports = function() {
 	_helpers.limit = function(arr, limit) {
 		if (!_.isArray(arr)) { return []; } // remove this line if you don't want the lodash/underscore dependency
   	return arr.slice(0, limit);
+	};
+
+	// environment
+	_helpers.env = function() {
+		return process.env.NODE_ENV;
 	};
 
 	return _helpers;
