@@ -29,25 +29,14 @@ Post.add({
 	},
 
 	type: {
-		label: 'Cho thuê / Bán',
-		type: Types.Select,
-		options: [
-			{ value: 'thue', label: 'Cho thuê' },
-			{ value: 'ban', label: 'Bán' },
-		],
-		default: 'thue',
+		label: 'Cho Thuê / Bán',
+		type: String,
 		required: false
 	},
 
 	realEstate: {
-		label: 'Nhà / Căn Hộ / Phòng',
-		type: Types.Select,
-		options: [
-			{ value: 'nha', label: 'Nhà' },
-			{ value: 'can-ho', label: 'Căn hộ' },
-			{ value: 'phong', label: 'Phòng' },
-		],
-		default: 'phong',
+		label: 'Nhà / Căn Hộ / Phòng Cho Thuê',
+		type: String,
 		required: false
 	},
 
@@ -142,12 +131,6 @@ Post.add({
 		required: false
 	},
 
-	yearBuild: {
-		label: 'Năm xây dựng',
-		type: Number,
-		required: false
-	},
-
 	description: {
 		label: 'Mô tả',
 		type: Types.Textarea,
@@ -161,7 +144,7 @@ Post.add({
 		required: false
 	},
 
-	project: {
+	projectName: {
 		label: 'Tên dự án',
 		type: String,
 		required: false
@@ -170,6 +153,12 @@ Post.add({
 	projectLink: {
 		label: 'Link mô tả dự án',
 		type: Types.Url,
+		required: false
+	},
+
+	direct: {
+		label: 'Hướng',
+		type: String,
 		required: false
 	},
 

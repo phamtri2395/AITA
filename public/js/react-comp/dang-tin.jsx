@@ -6,7 +6,7 @@ var AddNewPostForm = React.createClass({
 	uploadFiles: [],
 
 	getDistricts: function() {
-		var self = this;
+		var that = this;
 
 		ApiService.DistrictModel.all().then(function(res) {
 			var districtOptions = [];
@@ -16,28 +16,59 @@ var AddNewPostForm = React.createClass({
 					value: elm._id
 				});
 			});
-			self.setState({districtOptions: districtOptions});
+			that.setState({districtOptions: districtOptions});
 		}, function(err) {
-			console.log('err', err);
+			console.log('getDistricts err', err);
+		});
+	},
+
+	getUserInfo: function() {
+		var that = this;
+
+		ApiService.UserModel.get().then(function(res) {
+			that.setState({user: res.data});
+			that.setState({authorId: res.data._id});
+			that.setState({name: [res.data.name.first, res.data.name.last].join(' ')});
+			that.setState({mobile: res.data.mobile});
+		}, function(err) {
+			console.log('getUserInfo err', err)
 		});
 	},
 
 	getInitialState: function() {
-		console.log('getInitialState');
 		return {
-			currentDate: this.getCurrentDate(),
-			typeVal: 'Bán',
+			title: 'Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm',
+			isFront: false,
+			street: '43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM',
+			address: '43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM',
+			latitude: '',
+			longitude: '',
+			price: 1111,
+			area: 4444,
+			bedroom: 2,
+			bathroom: 2,
+			description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+			isProject: true,
+			projectName: '',
+			highway: 25,
+			authorId: '',
+			user: null,
+			publishedDate: this.getCurrentDate(),
+			medium: false,
+			mobile: '',
+			name: '',
+			typeVal: 'Cho Thuê',
 			typeOptions: [
-				{label: 'Mua', value: 'mua'},
-				{label: 'Bán', value: 'ban'}
+				{label: 'Cho Thuê', value: 'thue'},
+				{label: 'Bán', value: 'ban'},
 			],
-			realEstateVal: '',
+			realEstateVal: 'Phòng Cho Thuê',
 			realEstateOptions: [
 				{label: 'Nhà', value: 'nha'},
-				{label: 'Căn hộ', value: 'can-ho'},
-				{label: 'Phòng cho thuê', value: 'phong'}
+				{label: 'Căn Hộ', value: 'can-ho'},
+				{label: 'Phòng Cho Thuê', value: 'phong'}
 			],
-			districtVal: 'Quận 1',
+			districtVal: '',
 			districtOptions: [],
 			wardVal: 'Phường 1',
 			wardOptions: [
@@ -84,9 +115,17 @@ var AddNewPostForm = React.createClass({
 		].join('-');
 	},
 
+	getAuthorId: function() {
+		console.log('getAuthorId');
+		if (this.state.user) {
+			console.log('getAuthorId true');
+			this.setState({authorId: this.state.user._id});
+		}
+	},
+
 	componentWillMount: function() {
-		console.log('componentWillMount');
 		this.getDistricts();
+		this.getUserInfo();
 	},
 
 	componentDidMount: function() {
@@ -175,51 +214,153 @@ var AddNewPostForm = React.createClass({
 		}.bind(this));
 	},
 
-	handleChange: function() {
+	handleChangeType: function(e) {
+		this.setState({typeVal: e.target.value});
 	},
 
-	handleChangeType: function(val) {
-		this.setState({typeVal: val});
+	handleChangeRealEstate: function(eSelect) {
+		this.setState({realEstateVal: eSelect.value});
 	},
 
-	handleChangeRealEstate: function(val) {
-		this.setState({realEstateVal: val});
+	handleChangeDistrict: function(eSelect) {
+		this.setState({districtVal: eSelect.value});
 	},
 
-	handleChangeDistrict: function(val) {
-		this.setState({districtVal: val});
+	handleChangeWard: function(eSelect) {
+		this.setState({wardVal: eSelect.value});
 	},
 
-	handleChangeWard: function(val) {
-		this.setState({wardVal: val});
+	handleChangeDirect: function(eSelect) {
+		this.setState({directVal: eSelect.value});
 	},
 
-	handleChangeDirect: function(val) {
-		this.setState({directVal: val});
+	handleChangeFloor: function(eSelect) {
+		this.setState({floorVal: eSelect.value});
 	},
 
-	handleChangeFloor: function(val) {
-		this.setState({floorVal: val});
+	handleChangeTitle: function(e) {
+		this.setState({title: e.target.value});
+	},
+
+	handleChangeFront: function(e) {
+		this.setState({isFront: e.target.value});
+	},
+
+	handleChangeStreet: function(e) {
+		this.setState({street: e.target.value});
+	},
+
+	handleChangeLatitude: function(e) {
+		this.setState({latitude: e.target.value});
+	},
+
+	handleChangeLongitude: function(e) {
+		this.setState({longitude: e.target.value});
+	},
+
+	handleChangePrice: function(e) {
+		this.setState({price: e.target.value});
+	},
+
+	handleChangeArea: function(e) {
+		this.setState({area: e.target.value});
+	},
+
+	handleChangeBedroom: function(e) {
+		this.setState({bedroom: e.target.value});
+	},
+
+	handleChangeBathroom: function(e) {
+		this.setState({bathroom: e.target.value});
+	},
+
+	handleChangeDescription: function(e) {
+		this.setState({description: e.target.value});
+	},
+
+	handleChangeIsProject: function(e) {
+		this.setState({isProject: e.target.value});
+	},
+
+	handleChangeProjectName: function(e) {
+		this.setState({projectName: e.target.value});
+	},
+
+	handleChangeHighway: function(e) {
+		this.setState({highway: e.target.value});
+	},
+
+	handleChangeAuthorId: function(e) {
+		this.setState({authorId: e.target.value});
+	},
+
+	handleChangeName: function(e) {
+		this.setState({name: e.target.value});
+	},
+
+	handleChangeMobile: function(e) {
+		this.setState({mobile: e.target.value});
+	},
+
+	handleChangeMedium: function(e) {
+		this.setState({medium: e.target.value});
+	},
+
+	handleChangePublishedDate: function(e) {
+		this.setState({publishedDate: e.target.value});
+	},
+
+	handleSubmit: function(e) {
+		e.preventDefault();
+
+		ApiService.PostModel.add({
+			title: this.state.title,
+			isFront: this.state.isFront,
+			type: this.state.typeVal,
+			realEstate: this.state.realEstateVal,
+			district: this.state.districtVal,
+			// ward: this.state.wardVal, // temp hiden
+			street: this.state.street,
+			address: this.state.address,
+			latitude: this.state.latitude,
+			longitude: this.state.longitude,
+			price: this.state.price,
+			area: this.state.area,
+			bedroom: this.state.bedroom,
+			bathroom: this.state.bathroom,
+			description: this.state.description,
+			isProject: this.state.isProject,
+			projectName: this.state.projectName,
+			direct: this.state.directVal,
+			floors: this.state.floorVal,
+			highway: this.state.highway,
+			name: this.state.name,
+			author: this.state.authorId,
+			publishedDate: this.state.publishedDate,
+			medium: this.state.medium,
+			mobile: this.state.mobile,
+			uploadFiles: this.uploadFiles
+		});
 	},
 
 	render: function() {
 		return (
-			<form className='form-home' action='/add-new-post' method='post' acceptCharset='utf-8' encType='multipart/form-data'>
+			<form className='form-home' action='/add-new-post' method='post' acceptCharset='utf-8' encType='multipart/form-data' onSubmit={this.handleSubmit}>
 				
 				<div className='row'>
 					<div className='columns three'>
 						<label>Tiêu đề</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} className='u-full-width' type='text' name='title' required='required' 
-							placeholder='Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm' defaultValue='Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm' />
+						<input onChange={this.handleChangeTitle} className='u-full-width' type='text' name='title' required='required' 
+							placeholder='Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm' value={this.state.title} />
 					</div>
 				</div>
 				<div className='row'>
 					<div className='columns three'>&nbsp;</div>
 					<div className='columns nine'>
 						<label className='checkbox-lable' htmlFor='checkbox-mat-tien'>
-							<input onChange={this.handleChange} type='checkbox' name='front' id='checkbox-mat-tien' /> Nhà mặt tiền
+							<input onChange={this.handleChangeFront} type='checkbox' name='front' id='checkbox-mat-tien' checked={this.state.isFront} /> Nhà mặt tiền
 						</label>
 					</div>
 				</div>
@@ -260,8 +401,8 @@ var AddNewPostForm = React.createClass({
 						<label>Đường</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} className='u-full-width' type='text' name='street' required='required' 
-							value='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' defaultValue='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' />
+						<input onChange={this.handleChangeStreet} className='u-full-width' type='text' name='street' required='required' 
+							value='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' value={this.state.street} />
 					</div>
 				</div>
 				<div className='row'>
@@ -269,8 +410,8 @@ var AddNewPostForm = React.createClass({
 						<label>Địa chỉ đầy đủ</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} disabled className='u-full-width' type='text' name='address' required='required' 
-							placeholder='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' defaultValue='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' />
+						<input disabled className='u-full-width' type='text' name='address' required='required' 
+							placeholder='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' value={this.state.address} />
 					</div>
 				</div>
 				<div className='row'>
@@ -283,8 +424,8 @@ var AddNewPostForm = React.createClass({
 						</div>
 						<div className='clear-top'></div>
 						<p><small>(*) Nhấp để chọn vị trí trên bản đồ</small></p>
-						<input onChange={this.handleChange} type='hidden' name='latitude' />
-						<input onChange={this.handleChange} type='hidden' name='longitude' />
+						<input type='hidden' name='latitude' value={this.state.latitude} onChange={this.handleChangeLatitude} />
+						<input type='hidden' name='longitude' value={this.state.longitude} onChange={this.handleChangeLongitude} />
 					</div>
 				</div>
 				<div className='row'>
@@ -292,7 +433,7 @@ var AddNewPostForm = React.createClass({
 						<label>Giá (VNĐ)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} className='form-control' type='text' name='price' required='required' defaultValue='1000' />
+						<input onChange={this.handleChangePrice} className='form-control' type='text' name='price' required='required' value={this.state.price} />
 					</div>
 				</div>
 				<div className='row'>
@@ -300,7 +441,7 @@ var AddNewPostForm = React.createClass({
 						<label>Diện tích (m²)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} className='form-control' type='text' name='area' required='required' defaultValue='40' />
+						<input onChange={this.handleChangeArea} className='form-control' type='text' name='area' required='required' value={this.state.area} />
 					</div>
 				</div>
 				<div className='row'>
@@ -308,7 +449,7 @@ var AddNewPostForm = React.createClass({
 						<label>Số phòng ngủ</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} className='form-control' type='text' name='bedroom' required='required' defaultValue='2' />
+						<input onChange={this.handleChangeBedroom} className='form-control' type='text' name='bedroom' required='required' value={this.state.bedroom} />
 					</div>
 				</div>
 				<div className='row'>
@@ -316,7 +457,7 @@ var AddNewPostForm = React.createClass({
 						<label>Số phòng tắm</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} className='form-control' type='text' name='bathroom' required='required' defaultValue='2' />
+						<input onChange={this.handleChangeBathroom} className='form-control' type='text' name='bathroom' required='required' value={this.state.bathroom} />
 					</div>
 				</div>
 				<div className='row'>
@@ -324,14 +465,14 @@ var AddNewPostForm = React.createClass({
 						<label className='group-title'>Thông tin mô tả</label>
 					</div>
 					<div className='columns nine control'>
-						<textarea row='4' className='form-control control--textarea' name='description' defaultValue='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'></textarea>
+						<textarea onChange={this.handleChangeDescription} row='4' className='form-control control--textarea' name='description' value={this.state.description}></textarea>
 					</div>
 				</div>
 				{/*<div className='row'>
 					<div className='columns three'>&nbsp;</div>
 					<div className='columns nine'>
 						<label htmlhtmlFor='push-ads'>
-							<input onChange={this.handleChange} type='checkbox' name='pushAds' id='push-ads' className='form-control' /> Chạy quảng cáo
+							<input type='checkbox' name='pushAds' id='push-ads' className='form-control' /> Chạy quảng cáo
 						</label>
 					</div>
 				</div>*/}
@@ -341,7 +482,7 @@ var AddNewPostForm = React.createClass({
 					<div className='columns three'>&nbsp;</div>
 					<div className='columns nine'>
 						<label>
-							<input onChange={this.handleChange} className='form-control' type='checkbox' name='isProject' required='required' checked='checked' /> Chọn nếu nhà thuộc dự án
+							<input onChange={this.handleChangeIsProject} className='form-control' type='checkbox' name='isProject' required='required' checked={this.state.isProject} /> Chọn nếu nhà thuộc dự án
 						</label>
 					</div>
 				</div>
@@ -350,7 +491,7 @@ var AddNewPostForm = React.createClass({
 						<label htmlFor=''>Tên dự án</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} type='text' id='project-name' name='project-name' />
+						<input onChange={this.handleChangeProjectName} type='text' id='project-name' name='projectName' value={this.state.projectName} />
 					</div>
 				</div>
 				<div className='row'>
@@ -374,7 +515,7 @@ var AddNewPostForm = React.createClass({
 						<label htmlFor=''>Lộ giới (m)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} type='text' id='highway' className='form-control' name='highway' required='required' defaultValue='25' />
+						<input onChange={this.handleChangeHighway} type='text' id='highway' className='form-control' name='highway' required='required' value={this.state.highway} />
 					</div>
 				</div>
 
@@ -384,8 +525,8 @@ var AddNewPostForm = React.createClass({
 						<label htmlFor=''>Tên (*)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} type='hidden' name='author' />
-						<input onChange={this.handleChange} className='form-control' type='text' name='authorName' required='required' defaultValue='Tam Pham' />
+						<input onChange={this.handleChangeAuthorId} type='hidden' name='author' value={this.state.authorId} />
+						<input onChange={this.handleChangeName} className='form-control' type='text' name='name' required='required' value={this.state.name} />
 					</div>
 				</div>
 				<div className='row'>
@@ -393,14 +534,14 @@ var AddNewPostForm = React.createClass({
 						<label htmlFor=''>Số điện thoại (*)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChange} className='form-control' type='text' name='mobile' required='required' value='01643652922' />
+						<input onChange={this.handleChangeMobile} className='form-control' type='text' name='mobile' required='required' value={this.state.mobile} />
 					</div>
 				</div>
 				<div className='row'>
 					<div className='columns three'>&nbsp;</div>
 					<div className='columns nine'>
 						<label className='checkbox-lable'>
-							<input onChange={this.handleChange} type='checkbox' name='medium' /> Tiếp môi giới
+							<input onChange={this.handleChangeMedium} type='checkbox' name='medium' checked={this.state.medium} /> Tiếp môi giới
 						</label>
 					</div>
 				</div>
@@ -412,8 +553,7 @@ var AddNewPostForm = React.createClass({
 						<p>
 							<small>(*)Tin đăng của bạn sẽ được kiểm duyệt trong vòng 1 giờ trước khi được đăng.</small>
 						</p>
-						<input onChange={this.handleChange} type='hidden' name='ward-filters' defaultValue='json data.filters' />
-						<input onChange={this.handleChange} type='hidden' name='publishedDate' defaultValue={this.state.currentDate} />
+						<input onChange={this.handleChangePublishedDate} type='hidden' name='publishedDate' value={this.state.publishedDate} />
 						<button className='' type='submit'>Hủy</button> <button className='button-primary' type='submit'>Đăng tin</button>
 					</div>
 				</div>
@@ -425,5 +565,5 @@ var AddNewPostForm = React.createClass({
 window.AddNewPostForm = AddNewPostForm;
 
 if ($('.js-container').hasClass('jspage-dang-tin')) {
-	ReactDOM.render(<AddNewPostForm />, document.getElementById('add-new-post'))
+	ReactDOM.render(<AddNewPostForm />, document.getElementById('add-new-post'));
 }
