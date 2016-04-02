@@ -13,7 +13,7 @@ var PostSectionComp = React.createClass({
 	componentDidMount: function() {
 		ApiService.PostModel.all().then(function(res) {
 			this.setState({
-				// postList: res.data
+				postList: res.data
 			});
 		}.bind(this), function(err) {
 			console.log('err');
