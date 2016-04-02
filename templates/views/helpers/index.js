@@ -422,7 +422,7 @@ module.exports = function() {
 
 	// environment
 	_helpers.env = function() {
-		return process.env.NODE_ENV;
+		return keystone.get('env');
 	};
 
 	return _helpers;
