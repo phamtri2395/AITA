@@ -214,8 +214,8 @@ var AddNewPostForm = React.createClass({
 		}.bind(this));
 	},
 
-	handleChangeType: function(e) {
-		this.setState({typeVal: e.target.value});
+	handleChangeType: function(eSelect) {
+		this.setState({typeVal: eSelect.value});
 	},
 
 	handleChangeRealEstate: function(eSelect) {
@@ -313,13 +313,21 @@ var AddNewPostForm = React.createClass({
 	handleSubmit: function(e) {
 		e.preventDefault();
 
+		if (!this.state.title) {
+			return;
+		}
+
+		if (!this.state.districtVal) {
+			return;
+		}
+
 		ApiService.PostModel.add({
 			title: this.state.title,
 			isFront: this.state.isFront,
 			type: this.state.typeVal,
 			realEstate: this.state.realEstateVal,
 			district: this.state.districtVal,
-			// ward: this.state.wardVal, // temp hiden
+			// ward: this.state.wardVal, // temp hide
 			street: this.state.street,
 			address: this.state.address,
 			latitude: this.state.latitude,
@@ -340,6 +348,11 @@ var AddNewPostForm = React.createClass({
 			medium: this.state.medium,
 			mobile: this.state.mobile,
 			uploadFiles: this.uploadFiles
+		}).then(function(res) {
+			console.log(res);
+			window.location = '/'; 
+		}, function(err) {
+			console.log(err);
 		});
 	},
 

@@ -13,7 +13,7 @@ exports = module.exports = _.assign(PostModel, {
 		console.log('add-body', req.body);
 		PostModel.create(req.body).then(function(data) {
 			console.log('success', data);
-
+			res.redirect('/');
 			// // facebook message content
 			// var message = {
 			// 	message: data.description,
@@ -39,8 +39,6 @@ exports = module.exports = _.assign(PostModel, {
 			// 		console.log('facebookApi err', err);
 			// 	}
 			// });
-
-			res.redirect('/');
 		}, function(err) {
 			console.log('error', err);
 		});

@@ -201,7 +201,7 @@ exports = module.exports = function(app) {
 	app.put('/api/post/:_id', routes.services.post._put);
 	app.delete('/api/post/:_id', routes.services.post._delete);
 
-	app.post('/api/post/add', routes.services.posts.add);
+	app.post('/api/post/add', routes.services.post.add);
 
 	// User MODEL
 	app.get('/api/user', routes.services.user._get);
