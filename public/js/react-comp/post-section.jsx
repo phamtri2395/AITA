@@ -11,7 +11,11 @@ var PostSectionComp = React.createClass({
 	},
 
 	componentDidMount: function() {
-		ApiService.PostModel.all().then(function(res) {
+		ApiService.PostModel.find({}, {
+			query: {
+				type: 'thue'
+			}
+		}).then(function(res) {
 			this.setState({
 				postList: res.data
 			});
