@@ -14,7 +14,7 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 	var section = req.url.substr(1, req.url.length);
 	var categoryMapper = {
-		'nha-rieng': 'nha',
+		'nha': 'nha',
 		'can-ho': 'can-ho',
 		'phong': 'phong'
 	};
@@ -23,7 +23,7 @@ exports = module.exports = function(req, res) {
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	if (section.length === 0) {
-		section = 'nha-rieng';
+		// section = 'nha';
 	}
 	locals.section = section;
 	debug('req', locals.section);
@@ -35,8 +35,6 @@ exports = module.exports = function(req, res) {
 		categories: [],
 		bookmarks: []
 	};
-
-
 
 	// Load all categories
 	view.on('init', function(next) {
@@ -89,7 +87,7 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 
 		keystone.list('Post').model.find({
-			realEstate: categoryMapper[section],
+			realEstate: { '$regex': (categoryMapper[section] || '(.*?)'), '$options': 'i' },
 			activeDate: {
 				$gte:helpFunction.minusDays(Date.now(), helpFunction.EXPIRE_PERIOD),
 				$lte:Date.now()

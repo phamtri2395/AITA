@@ -6,13 +6,17 @@ var PostSectionComp = React.createClass({
 
 	getInitialState: function() {
 		return {
-			postList: []
+			postList: [],
+			postDataContext: []
 		};
 	},
 
 	componentDidMount: function() {
 		var $window = $(window);
+		var $serverHtml = $('#list-post-from-server');
+
 		$window.on('fecth-data', function(e, res) {
+			$serverHtml.hide();
 			this.setState({
 				postList: res.data
 			});
@@ -31,12 +35,19 @@ var PostSectionComp = React.createClass({
 			);
 		});
 
-		return (
-			<div className="list-result" data-marker="">
-				{postListRender}
+		var loadmoreRender;
+		if (this.state.postDataContext.length > 0) {
+			loadmoreRender = (
 				<div className="u-full-width u-content-center">
 					<button className="btn-success btn-lg" onClick={this.loadMore}>Xem thêm</button>
 				</div>
+			);
+		}
+
+		return (
+			<div className="list-result" data-marker="">
+				{postListRender}
+				{loadmoreRender}
 			</div>
 		);
 	}

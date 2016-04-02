@@ -43,7 +43,9 @@ if ($('.js-container').hasClass('jspage-profile')) {
 			this.setState({phone: event.target.value});
 		},
 
-		onSubmit: function(req, res) {
+		onSubmit: function(e) {
+			e.preventDefault();
+
 			var body = this.state.body;
 			body.name.last = this.state.lastName;
 			body.name.first = this.state.firstName;
@@ -52,6 +54,7 @@ if ($('.js-container').hasClass('jspage-profile')) {
 
 			ApiService.UserModel.put(body, {_id: body._id}).then(function(res) {
 				console.log('res', res);
+				alert('Thông tin của bạn đã được cập nhật');
 			}, function(err) {
 				console.log('err', err);
 			});
@@ -60,33 +63,47 @@ if ($('.js-container').hasClass('jspage-profile')) {
 		render: function() {
 			return (
 				<form id="updateProfile">
-					<div className="row">
-						<div  className="one column">
-							<label className="u-pull-left">Họ</label>
+					<div className='row'>
+						<div className='columns two'>
+							<label>Họ</label>
 						</div>
-						<input type="text" id="last" className="five columns" placeholder="Họ" value={this.state.lastName} onChange={this.handleChangeLastName} />
-
-						<div  className="one column">
-							<label className="u-pull-left">Tên</label>
+						<div className='columns nine'>
+							<input type="text" id="last" placeholder="Họ" value={this.state.lastName} onChange={this.handleChangeLastName} />
 						</div>
-						<input type="text" id="first" className="five columns" placeholder="Tên" value={this.state.firstName} onChange={this.handleChangeFirstName} />
 					</div>
 
-					<div className="row">
-						<div  className="one column">
-							<label className="u-pull-left">Email</label>
+					<div className='row'>
+						<div className='columns two'>
+							<label>Tên</label>
 						</div>
-						<input type="email" id="email" className="five columns" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail} />
-
-						<div  className="one column">
-							<label className="u-pull-left">SĐT</label>
+						<div className='columns nine'>
+							<input type="text" id="first" placeholder="Tên" value={this.state.firstName} onChange={this.handleChangeFirstName} />
 						</div>
-						<input type="text" id="phone" className="five columns" placeholder="Số điện thoại" value={this.state.phone} onChange={this.handleChangePhone} />
 					</div>
 
-					<div className="row">
-						<input className="three columns offset-by-two button-primary" value="Lưu thay đổi" type="submit" onClick={this.onSubmit} />
-						<a className="three columns offset-by-two button" href="/logout">Đăng xuất</a>
+					<div className='row'>
+						<div className='columns two'>
+							<label>Email</label>
+						</div>
+						<div className='columns nine'>
+							<input type="email" id="email" placeholder="Email" value={this.state.email} onChange={this.handleChangeEmail} />
+						</div>
+					</div>
+
+					<div className='row'>
+						<div className='columns two'>
+							<label>Số điện thoại</label>
+						</div>
+						<div className='columns nine'>
+							<input type="text" id="phone" placeholder="Số điện thoại" value={this.state.phone} onChange={this.handleChangePhone} />
+						</div>
+					</div>
+
+					<div className='row'>
+						<div className='columns two'>&nbsp;</div>
+						<div className='columns nine'>
+							<input className="button-primary" value="Lưu thay đổi" type="submit" onClick={this.onSubmit} />
+						</div>
 					</div>
 				</form>
 			);

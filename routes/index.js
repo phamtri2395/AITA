@@ -20,12 +20,13 @@
 
 var keystone = require('keystone');
 var passport = require('passport');
-var logger = require('morgan');
-var session = require('express-session');
-var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var methodOverride = require('method-override');
 var debug = require('debug')('middleware');
+
+// var methodOverride = require('method-override');
+// var logger = require('morgan');
+// var session = require('express-session');
+// var bodyParser = require('body-parser');
 
 var FacebookStrategy = require('passport-facebook').Strategy;
 var middleware = require('./middleware');
@@ -127,7 +128,6 @@ exports = module.exports = function(app) {
 		res.redirect('/login');
 	};
 
-	app.use(cookieParser({}));
 	// app.use(logger('default'));
 	// app.use(methodOverride());
 	// app.use(bodyParser());
@@ -139,6 +139,9 @@ exports = module.exports = function(app) {
 	// 	},
 	// 	store: store
 	// }));
+
+	app.use(cookieParser({}));
+	
 	// Initialize Passport!  Also use passport.session() middleware, to support
 	// persistent login sessions (recommended).
 	app.use(passport.initialize());
@@ -170,7 +173,7 @@ exports = module.exports = function(app) {
 
 	// app routes
 	app.get('/', routes.views.index);
-	app.get('/nha-rieng', routes.views.index);
+	app.get('/nha', routes.views.index);
 	app.get('/can-ho', routes.views.index);
 	app.get('/phong', routes.views.index);
 
