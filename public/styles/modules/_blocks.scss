@@ -74,8 +74,8 @@ body,
 .content-wrapper {
 	margin-top: $gutter;
 	margin-bottom: $gutter;
-	padding-bottom: $gutter;
 	border-bottom: 1px solid whitesmoke;
+	padding-bottom: $gutter;
 
 	&:first-child {
 		margin-top: 0;
@@ -83,6 +83,10 @@ body,
 
 	&:last-child {
 		border-bottom: none;
+	}
+
+	&__no-padding {
+		padding-bottom: 0;
 	}
 }
 
@@ -142,4 +146,3 @@ body,
 		}
 	}
 }
-

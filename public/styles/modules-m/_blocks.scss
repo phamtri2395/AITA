@@ -1,0 +1,55 @@
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+
+.index-block {
+
+	&:after {
+	}
+
+	&--left,
+	&--right {
+		height: 100%;
+	}
+
+	&--left {
+		width: 100%;
+	}
+
+	&--right {
+		display: none;
+	}
+}
+
+.searchbox {
+	
+	&--wrapper {}
+
+	&--control {}
+
+	&--left,
+	&--right {}
+
+	&--left {
+		label {
+			text-align: left;
+			margin-bottom: 0;
+		}
+	}
+
+	&--right {
+		button {
+			margin-top: 0.5*$gutter;
+		}
+	}
+}
+
+.suggest-post {
+	margin-left: 0;
+	opacity: 1;
+}
+
+.list-post-container {
+	padding-bottom: 2*$gutter;
+}

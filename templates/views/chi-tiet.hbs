@@ -7,7 +7,7 @@
 		{{# with data.post}}
 			<div class="u-hidden jsdata-detail" data-lat="{{latitude}}" data-lng="{{longitude}}"></div>
 
-			<div class="content-wrapper">
+			<div class="content-wrapper content-wrapper__no-padding">
 				<div class="media-wrapper media-wrapper__no-padding">
 					<div class="media">
 						<div class="media-left hidden-xs">
@@ -26,17 +26,17 @@
 							</h4>
 
 							<span class="tel-group-wrapper">
-								<input type="checkbox" id="checkbox-{{@index}}" class="tel-group--checkbox" />
+								<input type="checkbox" id="checkbox-{{@index}}" class="tel-group--checkbox" checked="" />
 								<label for="checkbox-{{@index}}" class="tel-group--label"><i class="icon-phone"></i> Nhấn để xem</label>
-								<a href="tel:{{mobile}}" class="tel-group--phone-number"><i class="icon-phone"></i> {{mobile}}</a>
+								<a href="tel:{{mobile}}" class="tel-group--phone-number"><i class="icon-phone"></i>{{mobile}}</a>
 							</span>
 							
-							<button class="button__link" 
+							{{!-- <button class="button__link" 
 								data-facebook-id="{{author.providerId}}" 
 								data-link="http://www.visla.vn/du-an/468/sunrise-city?aid=20686"
 								onclick="fbSend(this)">
 								<i class="glyphicon glyphicon-flash"></i> Nhắn qua Facebook
-							</button>
+							</button> --}}
 
 							<!-- <a href="mailto:{{post.author.email}}" class="btn btn-link">
 								<i class="glyphicon glyphicon-envelope"></i> {{post.author.email}}
