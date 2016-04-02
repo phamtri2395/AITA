@@ -31,12 +31,7 @@ exports.create = {
 		{ name: 'Quận Tân Bình' },
 		{ name: 'Quận Tân Phú' },
 		{ name: 'Quận Phú Nhuận' },
-		{ name: 'Quận Bình Tân' },
-		{ name: 'Huyện Củ Chi' },
-		{ name: 'Huyện Hóc Môn' },
-		{ name: 'Huyện Bình Chánh' },
-		{ name: 'Huyện Nhà Bè' },
-		{ name: 'Huyện Cần Giờ' }
+		{ name: 'Quận Bình Tân' }
 	],
 	Ward: [
 		// { name: 'Phường 1', __ref: ['Quận 1', 'Quận 2'] },
