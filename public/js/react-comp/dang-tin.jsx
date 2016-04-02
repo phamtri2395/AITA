@@ -5,7 +5,25 @@
 var AddNewPostForm = React.createClass({
 	uploadFiles: [],
 
+	getDistricts: function() {
+		var self = this;
+
+		ApiService.DistrictModel.all().then(function(res) {
+			var districtOptions = [];
+			$.each(res.data, function(ind, elm) {
+				districtOptions.push({
+					label: elm.name,
+					value: elm._id
+				});
+			});
+			self.setState({districtOptions: districtOptions});
+		}, function(err) {
+			console.log('err', err);
+		});
+	},
+
 	getInitialState: function() {
+		console.log('getInitialState');
 		return {
 			currentDate: this.getCurrentDate(),
 			typeVal: 'Bán',
@@ -20,20 +38,7 @@ var AddNewPostForm = React.createClass({
 				{label: 'Phòng cho thuê', value: 'phong'}
 			],
 			districtVal: 'Quận 1',
-			districtOptions: [
-				{label: 'Quận 1', value: 1},
-				{label: 'Quận 2', value: 2},
-				{label: 'Quận 3', value: 3},
-				{label: 'Quận 4', value: 4},
-				{label: 'Quận 5', value: 5},
-				{label: 'Quận 6', value: 6},
-				{label: 'Quận 7', value: 7},
-				{label: 'Quận 8', value: 8},
-				{label: 'Quận 9', value: 9},
-				{label: 'Quận 10', value: 10},
-				{label: 'Quận 11', value: 11},
-				{label: 'Quận 12', value: 12}
-			],
+			districtOptions: [],
 			wardVal: 'Phường 1',
 			wardOptions: [
 				{label: 'Phường 1', value: 1},
@@ -77,6 +82,11 @@ var AddNewPostForm = React.createClass({
 			currentDate.getMonth() + 1,
 			currentDate.getDate()
 		].join('-');
+	},
+
+	componentWillMount: function() {
+		console.log('componentWillMount');
+		this.getDistricts();
 	},
 
 	componentDidMount: function() {
