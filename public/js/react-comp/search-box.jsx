@@ -26,7 +26,7 @@ var SearchBoxComp = React.createClass({
 
 		var typeOptions = [
 			{ label: 'Thuê', value: 'thue' },
-			{ label: 'Mua', value: 'mua' },
+			{ label: 'Mua', value: 'ban' },
 		];
 		var wardOptions = [
 			{ label: 'Quận Bình Thạnh', value: 1 },
@@ -85,8 +85,15 @@ var SearchBoxComp = React.createClass({
 	},
 
 	onSubmit: function() {
-		ApiService.PostModel.all().then(function(data) {
-			console.log('data', data);
+		var $window = $(window);
+		var query = {
+			type: this.state.selectedValue.type.value,
+		};
+
+		ApiService.PostModel.find({}, {
+			query: query
+		}).then(function(res) {
+			$window.trigger('fecth-data', res);
 		}, function(err) {
 			console.log('err', err);
 		});

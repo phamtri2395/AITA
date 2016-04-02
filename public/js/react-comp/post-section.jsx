@@ -11,12 +11,11 @@ var PostSectionComp = React.createClass({
 	},
 
 	componentDidMount: function() {
-		ApiService.PostModel.all().then(function(res) {
+		var $window = $(window);
+		$window.on('fecth-data', function(e, res) {
 			this.setState({
 				postList: res.data
 			});
-		}.bind(this), function(err) {
-			console.log('err');
 		}.bind(this));
 	},
 

@@ -54,11 +54,11 @@ module.exports = function(bll) {
 	 * req.query.l - is a pagin request
 	 */
 	var _find = function(req, res, next) {
-		var query = JSON.parse(req.query.q || '{}');
-		var limit = JSON.parse(req.query.l || '{}');
+		var query = req.query.query || '{}';
+		debug('_find query', req.query);
 		debug('_find query', query);
-		debug('_find limit', limit);
 
+		query = JSON.parse(query);
 		bll.find(query).populate(populateStr).exec().then(function(data) {
 			res.jsonp(utils.response(true, data));
 		}, function(err) {
