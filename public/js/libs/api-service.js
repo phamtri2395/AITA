@@ -13,6 +13,8 @@ var apiList = [
 	{ nspace: 'PostModel', name: 'post', path: '/api/post/post', method: 'POST' },
 	{ nspace: 'PostModel', name: 'put', path: '/api/post/put', method: 'PUT' },
 	{ nspace: 'PostModel', name: 'delete', path: '/api/post/delete', method: 'DELETE' },
+	{ nspace: 'PostModel', name: 'add', path: '/api/post/add', method: 'POST' },
+	
 	{ nspace: 'UserModel', name: 'get', path: '/api/user', method: 'GET' },
 	{ nspace: 'UserModel', name: 'put', path: '/api/user', method: 'PUT' },
 
