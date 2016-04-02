@@ -1,6 +1,6 @@
 module.exports = [
 	{
-		name: 'Quận 1', wards: [
+		name: 'Quận 01', wards: [
 			{ name: 'Phường Tân Định' },
 			{ name: 'Phường Đa Kao' },
 			{ name: 'Phường Bến Nghé' },
@@ -14,7 +14,7 @@ module.exports = [
 		]
 	},
 	{
-		name: 'Quận 2', wards: [
+		name: 'Quận 02', wards: [
 			{ name: 'Phường Thảo Điền' },
 			{ name: 'Phường An Phú' },
 			{ name: 'Phường Bình An' },
@@ -29,7 +29,7 @@ module.exports = [
 		]
 	},
 	{
-		name: 'Quận 3', wards: [
+		name: 'Quận 03', wards: [
 			{ name: 'Phường 08' },
 			{ name: 'Phường 07' },
 			{ name: 'Phường 14' },
@@ -47,7 +47,7 @@ module.exports = [
 		]
 	},
 	{
-		name: 'Quận 4', wards: [
+		name: 'Quận 04', wards: [
 			{ name: 'Phường 12' },
 			{ name: 'Phường 13' },
 			{ name: 'Phường 09' },
@@ -66,7 +66,7 @@ module.exports = [
 		]
 	},
 	{
-		name: 'Quận 5', wards: [
+		name: 'Quận 05', wards: [
 			{ name: 'Phường 04' },
 			{ name: 'Phường 09' },
 			{ name: 'Phường 03' },
@@ -85,7 +85,7 @@ module.exports = [
 		]
 	},
 	{
-		name: 'Quận 6', wards: [
+		name: 'Quận 06', wards: [
 			{ name: 'Phường 14' },
 			{ name: 'Phường 13' },
 			{ name: 'Phường 09' },
@@ -103,7 +103,7 @@ module.exports = [
 		]
 	},
 	{
-		name: 'Quận 7', wards: [
+		name: 'Quận 07', wards: [
 			{ name: 'Phường Tân Thuận Đông' },
 			{ name: 'Phường Tân Thuận Tây' },
 			{ name: 'Phường Tân Kiểng' },
@@ -117,7 +117,7 @@ module.exports = [
 		]
 	},
 	{
-		name: 'Quận 8', wards: [
+		name: 'Quận 08', wards: [
 			{ name: 'Phường 08' },
 			{ name: 'Phường 02' },
 			{ name: 'Phường 01' },
@@ -137,7 +137,7 @@ module.exports = [
 		]
 	},
 	{
-		name: 'Quận 9', wards: [
+		name: 'Quận 09', wards: [
 			{ name: 'Phường Long Bình' },
 			{ name: 'Phường Long Thạnh Mỹ' },
 			{ name: 'Phường Tân Phú' },
