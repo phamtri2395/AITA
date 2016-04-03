@@ -3,6 +3,7 @@
 
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
+var ImageModel = keystone.list('ImageModel');
 
 var Post = new keystone.List('Post', {
 	map: { name: 'title' },
@@ -210,11 +211,34 @@ Post.add({
 		folder: '/upload/images' 
 	},
 
+	// images: {
+	// 	label: 'Hình ảnh',
+	// 	type: [ImageModel]
+	// },
+
 	categories: {
 		label: 'Phân loại',
 		type: Types.Relationship,
 		ref: 'PostCategory',
 		many: true
+	}
+});
+
+Post.schema.add({
+	images: {
+		label: 'Hình ảnh',
+		type: [{
+			fieldname: { type: String},
+			originalname: { type: String},
+			name: { type: String},
+			encoding: { type: String},
+			mimetype: { type: String},
+			path: { type: String},
+			extension: { type: String},
+			size: { type: Number},
+			truncated: { type: Boolean},
+			serverPath: { type: String},
+		}]
 	}
 });
 

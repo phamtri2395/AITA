@@ -22,22 +22,23 @@ exports = module.exports = _.assign(restful(PostModel), {
 			res.jsonp(utils.response(false, null, err));
 		});
 	},
+
 	add: function(req, res) {
-		var uploadFiles = req.body.uploadFiles;
+		// var uploadFiles = req.body.uploadFiles;
 		console.log('add-body', req.body);
+		req.body.images = req.body.uploadFiles;
 		PostModel.create(req.body).then(function(data) {
 			console.log('success', data);
-			
 
-			if (uploadFiles.length) {
-				_.forEach(uploadFiles, function(file) {
-					ImageModel.create(_.assign(file, {postId: data._id})).then(function(data) {
-						console.log('Save images successFull');
-					}, function(err) {
-						console.log('ImageModel uploadFiles error', err);
-					});
-				});
-			}
+			// if (uploadFiles.length) {
+			// 	_.forEach(uploadFiles, function(file) {
+			// 		ImageModel.create(_.assign(file, {postId: data._id})).then(function(data) {
+			// 			console.log('Save images successFull');
+			// 		}, function(err) {
+			// 			console.log('ImageModel uploadFiles error', err);
+			// 		});
+			// 	});
+			// }
 
 			// // facebook message content
 			// var message = {

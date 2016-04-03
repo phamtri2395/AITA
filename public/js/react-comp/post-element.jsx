@@ -26,11 +26,38 @@ var PostElementComp = React.createClass({
 	},
 
 	render: function() {
+		var imageListRender, imageSectionRender;
 		var item = this.props.data;
+
 		if (!item.author) {
 			item.author = {};
 		}
-		console.log('item', item);
+		
+		if (item.images) {
+			imageListRender = item.images.map(function(i) {
+				return (
+					<span className="gallery--mobile-wrapper">
+						<span className="wrapper-cover-img">
+							<a className="fancybox-thumb" rel="fancybox-thumb" href={'//' + i.serverPath + '/' + i.path}>
+								<img className="media-object" src={'//' + i.serverPath + '/' + i.path} />
+							</a>
+						</span> 
+					</span>
+				);
+			});
+		}
+
+		if (item.images.length > 0) {
+			imageSectionRender = (
+				<div className="gallery-section">
+					<div className="gallery-scroll">
+						<div className="gallery">
+							{imageListRender}
+						</div>
+					</div>
+				</div>
+			);
+		}
 
 		return (
 			<div className="media-wrapper">
@@ -72,33 +99,7 @@ var PostElementComp = React.createClass({
 							{this.truncate(item.description, 200)} <a href={"/chi-tiet/" + item._id }>chi tiết<i className="icon-right-open"></i></a>
 						</div>
 
-						<div className="gallery-section">
-							<div className="gallery-scroll">
-								<div className="gallery">
-									<span className="gallery--mobile-wrapper">
-										<span className="wrapper-cover-img">
-											<a className="fancybox-thumb" rel="fancybox-thumb" href="https://res.cloudinary.com/keystone-demo/image/upload/v1456316105/zdrv8fd28k5i6gck7i2s.jpg">
-												<img className="media-object" src="https://res.cloudinary.com/keystone-demo/image/upload/v1456316105/zdrv8fd28k5i6gck7i2s.jpg" />
-											</a>
-										</span> 
-									</span>
-									<span className="gallery--mobile-wrapper">
-										<span className="wrapper-cover-img">
-											<a className="fancybox-thumb" rel="fancybox-thumb" href="https://res.cloudinary.com/keystone-demo/image/upload/v1456316106/wm6jwlki0egtqjeph1ev.jpg">
-												<img className="media-object" src="https://res.cloudinary.com/keystone-demo/image/upload/v1456316106/wm6jwlki0egtqjeph1ev.jpg" />
-											</a>
-										</span> 
-									</span>
-									<span className="gallery--mobile-wrapper">
-										<span className="wrapper-cover-img">
-											<a className="fancybox-thumb" rel="fancybox-thumb" href="https://res.cloudinary.com/keystone-demo/image/upload/v1456316107/zu6w3pysnjicsvyraaw2.jpg">
-												<img className="media-object" src="https://res.cloudinary.com/keystone-demo/image/upload/v1456316107/zu6w3pysnjicsvyraaw2.jpg" />
-											</a>
-										</span>
-									</span>
-								</div>
-							</div>
-						</div>
+						{imageSectionRender}
 					</div>
 				</div>
 			</div>

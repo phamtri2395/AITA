@@ -78,15 +78,15 @@
 													<a href="/chi-tiet/{{id}}">chi tiết<i class="icon-right-open"></i></a>
 												</div>
 
-												<div class="gallery">
-													{{#each images}}
-													<span class="wrapper-cover-img">
-														<a class="fancybox-thumb" rel="fancybox-thumb" href={{secure_url}}>
-															<img class="media-object" src={{secure_url}}>
-														</a>
-													</span>
-													{{/each}}
+												{{#if images}}
+												<div class="gallery-section">
+													<div class="gallery-scroll">
+														<div class="gallery">
+															{{#each images}}<span class="gallery--mobile-wrapper"><span class="wrapper-cover-img"><a class="fancybox-thumb" rel="fancybox-thumb" href="//{{serverPath}}/{{path}}"><img class="media-object" src="//{{serverPath}}/{{path}}" /></a></span></span>{{/each}}
+														</div>
+													</div>
 												</div>
+												{{/if}}
 											</div>
 										</div>
 									</div>
