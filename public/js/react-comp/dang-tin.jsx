@@ -2,23 +2,52 @@
  * Aita 2016
  */
 
+var isLocalEnv = $('[data-env]').data('env') === 'local';
+
 var AddNewPostForm = React.createClass({
 	uploadFiles: [],
-
+	
 	getDistricts: function() {
 		var that = this;
 
-		ApiService.DistrictModel.all().then(function(res) {
-			var districtOptions = [];
+		ApiService.DistrictModel.findAll().then(function(res) {
+			var districts = [];
+			var selectState = $.extend({}, that.state.select);
+
 			$.each(res.data, function(ind, elm) {
-				districtOptions.push({
+				districts.push({
 					label: elm.name,
 					value: elm._id
 				});
 			});
-			that.setState({districtOptions: districtOptions});
+
+			selectState.district = districts;
+			that.setState({ select: selectState });
 		}, function(err) {
 			console.log('getDistricts err', err);
+		});
+	},
+
+	getWards: function(districtId) {
+		var that = this;
+
+		ApiService.WardModel.find({}, {
+			query: { district: districtId }
+		}).then(function(res) {
+			var wards = [];
+			var selectState = $.extend({}, that.state.select);
+
+			$.each(res.data, function(ind, elm) {
+				wards.push({
+					label: elm.name,
+					value: elm._id
+				});
+			});
+
+			selectState.ward = wards;
+			that.setState({ select: selectState });
+		}, function(err) {
+			console.log('getWards err', err);
 		});
 	},
 
@@ -26,106 +55,75 @@ var AddNewPostForm = React.createClass({
 		var that = this;
 
 		ApiService.UserModel.get().then(function(res) {
-			that.setState({user: res.data});
-			that.setState({authorId: res.data._id});
-			that.setState({name: [res.data.name.first, res.data.name.last].join(' ')});
-			that.setState({mobile: res.data.mobile});
+			that.setState({ author: res.data._id });
+			that.setState({ name: [res.data.name.first, res.data.name.last].join(' ') });
+			that.setState({ mobile: res.data.mobile });
 		}, function(err) {
-			console.log('getUserInfo err', err)
+			console.log('getUserInfo err', err);
 		});
 	},
 
 	getInitialState: function() {
-		return {
-			title: 'Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm',
-			isFront: false,
-			street: '43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM',
-			address: '43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM',
+		var data = {
+			title: '',
+			type: '',
+			realEstate: '',
+			district: '',
+			ward: '',
+			street: '',
+			address: '',
+			isFront: '',
+			hidePosition: '',
 			latitude: '',
 			longitude: '',
-			price: 1111,
-			area: 4444,
-			bedroom: 2,
-			bathroom: 2,
-			description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-			isProject: true,
+			price: '',
+			area: '',
+			bedroom: '',
+			bathroom: '',
+			floors: '',
+			highway: '',
+			description: '',
+			isProject: false,
 			projectName: '',
-			highway: 25,
-			authorId: '',
-			user: null,
-			publishedDate: this.getCurrentDate(),
-			medium: false,
-			mobile: '',
+			projectLink: '',
+			direct: '',
 			name: '',
-			typeVal: 'Cho Thuê',
-			typeOptions: [
-				{label: 'Cho Thuê', value: 'thue'},
-				{label: 'Bán', value: 'ban'},
-			],
-			realEstateVal: 'Phòng Cho Thuê',
-			realEstateOptions: [
-				{label: 'Nhà', value: 'nha'},
-				{label: 'Căn Hộ', value: 'can-ho'},
-				{label: 'Phòng Cho Thuê', value: 'phong'}
-			],
-			districtVal: '',
-			districtOptions: [],
-			wardVal: 'Phường 1',
-			wardOptions: [
-				{label: 'Phường 1', value: 1},
-				{label: 'Phường 2', value: 2},
-				{label: 'Phường 3', value: 3},
-				{label: 'Phường 3', value: 3},
-				{label: 'Phường 4', value: 4},
-				{label: 'Phường 5', value: 5},
-				{label: 'Phường 6', value: 6},
-				{label: 'Phường 7', value: 7},
-				{label: 'Phường 8', value: 8},
-				{label: 'Phường 9', value: 9},
-				{label: 'Phường 10', value: 10}
-			],
-			directVal: 'Đông',
-			directOptions: [
-				{label: 'Đông', value: 1},
-				{label: 'Tây', value: 2},
-				{label: 'Nam', value: 3},
-				{label: 'Bắc', value: 4},
-				{label: 'Đông Bắc', value: 5},
-				{label: 'Đông Nam', value: 6},
-				{label: 'Tây Bắc', value: 7},
-				{label: 'Tây Nam', value: 8}
-			],
-			floorVal: 1,
-			floorOptions: [
-				{label: '1', value: '1'},
-				{label: '2', value: '2'},
-				{label: '3', value: '3'},
-				{label: '4', value: '4'},
-				{label: '5', value: '5'},
-			]
+			mobile: '',
+			pushAds: false,
+			author: '',
+			publishedDate: '',
+			select: {
+				type: [],
+				realEstate: [],
+				district: [],
+				ward: [],
+				direct: [],
+				floors: []
+			}
 		};
+
+		if (isLocalEnv) {
+			data = $('[data-local]').data('local').Post;
+		}
+		
+		return data;
 	},
 
 	getCurrentDate: function() {
 		var currentDate = new Date();
-		return [
-			currentDate.getFullYear(),
-			currentDate.getMonth() + 1,
-			currentDate.getDate()
-		].join('-');
-	},
-
-	getAuthorId: function() {
-		console.log('getAuthorId');
-		if (this.state.user) {
-			console.log('getAuthorId true');
-			this.setState({authorId: this.state.user._id});
-		}
+		this.setState({
+			publishedDate: [
+				currentDate.getFullYear(),
+				currentDate.getMonth() + 1,
+				currentDate.getDate()
+			].join('-')
+		});
 	},
 
 	componentWillMount: function() {
 		this.getDistricts();
 		this.getUserInfo();
+		this.getCurrentDate();
 	},
 
 	componentDidMount: function() {
@@ -215,27 +213,28 @@ var AddNewPostForm = React.createClass({
 	},
 
 	handleChangeType: function(eSelect) {
-		this.setState({typeVal: eSelect.value});
+		this.setState({type: eSelect.value});
 	},
 
 	handleChangeRealEstate: function(eSelect) {
-		this.setState({realEstateVal: eSelect.value});
+		this.setState({realEstate: eSelect.value});
 	},
 
 	handleChangeDistrict: function(eSelect) {
-		this.setState({districtVal: eSelect.value});
+		this.getWards(eSelect.value);
+		this.setState({ district: eSelect.value });
 	},
 
 	handleChangeWard: function(eSelect) {
-		this.setState({wardVal: eSelect.value});
+		this.setState({ ward: eSelect.value });
 	},
 
 	handleChangeDirect: function(eSelect) {
-		this.setState({directVal: eSelect.value});
+		this.setState({direct: eSelect.value});
 	},
 
-	handleChangeFloor: function(eSelect) {
-		this.setState({floorVal: eSelect.value});
+	handleChangeFloors: function(eSelect) {
+		this.setState({floors: eSelect.value});
 	},
 
 	handleChangeTitle: function(e) {
@@ -290,8 +289,8 @@ var AddNewPostForm = React.createClass({
 		this.setState({highway: e.target.value});
 	},
 
-	handleChangeAuthorId: function(e) {
-		this.setState({authorId: e.target.value});
+	handleChangeAuthor: function(e) {
+		this.setState({author: e.target.value});
 	},
 
 	handleChangeName: function(e) {
@@ -313,53 +312,18 @@ var AddNewPostForm = React.createClass({
 	handleSubmit: function(e) {
 		e.preventDefault();
 
-		if (!this.state.title) {
-			return;
-		}
-
-		if (!this.state.districtVal) {
-			return;
-		}
-
-		ApiService.PostModel.add({
-			title: this.state.title,
-			isFront: this.state.isFront,
-			type: this.state.typeVal,
-			realEstate: this.state.realEstateVal,
-			district: this.state.districtVal,
-			// ward: this.state.wardVal, // temp hide
-			street: this.state.street,
-			address: this.state.address,
-			latitude: this.state.latitude,
-			longitude: this.state.longitude,
-			price: this.state.price,
-			area: this.state.area,
-			bedroom: this.state.bedroom,
-			bathroom: this.state.bathroom,
-			description: this.state.description,
-			isProject: this.state.isProject,
-			projectName: this.state.projectName,
-			direct: this.state.directVal,
-			floors: this.state.floorVal,
-			highway: this.state.highway,
-			name: this.state.name,
-			author: this.state.authorId,
-			publishedDate: this.state.publishedDate,
-			medium: this.state.medium,
-			mobile: this.state.mobile,
-			uploadFiles: this.uploadFiles
-		}).then(function(res) {
-			console.log(res);
-			window.location = '/'; 
+		console.log('submit form');
+		ApiService.PostModel.add(this.state).then(function(data) {
+			console.log(data);
+			window.location = '/';
 		}, function(err) {
-			console.log(err);
+			console.log('Add new post error', err);
 		});
 	},
 
 	render: function() {
 		return (
 			<form className='form-home' action='/add-new-post' method='post' acceptCharset='utf-8' encType='multipart/form-data' onSubmit={this.handleSubmit}>
-				
 				<div className='row'>
 					<div className='columns three'>
 						<label>Tiêu đề</label>
@@ -382,7 +346,7 @@ var AddNewPostForm = React.createClass({
 						<label>Loại hình</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.typeVal} options={this.state.typeOptions} onChange={this.handleChangeType} />
+						<Select value={this.state.type} options={this.state.select.type} onChange={this.handleChangeType} />
 					</div>
 				</div>
 				<div className='row'>
@@ -390,7 +354,7 @@ var AddNewPostForm = React.createClass({
 						<label>Nhà / Căn Hộ / Phòng</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.realEstateVal} options={this.state.realEstateOptions} onChange={this.handleChangeRealEstate} />
+						<Select value={this.state.realEstate} options={this.state.select.realEstate} onChange={this.handleChangeRealEstate} />
 					</div>
 				</div>
 				<div className='row'>
@@ -398,7 +362,7 @@ var AddNewPostForm = React.createClass({
 						<label>Quận/Huyện (Tp. HCM)</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.districtVal} options={this.state.districtOptions} onChange={this.handleChangeDistrict} />
+						<Select value={this.state.district} options={this.state.select.district} onChange={this.handleChangeDistrict} />
 					</div>
 				</div>
 				<div className='row'>
@@ -406,7 +370,7 @@ var AddNewPostForm = React.createClass({
 						<label>Phường/Xã</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.wardVal} options={this.state.wardOptions} onChange={this.handleChangeWard} />
+						<Select value={this.state.ward} options={this.state.select.ward} onChange={this.handleChangeWard} />
 					</div>
 				</div>
 				<div className='row'>
@@ -512,7 +476,7 @@ var AddNewPostForm = React.createClass({
 						<label>Hướng</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.directVal} options={this.state.directOptions} onChange={this.handleChangeDirect} />
+						<Select value={this.state.direct} options={this.state.select.direct} onChange={this.handleChangeDirect} />
 					</div>
 				</div>
 				<div className='row'>
@@ -520,7 +484,7 @@ var AddNewPostForm = React.createClass({
 						<label>Số tầng</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.floorVal} options={this.state.floorOptions} onChange={this.handleChangeFloor} />
+						<Select value={this.state.floors} options={this.state.select.floors} onChange={this.handleChangeFloors} />
 					</div>
 				</div>
 				<div className='row'>
@@ -538,7 +502,7 @@ var AddNewPostForm = React.createClass({
 						<label htmlFor=''>Tên (*)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChangeAuthorId} type='hidden' name='author' value={this.state.authorId} />
+						<input onChange={this.handleChangeAuthor} type='hidden' name='author' value={this.state.author} />
 						<input onChange={this.handleChangeName} className='form-control' type='text' name='name' required='required' value={this.state.name} />
 					</div>
 				</div>

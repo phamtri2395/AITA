@@ -24,20 +24,18 @@ exports = module.exports = _.assign(restful(PostModel), {
 	},
 	add: function(req, res) {
 		var uploadFiles = req.body.uploadFiles;
-		console.log('add-body', req.body);
 		PostModel.create(req.body).then(function(data) {
-			console.log('success', data);
-			
+			console.log('Add new post successful');
 
-			if (uploadFiles.length) {
-				_.forEach(uploadFiles, function(file) {
-					ImageModel.create(_.assign(file, {postId: data._id})).then(function(data) {
-						console.log('Save images successFull');
-					}, function(err) {
-						console.log('ImageModel uploadFiles error', err);
-					});
-				});
-			}
+			// if (uploadFiles.length) {
+			// 	_.forEach(uploadFiles, function(file) {
+			// 		ImageModel.create(_.assign(file, {postId: data._id})).then(function(data) {
+			// 			console.log('Save images successFull');
+			// 		}, function(err) {
+			// 			console.log('ImageModel uploadFiles error', err);
+			// 		});
+			// 	});
+			// }
 
 			// // facebook message content
 			// var message = {

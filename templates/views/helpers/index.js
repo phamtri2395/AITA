@@ -422,7 +422,11 @@ module.exports = function() {
 
 	// environment
 	_helpers.env = function() {
-		return keystone.get('env');
+		return keystone.app.locals.env;
+	};
+
+	_helpers.dataLocal = function() {
+		return JSON.stringify(keystone.app.locals.dataLocal);
 	};
 
 	return _helpers;

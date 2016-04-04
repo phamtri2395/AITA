@@ -19,6 +19,9 @@ var apiList = [
 	{ nspace: 'UserModel', name: 'put', path: '/api/user', method: 'PUT' },
 
 	{ nspace: 'DistrictModel', name: 'all', path: '/api/district/all', method: 'GET' },
+	{ nspace: 'DistrictModel', name: 'findAll', path: '/api/district/findAll', method: 'GET' },
+
+	{ nspace: 'WardModel', name: 'find', path: '/api/ward/find?query=${query}', method: 'GET' },
 ];
 
 

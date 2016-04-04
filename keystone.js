@@ -1,6 +1,10 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
-if (process.env.NODE_ENV === 'local') {
+// 
+
+var isLocalEnv = process.env.NODE_ENV === 'local';
+
+if (isLocalEnv) {
 	require('dotenv').load();
 }
 
@@ -52,7 +56,8 @@ keystone.set('locals', {
 	_: require('underscore'),
 	env: keystone.get('env'),
 	utils: keystone.utils,
-	editable: keystone.content.editable
+	editable: keystone.content.editable,
+	dataLocal: isLocalEnv ? require('./data-local') : ''
 });
 
 // Load your project's Routes
