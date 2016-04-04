@@ -17,12 +17,12 @@
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div class="tab-content--pane active" id="filter">
-						<div id="search-box-holder" class="search-box-container"></div>
+						<div id="search-box-holder" class="search-box-container js-search-box-container"></div>
 						<div id="list-post-from-server" class="list-post-from-server">
 							<div class="list-result" data-marker="">
 								{{# each data.posts}}
 									<div class="media-wrapper">
-										<div class="media js-post-content"
+										<div class="media media__mobile js-post-content"
 											data-item=""
 											data-price={{price}} data-area={{area}}
 											data-bedroom={{bedroom}} data-bathroom={{bathroom}}
@@ -78,15 +78,15 @@
 													<a href="/chi-tiet/{{id}}">chi tiết<i class="icon-right-open"></i></a>
 												</div>
 
-												<div class="gallery">
-													{{#each images}}
-													<span class="wrapper-cover-img">
-														<a class="fancybox-thumb" rel="fancybox-thumb" href={{secure_url}}>
-															<img class="media-object" src={{secure_url}}>
-														</a>
-													</span>
-													{{/each}}
+												{{#if images}}
+												<div class="gallery-section">
+													<div class="gallery-scroll">
+														<div class="gallery">
+															{{#each images}}<span class="gallery--mobile-wrapper"><span class="wrapper-cover-img"><a class="fancybox-thumb" rel="fancybox-thumb" href="//{{serverPath}}/{{path}}"><img class="media-object" src="//{{serverPath}}/{{path}}" /></a></span></span>{{/each}}
+														</div>
+													</div>
 												</div>
+												{{/if}}
 											</div>
 										</div>
 									</div>

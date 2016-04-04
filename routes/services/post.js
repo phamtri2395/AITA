@@ -22,8 +22,9 @@ exports = module.exports = _.assign(restful(PostModel), {
 			res.jsonp(utils.response(false, null, err));
 		});
 	},
+
 	add: function(req, res) {
-		var uploadFiles = req.body.uploadFiles;
+		console.log('req body', req.body);
 		PostModel.create(req.body).then(function(data) {
 			console.log('Add new post successful');
 

@@ -1,0 +1,147 @@
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+/* skeleton. */
+/**	
+ * custom vars
+ */
+/**
+ * color pattern
+ */
+/**
+ * http://www.color-hex.com/color-palette/16440
+ */
+/**
+ * z-index
+ */
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/9/2014
+* Sass Version by Seth Coelen https://github.com/whatsnewsaes
+*/
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+.navbar--list, .navbar--list-control {
+  width: 100%; }
+
+.navbar--list .navbar--item {
+  display: none; }
+  .navbar--list .navbar--item:first-child {
+    display: block; }
+
+.navbar--list-control {
+  display: none; }
+
+.navbar--menu-btn, .navbar--search-btn {
+  display: block;
+  position: absolute;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  line-height: 54px;
+  height: 54px;
+  z-index: 1; }
+  .navbar--menu-btn .icon, .navbar--search-btn .icon {
+    font-size: 1.8rem; }
+  .navbar--menu-btn:active, .navbar--menu-btn:focus, .navbar--menu-btn:hover, .navbar--search-btn:active, .navbar--search-btn:focus, .navbar--search-btn:hover {
+    color: white; }
+
+.navbar--menu-btn {
+  right: 0; }
+
+.navbar--search-btn {
+  left: 0; }
+
+.navbar--item {
+  display: block; }
+  .navbar--item a {
+    width: 100%; }
+  .navbar--item__icon {
+    padding: 0 80px; }
+    .navbar--item__icon a {
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center; }
+
+.menu-kepper {
+  visibility: hidden;
+  position: absolute; }
+
+input[name="menu-kepper"]:checked + .navbar--list .navbar--item {
+  display: block; }
+
+input[name="menu-kepper"]:checked ~ .navbar--list-control {
+  display: block; }
+  input[name="menu-kepper"]:checked ~ .navbar--list-control .navbar--item {
+    display: block; }
+
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+.index-block--left, .index-block--right {
+  height: 100%; }
+
+.index-block--left {
+  width: 100%; }
+
+.index-block--right {
+  display: none; }
+
+.searchbox--left label {
+  text-align: left;
+  margin-bottom: 0; }
+
+.searchbox--right button {
+  margin-top: 7.5px; }
+
+.suggest-post {
+  margin-left: 0;
+  opacity: 1; }
+
+.list-post-container {
+  padding-bottom: 30px; }
+
+.search-box-container {
+  display: none; }
+
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+/**
+ * 
+ */
+.wrapper-cover-img {
+  margin-right: 7.5px; }
+
+.gallery-section {
+  position: relative;
+  height: 125px; }
+
+.gallery-scroll {
+  width: 100%;
+  overflow-x: scroll;
+  position: absolute; }
+
+.gallery--mobile-wrapper {
+  display: inline;
+  white-space: nowrap; }
+  .gallery--mobile-wrapper:last-child .wrapper-cover-img {
+    margin-right: 0; }
+
+/**	
+ * 
+ */
+.media__mobile .media-left {
+  display: none; }
+
+.media__mobile .media-body {
+  padding-left: 0; }

@@ -92,6 +92,7 @@ var AddNewPostForm = React.createClass({
 			pushAds: false,
 			author: '',
 			publishedDate: '',
+			images: '',
 			select: {
 				type: [],
 				realEstate: [],
@@ -206,6 +207,7 @@ var AddNewPostForm = React.createClass({
 		$dropzone.on('dropzone-success', function(a, b) {
 			this.uploadFiles.push(b);
 			console.log('dropzone-success', b, this.uploadFiles);
+			this.setState({images: this.uploadFiles});
 		}.bind(this));
 		// after removed file, still not handle :v
 		$dropzone.on('dropzone-removed', function(a, b) {
@@ -312,7 +314,6 @@ var AddNewPostForm = React.createClass({
 	handleSubmit: function(e) {
 		e.preventDefault();
 
-		console.log('submit form');
 		ApiService.PostModel.add(this.state).then(function(data) {
 			console.log(data);
 			window.location = '/';
@@ -531,7 +532,7 @@ var AddNewPostForm = React.createClass({
 							<small>(*)Tin đăng của bạn sẽ được kiểm duyệt trong vòng 1 giờ trước khi được đăng.</small>
 						</p>
 						<input onChange={this.handleChangePublishedDate} type='hidden' name='publishedDate' value={this.state.publishedDate} />
-						<button className='' type='submit'>Hủy</button> <button className='button-primary' type='submit'>Đăng tin</button>
+						<a href='/' className='button'>Hủy</a> <button className='button-primary' type='submit'>Đăng tin</button>
 					</div>
 				</div>
 			</form>

@@ -1,0 +1,93 @@
+/**
+ * Capheshift 2016
+ * Author: Tw
+ */
+
+.navbar {
+
+	&--list,
+	&--list-control {
+		width: 100%;
+	}
+
+	&--list {
+		.navbar--item {
+			display: none;
+
+			&:first-child {
+				display: block;
+			}
+		}
+	}
+
+	&--list-control {
+		display: none;
+	}
+
+	&--menu-btn,
+	&--search-btn {
+    display: block;
+    position: absolute;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    line-height: 54px;
+    height: 54px;
+    z-index: 1;
+
+   	.icon {
+   		font-size: 1.8rem;
+   	}
+
+   	&:active,
+   	&:focus,
+   	&:hover {
+   		color: white;
+   	}
+	}
+
+	&--menu-btn {
+		right: 0;
+	}
+
+	&--search-btn {
+		left: 0;
+	}
+
+	&--item {
+		display: block;
+
+		a {
+			width: 100%;
+		}
+
+		&__icon {
+			padding: 0 80px;
+
+			a {
+				padding-left: 0;
+				padding-right: 0;
+				text-align: center;
+			}
+		}
+	}
+}
+
+.menu-kepper {
+	visibility: hidden;
+	position: absolute;
+}
+
+input[name="menu-kepper"]:checked + .navbar--list {
+	.navbar--item {
+		display: block;
+	}
+}
+
+input[name="menu-kepper"]:checked ~ .navbar--list-control {
+	display: block;
+	
+	.navbar--item {
+		display: block;
+	}
+}

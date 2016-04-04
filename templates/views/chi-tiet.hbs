@@ -7,7 +7,7 @@
 		{{# with data.post}}
 			<div class="u-hidden jsdata-detail" data-lat="{{latitude}}" data-lng="{{longitude}}"></div>
 
-			<div class="content-wrapper">
+			<div class="content-wrapper content-wrapper__no-padding">
 				<div class="media-wrapper media-wrapper__no-padding">
 					<div class="media">
 						<div class="media-left hidden-xs">
@@ -26,17 +26,17 @@
 							</h4>
 
 							<span class="tel-group-wrapper">
-								<input type="checkbox" id="checkbox-{{@index}}" class="tel-group--checkbox" />
+								<input type="checkbox" id="checkbox-{{@index}}" class="tel-group--checkbox" checked="" />
 								<label for="checkbox-{{@index}}" class="tel-group--label"><i class="icon-phone"></i> Nhấn để xem</label>
-								<a href="tel:{{mobile}}" class="tel-group--phone-number"><i class="icon-phone"></i> {{mobile}}</a>
+								<a href="tel:{{mobile}}" class="tel-group--phone-number"><i class="icon-phone"></i>{{mobile}}</a>
 							</span>
 							
-							<button class="button__link" 
+							{{!-- <button class="button__link" 
 								data-facebook-id="{{author.providerId}}" 
 								data-link="http://www.visla.vn/du-an/468/sunrise-city?aid=20686"
 								onclick="fbSend(this)">
 								<i class="glyphicon glyphicon-flash"></i> Nhắn qua Facebook
-							</button>
+							</button> --}}
 
 							<!-- <a href="mailto:{{post.author.email}}" class="btn btn-link">
 								<i class="glyphicon glyphicon-envelope"></i> {{post.author.email}}
@@ -105,8 +105,8 @@
 					<div class="tab-content--pane active gallery" id="image-pane">
 							{{#each images}}
 							<span class="wrapper-cover-img">
-								<a class="fancybox-thumb" rel="fancybox-thumb" href={{secure_url}}>
-									<img class="media-object" src={{secure_url}}>
+								<a class="fancybox-thumb" rel="fancybox-thumb" href="//{{serverPath}}/{{path}}">
+									<img class="media-object" src="//{{serverPath}}/{{path}}">
 								</a>
 							</span>
 							{{/each}}
@@ -161,15 +161,16 @@
 						{{truncate description 160}}
 						<a href="/chi-tiet/{{id}}">chi tiết <i class="icon-right-open"></i></a>
 					</div>
-					<div class="gallery">
-						{{#each (limit images 2)}}
-							<span class="wrapper-cover-img">
-									<a class="fancybox-thumb" rel="fancybox-thumb" href={{secure_url}}>
-										<img class="media-object" src={{secure_url}}>
-									</a>
-							</span>
-						{{/each}}
+
+					{{#if images}}
+					<div class="gallery-section">
+						<div class="gallery-scroll">
+							<div class="gallery">
+								{{#each (limit images 2)}}<span class="gallery--mobile-wrapper"><span class="wrapper-cover-img"><a class="fancybox-thumb" rel="fancybox-thumb" href="//{{serverPath}}/{{path}}"><img class="media-object" src="//{{serverPath}}/{{path}}" /></a></span></span>{{/each}}
+							</div>
+						</div>
 					</div>
+					{{/if}}
 					<small><a href="#">Hồ Chí Minh / {{districtName district}}</a></small>
 				</div>
 			{{/each}}

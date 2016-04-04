@@ -14,6 +14,8 @@
 		{{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> --}}
 
 		<link href="/styles/site.css" rel="stylesheet">
+		<link rel="stylesheet" href="/styles/tablet.css" media="screen and (max-width: 768px)">
+		<link rel="stylesheet" href="/styles/mobile.css" media="screen and (max-width: 375px)">
 		<link href="/styles/libs/react-select/react-select.css" rel="stylesheet">
 		<link href="/js/libs/react-dropzone/dropzone.css" rel="stylesheet">
 		
@@ -63,8 +65,16 @@
 		</script>
 
 		<nav class="navbar">
+			<button class="navbar--menu-btn js-menu-button"><i class="icon icon-menu"></i></button>
+			<button class="navbar--search-btn js-search-button"><i class="icon icon-search"></i></button>
+
+			<input type="checkbox" 
+				id="menu-kepper" 
+				name="menu-kepper" 
+				class="menu-kepper js-menu-kepper" />
+			
 			<ul class="navbar--list">
-				<li class="navbar--item"><a href="/">Aita.vn</a></li>{{!-- 
+				<li class="navbar--item navbar--item__icon"><a href="/">Aita.vn</a></li>{{!-- 
 				--}}<li class="navbar--item {{#ifeq section 'nha'}}active{{else}}{{/ifeq}}"><a href="/nha" title="Nhà riêng">Nhà riêng</a></li>{{!-- 
 				--}}<li class="navbar--item {{#ifeq section 'can-ho'}}active{{else}}{{/ifeq}}"><a href="/can-ho" title="Căn hộ/chung cư">Căn hộ</a></li>{{!-- 
 				--}}<li class="navbar--item {{#ifeq section 'phong'}}active{{else}}{{/ifeq}}"><a href="/phong" title="Phòng cho thuê">Phòng cho thuê</a></li>

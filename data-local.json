@@ -27,6 +27,7 @@
 		"pushAds": true,
 		"author": 0,
 		"publishedDate": "2015-04-03",
+		"images": "",
 		"select": {
 			"type": [
         { "label": "Cho Thuê", "value": "thue" },
