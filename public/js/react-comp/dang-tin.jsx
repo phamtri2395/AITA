@@ -567,7 +567,7 @@ var AddNewPostForm = React.createClass({
 							<small>(*)Tin đăng của bạn sẽ được kiểm duyệt trong vòng 1 giờ trước khi được đăng.</small>
 						</p>
 						<input onChange={this.handleChangePublishedDate} type='hidden' name='publishedDate' value={this.state.publishedDate} />
-						<button className='' type='submit'>Hủy</button> <button className='button-primary' type='submit'>Đăng tin</button>
+						<a href='/' className='button'>Hủy</a> <button className='button-primary' type='submit'>Đăng tin</button>
 					</div>
 				</div>
 			</form>

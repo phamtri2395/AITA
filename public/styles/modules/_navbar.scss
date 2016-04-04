@@ -19,7 +19,8 @@
 		display: inline-block;
 	}
 
-	&--menu-btn {
+	&--menu-btn,
+	&--search-btn {
 		display: none;
 	}
 
@@ -49,4 +50,8 @@
 			}
 		}
 	}
+}
+
+input[type="checkbox"].menu-kepper {
+	display: none;
 }
