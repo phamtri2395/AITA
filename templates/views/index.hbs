@@ -60,6 +60,12 @@
 															</form>
 														</div>
 													{{/if}}
+
+													{{#if (isExpired activeDate)}}
+														<span class="u-pull-right expired">
+															Expired
+														</span>
+													{{/if}}
 												</h4>
 
 												<ul class="post-info--list">
