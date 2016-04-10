@@ -5,7 +5,6 @@
 
 var keystone = require('keystone');
 var async = require('async');
-var helpFunction = require('../helpers/helpFunctions.js');
 var debug = require('debug')('index');
 
 exports = module.exports = function(req, res) {
@@ -87,12 +86,8 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 
 		keystone.list('Post').model.find({
-			realEstate: { '$regex': (categoryMapper[section] || '(.*?)'), '$options': 'i' },
-			activeDate: {
-				$gte:helpFunction.minusDays(Date.now(), helpFunction.EXPIRE_PERIOD),
-				$lte:Date.now()
-			}}).
-			populate('author').sort('publishedDate').exec(function(err, results) {
+			realEstate: { '$regex': (categoryMapper[section] || '(.*?)'), '$options': 'i' }
+			}).populate('author').sort({'activeDate': -1}).exec(function(err, results) {
 			
 			if (err || !results.length) {
 				console.log('NO RESULT');

@@ -149,6 +149,12 @@
 								<label for="checkbox-{{@index}}" class="tel-group--label"><i class="icon-phone"></i> Nhấn để xem</label>
 								<a href="tel:{{mobile}}" class="tel-group--phone-number"><i class="icon-phone"></i> {{mobile}}</a>
 							</span>
+
+							{{#if (isExpired activeDate)}}
+								<span class="u-pull-right expired">
+									Expired
+								</span>
+							{{/if}}
 						</h4>
 
 						<ul class="post-info--list">

@@ -4,7 +4,6 @@
  */
 
 var keystone = require('keystone');
-var helpFunction = require('../helpers/helpFunctions.js');
 var debug = require('debug')('chi-tiet');
 // var async = require('async');
 
@@ -59,16 +58,12 @@ exports = module.exports = function(req, res) {
 
 		keystone.list('Post').model
 		.find({ 
-			'type': type,
-			'activeDate': {
-				$gte:helpFunction.minusDays(Date.now(), helpFunction.EXPIRE_PERIOD),
-				$lte:Date.now()
-			}
+			'type': type
 		})
 		.where('_id').ne(locals.data.post._id)
 		.populate('author district ward')
 		.limit(2)
-		.sort({'publishedDate': -1})
+		.sort({'activeDate': -1})
 		.exec(function(err, results) {
 
 			if (!results) {
