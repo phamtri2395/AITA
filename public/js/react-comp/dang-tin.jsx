@@ -313,6 +313,20 @@ var AddNewPostForm = React.createClass({
 
 	handleSubmit: function(e) {
 		e.preventDefault();
+		var states = this.state;
+		var isinValid = false;
+		$.each(states, function(key, val) {
+			var elm = $('.state-' + key);
+			if (elm.hasClass('Select') && !!!val) {
+				elm.find('input').focus();
+				isinValid = true;
+				return;
+			}
+		});
+
+		if (isinValid) {
+			return false;
+		}
 
 		ApiService.PostModel.add(this.state).then(function(data) {
 			console.log(data);
@@ -347,7 +361,7 @@ var AddNewPostForm = React.createClass({
 						<label>Loại hình</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.type} options={this.state.select.type} onChange={this.handleChangeType} />
+						<Select className='state-type' value={this.state.type} options={this.state.select.type} onChange={this.handleChangeType} />
 					</div>
 				</div>
 				<div className='row'>
@@ -355,7 +369,7 @@ var AddNewPostForm = React.createClass({
 						<label>Nhà / Căn Hộ / Phòng</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.realEstate} options={this.state.select.realEstate} onChange={this.handleChangeRealEstate} />
+						<Select className='state-realEstate' value={this.state.realEstate} options={this.state.select.realEstate} onChange={this.handleChangeRealEstate} />
 					</div>
 				</div>
 				<div className='row'>
@@ -363,7 +377,7 @@ var AddNewPostForm = React.createClass({
 						<label>Quận/Huyện (Tp. HCM)</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.district} options={this.state.select.district} onChange={this.handleChangeDistrict} />
+						<Select className='state-district' value={this.state.district} options={this.state.select.district} onChange={this.handleChangeDistrict} />
 					</div>
 				</div>
 				<div className='row'>
@@ -371,7 +385,7 @@ var AddNewPostForm = React.createClass({
 						<label>Phường/Xã</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.ward} options={this.state.select.ward} onChange={this.handleChangeWard} />
+						<Select className='state-ward' value={this.state.ward} options={this.state.select.ward} onChange={this.handleChangeWard} />
 					</div>
 				</div>
 				<div className='row'>
@@ -477,7 +491,7 @@ var AddNewPostForm = React.createClass({
 						<label>Hướng</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.direct} options={this.state.select.direct} onChange={this.handleChangeDirect} />
+						<Select className='state-direct' value={this.state.direct} options={this.state.select.direct} onChange={this.handleChangeDirect} />
 					</div>
 				</div>
 				<div className='row'>
@@ -485,7 +499,7 @@ var AddNewPostForm = React.createClass({
 						<label>Số tầng</label>
 					</div>
 					<div className='columns four'>
-						<Select value={this.state.floors} options={this.state.select.floors} onChange={this.handleChangeFloors} />
+						<Select className='state-floors' value={this.state.floors} options={this.state.select.floors} onChange={this.handleChangeFloors} />
 					</div>
 				</div>
 				<div className='row'>
