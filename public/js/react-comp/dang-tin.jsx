@@ -366,14 +366,14 @@ var AddNewPostForm = React.createClass({
 						<Select value={this.state.district} options={this.state.select.district} onChange={this.handleChangeDistrict} />
 					</div>
 				</div>
-				<div className='row'>
+				{/*<div className='row'>
 					<div className='columns three'>
 						<label>Phường/Xã</label>
 					</div>
 					<div className='columns four'>
 						<Select value={this.state.ward} options={this.state.select.ward} onChange={this.handleChangeWard} />
 					</div>
-				</div>
+				</div>*/}
 				<div className='row'>
 					<div className='columns three'>
 						<label>Đường</label>

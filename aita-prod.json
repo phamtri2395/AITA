@@ -24,7 +24,7 @@
 				"FACEBOOK_PAGE_ID": "528623837288211",
 				"FACEBOOK_APP_SECRET": "e680c43fc9a50ed13cec6cb6daf0723f",
 				"FACEBOOK_TOKEN": "",
-				"MONGO_URI": "mongodb://localhost:27017/aita-dev"
+				"MONGO_URI": "mongodb://localhost:27017/aita-prod"
 			}
 		}
 	]

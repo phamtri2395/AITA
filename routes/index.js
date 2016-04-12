@@ -23,11 +23,6 @@ var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var debug = require('debug')('middleware');
 
-// var methodOverride = require('method-override');
-// var logger = require('morgan');
-// var session = require('express-session');
-// var bodyParser = require('body-parser');
-
 var FacebookStrategy = require('passport-facebook').Strategy;
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
@@ -125,20 +120,8 @@ exports = module.exports = function(app) {
 	var ensureAuthenticated = function(req, res, next) {
 		debug(req.isAuthenticated());
 		if (req.isAuthenticated()) { return next(); }
-		res.redirect('/login');
+		res.redirect('/auth/facebook');
 	};
-
-	// app.use(logger('default'));
-	// app.use(methodOverride());
-	// app.use(bodyParser());
-	// app.use(session({ secret: process.env.SECRET }));
-	// app.use(session({ 
-	// 	secret: process.env.SECRET,
-	// 	cookie: {
-	// 		maxAge: 1000 * 60 * 60 * 24 * 365 // 365 days
-	// 	},
-	// 	store: store
-	// }));
 
 	app.use(cookieParser({}));
 	
