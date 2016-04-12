@@ -139,7 +139,7 @@ exports = module.exports = function(app) {
 	// facebook login
 	app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email']}));
 	app.get('/auth/facebook/callback',
-		passport.authenticate('facebook', { failureRedirect: '/login' }),
+		passport.authenticate('facebook', { failureRedirect: '/' }),
 		function(req, res) {
 			// Successful authentication, redirect home.
 			res.locals.user = req.user;

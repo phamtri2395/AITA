@@ -474,7 +474,7 @@ var AddNewPostForm = React.createClass({
 					<div className='columns three'>&nbsp;</div>
 					<div className='columns nine'>
 						<label>
-							<input onChange={this.handleChangeIsProject} className='form-control' type='checkbox' name='isProject' required='required' checked={this.state.isProject} /> Chọn nếu nhà thuộc dự án
+							<input onChange={this.handleChangeIsProject} className='form-control' type='checkbox' name='isProject' checked={this.state.isProject} /> Chọn nếu nhà thuộc dự án
 						</label>
 					</div>
 				</div>
@@ -507,7 +507,7 @@ var AddNewPostForm = React.createClass({
 						<label htmlFor=''>Lộ giới (m)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChangeHighway} type='text' id='highway' className='form-control' name='highway' required='required' value={this.state.highway} />
+						<input onChange={this.handleChangeHighway} type='text' id='highway' className='form-control' name='highway' value={this.state.highway} />
 					</div>
 				</div>
 
