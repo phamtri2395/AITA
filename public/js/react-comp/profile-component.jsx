@@ -52,9 +52,9 @@ if ($('.js-container').hasClass('jspage-profile')) {
 			body.email = this.state.email;
 			body.phone = this.state.phone;
 
-			ApiService.UserModel.put(body, {_id: body._id}).then(function(res) {
+			ApiService.UserModel.put(body, {}).then(function(res) {
 				console.log('res', res);
-				alert('Thông tin của bạn đã được cập nhật');
+				alert(res.message);
 			}, function(err) {
 				console.log('err', err);
 			});

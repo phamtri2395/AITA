@@ -69,5 +69,33 @@ exports = module.exports = _.assign(restful(PostModel), {
 		}, function(err) {
 			res.jsonp(utils.response(false, null, err));
 		});
-	}
+	},
+
+	bookmark: function(req, res) {
+
+	},
+	
+	reactivate: function(req, res) {
+		if (req.user) {
+
+			PostModel.findOne({ 'author': req.user._id, '_id': req.params._id }, function(err, post) {
+				if (err) return console.log(err);
+
+				if (post) {
+					post.activeDate = Date.now();
+					post.save(function(err) {
+						if (err)
+							console.log(err);
+						else
+							console.log('Successful update active Date!');
+							res.jsonp(utils.response(true, null, 'Kích hoạt lại thành công!'));
+					});
+				}
+				else {
+					res.redirect('/');
+				}
+			});
+
+		}
+	},
 });

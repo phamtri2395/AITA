@@ -209,9 +209,21 @@ Post.add({
 	activeDate: {
 		label:'Ngày kích hoạt',
 		type: Types.Datetime,
-		index: true,
-		watch: true,
-		value: Date.now
+		default: Date.now
+	},
+
+	isExpired: {
+		type: Boolean,
+		watch: 'activeDate',
+		value: isExpired,
+		noedit: true
+	},
+
+	isExpired: {
+		type: Boolean,
+		watch: 'activeDate',
+		value: isExpired,
+		noedit: true
 	},
 
 	categories: {
@@ -221,6 +233,24 @@ Post.add({
 		many: true
 	}
 });
+
+// minusDay function
+var minusDays = function(date, days) {
+	var result = new Date(date);
+  result.setDate(result.getDate() - days);
+  return result;
+};
+// Check if post is expired
+function isExpired() {
+	var EXPIRE_PERIOD = 13;
+
+	if (!((this.activeDate >= minusDays(Date.now(), EXPIRE_PERIOD)) && (this.activeDate <= Date.now()))) {
+		return true;
+	}
+
+	console.log('isExpired: FALSE');
+	return false;
+}
 
 Post.schema.add({
 	images: {
