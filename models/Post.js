@@ -205,6 +205,13 @@ Post.add({
 		value: Date.now
 	},
 
+	isExpired: {
+		type: Boolean,
+		watch: 'activeDate',
+		value: isExpired,
+		noedit: true
+	},
+
 	images :{ 
 		label: 'Hình ảnh',
 		type: Types.CloudinaryImages, 
@@ -223,6 +230,25 @@ Post.add({
 		many: true
 	}
 });
+
+// minusDay function
+var minusDays = function(date, days) {
+	var result = new Date(date);
+  result.setDate(result.getDate() - days);
+  return result;
+};
+// Check if post is expired
+function isExpired() {
+	var EXPIRE_PERIOD = 13;
+
+	if (!((this.activeDate > minusDays(Date.now(), EXPIRE_PERIOD)) && (this.activeDate < Date.now()))) {
+		console.log('isExpired: TRUE');
+		return true;
+	}
+
+	console.log('isExpired: FALSE');
+	return false;
+}
 
 Post.schema.add({
 	images: {
