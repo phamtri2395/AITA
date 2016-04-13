@@ -3,8 +3,6 @@ var _ = require('underscore');
 var hbs = require('handlebars');
 var keystone = require('keystone');
 var cloudinary = require('cloudinary');
-var helpFunction = require('../../../routes/helpers/helpFunctions.js');
-
 
 // Declare Constants
 var CLOUDINARY_HOST = 'http://res.cloudinary.com';
@@ -400,15 +398,6 @@ module.exports = function() {
 		}
 
 		return flag;
-	};
-
-	// Check if posts is expired
-	_helpers.isExpired = function(activeDate) {
-		if (!((activeDate > helpFunction.minusDays(Date.now(), helpFunction.EXPIRE_PERIOD)) && (activeDate < Date.now()))) {
-			return true;
-		}
-
-		return false;
 	};
 
 	// Check if is for rent or for sell

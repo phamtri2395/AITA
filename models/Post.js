@@ -200,9 +200,14 @@ Post.add({
 	activeDate: {
 		label:'Ngày kích hoạt',
 		type: Types.Datetime,
-		index: true,
-		watch: true,
-		value: Date.now
+		default: Date.now
+	},
+
+	isExpired: {
+		type: Boolean,
+		watch: 'activeDate',
+		value: isExpired,
+		noedit: true
 	},
 
 	isExpired: {
@@ -241,8 +246,7 @@ var minusDays = function(date, days) {
 function isExpired() {
 	var EXPIRE_PERIOD = 13;
 
-	if (!((this.activeDate > minusDays(Date.now(), EXPIRE_PERIOD)) && (this.activeDate < Date.now()))) {
-		console.log('isExpired: TRUE');
+	if (!((this.activeDate >= minusDays(Date.now(), EXPIRE_PERIOD)) && (this.activeDate <= Date.now()))) {
 		return true;
 	}
 

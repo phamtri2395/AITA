@@ -27,11 +27,6 @@ exports = module.exports = _.assign(restful(UserModel), {
 		var id = req.user._id;
 		var body = req.body;
 
-		console.log('USER IS');
-		console.log(id);
-		console.log('BODY');
-		console.log(body);
-
 		if (!req.user) {
 			res.jsonp(utils.response(false, null, { err: 'no permision' }));
 			return;
@@ -40,7 +35,7 @@ exports = module.exports = _.assign(restful(UserModel), {
 		UserModel.findByIdAndUpdate(id, body).exec().then(function(data) {
 			console.log('DATA');
 			console.log(data);
-			res.jsonp(utils.response(true, data));
+			res.jsonp(utils.response(true, data, 'Thông tin của bạn đã được cập nhật!'));
 		},
 		function(err) {
 			console.log('ERRORS');
