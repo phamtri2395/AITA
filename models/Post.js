@@ -219,13 +219,6 @@ Post.add({
 		noedit: true
 	},
 
-	isExpired: {
-		type: Boolean,
-		watch: 'activeDate',
-		value: isExpired,
-		noedit: true
-	},
-
 	categories: {
 		label: 'Phân loại',
 		type: Types.Relationship,
@@ -270,8 +263,9 @@ Post.schema.add({
 	}
 });
 
-Post.schema.virtual('content.full').get(function() {
-	return this.content.extended || this.content.brief;
+Post.schema.virtual('virtualProp').get(function() {
+	return true;
+	// return this.content.extended || this.content.brief;
 });
 
 Post.schema.statics = {
