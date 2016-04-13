@@ -63,7 +63,7 @@ exports = module.exports = function(req, res) {
 		.where('_id').ne(locals.data.post._id)
 		.populate('author district ward')
 		.limit(2)
-		.sort({'activeDate': -1})
+		.sort({'activeDate': 1})
 		.exec(function(err, results) {
 
 			if (!results) {
