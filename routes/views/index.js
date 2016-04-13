@@ -87,7 +87,7 @@ exports = module.exports = function(req, res) {
 
 		keystone.list('Post').model.find({
 			realEstate: { '$regex': (categoryMapper[section] || '(.*?)'), '$options': 'i' }
-			}).populate('author').sort({'activeDate': 1}).exec(function(err, results) {
+			}).populate('author').sort({'activeDate': -1}).exec(function(err, results) {
 			
 			if (err || !results.length) {
 				console.log('NO RESULT');
