@@ -31,15 +31,24 @@ Post.add({
 
 	type: {
 		label: 'Cho Thuê / Bán',
-		type: String,
-		required: false
+		type: Types.Select,
+		options: [
+			{ value: 'thue', label: 'Cho thuê' },
+			{ value: 'ban', label: 'Bán' },
+		],
+		default: 'thue',
 	},
 
 	realEstate: {
-		label: 'Nhà / Căn Hộ / Phòng Cho Thuê',
-		type: String,
-		required: false
-	},
+		label: 'Loại',
+		type: Types.Select,
+		options: [
+			{ value: 'nha', label: 'Nhà' },
+			{ value: 'can-ho', label: 'Căn hộ' },
+			{ value: 'phong', label: 'Phòng' },
+		],
+		default: 'phong',
+	}, 
 
 	district: {
 		label: 'Quận',
@@ -48,12 +57,12 @@ Post.add({
 		default: true
 	},
 
-	ward: {
-		label: 'Phường',
-		type: Types.Relationship,
-		ref: 'Ward',
-		default: true
-	},
+	// ward: {
+	// 	label: 'Phường',
+	// 	type: Types.Relationship,
+	// 	ref: 'Ward',
+	// 	default: true
+	// },
 
 	street: {
 		label: 'Đường',
@@ -204,17 +213,6 @@ Post.add({
 		watch: true,
 		value: Date.now
 	},
-
-	images :{ 
-		label: 'Hình ảnh',
-		type: Types.CloudinaryImages, 
-		folder: '/upload/images' 
-	},
-
-	// images: {
-	// 	label: 'Hình ảnh',
-	// 	type: [ImageModel]
-	// },
 
 	categories: {
 		label: 'Phân loại',

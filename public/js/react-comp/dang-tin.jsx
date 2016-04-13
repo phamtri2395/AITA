@@ -57,7 +57,7 @@ var AddNewPostForm = React.createClass({
 		ApiService.UserModel.get().then(function(res) {
 			that.setState({ author: res.data._id });
 			that.setState({ name: [res.data.name.first, res.data.name.last].join(' ') });
-			that.setState({ mobile: res.data.mobile });
+			that.setState({ mobile: res.data.phone });
 		}, function(err) {
 			console.log('getUserInfo err', err);
 		});
@@ -69,7 +69,7 @@ var AddNewPostForm = React.createClass({
 			type: '',
 			realEstate: '',
 			district: '',
-			ward: '',
+			// ward: '',
 			street: '',
 			address: '',
 			isFront: '',
@@ -92,7 +92,7 @@ var AddNewPostForm = React.createClass({
 			pushAds: false,
 			author: '',
 			publishedDate: '',
-			images: '',
+			images: null,
 			select: {
 				type: [],
 				realEstate: [],
@@ -103,8 +103,73 @@ var AddNewPostForm = React.createClass({
 			}
 		};
 
+		var staticData = {
+			'title': 'Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm',
+			'type': '',
+			'realEstate': '',
+			'district': '',
+			'ward': '',
+			'street': '43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM',
+			'address': '43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM',
+			'isFront': true,
+			'hidePosition': false,
+			'latitude': 0,
+			'longitude': 0,
+			'price': 0,
+			'area': 0,
+			'bedroom': 0,
+			'bathroom': 0,
+			'floors': 0,
+			'highway': 0,
+			'description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+			'isProject': true,
+			'projectName': 'AITA',
+			'projectLink': 'http://aita.vn/',
+			'direct': '',
+			'name': '',
+			'mobile': 0,
+			'pushAds': true,
+			'author': 0,
+			'publishedDate': '2015-04-03',
+			'images': '',
+			'select': {
+				'type': [
+					{ 'label': 'Cho Thuê', 'value': 'thue' },
+					{ 'label': 'Bán', 'value': 'ban' }
+				],
+				'realEstate': [
+					{ 'label': 'Nhà', 'value': 'nha' },
+					{ 'label': 'Căn Hộ', 'value': 'can-ho' },
+					{ 'label': 'Phòng Cho Thuê', 'value': 'phong-cho-thue' }
+				],
+				'district': [],
+				'ward': [],
+				'direct': [
+					{ 'label': 'Đông', 'value': 'dong' },
+					{ 'label': 'Tây', 'value': 'tay' },
+					{ 'label': 'Nam', 'value': 'name' },
+					{ 'label': 'Bắc', 'value': 'bac' },
+					{ 'label': 'Đông Bắc', 'value': 'dong-bac' },
+					{ 'label': 'Đông Nam', 'value': 'dong-nam' },
+					{ 'label': 'Tây Bắc', 'value': 'tay-bac' },
+					{ 'label': 'Tây Name', 'value': 'tay-nam' }
+				],
+				'floors': [
+					{ 'label': '1', 'value': 1 },
+					{ 'label': '2', 'value': 2 },
+					{ 'label': '3', 'value': 3 },
+					{ 'label': '4', 'value': 4 },
+					{ 'label': '5', 'value': 5 }
+				]
+			}
+		};
 		if (isLocalEnv) {
-			data = $('[data-local]').data('local').Post;
+			data = staticData;
+		} else {
+			data.select.type = staticData.select.type;
+			data.select.realEstate = staticData.select.realEstate;
+			data.select.direct = staticData.select.direct;
+			data.select.floors = staticData.select.floors;
 		}
 		
 		return data;
@@ -129,8 +194,6 @@ var AddNewPostForm = React.createClass({
 
 	componentDidMount: function() {
 		var map, mapOptions, center, currentMarker;
-		// var myDropzone = new Dropzone('#js-dropzone-component', { url: '/uploadHandler' });
-		// var myDropzone = $('div#js-dropzone-component').dropzone({ url: '/uploadHandler' });
 
 		center = new google.maps.LatLng(10.81416666666667, 106.66694444444444);
 		mapOptions = {
@@ -142,9 +205,9 @@ var AddNewPostForm = React.createClass({
 
 		var getLocation = function() {
 			if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(showPosition);
+				navigator.geolocation.getCurrentPosition(showPosition);
 			} else {
-					console.log('Geolocation is not supported by this browser.');
+				console.log('Geolocation is not supported by this browser.');
 			}
 		};
 
@@ -313,22 +376,27 @@ var AddNewPostForm = React.createClass({
 
 	handleSubmit: function(e) {
 		e.preventDefault();
-		var states = this.state;
-		var isinValid = false;
-		$.each(states, function(key, val) {
-			var elm = $('.state-' + key);
-			if (elm.hasClass('Select') && !!!val) {
-				elm.find('input').focus();
-				isinValid = true;
-				return;
-			}
-		});
+		// var states = this.state;
+		// var isinValid = false;
+		// $.each(states, function(key, val) {
+		// 	var elm = $('.state-' + key);
+		// 	if (elm.hasClass('Select') && !!!val) {
+		// 		elm.find('input').focus();
+		// 		isinValid = true;
+		// 		return;
+		// 	}
+		// });
+		// if (isinValid) {
+		// 	return false;
+		// }
 
-		if (isinValid) {
-			return false;
+		var model = _.clone(this.state);
+		delete model.select;
+		if (!(model.images instanceof Array)) {
+			delete model.images;
 		}
 
-		ApiService.PostModel.add(this.state).then(function(data) {
+		ApiService.PostModel.add(model).then(function(data) {
 			console.log(data);
 			window.location = '/';
 		}, function(err) {
@@ -358,7 +426,7 @@ var AddNewPostForm = React.createClass({
 				</div>
 				<div className='row'>
 					<div className='columns three'>
-						<label>Loại hình</label>
+						<label>Hình thức</label>
 					</div>
 					<div className='columns four'>
 						<Select className='state-type' value={this.state.type} options={this.state.select.type} onChange={this.handleChangeType} />
@@ -460,6 +528,7 @@ var AddNewPostForm = React.createClass({
 						<textarea onChange={this.handleChangeDescription} row='4' className='form-control control--textarea' name='description' value={this.state.description}></textarea>
 					</div>
 				</div>
+
 				{/*<div className='row'>
 					<div className='columns three'>&nbsp;</div>
 					<div className='columns nine'>
