@@ -187,9 +187,10 @@ exports = module.exports = function(app) {
 	app.get('/user', routes.views.user);
 	
 	app.get('/fb', routes.views.fb);
-	app.post('/user/bookmark/:_postId', routes.services.users.bookmark);
-	app.post('/user/reactivate/:_postId', routes.services.users.reactivate);
 
+	// Bookmark & Reactive
+	app.put('/api/post/bookmark', routes.services.post.bookmark);
+	app.put('/api/post/reactivate/:_id', routes.services.post.reactivate);
 
 	// Post MODEL: function for set of collection
 	app.get('/api/post/getownpost', routes.services.post.getOwnPost);

@@ -35,7 +35,7 @@ exports = module.exports = _.assign(restful(UserModel), {
 		UserModel.findByIdAndUpdate(id, body).exec().then(function(data) {
 			console.log('DATA');
 			console.log(data);
-			res.jsonp(utils.response(true, data));
+			res.jsonp(utils.response(true, data, 'Thông tin của bạn đã được cập nhật!'));
 		},
 		function(err) {
 			console.log('ERRORS');
