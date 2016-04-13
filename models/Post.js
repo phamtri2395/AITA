@@ -241,7 +241,7 @@ var minusDays = function(date, days) {
 function isExpired() {
 	var EXPIRE_PERIOD = 13;
 
-	if (!((this.activeDate > minusDays(Date.now(), EXPIRE_PERIOD)) && (this.activeDate < Date.now()))) {
+	if (!((this.activeDate >= minusDays(Date.now(), EXPIRE_PERIOD)) && (this.activeDate <= Date.now()))) {
 		console.log('isExpired: TRUE');
 		return true;
 	}
