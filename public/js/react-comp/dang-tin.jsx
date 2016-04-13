@@ -5,6 +5,58 @@
 var isLocalEnv = $('[data-env]').data('env') === 'local';
 
 var AddNewPostForm = React.createClass({
+	// Generate title
+	generateTitle: function() {
+		var type = '';
+		var realEstate = '';
+		var front = '';
+		var area = '';
+		var bedroom = '';
+		var bathroom = '';
+
+		if (this.dynamicTitle.type) {
+			if (this.dynamicTitle.type === 'ban') type = 'Bán';
+			else if (this.dynamicTitle.type === 'thue') type = 'Cho thuê';
+		}
+
+		if (this.dynamicTitle.realEstate) {
+			if (this.dynamicTitle.realEstate === 'nha') realEstate = 'nhà';
+			else if (this.dynamicTitle.realEstate === 'can-ho') realEstate = 'căn hộ';
+			else if (this.dynamicTitle.realEstate === 'phong-cho-thue') realEstate = 'phòng';
+		}
+
+		if (this.dynamicTitle.isFront) front = 'mặt tiền';
+		else front = '';
+
+		if (this.dynamicTitle.area) {
+			area = this.dynamicTitle.area + 'm2';
+		}
+
+		if (this.dynamicTitle.bedroom) {
+			bedroom = this.dynamicTitle.bedroom + ' phòng ngủ';
+		}
+
+		if (this.dynamicTitle.bathroom) {
+			bathroom = this.dynamicTitle.bathroom + ' phòng tắm';
+		}
+
+		return type
+					+((realEstate !== '')?(' ' + realEstate):'')
+					+((front !== '')?(' ' + front):'')
+					+((area !== '')?(' ' + area):'')
+					+((bedroom !== '')?(', ' + bedroom):'')
+					+((bathroom !== '')?(', ' + bathroom):'');
+	},
+
+	dynamicTitle: {
+		type: '',
+		realEstate: '',
+		isFront: 'mặt tiền',
+		area: '',
+		bedroom: '',
+		bathroom: ''
+	},
+
 	uploadFiles: [],
 	
 	getDistricts: function() {
@@ -104,7 +156,7 @@ var AddNewPostForm = React.createClass({
 		};
 
 		var staticData = {
-			'title': 'Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm',
+			'title': '',
 			'type': '',
 			'realEstate': '',
 			'district': '',
@@ -283,10 +335,14 @@ var AddNewPostForm = React.createClass({
 
 	handleChangeType: function(eSelect) {
 		this.setState({type: eSelect.value});
+		this.dynamicTitle.type = eSelect.value;
+		this.setState({title: this.generateTitle()});
 	},
 
 	handleChangeRealEstate: function(eSelect) {
 		this.setState({realEstate: eSelect.value});
+		this.dynamicTitle.realEstate = eSelect.value;
+		this.setState({title: this.generateTitle()});
 	},
 
 	handleChangeDistrict: function(eSelect) {
@@ -306,12 +362,10 @@ var AddNewPostForm = React.createClass({
 		this.setState({floors: eSelect.value});
 	},
 
-	handleChangeTitle: function(e) {
-		this.setState({title: e.target.value});
-	},
-
 	handleChangeFront: function(e) {
-		this.setState({isFront: e.target.value});
+		this.setState({isFront: !this.state.isFront});
+		this.dynamicTitle.isFront = !this.state.isFront;
+		this.setState({title: this.generateTitle()});
 	},
 
 	handleChangeStreet: function(e) {
@@ -332,14 +386,20 @@ var AddNewPostForm = React.createClass({
 
 	handleChangeArea: function(e) {
 		this.setState({area: e.target.value});
+		this.dynamicTitle.area = e.target.value;
+		this.setState({title: this.generateTitle()});
 	},
 
 	handleChangeBedroom: function(e) {
 		this.setState({bedroom: e.target.value});
+		this.dynamicTitle.bedroom = e.target.value;
+		this.setState({title: this.generateTitle()});
 	},
 
 	handleChangeBathroom: function(e) {
 		this.setState({bathroom: e.target.value});
+		this.dynamicTitle.bathroom = e.target.value;
+		this.setState({title: this.generateTitle()});
 	},
 
 	handleChangeDescription: function(e) {
