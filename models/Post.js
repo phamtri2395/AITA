@@ -200,9 +200,7 @@ Post.add({
 	activeDate: {
 		label:'Ngày kích hoạt',
 		type: Types.Datetime,
-		index: true,
-		watch: true,
-		value: Date.now
+		default: Date.now
 	},
 
 	isExpired: {
