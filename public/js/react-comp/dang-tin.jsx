@@ -237,7 +237,11 @@ var AddNewPostForm = React.createClass({
 
 			$inputLat.val(latLng.lat());
 			$inputLng.val(latLng.lng());
-		};
+			this.setState({
+				latitude: latLng.lat(),
+				longitude: latLng.lng()
+			});
+		}.bind(this);
 
 		var initDangTin = function() {
 			console.log('Dang Tin >>');
