@@ -1,6 +1,4 @@
 var keystone = require('keystone');
-var handlebars = require('handlebars');
-var helpFunction = require('../helpers/helpFunctions.js');
 
 exports = module.exports = function(req, res) {
 	
@@ -42,18 +40,6 @@ exports = module.exports = function(req, res) {
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'user';
-	
-	// Register isActive function, which determine which post is activing
-	handlebars.registerHelper('isActive', function(activeDate) {
-		if (activeDate) {
-			var minus = new Date(Date.now());
-			minus.setDate(minus.getDate() - helpFunction.EXPIRE_PERIOD);
-			return ((activeDate >= minus) && (activeDate <= Date.now()));
-		}
-		else {
-			return false;
-		}
-	});
 
 	// Render the view
 	view.render('user');

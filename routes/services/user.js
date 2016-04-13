@@ -27,11 +27,6 @@ exports = module.exports = _.assign(restful(UserModel), {
 		var id = req.user._id;
 		var body = req.body;
 
-		console.log('USER IS');
-		console.log(id);
-		console.log('BODY');
-		console.log(body);
-
 		if (!req.user) {
 			res.jsonp(utils.response(false, null, { err: 'no permision' }));
 			return;
