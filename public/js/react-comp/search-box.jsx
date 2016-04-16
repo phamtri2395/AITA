@@ -21,12 +21,14 @@ var SearchBoxComp = React.createClass({
 			{ label: 'Mua', value: 'ban' },
 		];
 		priceOptions = [
-			{ label: 'Dưới 1tr', value: '0' },
-			{ label: '1tr - 2tr', value: '1' },
-			{ label: '2tr - 3tr', value: '2' },
-			{ label: '3tr - 4tr', value: '3' },
-			{ label: '4tr - 5tr', value: '4' },
-			{ label: 'Trên 5tr', value: '5' },
+			{ label: '0 - 2tr', value: '1' },
+			{ label: '2tr - 4tr', value: '2' },
+			{ label: '4tr - 6tr', value: '3' },
+			{ label: '6tr - 8tr', value: '4' },
+			{ label: '8tr - 10tr', value: '5' },
+			{ label: '10tr - 15tr', value: '6' },
+			{ label: '15tr - 20tr', value: '7' },
+			{ label: '20tr+', value: '8' }
 		];
 
 		switch (path) {
@@ -54,7 +56,9 @@ var SearchBoxComp = React.createClass({
 	componentDidMount: function() {
 		ApiService.DistrictModel.all().then(function(res) {
 
-			var disList = res.data;
+			var disList = res.data.sort(function(a, b) {
+				return a.name > b.name;
+			});
 			disList =  disList.map(function(item) {
 				return {
 					label: item.name,
