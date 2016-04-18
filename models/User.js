@@ -18,6 +18,7 @@ User.add({
 	avatar: { type: Types.Url, required: false },
 	phone: { type: String, required: false }
 }, 'Permissions', {
+	isReceiveEmails: { type: Boolean, label: 'Receive Emails', default: false },
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true }
 });
 
@@ -40,5 +41,5 @@ User.relationship({ ref: 'Bookmark', path: 'bookmarks', refPath: 'user' });
  * Registration
  */
 
-User.defaultColumns = 'name, email, isAdmin';
+User.defaultColumns = 'name, email, isAdmin, isReceiveEmails';
 User.register();

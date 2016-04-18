@@ -3,7 +3,7 @@
 
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
-var ImageModel = keystone.list('ImageModel');
+var debug = require('debug');
 
 var Post = new keystone.List('Post', {
 	map: { name: 'title' },
@@ -268,6 +268,51 @@ Post.schema.virtual('virtualProp').get(function() {
 	// return this.content.extended || this.content.brief;
 });
 
+Post.schema.pre('save', function(next) {
+	this.wasNew = this.isNew;
+	next();
+});
+
+Post.schema.post('save', function() {
+	if (this.wasNew) {
+		this.sendNotificationEmail();
+	}
+});
+
+Post.schema.methods.sendNotificationEmail = function(callback) {
+
+	if ('function' !== typeof callback) {
+		callback = function(err, data) {
+			debug('EMAIL:', err, data);
+		};
+	}
+
+	// send notification email to admins
+	keystone.list('User').model.find().where('isReceiveEmails', true).exec(function(err, admins) {
+		if (err) {
+			return callback(err);
+		}
+
+		new keystone.Email({
+			'templateMandrillName': 'newpost-admin-notification'
+		}).send({
+			to: admins,
+			from: {
+				name: 'Aita Team',
+				email: 'hello@aita.vn'
+			},
+			subject: 'Thông báo có bài viết mới',
+			globalMergeVars :  {
+				HOST_URL: process.env.HOST_URL,
+				POST_URL: process.env.HOST_URL + '/chi-tiet/' + this._id
+			}
+		}, callback);
+
+	}.bind(this));
+
+
+};
+
 Post.schema.statics = {
 	getPopulateFields: function() {
 		return 'author';
@@ -280,5 +325,6 @@ Post.schema.statics = {
 
 Post.relationship({ ref: 'Bookmark', path: 'bookmarks', refPath: 'post' });
 
+Post.defaultSort = '-publishedDate';
 Post.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
 Post.register();
