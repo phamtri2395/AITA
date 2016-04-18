@@ -55,10 +55,8 @@ var SearchBoxComp = React.createClass({
 
 	componentDidMount: function() {
 		ApiService.DistrictModel.all().then(function(res) {
+			var disList = res.data; 
 
-			var disList = res.data.sort(function(a, b) {
-				return a.name > b.name;
-			});
 			disList =  disList.map(function(item) {
 				return {
 					label: item.name,
