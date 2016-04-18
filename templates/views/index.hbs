@@ -60,25 +60,28 @@
 															</form>
 														</div>
 													{{/if}}
+
+													{{#if isExpired}}
+														<span class="expired u-pull-right">
+															Đã hết hạn
+														</span>
+													{{/if}}	
 												</h4>
 
 												<div class="post-info--list">
-													{{#if (getType type)}}
-														<li class="post-info--type">{{getType type}}</li>
-													{{/if}}
-
-													{{#if (getRealEstate realEstate)}}
-														<li class="post-info--realEstate">{{getRealEstate realEstate}}</li>
-													{{/if}}
-
-													{{#if isExpired}}
-														<li class="expired">
-															Đã hết hạn
-														</li>
-													{{/if}}													
+												
 												</div>
 
 												<ul class="post-info--list">
+													{{#if (getType type)}}
+														<li class="post-info--item">{{getType type}}</li>
+														<li class="post-info--item">|</li>
+													{{/if}}
+
+													{{#if (getRealEstate realEstate)}}
+														<li class="post-info--item">{{getRealEstate realEstate}}</li>
+														<li class="post-info--item">|</li>
+													{{/if}}												
 													<li class="post-info--item">{{area}} m2</li>
 													<li class="post-info--item">|</li>
 													<li class="post-info--item">{{bedroom}} phòng ngủ</li>
