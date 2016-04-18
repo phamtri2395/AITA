@@ -192,7 +192,7 @@ var AddNewPostForm = React.createClass({
 				'realEstate': [
 					{ 'label': 'Nhà', 'value': 'nha' },
 					{ 'label': 'Căn Hộ', 'value': 'can-ho' },
-					{ 'label': 'Phòng Cho Thuê', 'value': 'phong-cho-thue' }
+					{ 'label': 'Phòng Cho Thuê', 'value': 'phong' }
 				],
 				'district': [],
 				'ward': [],
