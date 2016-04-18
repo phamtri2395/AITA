@@ -381,7 +381,7 @@ module.exports = function() {
 		if (type === 'ban') return 'Bán';
 		if (type === 'thue') return 'Cho thuê';
 
-		return '';
+		return false;
 	};
 
 	// Register getRealEstate function, which return name of realEstate's type
@@ -390,7 +390,7 @@ module.exports = function() {
 		if (realEstate === 'can-ho') return 'Căn hộ';
 		if (realEstate === 'phong-cho-thue') return 'Phòng';
 
-		return '';
+		return false;
 	};
 
 	// Register isMedium function, which return if is mediumed or not

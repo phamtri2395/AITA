@@ -63,8 +63,14 @@
 												</h4>
 
 												<div class="post-info--list">
-													<li class="post-info--type">{{getType type}}</li>
-													<li class="post-info--realEstate">{{getRealEstate realEstate}}</li>
+													{{#if (getType type)}}
+														<li class="post-info--type">{{getType type}}</li>
+													{{/if}}
+
+													{{#if (getRealEstate realEstate)}}
+														<li class="post-info--realEstate">{{getRealEstate realEstate}}</li>
+													{{/if}}
+
 													{{#if isExpired}}
 														<li class="expired">
 															Đã hết hạn
