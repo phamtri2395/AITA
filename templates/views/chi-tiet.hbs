@@ -56,7 +56,7 @@
 						<b>Ngày đăng: </b><span>04/12/3016</span>
 					</div>
 					<div class="columns four">
-						<b>Hình thức: </b><span>{{typeName type}}</span>
+						<b>Hình thức: </b><span>{{getType type}}</span>
 					</div>
 					<div class="columns four">
 						<b>Giá: </b><span>{{toCurrency price}}</span>
@@ -152,7 +152,7 @@
 
 							{{#if isExpired}}
 								<span class="u-pull-right expired">
-									Expired
+									Đã hết hạn
 								</span>
 							{{/if}}
 						</h4>

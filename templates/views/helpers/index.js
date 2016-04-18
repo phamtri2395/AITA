@@ -376,9 +376,21 @@ module.exports = function() {
 		return (district) ? (district.name) : 'null';
 	};
 
-	// Register typeName function, which return name of Type
-	_helpers.typeName = function(type) {
-		return (type) ? (type.name) : 'null';
+	// Register getType function, which return name of Type
+	_helpers.getType = function(type) {
+		if (type === 'ban') return 'Bán';
+		if (type === 'thue') return 'Cho thuê';
+
+		return '';
+	};
+
+	// Register getRealEstate function, which return name of realEstate's type
+	_helpers.getRealEstate = function(realEstate) {
+		if (realEstate === 'nha') return 'Nhà';
+		if (realEstate === 'can-ho') return 'Căn hộ';
+		if (realEstate === 'phong-cho-thue') return 'Phòng';
+
+		return '';
 	};
 
 	// Register isMedium function, which return if is mediumed or not
