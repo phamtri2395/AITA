@@ -192,7 +192,7 @@ exports = module.exports = function(app) {
 	app.put('/api/user/', routes.services.user._put);
 
 	// Districts MODEL
-	app.get('/api/district/all', routes.services.districts._all);
+	app.get('/api/district/all', routes.services.districts.findAll);
 	app.get('/api/district/findAll', routes.services.districts.findAll);
 
 	// Wards MODEL
