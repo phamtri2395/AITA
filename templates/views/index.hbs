@@ -73,15 +73,17 @@
 												</div>
 
 												<ul class="post-info--list">
+													{{#if (getRealEstate realEstate)}}
+														<li class="post-info--item">{{getRealEstate realEstate}}</li>
+														<li class="post-info--item">|</li>
+													{{/if}}		
+
 													{{#if (getType type)}}
 														<li class="post-info--item">{{getType type}}</li>
 														<li class="post-info--item">|</li>
 													{{/if}}
 
-													{{#if (getRealEstate realEstate)}}
-														<li class="post-info--item">{{getRealEstate realEstate}}</li>
-														<li class="post-info--item">|</li>
-													{{/if}}												
+										
 													<li class="post-info--item">{{area}} m2</li>
 													<li class="post-info--item">|</li>
 													<li class="post-info--item">{{bedroom}} phòng ngủ</li>
