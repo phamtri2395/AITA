@@ -39,6 +39,19 @@ exports = module.exports = function(req, res) {
 			}
 
 			locals.data.post = result;
+
+			// add meta data for detail page
+			var imagePath = 'http://aita.vn/favicon.ico';
+			if (result.images && result.images.length > 0) {
+				var t = result.images[0];
+				imagePath =  'http://' + t.serverPath + '/' + t.path;
+			}
+			locals.meta = {
+				title: 'Aita.vn - ' + result.title,
+				description: 'Bạn có nhà, căn hộ, hay phòng cần bán hay cho thuê, hãy sử dụng aita để đạt được độ phủ lớn nhất.',
+				image: imagePath
+			};
+
 			type = result.type;
 			debug('data', result);
 			debug('type', type);

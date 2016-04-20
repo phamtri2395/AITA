@@ -275,24 +275,23 @@ module.exports = function() {
 		return html;
 	};
 
-        // special helper to ensure that we always have a valid page url set even if
-        // the link is disabled, will default to page 1
-        _helpers.paginationPreviousUrl = function(previousPage, totalPages){
-            if(previousPage === false){
-                previousPage = 1;
-            }
-            return _helpers.pageUrl(previousPage);
-        };
+  // special helper to ensure that we always have a valid page url set even if
+  // the link is disabled, will default to page 1
+  _helpers.paginationPreviousUrl = function(previousPage, totalPages){
+      if(previousPage === false){
+          previousPage = 1;
+      }
+      return _helpers.pageUrl(previousPage);
+  };
 
-        // special helper to ensure that we always have a valid next page url set
-        // even if the link is disabled, will default to totalPages
-        _helpers.paginationNextUrl = function(nextPage, totalPages){
-            if(nextPage === false){
-                nextPage = totalPages;
-            }
-            return _helpers.pageUrl(nextPage);
-        };
-
+  // special helper to ensure that we always have a valid next page url set
+  // even if the link is disabled, will default to totalPages
+  _helpers.paginationNextUrl = function(nextPage, totalPages){
+      if(nextPage === false){
+          nextPage = totalPages;
+      }
+      return _helpers.pageUrl(nextPage);
+  };
 
 	//  ### Flash Message Helper
 	//  KeystoneJS supports a message interface for information/errors to be passed from server
@@ -437,7 +436,8 @@ module.exports = function() {
 	};
 
 	_helpers.dataLocal = function() {
-		return JSON.stringify(keystone.app.locals.dataLocal);
+		return '';
+		// return JSON.stringify(keystone.app.locals.dataLocal);
 	};
 
 	return _helpers;

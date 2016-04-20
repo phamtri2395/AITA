@@ -28,24 +28,25 @@
 		<!-- for Facebook -->
 		<meta property="og:url" content="http://aita.vn/" />
 		<meta property="og:type" content="article" />
-		<meta property="og:title" content="Aita.vn / Nhà & Căn Hộ" />
-		<meta property="og:description" content="Bạn có nhà, căn hộ, hay phòng cần bán hay cho thuê, hãy sử dụng aita để đạt được độ phủ lớn nhất." />
-		<meta property="og:image" content="http://aita.vn/favicon.ico" />
+		<meta property="og:title" content="{{ meta.title }}" />
+		<meta property="og:description" content="{{ meta.description }}" />
+		<meta property="og:image" content="{{ meta.image }}" />
 
 		<!-- for Google -->
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<meta name="author" content="" />
-		<meta name="copyright" content="" />
-		<meta name="application-name" content="" />
+		<meta name="description" content="{{ meta.description }}" />
+		<meta name="keywords" content="{{ meta.title }}" />
+		<meta name="author" content="aita.vn" />
+		<meta name="copyright" content="aita.vn" />
+		<meta name="application-name" content="aita.vn" />
 
 		<!-- for Twitter -->          
 		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:title" content="" />
-		<meta name="twitter:description" content="" />
-		<meta name="twitter:image" content="" />
+		<meta name="twitter:title" content="{{ meta.title }}" />
+		<meta name="twitter:description" content="{{ meta.description }}" />
+		<meta name="twitter:image" content="{{ meta.image }}" />
 	</head>
-	<body data-env="{{env}}" data-local="{{dataLocal}}">
+
+	<body data-env="{{env}}">
 		<div id="fb-root"></div>
 		<script>
 			window.fbAsyncInit = function() {
