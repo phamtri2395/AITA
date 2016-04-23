@@ -13,7 +13,7 @@ $(document).on('ready', function() {
 	if ($('.container').hasClass('jspage-dang-tin')) {
 
 		var $dropzone = $('#my-awesome-dropzone');
-		var dropzone = new Dropzone('#my-awesome-dropzone');
+		var dropzone = new Dropzone('#my-awesome-dropzone', { acceptedFiles: 'image/*' });
 
 		dropzone.on('success', function(e, res) {
 			$dropzone.trigger('dropzone-success', res.file);

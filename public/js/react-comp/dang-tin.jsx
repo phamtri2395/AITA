@@ -5,6 +5,142 @@
 var isLocalEnv = $('[data-env]').data('env') === 'local';
 
 var AddNewPostForm = React.createClass({
+	// Validations
+	validations: {
+		// Is positive integer (exclude 0) or not
+		isPositiveNumb: function(value) {
+			var str = value.toString();
+			return ((str.match(/^\+?\d+$/)) && str > 0);
+		},
+		// Is positive integer (include 0) or not
+		isPositiveNumbZero: function(value) {
+			var str = value.toString();
+			return (str.match(/^\+?\d+$/));
+		},
+
+		// Images
+		images: function(value) {
+			if (value > 1) {
+				$('#dropzone-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#dropzone-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},
+		// Type
+		type: function(value) {
+			if (value !== '') {
+				$('#state-type-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#state-type-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},
+		// Real Estate
+		realEstate: function(value) {
+			if (value !== '') {
+				$('#state-realEstate-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#state-realEstate-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},
+		// District
+		district: function(value) {
+			if (value !== '') {
+				$('#state-district-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#state-district-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},
+		// Street
+		street: function(value) {
+			if (value !== '') {
+				$('#street-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#street-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},
+		// Price
+		price: function(value) {
+			if (this.isPositiveNumb(value)) {
+				$('#price-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#price-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},
+		// Area
+		area: function(value) {
+			if (this.isPositiveNumb(value)) {
+				$('#area-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#area-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},
+		// Bedroom
+		bedroom: function(value) {
+			if (this.isPositiveNumbZero(value)) {
+				$('#bedroom-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#bedroom-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},	
+		// Bathroom
+		bathroom: function(value) {
+			if (this.isPositiveNumbZero(value)) {
+				$('#bathroom-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#bathroom-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},	
+		// Name
+		name: function(value) {
+			if (value !== '') {
+				$('#name-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#name-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},	
+		// Mobile
+		mobile: function(value) {
+			if (value !== '') {
+				$('#mobile-error-msg').css('visibility', 'hidden');
+				return true;
+			}
+			else {
+				$('#mobile-error-msg').css('visibility', 'visible');
+				return false;
+			}
+		},	
+	},
+
 	// Generate title
 	generateTitle: function() {
 		var type = '';
@@ -109,7 +245,10 @@ var AddNewPostForm = React.createClass({
 		ApiService.UserModel.get().then(function(res) {
 			that.setState({ author: res.data._id });
 			that.setState({ name: [res.data.name.first, res.data.name.last].join(' ') });
-			that.setState({ mobile: res.data.phone });
+			if (res.data.phone)
+				that.setState({ mobile: res.data.phone });
+			else
+				that.setState({ mobile: '' });				
 		}, function(err) {
 			console.log('getUserInfo err', err);
 		});
@@ -161,7 +300,7 @@ var AddNewPostForm = React.createClass({
 			'realEstate': '',
 			'district': '',
 			'ward': '',
-			'street': '43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM',
+			'street': '',
 			'address': '43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM',
 			'isFront': true,
 			'hidePosition': false,
@@ -179,7 +318,7 @@ var AddNewPostForm = React.createClass({
 			'projectLink': 'http://aita.vn/',
 			'direct': '',
 			'name': '',
-			'mobile': 0,
+			'mobile': '',
 			'pushAds': true,
 			'author': 0,
 			'publishedDate': '2015-04-03',
@@ -370,6 +509,7 @@ var AddNewPostForm = React.createClass({
 
 	handleChangeStreet: function(e) {
 		this.setState({street: e.target.value});
+		this.validations.street(e.target.value);		
 	},
 
 	handleChangeLatitude: function(e) {
@@ -382,22 +522,26 @@ var AddNewPostForm = React.createClass({
 
 	handleChangePrice: function(e) {
 		this.setState({price: e.target.value});
+		this.validations.price(e.target.value);
 	},
 
 	handleChangeArea: function(e) {
 		this.setState({area: e.target.value});
+		this.validations.area(e.target.value);
 		this.dynamicTitle.area = e.target.value;
 		this.setState({title: this.generateTitle()});
 	},
 
 	handleChangeBedroom: function(e) {
 		this.setState({bedroom: e.target.value});
+		this.validations.bedroom(e.target.value);
 		this.dynamicTitle.bedroom = e.target.value;
 		this.setState({title: this.generateTitle()});
 	},
 
 	handleChangeBathroom: function(e) {
 		this.setState({bathroom: e.target.value});
+		this.validations.bathroom(e.target.value);
 		this.dynamicTitle.bathroom = e.target.value;
 		this.setState({title: this.generateTitle()});
 	},
@@ -407,7 +551,7 @@ var AddNewPostForm = React.createClass({
 	},
 
 	handleChangeIsProject: function(e) {
-		this.setState({isProject: e.target.value});
+		this.setState({isProject: !this.state.isProject});
 	},
 
 	handleChangeProjectName: function(e) {
@@ -424,14 +568,16 @@ var AddNewPostForm = React.createClass({
 
 	handleChangeName: function(e) {
 		this.setState({name: e.target.value});
+		this.validations.name(e.target.value);
 	},
 
 	handleChangeMobile: function(e) {
 		this.setState({mobile: e.target.value});
+		this.validations.mobile(e.target.value);
 	},
 
 	handleChangeMedium: function(e) {
-		this.setState({medium: e.target.value});
+		this.setState({medium: !this.state.medium});
 	},
 
 	handleChangePublishedDate: function(e) {
@@ -453,6 +599,28 @@ var AddNewPostForm = React.createClass({
 		// if (isinValid) {
 		// 	return false;
 		// }
+
+		// Validations
+		var isValid = true;
+		var dropzone = Dropzone.forElement('#my-awesome-dropzone');
+
+		if (!this.validations.images(dropzone.files.length)) isValid = false;
+		if (!this.validations.type(this.state.type)) isValid = false;
+		if (!this.validations.realEstate(this.state.realEstate)) isValid = false;
+		if (!this.validations.district(this.state.district)) isValid = false;
+		if (!this.validations.street(this.state.street)) isValid = false;
+		if (!this.validations.price(this.state.price)) isValid = false;
+		if (!this.validations.area(this.state.area)) isValid = false;
+		if (!this.validations.bedroom(this.state.bedroom)) isValid = false;
+		if (!this.validations.bathroom(this.state.bathroom)) isValid = false;
+		if (!this.validations.name(this.state.name)) isValid = false;
+		if (!this.validations.mobile(this.state.mobile)) isValid = false;
+
+		if (!isValid) {
+			window.scrollTo(0, 0);
+			alert('Thông tin không hợp lệ');
+			return false;
+		}
 
 		var model = _.clone(this.state);
 		delete model.select;
@@ -476,7 +644,7 @@ var AddNewPostForm = React.createClass({
 						<label>Tiêu đề</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChangeTitle} className='u-full-width' type='text' name='title' required='required' 
+						<input id="title" onChange={this.handleChangeTitle} className='u-full-width' type='text' name='title'
 							placeholder='Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm' value={this.state.title} />
 					</div>
 				</div>
@@ -493,7 +661,10 @@ var AddNewPostForm = React.createClass({
 						<label>Hình thức</label>
 					</div>
 					<div className='columns four'>
-						<Select className='state-type' value={this.state.type} options={this.state.select.type} onChange={this.handleChangeType} />
+						<Select id='state-type' name='state-type' className='state-type' value={this.state.type} options={this.state.select.type} onChange={this.handleChangeType} />
+					</div>
+					<div className='columns three'>
+						<span id='state-type-error-msg' name='state-type-error-msg' className='error-tips'>* bắt buộc</span>
 					</div>
 				</div>
 				<div className='row'>
@@ -501,7 +672,10 @@ var AddNewPostForm = React.createClass({
 						<label>Nhà / Căn Hộ / Phòng</label>
 					</div>
 					<div className='columns four'>
-						<Select className='state-realEstate' value={this.state.realEstate} options={this.state.select.realEstate} onChange={this.handleChangeRealEstate} />
+						<Select id='state-realEstate' name='state-realEstate' className='state-realEstate' value={this.state.realEstate} options={this.state.select.realEstate} onChange={this.handleChangeRealEstate} />
+					</div>
+					<div className='columns three'>
+						<span id='state-realEstate-error-msg' name='state-realEstate-error-msg' className='error-tips'>* bắt buộc</span>
 					</div>
 				</div>
 				<div className='row'>
@@ -509,7 +683,10 @@ var AddNewPostForm = React.createClass({
 						<label>Quận/Huyện (Tp. HCM)</label>
 					</div>
 					<div className='columns four'>
-						<Select className='state-district' value={this.state.district} options={this.state.select.district} onChange={this.handleChangeDistrict} />
+						<Select id='state-district' name='state-district' className='state-district' value={this.state.district} options={this.state.select.district} onChange={this.handleChangeDistrict} />
+					</div>
+					<div className='columns three'>
+						<span id='state-district-error-msg' name='state-district-error-msg' className='error-tips'>* bắt buộc</span>
 					</div>
 				</div>
 				{/*<div className='row'>
@@ -525,8 +702,9 @@ var AddNewPostForm = React.createClass({
 						<label>Đường</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChangeStreet} className='u-full-width' type='text' name='street' required='required' 
-							value='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' value={this.state.street} />
+						<input id='street' onChange={this.handleChangeStreet} className='u-full-width' style={{marginBottom: 0}} type='text' name='street' 
+							placeholder='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' value={this.state.street} />
+						<span id='street-error-msg' name='street-error-msg' className='error-tips'>* bắt buộc</span>
 					</div>
 				</div>
 				<div className='row'>
@@ -534,7 +712,7 @@ var AddNewPostForm = React.createClass({
 						<label>Địa chỉ đầy đủ</label>
 					</div>
 					<div className='columns nine'>
-						<input disabled className='u-full-width' type='text' name='address' required='required' 
+						<input disabled className='u-full-width' type='text' name='address' 
 							placeholder='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' value={this.state.address} />
 					</div>
 				</div>
@@ -557,7 +735,8 @@ var AddNewPostForm = React.createClass({
 						<label>Giá (VNĐ)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChangePrice} className='form-control' type='text' name='price' required='required' value={this.state.price} />
+						<input id='price' onChange={this.handleChangePrice} className='form-control' style={{'marginBottom': 0}} type='text' name='price' value={this.state.price} />
+						<span id='price-error-msg' name='price-error-msg' className='error-tips' style={{display: 'block'}}>* bắt buộc, là số nguyên và lớn hơn 0</span>
 					</div>
 				</div>
 				<div className='row'>
@@ -565,7 +744,8 @@ var AddNewPostForm = React.createClass({
 						<label>Diện tích (m²)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChangeArea} className='form-control' type='text' name='area' required='required' value={this.state.area} />
+						<input id='area' onChange={this.handleChangeArea} className='form-control' style={{'marginBottom': 0}} type='text' name='area' value={this.state.area} />
+						<span id='area-error-msg' name='area-error-msg' className='error-tips' style={{display: 'block'}}>* bắt buộc, là số nguyên và lớn hơn 0</span>
 					</div>
 				</div>
 				<div className='row'>
@@ -573,7 +753,8 @@ var AddNewPostForm = React.createClass({
 						<label>Số phòng ngủ</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChangeBedroom} className='form-control' type='text' name='bedroom' required='required' value={this.state.bedroom} />
+						<input id='bedroom' onChange={this.handleChangeBedroom} className='form-control' style={{'marginBottom': 0}} type='text' name='bedroom' value={this.state.bedroom} />
+						<span id='bedroom-error-msg' name='bedroom-error-msg' className='error-tips' style={{display: 'block'}}>* bắt buộc và là số nguyên</span>
 					</div>
 				</div>
 				<div className='row'>
@@ -581,7 +762,8 @@ var AddNewPostForm = React.createClass({
 						<label>Số phòng tắm</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChangeBathroom} className='form-control' type='text' name='bathroom' required='required' value={this.state.bathroom} />
+						<input id='bathroom' onChange={this.handleChangeBathroom} className='form-control' style={{'marginBottom': 0}} type='text' name='bathroom' value={this.state.bathroom} />
+						<span id='bathroom-error-msg' name='bathroom-error-msg' className='error-tips' style={{display: 'block'}}>* bắt buộc và là số nguyên</span>
 					</div>
 				</div>
 				<div className='row'>
@@ -589,7 +771,7 @@ var AddNewPostForm = React.createClass({
 						<label className='group-title'>Thông tin mô tả</label>
 					</div>
 					<div className='columns nine control'>
-						<textarea onChange={this.handleChangeDescription} row='4' className='form-control control--textarea' name='description' value={this.state.description}></textarea>
+						<textarea id='description' onChange={this.handleChangeDescription} row='4' className='form-control control--textarea' name='description' value={this.state.description}></textarea>
 					</div>
 				</div>
 
@@ -607,7 +789,7 @@ var AddNewPostForm = React.createClass({
 					<div className='columns three'>&nbsp;</div>
 					<div className='columns nine'>
 						<label>
-							<input onChange={this.handleChangeIsProject} className='form-control' type='checkbox' name='isProject' checked={this.state.isProject} /> Chọn nếu nhà thuộc dự án
+							<input id='isProject' onChange={this.handleChangeIsProject} className='form-control' type='checkbox' name='isProject' checked={this.state.isProject} /> Chọn nếu nhà thuộc dự án
 						</label>
 					</div>
 				</div>
@@ -649,9 +831,10 @@ var AddNewPostForm = React.createClass({
 					<div className='columns three'>
 						<label htmlFor=''>Tên (*)</label>
 					</div>
-					<div className='columns nine'>
+					<div className='columns six'>
 						<input onChange={this.handleChangeAuthor} type='hidden' name='author' value={this.state.author} />
-						<input onChange={this.handleChangeName} className='form-control' type='text' name='name' required='required' value={this.state.name} />
+						<input id='name' onChange={this.handleChangeName} className='form-control' type='text' name='name' value={this.state.name} />
+						<span id='name-error-msg' name='name-error-msg' className='error-tips' style={{marginLeft: '15px'}}>* bắt buộc</span>
 					</div>
 				</div>
 				<div className='row'>
@@ -659,7 +842,8 @@ var AddNewPostForm = React.createClass({
 						<label htmlFor=''>Số điện thoại (*)</label>
 					</div>
 					<div className='columns nine'>
-						<input onChange={this.handleChangeMobile} className='form-control' type='text' name='mobile' required='required' value={this.state.mobile} />
+						<input id='mobile' onChange={this.handleChangeMobile} className='form-control' type='text' name='mobile' value={this.state.mobile} />
+						<span id='mobile-error-msg' name='mobile-error-msg' className='error-tips' style={{marginLeft: '15px'}}>* bắt buộc</span>
 					</div>
 				</div>
 				<div className='row'>

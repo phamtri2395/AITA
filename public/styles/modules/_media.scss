@@ -145,7 +145,8 @@
 		padding: 2px 5px 2px 5px;
 		border: 2px solid #8A6D3B;
 		border-radius: 5px;
-	}
+	}	
+
 	&--div {}
 }
 
@@ -189,6 +190,14 @@
 	padding: 2px 5px 2px 5px;
 	border: 2px solid #3C763D;
 	border-radius: 5px;
+}
+
+/**
+ * error tips
+ */
+.error-tips {
+	color: red;
+	visibility: hidden;
 }
 
 /**
