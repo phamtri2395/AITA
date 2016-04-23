@@ -135,12 +135,6 @@ Post.add({
 		required: false
 	},
 
-	highway: {
-		label: 'Mặt đường (m)',
-		type: Number,
-		required: false
-	},
-
 	description: {
 		label: 'Mô tả',
 		type: Types.Textarea,

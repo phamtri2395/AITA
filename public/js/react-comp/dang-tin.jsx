@@ -20,7 +20,7 @@ var AddNewPostForm = React.createClass({
 
 		// Images
 		images: function(value) {
-			if (value > 1) {
+			if (value > 0) {
 				$('#dropzone-error-msg').css('visibility', 'hidden');
 				return true;
 			}
@@ -272,7 +272,6 @@ var AddNewPostForm = React.createClass({
 			bedroom: '',
 			bathroom: '',
 			floors: '',
-			highway: '',
 			description: '',
 			isProject: false,
 			projectName: '',
@@ -311,8 +310,7 @@ var AddNewPostForm = React.createClass({
 			'bedroom': 0,
 			'bathroom': 0,
 			'floors': 0,
-			'highway': 0,
-			'description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+			'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil dolore, harum quaerat facere rerum, fugiat ipsam magni ut atque voluptas?',
 			'isProject': true,
 			'projectName': 'AITA',
 			'projectLink': 'http://aita.vn/',
@@ -547,7 +545,9 @@ var AddNewPostForm = React.createClass({
 	},
 
 	handleChangeDescription: function(e) {
-		this.setState({description: e.target.value});
+		var text = e.target.value;
+		var strippedText = text.replace(/\s/g, "");
+		if (strippedText.length <= 150) this.setState({description: e.target.value});
 	},
 
 	handleChangeIsProject: function(e) {
@@ -556,10 +556,6 @@ var AddNewPostForm = React.createClass({
 
 	handleChangeProjectName: function(e) {
 		this.setState({projectName: e.target.value});
-	},
-
-	handleChangeHighway: function(e) {
-		this.setState({highway: e.target.value});
 	},
 
 	handleChangeAuthor: function(e) {
@@ -644,8 +640,8 @@ var AddNewPostForm = React.createClass({
 						<label>Tiêu đề</label>
 					</div>
 					<div className='columns nine'>
-						<input id="title" onChange={this.handleChangeTitle} className='u-full-width' type='text' name='title'
-							placeholder='Bán nhà mặt tiền 100m2, 2 phòng ngủ, 2 phòng tắm' value={this.state.title} />
+						<input disabled id="title" onChange={this.handleChangeTitle} className='u-full-width' type='text' name='title'
+							value={this.state.title} />
 					</div>
 				</div>
 				<div className='row'>
@@ -732,15 +728,6 @@ var AddNewPostForm = React.createClass({
 				</div>
 				<div className='row'>
 					<div className='columns three'>
-						<label>Giá (VNĐ)</label>
-					</div>
-					<div className='columns nine'>
-						<input id='price' onChange={this.handleChangePrice} className='form-control' style={{'marginBottom': 0}} type='text' name='price' value={this.state.price} />
-						<span id='price-error-msg' name='price-error-msg' className='error-tips' style={{display: 'block'}}>* bắt buộc, là số nguyên và lớn hơn 0</span>
-					</div>
-				</div>
-				<div className='row'>
-					<div className='columns three'>
 						<label>Diện tích (m²)</label>
 					</div>
 					<div className='columns nine'>
@@ -768,7 +755,16 @@ var AddNewPostForm = React.createClass({
 				</div>
 				<div className='row'>
 					<div className='columns three'>
-						<label className='group-title'>Thông tin mô tả</label>
+						<label>Giá (VNĐ)</label>
+					</div>
+					<div className='columns nine'>
+						<input id='price' onChange={this.handleChangePrice} className='form-control' style={{'marginBottom': 0}} type='text' name='price' value={this.state.price} />
+						<span id='price-error-msg' name='price-error-msg' className='error-tips' style={{display: 'block'}}>* bắt buộc, là số nguyên và lớn hơn 0</span>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='columns three'>
+						<label className='group-title'>Thông tin mô tả (150 kí tự)</label>
 					</div>
 					<div className='columns nine control'>
 						<textarea id='description' onChange={this.handleChangeDescription} row='4' className='form-control control--textarea' name='description' value={this.state.description}></textarea>
@@ -815,14 +811,6 @@ var AddNewPostForm = React.createClass({
 					</div>
 					<div className='columns four'>
 						<Select className='state-floors' value={this.state.floors} options={this.state.select.floors} onChange={this.handleChangeFloors} />
-					</div>
-				</div>
-				<div className='row'>
-					<div className='columns three'>
-						<label htmlFor=''>Lộ giới (m)</label>
-					</div>
-					<div className='columns nine'>
-						<input onChange={this.handleChangeHighway} type='text' id='highway' className='form-control' name='highway' value={this.state.highway} />
 					</div>
 				</div>
 
