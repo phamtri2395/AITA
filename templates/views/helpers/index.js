@@ -401,10 +401,12 @@ module.exports = function() {
 	_helpers.isBookmarked = function(id, locals) {
 		var flag = false;
 
-		for (var i = 0; i < locals.data.bookmarks.length; i++) {
-			if (id.toString() === locals.data.bookmarks[i].post.toString()) {
-				flag = true;
-				break;
+		if (locals.data.bookmarks) {
+			for (var i = 0; i < locals.data.bookmarks.length; i++) {
+				if (id.toString() === locals.data.bookmarks[i].post.toString()) {
+					flag = true;
+					break;
+				}
 			}
 		}
 

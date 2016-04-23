@@ -23,6 +23,22 @@
 								<a href="/chi-tiet" data-items-list="" data-latitude="" data-longitude="">
 									{{toAuthorName author}}
 								</a>
+
+								{{#if ../user}}											
+									{{#if (isBookmarked _id)}}
+										<div class="bookmark btn-bookmarked u-pull-right" value={{_id}}>
+									{{else}}
+										<div class="bookmark btn-bookmark u-pull-right" value={{_id}}>
+									{{/if}}
+
+										</div>
+								{{/if}}
+
+								{{#if isExpired}}
+									<span class="expired u-pull-right" style="margin-left: 10px;">
+										Đã hết hạn
+									</span>
+								{{/if}}
 							</h4>
 
 							<span class="tel-group-wrapper">
@@ -149,6 +165,16 @@
 								<label for="checkbox-{{@index}}" class="tel-group--label"><i class="icon-phone"></i> Nhấn để xem</label>
 								<a href="tel:{{mobile}}" class="tel-group--phone-number"><i class="icon-phone"></i> {{mobile}}</a>
 							</span>
+
+							{{#if ../user}}											
+								{{#if (isBookmarked _id)}}
+									<div class="u-pull-right bookmark btn-bookmarked" value={{_id}}>
+								{{else}}
+									<div class="u-pull-right bookmark btn-bookmark" value={{_id}}>
+								{{/if}}
+
+									</div>
+							{{/if}}
 
 							{{#if isExpired}}
 								<span class="u-pull-right expired">

@@ -172,7 +172,7 @@ exports = module.exports = function(app) {
 	app.get('/fb', routes.views.fb);
 
 	// Bookmark & Reactive
-	app.put('/api/post/bookmark', routes.services.post.bookmark);
+	app.put('/api/post/bookmark/:_postId', routes.services.post.bookmark);
 	app.put('/api/post/reactivate/:_id', routes.services.post.reactivate);
 
 	// Post MODEL: function for set of collection

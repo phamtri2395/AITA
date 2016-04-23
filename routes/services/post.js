@@ -6,6 +6,7 @@ var keystone = require('keystone');
 var restful = require('../../cores/restful');
 var utils = require('../../cores/utilities');
 var PostModel = keystone.list('Post').model;
+var BookmarkModel = keystone.list('Bookmark').model;
 var ImageModel = keystone.list('ImageModel').model;
 
 exports = module.exports = _.assign(restful(PostModel), {
@@ -72,7 +73,20 @@ exports = module.exports = _.assign(restful(PostModel), {
 	},
 
 	bookmark: function(req, res) {
-
+		if (req.user) {
+			BookmarkModel.findOne({ 'user': req.user._id, 'post': req.params._postId }, function(err, bookmark) {
+				console.log(bookmark);
+				if (!bookmark) {
+					BookmarkModel.create({
+						'user': req.user._id,
+						'post': req.params._postId
+					});			
+				}
+				else if (bookmark) {
+					bookmark.remove();
+				}
+			});
+		}
 	},
 	
 	reactivate: function(req, res) {

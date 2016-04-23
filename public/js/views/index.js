@@ -2,17 +2,21 @@
 // @author: skullopus
 
 $(document).on('ready', function() {
-	$('.btn-bookmark').click(function() {
-
-		$('.form-bookmark', this).submit();
-
-		if ($(this).hasClass('bookmarked')) {
-			$(this).removeClass('bookmarked');
+	$('.bookmark').click(function() {
+		// Handle animation
+		if ($(this).hasClass('btn-bookmark')) {
+			$(this).removeClass('btn-bookmark').addClass('btn-bookmarked');
 		}
 		else {
-			$(this).addClass('bookmarked');
+			$(this).removeClass('btn-bookmarked').addClass('btn-bookmark');
 		}
 
+		// Send ajax
+	  var _id = $(this).attr("value");
+		$.ajax({
+		type: "PUT",
+		url: "/api/post/bookmark/" + _id,
+		});
 	});
 
 	$('.result-block').off('click.gallery', '.fancybox-thumb').on('click.gallery', '.fancybox-thumb', function(e) {
@@ -31,15 +35,4 @@ $(document).on('ready', function() {
 			}
 		});
 	});
-});
-
-$(document).on('submit','.form-bookmark',function(e){
-	e.preventDefault();
-  
-  var postId = $(this).attr("value");
-	$.ajax({
-	type: "POST",
-	url: "/user/bookmark/" + postId,
-	});
-
 });

@@ -4,6 +4,7 @@
  */
 
 var keystone = require('keystone');
+var async = require('async');
 var debug = require('debug')('chi-tiet');
 // var async = require('async');
 
@@ -18,10 +19,12 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'chi-tiet';
 
+	locals.user = req.user;
 	// Init locals's data
 	locals.data = {
 		post: {},
-		relatedPosts: []
+		relatedPosts: [],
+		bookmarks: []
 	};
 
 	// Get Id from index
@@ -88,6 +91,28 @@ exports = module.exports = function(req, res) {
 			return next(err);
 		});
 	});
+
+	// Load all Bookmarks
+	if (locals.user) {
+		view.on('init', function(next) {
+			keystone.list('Bookmark').model.find({ user: locals.user._id }).exec(function(err, results) {
+				if (err || !results.length) {
+					return next(err);
+				}
+				locals.data.bookmarks = results;
+
+				// Load the counts for each bookmark
+				async.each(locals.data.bookmarks, function(bookmark, next) {
+					keystone.list('Bookmark').model.count().exec(function(err, count) {
+						bookmark.postCount = count;
+						next(err);
+					});
+				}, function(err) {
+					next(err);
+				});
+			});
+		});
+	}
 
 	// Render the view
 	view.render('chi-tiet');

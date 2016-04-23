@@ -48,10 +48,6 @@
 	* {
 		display: inline-block;
 	}
-
-	.btn-bookmark {
-		display: none;
-	}
 }
 
 
@@ -198,6 +194,67 @@
 .error-tips {
 	color: red;
 	visibility: hidden;
+}
+
+/**
+ * Button to bookmark
+ */
+.btn-bookmark:before {
+	content: "\2714";
+}
+.btn-bookmark {
+  -webkit-transition: background-color 300ms ease;
+  -moz-transition: background-color 300ms ease;
+  -o-transition: background-color 300ms ease;
+  transition: background-color 300ms ease;
+
+	display: inline;
+	font-size: 2rem;
+	font-weight: 800;
+	background-color: #FFF;
+	color: #3C763D;
+	margin-left: 10px;
+	padding: 3px 9px 3px 9px;
+	border: 2px solid #3C763D;
+	border-radius: 150px;
+}
+.btn-bookmark:hover {
+	cursor: pointer;
+	display: inline;
+	font-size: 2rem;
+	font-weight: 800;
+	background-color: #3C763D;
+	color: #FFF;
+	margin-left: 10px;
+	padding: 3px 9px 3px 9px;
+	border: 2px solid #3C763D;
+	border-radius: 50px;
+}
+
+/**
+ * Button for bookmarked
+ */
+.btn-bookmarked:before {
+	content: "\2714";
+}
+.btn-bookmarked:after {
+	content: "Đã lưu";
+	font-size: 1.8rem;
+	font-weight: 500;
+}
+.btn-bookmarked:hover:before {
+	cursor: pointer;
+	content: "\2717";
+}
+.btn-bookmarked:hover {
+	cursor: pointer;
+}
+.btn-bookmarked {
+	display: inline;
+	margin-left: 10px;
+	font-size: 2rem;
+	font-weight: 800;
+	color: #3C763D;
 }
 
 /**

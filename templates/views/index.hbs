@@ -47,18 +47,15 @@
 													<a href="tel:{{mobile}}" class="tel-group--phone-number">
 														<i class="icon-phone"></i> {{mobile}}
 													</a>
-													
+
 													{{#if ../user}}											
 														{{#if (isBookmarked _id)}}
-															<div class="btn btn-bookmark bookmarked">
+															<div class="u-pull-right bookmark btn-bookmarked" value={{_id}}>
 														{{else}}
-															<div class="btn btn-bookmark">
+															<div class="u-pull-right bookmark btn-bookmark" value={{_id}}>
 														{{/if}}
 
-															<form class="form-bookmark" value="{{_id}}">
-																<i class="glyphicon glyphicon-star"></i>
-															</form>
-														</div>
+															</div>
 													{{/if}}
 
 													{{#if isExpired}}
@@ -141,13 +138,25 @@
 												<h4 class="media-heading">
 													<a href="/chi-tiet" data-latitude="" data-longitude="">{{toAuthorName author}}</a>
 
-													<input type="checkbox" id="checkbox-{{@index}}" class="tel-group--checkbox" />
-													<label for="checkbox-{{@index}}" class="tel-group--label">
-														<i class="glyphicon glyphicon-earphone"></i> Nhấn để xem
-													</label>
-													<a href="tel:{{mobile}}" class="tel-group--phone-number">
-														<i class="glyphicon glyphicon-earphone"></i> {{mobile}}
+													<a href="tel:{{mobile}}" class="tel-group--label">
+														<i class="icon-phone"></i> {{mobile}}
 													</a>
+
+													{{#if ../../user}}											
+														{{#if (isBookmarked _id)}}
+															<div class="u-pull-right bookmark btn-bookmarked" value={{_id}}>
+														{{else}}
+															<div class="u-pull-right bookmark btn-bookmark" value={{_id}}>
+														{{/if}}
+
+															</div>
+													{{/if}}
+
+													{{#if isExpired}}
+														<span class="expired u-pull-right">
+															Đã hết hạn
+														</span>
+													{{/if}}	
 												</h4>
 
 												<ul class="post-info--list">
@@ -161,19 +170,15 @@
 												</ul>
 												
 												<div class="sumary-b">
-													{{{description}}}
+													{{truncate description 160}}
 													<a href="/chi-tiet/{{id}}">
 														chi tiết <i class="glyphicon glyphicon-menu-right"></i>
 													</a>
 												</div>
 
 												<div class="gallery">
-													{{#each images}}
-													<span class="wrapper-cover-img">
-														<a class="fancybox-thumb" rel="fancybox-thumb" href={{secure_url}}>
-															<img class="media-object" src={{secure_url}}>
-														</a>
-													</span>
+													{{#each (limit images 2)}}
+														<span class="gallery--mobile-wrapper"><span class="wrapper-cover-img"><a class="fancybox-thumb" rel="fancybox-thumb" href="//{{serverPath}}/{{path}}"><img class="media-object" src="//{{serverPath}}/{{path}}" /></a></span></span>
 													{{/each}}
 												</div>
 											</div>
