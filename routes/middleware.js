@@ -32,6 +32,12 @@ exports.initLocals = function(req, res, next) {
 	
 	locals.user = req.user;
 	
+	// expose envs
+	locals.env = {
+		HOST_URL: process.env.HOST_URL,
+		STORAGE_URL: process.env.STORAGE_URL
+	};
+
 	next();
 	
 };

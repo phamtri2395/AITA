@@ -140,7 +140,7 @@
 					<div class="u-pull-right">
 						{{!-- <div class="fb-send" data-href="https://aitavn.herokuapp.com/chi-tiet"></div> --}}
 						<div class="fb-share-button" 
-							data-href="https://aitavn.herokuapp.com/chi-tiet" 
+							data-href="{{../env.HOST_URL}}/chi-tiet/{{id}}" 
 							data-layout="button"></div>
 					</div>
 				</div>
@@ -148,7 +148,7 @@
 
 			<div class="content-wrapper">
 				<div class="fb-comments" 
-					data-href="https://aita.vn/chi-tiet/{{id}}" 
+					data-href="{{../env.HOST_URL}}/chi-tiet/{{id}}" 
 					data-numposts="12"></div>
 			</div>
 		{{/with}}
