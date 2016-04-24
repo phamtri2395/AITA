@@ -624,12 +624,16 @@ var AddNewPostForm = React.createClass({
 			delete model.images;
 		}
 
-		ApiService.PostModel.add(model).then(function(data) {
-			console.log(data);
-			window.location = '/';
-		}, function(err) {
-			console.log('Add new post error', err);
-		});
+		if (!this.isFetching) {
+			this.isFetching = true;
+			
+			ApiService.PostModel.add(model).then(function(data) {
+				this.isFetching = false;
+				window.location = '/';
+			}.bind(this), function(err) {
+				console.log('Add new post error', err);
+			});
+		}
 	},
 
 	render: function() {
