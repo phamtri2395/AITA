@@ -140,7 +140,7 @@
 					<div class="u-pull-right">
 						{{!-- <div class="fb-send" data-href="https://aitavn.herokuapp.com/chi-tiet"></div> --}}
 						<div class="fb-share-button" 
-							data-href="{{../env.HOST_URL}}/chi-tiet/{{id}}" 
+							data-href="{{../env.HOST_URL}}/chi-tiet/{{slug}}" 
 							data-layout="button"></div>
 					</div>
 				</div>
@@ -148,7 +148,7 @@
 
 			<div class="content-wrapper">
 				<div class="fb-comments" 
-					data-href="{{../env.HOST_URL}}/chi-tiet/{{id}}" 
+					data-href="{{../env.HOST_URL}}/chi-tiet/{{slug}}" 
 					data-numposts="12"></div>
 			</div>
 		{{/with}}
@@ -191,7 +191,7 @@
 							<li class="post-info--item"><b>{{toCurrency price}} VND/Tháng</b></li>
 						</ul>
 						{{truncate description 160}}
-						<a href="/chi-tiet/{{id}}">chi tiết <i class="icon-right-open"></i></a>
+						<a href="/chi-tiet/{{slug}}">chi tiết <i class="icon-right-open"></i></a>
 					</div>
 
 					{{#if images}}

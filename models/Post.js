@@ -298,7 +298,7 @@ Post.schema.methods.sendNotificationEmail = function(callback) {
 			subject: 'Thông báo có bài viết mới',
 			globalMergeVars :  {
 				HOST_URL: process.env.HOST_URL,
-				POST_URL: process.env.HOST_URL + '/chi-tiet/' + this._id
+				POST_URL: process.env.HOST_URL + '/chi-tiet/' + this.slug
 			}
 		}, callback);
 

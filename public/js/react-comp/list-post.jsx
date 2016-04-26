@@ -57,7 +57,7 @@ var ListPostComp = React.createClass({
 				{this.state.listPost.map(function(item) {
 					return (
 						<tr key={item._id}>
-							<td><a href={"/chi-tiet/" + (item._id)} style={linkStyle}>{item.title}</a></td>
+							<td><a href={"/chi-tiet/" + (item.slug)} style={linkStyle}>{item.title}</a></td>
 							<td>
 								{
 									item.isExpired

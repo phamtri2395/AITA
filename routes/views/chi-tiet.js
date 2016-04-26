@@ -27,16 +27,16 @@ exports = module.exports = function(req, res) {
 		bookmarks: []
 	};
 
-	// Get Id from index
-	var id = req.params._id;
-	debug('id', id);
+	// Get slug from index
+	var slug = req.params._slug;
+
 	// Store type & category of post
 	var type;
 	
-	// Load post with Id
+	// Load post with slug
 	view.on('init', function(next) {
 
-		keystone.list('Post').model.findOne({ '_id' : id }).populate('author district ward').exec(function(err, result) {
+		keystone.list('Post').model.findOne({ 'slug' : slug }).populate('author district ward').exec(function(err, result) {
 			if (!result) {
 				return;
 			}

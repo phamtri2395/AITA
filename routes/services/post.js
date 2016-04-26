@@ -44,7 +44,7 @@ exports = module.exports = _.assign(restful(PostModel), {
 			// 	message: data.description,
 
 			// 	// name of the link
-			// 	link: process.env.HOST_URL + '/chi-tiet/' + data._id,
+			// 	link: process.env.HOST_URL + '/chi-tiet/' + data.slug,
 			// 	picture: 'http://file4.batdongsan.com.vn/resize/745x510/2015/06/04/20150604150037-9e21.jpg',
 			// 	image: 'http://file4.batdongsan.com.vn/resize/745x510/2015/06/04/20150604150037-9e21.jpg',
 			// 	name: 'Bán nhà 100m2, 2 phòng ngủ, 2 phòng tắm, 2.5tỉ',

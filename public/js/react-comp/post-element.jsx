@@ -96,7 +96,7 @@ var PostElementComp = React.createClass({
 						</ul>
 
 						<div className="sumary-b">
-							{this.truncate(item.description, 200)} <a href={"/chi-tiet/" + item._id }>chi tiết<i className="icon-right-open"></i></a>
+							{this.truncate(item.description, 200)} <a href={"/chi-tiet/" + item.slug }>chi tiết<i className="icon-right-open"></i></a>
 						</div>
 
 						{imageSectionRender}
