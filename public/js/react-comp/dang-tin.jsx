@@ -161,8 +161,8 @@ var AddNewPostForm = React.createClass({
 			else if (this.dynamicTitle.realEstate === 'phong-cho-thue') realEstate = 'phòng';
 		}
 
-		if (this.dynamicTitle.isFront) front = 'mặt tiền';
-		else front = '';
+		// if (this.dynamicTitle.isFront) front = 'mặt tiền';
+		// else front = '';
 
 		if (this.dynamicTitle.area) {
 			area = this.dynamicTitle.area + 'm2';
@@ -263,7 +263,7 @@ var AddNewPostForm = React.createClass({
 			// ward: '',
 			street: '',
 			address: '',
-			isFront: '',
+			isFront: false,
 			hidePosition: '',
 			latitude: '',
 			longitude: '',
@@ -301,7 +301,7 @@ var AddNewPostForm = React.createClass({
 			'ward': '',
 			'street': '',
 			'address': '43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM',
-			'isFront': true,
+			'isFront': false,
 			'hidePosition': false,
 			'latitude': 0,
 			'longitude': 0,
@@ -639,7 +639,7 @@ var AddNewPostForm = React.createClass({
 	render: function() {
 		return (
 			<form className='form-home' action='/add-new-post' method='post' acceptCharset='utf-8' encType='multipart/form-data' onSubmit={this.handleSubmit}>
-				<div className='row'>
+				{/*<div className='row'>
 					<div className='columns three'>
 						<label>Tiêu đề</label>
 					</div>
@@ -647,15 +647,15 @@ var AddNewPostForm = React.createClass({
 						<input disabled id="title" onChange={this.handleChangeTitle} className='u-full-width' type='text' name='title'
 							value={this.state.title} />
 					</div>
-				</div>
-				<div className='row'>
+				</div>*/}
+				{/*<div className='row'>
 					<div className='columns three'>&nbsp;</div>
 					<div className='columns nine'>
 						<label className='checkbox-lable' htmlFor='checkbox-mat-tien'>
 							<input onChange={this.handleChangeFront} type='checkbox' name='front' id='checkbox-mat-tien' checked={this.state.isFront} /> Nhà mặt tiền
 						</label>
 					</div>
-				</div>
+				</div>*/}
 				<div className='row'>
 					<div className='columns three'>
 						<label>Hình thức</label>
@@ -699,7 +699,7 @@ var AddNewPostForm = React.createClass({
 				</div>*/}
 				<div className='row'>
 					<div className='columns three'>
-						<label>Đường</label>
+						<label>Địa chỉ</label>
 					</div>
 					<div className='columns nine'>
 						<input id='street' onChange={this.handleChangeStreet} className='u-full-width' style={{marginBottom: 0}} type='text' name='street' 
@@ -707,7 +707,7 @@ var AddNewPostForm = React.createClass({
 						<span id='street-error-msg' name='street-error-msg' className='error-tips'>* bắt buộc</span>
 					</div>
 				</div>
-				<div className='row'>
+				{/*<div className='row'>
 					<div className='columns three'>
 						<label>Địa chỉ đầy đủ</label>
 					</div>
@@ -715,7 +715,7 @@ var AddNewPostForm = React.createClass({
 						<input disabled className='u-full-width' type='text' name='address' 
 							placeholder='43, Đường 17, Kp6, Hiệp Bình Chánh, Thủ Đức, HCM' value={this.state.address} />
 					</div>
-				</div>
+				</div>*/}
 				<div className='row'>
 					<div className='columns three'>
 						<label className='group-title'>Vị trí trên bản đồ</label>
