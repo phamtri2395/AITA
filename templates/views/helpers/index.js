@@ -418,6 +418,16 @@ module.exports = function() {
 		return (type === 'thue')?true:false;
 	};
 
+	// Get Date in proper format
+	_helpers.getfDate = function(date) {
+		var fDate = new Date(date);
+		var dd = fDate.getDate();
+		var mm = fDate.getMonth() + 1;
+		var yy = fDate.getFullYear();
+
+		return (dd + '/' + mm + '/' + yy);
+	};
+
 	_helpers.truncate = function(message, length) {
 		var m = message.substr(0, length);
 		if (message.length > length) {
