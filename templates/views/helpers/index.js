@@ -367,7 +367,7 @@ module.exports = function() {
 
 	// Register toAuthorName function, which gives full name of author
 	_helpers.toAuthorName = function(author) {
-		return (author) ? (author.name.first + ' ' + author.name.last) : 'null';
+		return (author) ? (author.name ? (author.name.first + ' ' + author.name.last) : 'null') : 'null';
 	};
 	
 	// Register districtName function, which return name of District
