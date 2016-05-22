@@ -22,6 +22,8 @@ var keystone = require('keystone');
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var debug = require('debug')('middleware');
+var restify = require('express-restify-mongoose');
+var router = keystone.express.Router();
 
 var FacebookStrategy = require('passport-facebook').Strategy;
 var middleware = require('./middleware');
@@ -198,6 +200,19 @@ exports = module.exports = function(app) {
 	// Wards MODEL
 	app.get('/api/ward/find', routes.services.wards._find);
 
+	restify.serve(router, keystone.mongoose.model('Bookmark'));
+	restify.serve(router, keystone.mongoose.model('Category'));
+	restify.serve(router, keystone.mongoose.model('District'));
+	restify.serve(router, keystone.mongoose.model('Enquiry'));
+	restify.serve(router, keystone.mongoose.model('EstateCategory'));
+	restify.serve(router, keystone.mongoose.model('Gallery'));
+	restify.serve(router, keystone.mongoose.model('Post'));
+	restify.serve(router, keystone.mongoose.model('PostCategory'));
+	restify.serve(router, keystone.mongoose.model('User'));
+	restify.serve(router, keystone.mongoose.model('Ward'));
+
+	app.use(router);
+	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };

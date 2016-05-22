@@ -13,7 +13,7 @@
     "express-session": "^1.12.1",
     "fb": "^0.7.3",
     "handlebars": "^2.0.0",
-    "keystone": "0.3.17",
+    "keystone": "0.3.19",
     "lodash": "^4.0.1",
     "method-override": "^2.3.5",
     "moment": "^2.10.6",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "debug": "^2.2.0",
+    "express-restify-mongoose": "^4.0.2",
     "gulp": "^3.7.0",
     "gulp-jshint": "^1.9.0",
     "gulp-sass": "^2.0.4",
