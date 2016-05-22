@@ -41,8 +41,8 @@
   },
   "scripts": {
     "start": "node keystone.js",
-    "deploy_dev": "ssh root@aita.vn 'cd projects/aita && git pull && pm2 startOrRestart aita-dev.json --env development'",
-    "deploy_prod": "ssh root@aita.vn 'cd production/aita && git pull && pm2 restart aita-prod.json --env production'"
+    "deploy_dev": "ssh root@aita.vn 'cd projects/aita && git pull && npm install && pm2 startOrRestart aita-dev.json --env development'",
+    "deploy_prod": "ssh root@aita.vn 'cd production/aita && git pull && npm install && pm2 restart aita-prod.json --env production'"
   },
   "main": "keystone.js"
 }
