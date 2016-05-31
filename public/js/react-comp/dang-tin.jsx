@@ -521,7 +521,8 @@ var AddNewPostForm = React.createClass({
 	},
 
 	handleChangePrice: function(e) {
-		this.setState({price: e.target.value});
+		var price = e.target.value.toString().replace(/,/g,'').replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1,');
+		this.setState({price: price});
 		this.validations.price(e.target.value);
 	},
 
