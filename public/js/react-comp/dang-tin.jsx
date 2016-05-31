@@ -10,7 +10,7 @@ var AddNewPostForm = React.createClass({
 		// Is positive integer (exclude 0) or not
 		isPositiveNumb: function(value) {
 			var str = value.toString();
-			return ((str.match(/^\+?\d+$/)) && str > 0);
+			return ((str.match(/^\+?\d+$/)) && value > 0);
 		},
 		// Is positive integer (include 0) or not
 		isPositiveNumbZero: function(value) {
@@ -523,7 +523,7 @@ var AddNewPostForm = React.createClass({
 	handleChangePrice: function(e) {
 		var price = e.target.value.toString().replace(/,/g,'').replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1,');
 		this.setState({price: price});
-		this.validations.price(e.target.value);
+		this.validations.price(e.target.value.toString().replace(/,/g,''));
 	},
 
 	handleChangeArea: function(e) {
